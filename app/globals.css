@@ -388,6 +388,25 @@ header, main { position: relative; z-index: 1; }
   white-space: nowrap;
 }
 
+/* ---------- Footer ---------- */
+.footer {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px 32px;
+  padding-block: 32px;
+  border-top: 1px solid var(--chip-border);
+  font-size: 14px;
+  color: var(--ink-muted);
+}
+.footer__brand { display: flex; align-items: center; gap: 14px; }
+.footer__brand img { width: 30px; height: auto; opacity: .85; }
+.footer__links { display: flex; flex-wrap: wrap; gap: 8px 28px; }
+.footer__links a { transition: color .2s; }
+.footer__links a:hover { color: var(--ink); }
+
 /* ---------- Responsive ---------- */
 @media (max-width: 1280px) {
   .collage { width: min(46vw, 633px); }
@@ -420,6 +439,8 @@ header, main { position: relative; z-index: 1; }
   .project { gap: 20px; }
   .project__media { border-radius: 16px; }
   .project__media--wide { border-radius: 20px; aspect-ratio: 4 / 3; }
+  .footer { flex-direction: column; align-items: flex-start; padding-block: 28px; }
+  .footer__links { gap: 8px 20px; }
 }
 
 @media (max-width: 380px) {

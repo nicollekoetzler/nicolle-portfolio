@@ -181,6 +181,19 @@ export default function Home() {
           </div>
         </section>
       </main>
+
+      <footer className="footer container">
+        <div className="footer__brand">
+          <img src="/assets/nk-logo.svg" width={30} height={23.3} alt="NK" />
+          <span>© {new Date().getFullYear()} Nicolle Koetzler</span>
+        </div>
+        <nav className="footer__links" aria-label="Footer">
+          <a href="#portfolio">Portfolio</a>
+          <a href="#services">Services</a>
+          <a href="https://www.linkedin.com/" target="_blank" rel="noopener">LinkedIn</a>
+          <a href="#top">Back to top ↑</a>
+        </nav>
+      </footer>
     </div>
   );
 }
