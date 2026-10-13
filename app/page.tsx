@@ -114,7 +114,10 @@ export default function Home() {
           <div className="hero__text">
             <ul className="chips" aria-label="Roles">
               {roles.map((role) => (
-                <li key={role} className="chip">{role}</li>
+                <li key={role} className="chip">
+                  {role}
+                  <svg className="chip__border" aria-hidden="true"><rect /></svg>
+                </li>
               ))}
             </ul>
 

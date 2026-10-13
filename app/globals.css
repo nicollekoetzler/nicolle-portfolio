@@ -103,13 +103,38 @@ header, main { position: relative; z-index: 1; }
 
 .chips { display: flex; flex-wrap: wrap; gap: 12px; }
 .chip {
-  padding: 10px 19px;
-  border: 1px dashed var(--chip-border);
+  position: relative;
+  padding: 11px 20px;
   border-radius: 100px;
   font-weight: 300;
   font-size: 16px;
   line-height: 1.5;
   color: var(--chip-ink);
+}
+/* Dashed outline drawn in SVG so the dashes can travel around the pill */
+.chip__border {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  pointer-events: none;
+}
+.chip__border rect {
+  x: 0.5px;
+  y: 0.5px;
+  width: calc(100% - 1px);
+  height: calc(100% - 1px);
+  rx: 22.5px;
+  fill: none;
+  stroke: var(--chip-border);
+  stroke-width: 1;
+  stroke-dasharray: 4 3;
+  animation: chip-dash 1.2s linear infinite;
+}
+@keyframes chip-dash { to { stroke-dashoffset: -14; } }
+@media (prefers-reduced-motion: reduce) {
+  .chip__border rect { animation: none; }
 }
 
 .hero__copy { display: flex; flex-direction: column; gap: 23px; width: 100%; }
@@ -381,7 +406,8 @@ header, main { position: relative; z-index: 1; }
   .page { padding-top: 20px; }
   .nav__links { gap: 16px; font-size: 14px; }
   .chips { gap: 8px; }
-  .chip { font-size: 13px; padding: 7px 14px; }
+  .chip { font-size: 13px; padding: 8px 15px; }
+  .chip__border rect { rx: 17.25px; }
   .tags { gap: 8px; }
   .hero__lead { font-size: 16px; }
   .collage__main { border-radius: 28px; }
