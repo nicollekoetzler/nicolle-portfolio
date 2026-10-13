@@ -42,10 +42,25 @@ function Arrow({ variant }: { variant: "white" | "dark" }) {
   );
 }
 
+/** The project image, linked to its case study (in a new tab) when there is one */
+function MediaLink({ href, label, className, children }: { href?: string; label: string; className: string; children: React.ReactNode }) {
+  return href ? (
+    <a className={className} href={href} target="_blank" rel="noopener" aria-label={label}>
+      {children}
+    </a>
+  ) : (
+    <div className={className}>{children}</div>
+  );
+}
+
 function ProjectCard({ project, wide = false }: { project: Project; wide?: boolean }) {
   return (
     <article className={wide ? "project project--wide" : "project"}>
-      <div className={wide ? "project__media project__media--wide" : "project__media"}>
+      <MediaLink
+        href={project.caseStudy}
+        label={`${project.title} case study (opens in a new tab)`}
+        className={wide ? "project__media project__media--wide" : "project__media"}
+      >
         {project.video ? (
           <video
             src={project.video}
@@ -67,10 +82,15 @@ function ProjectCard({ project, wide = false }: { project: Project; wide?: boole
             style={project.position ? { objectPosition: project.position } : undefined}
           />
         )}
-      </div>
+      </MediaLink>
       <div className="project__info">
         <div className="project__heading">
           <h2 className="project__title">{project.title}</h2>
+          {project.caseStudy && (
+            <a className="project__link" href={project.caseStudy} target="_blank" rel="noopener">
+              View case study <span aria-hidden="true">↗</span>
+            </a>
+          )}
           {project.link && (
             <a className="project__link" href={project.link.href} target="_blank" rel="noopener">
               {project.link.label} <span aria-hidden="true">↗</span>

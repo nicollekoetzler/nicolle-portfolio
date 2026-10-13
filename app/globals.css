@@ -327,6 +327,7 @@ header, main { position: relative; z-index: 1; }
 }
 .project { display: flex; flex-direction: column; gap: 32px; }
 .project__media {
+  display: block;
   position: relative;
   overflow: hidden;
   background: #fff;

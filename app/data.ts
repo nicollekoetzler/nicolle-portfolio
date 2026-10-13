@@ -9,6 +9,8 @@ export type Project = {
   position?: string;
   /** Muted looping video shown instead of the image (the image becomes its poster) */
   video?: string;
+  /** Case study page, opened in a new tab from the image and title */
+  caseStudy?: string;
   /** External link shown to the right of the title */
   link?: { href: string; label: string };
 };
@@ -17,6 +19,7 @@ export const featured: Project = {
   title: "Case Connector",
   image: "/assets/case-connector.png",
   video: "/assets/case-connector.mp4",
+  caseStudy: "/case-connector",
   link: { href: "https://apps.apple.com/us/app/tlu-case-connector/id6759930495", label: "View on the App Store" },
   alt: "Case Connector app shown on a phone in a futuristic blue room",
   tags: ["CASE REFERRAL SOLUTION", "MOBILE APP", "SOFTWARE DEVELOPMENT", "UI/UX DESIGN"],
