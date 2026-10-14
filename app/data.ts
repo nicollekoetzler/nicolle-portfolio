@@ -35,8 +35,8 @@ export const projects: Project[] = [
   {
     title: "CG Performance Dashboard",
     caseStudy: "/performance-dashboard",
-    image: "/assets/project-performance-dashboard.webp",
-    alt: "CG Performance dashboard: overview and Speed Insights screens",
+    image: "/assets/project-performance-dashboard-laptop.webp",
+    alt: "CG Performance leads dashboard on a laptop",
     tags: ["SAAS DASHBOARD", "UI/UX DESIGN", "PRODUCT DESIGN"],
   },
   { title: "Law-Di-Gras", site: "https://lawdigras.org", image: "/assets/project-law-di-gras.png", alt: "Law-Di-Gras event website", tags: lawFirmTags, position: "50% 9%" },
