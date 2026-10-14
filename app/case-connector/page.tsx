@@ -1,11 +1,16 @@
 /* eslint-disable @next/next/no-img-element -- design exports keep their Figma sizes as plain <img> */
 import type { Metadata } from "next";
-import { DM_Mono, Space_Grotesk } from "next/font/google";
+import { DM_Mono } from "next/font/google";
+import localFont from "next/font/local";
 import { goals, insights, marketProblems, marketSolutions, personas, phases, type Phase } from "./data";
 import TimelineRunner from "./TimelineRunner";
 import "./case-connector.css";
 
-const display = Space_Grotesk({ subsets: ["latin"], weight: ["400", "500"], variable: "--cs-font-display" });
+const display = localFont({
+  src: "./fonts/BomstadDisplay-Regular.ttf",
+  weight: "400",
+  variable: "--cs-font-display",
+});
 const mono = DM_Mono({ subsets: ["latin"], weight: ["400"], style: ["normal", "italic"], variable: "--cs-font-mono" });
 
 export const metadata: Metadata = {
