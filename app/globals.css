@@ -656,6 +656,11 @@ header, main { position: relative; z-index: 1; }
   .hero__title, .inner-title { font-size: 28px; }
   /* phones: no photo collage, no arrow / "Featured Work" heading */
   .collage, .featured { display: none; }
+  /* phones: no "Learn More About Me" button; contact links sit 16px under the h1 */
+  .hero__actions { display: none; }
+  .hero__contact { margin-top: -19px; }
+  /* phones: "View Project" / App Store links go under the project name */
+  .project__heading { flex-direction: column; align-items: flex-start; gap: 6px; }
   .nav__links { gap: 16px; font-size: 14px; }
   .chips { gap: 8px; }
   .chip { font-size: 13px; padding: 8px 15px; }
