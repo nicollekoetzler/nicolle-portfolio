@@ -81,25 +81,6 @@ const screens = [
   },
 ];
 
-const principles = [
-  {
-    title: "Status colors that mean one thing",
-    text: "Green is healthy, orange needs attention, everywhere: progress bars, status dots and highlights.",
-  },
-  {
-    title: "One card anatomy",
-    text: "Icon and title, a big number, a supporting line. Learn it once and every module reads the same way.",
-  },
-  {
-    title: "A quiet, dark interface",
-    text: "Neutral surfaces step back so the numbers and their status colors carry the meaning.",
-  },
-  {
-    title: "Context over raw numbers",
-    text: "Comparisons like “↑ 2% vs last month” and short explanations sit right next to each score.",
-  },
-];
-
 export default function PerformanceDashboardPage() {
   return (
     <div className={`cs pd ${mono.variable}`}>
@@ -203,27 +184,6 @@ export default function PerformanceDashboardPage() {
             </article>
           ))}
         </section>
-
-        <section className="cs-split">
-          <div className="cs-split__head">
-            <h2 className="cs-h2">Design Principles</h2>
-          </div>
-          <div className="cs-split__text">
-            <p>
-              A handful of rules kept dozens of metrics consistent across every module, and made the system easy to
-              extend as new data sources were added.
-            </p>
-          </div>
-        </section>
-
-        <ul className="pd-principles">
-          {principles.map((p) => (
-            <li key={p.title}>
-              <h3>{p.title}</h3>
-              <p>{p.text}</p>
-            </li>
-          ))}
-        </ul>
 
         <section className="pd-closing">
           <img src={`${A}/cg-performance-logo.svg`} width={246} height={29} loading="lazy" alt="CG Performance" />
