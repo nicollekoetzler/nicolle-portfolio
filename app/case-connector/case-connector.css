@@ -416,14 +416,14 @@ html:has(.cs) { background: #17181c; }
   height: auto;
   transform: translateX(-50%);
 }
+/* Pinned to the right edge of the window, whatever the page width */
 .cs-closing__phone {
   position: absolute;
-  right: calc(-1 * clamp(20px, 8.75vw, 140px));
+  right: calc((100% - 100vw) / 2);
   bottom: 0;
   width: min(375px, 32vw);
   height: auto;
 }
-@media (min-width: 1600px) { .cs-closing__phone { right: -140px; } }
 @media (max-width: 1300px) {
   .cs-closing__phone { width: 22vw; }
   .cs-market__cols { padding-right: 18vw; }
