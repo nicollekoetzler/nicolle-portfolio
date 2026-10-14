@@ -2,7 +2,7 @@
 import type { Metadata } from "next";
 import { DM_Mono } from "next/font/google";
 import localFont from "next/font/local";
-import { goals, insights, marketProblems, marketSolutions, personas, phases, type Phase } from "./data";
+import { goals, marketProblems, marketSolutions, personas, phases, type Phase } from "./data";
 import TimelineRunner from "./TimelineRunner";
 import "./case-connector.css";
 
@@ -232,10 +232,6 @@ export default function CaseConnectorPage() {
             ))}
           </div>
         </section>
-
-        <ul className="cs-insights">
-          {insights.map((text) => <li key={text}>{text}</li>)}
-        </ul>
 
         <section className="cs-market">
           <h2 className="cs-h3">Market-Wide Problems the App Solves:</h2>

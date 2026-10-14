@@ -176,16 +176,6 @@ export const personas = [
   },
 ];
 
-export const insights = [
-  "Attorneys need simplicity + legal ethics compliance above everything else.",
-  "Case Posters want: reliability + speed + protection.",
-  "Case Bidders want: quality cases + transparency + fair competition.",
-  "The platform must reduce friction, eliminate uncertainty, and increase clarity.",
-  "Trust is the cornerstone — verification and reputation systems are essential.",
-  "Market is ready for a legal-tech marketplace that standardizes referrals.",
-  "Referral fees are misunderstood, causing hesitation → must be made transparent.",
-];
-
 export const marketProblems = [
   "Referral process is slow, informal, and unreliable",
   "Ethical confusion around referral fees",

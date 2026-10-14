@@ -405,26 +405,6 @@ html:has(.cs) { background: #17181c; }
 .persona__bullets li::before { content: "•"; position: absolute; left: 4px; }
 .persona__numbers { padding-left: 22px; list-style: decimal; }
 
-/* ---------- Insights ---------- */
-.cs-insights {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 30px 26px;
-  max-width: 1600px;
-  margin: 90px auto 0;
-  padding: 66px clamp(20px, 6.6vw, 106px);
-  border-block: 12px solid rgba(255, 255, 255, 0.025);
-  font-family: var(--cs-font-mono), monospace;
-  font-size: 14px;
-  letter-spacing: 0.06em;
-}
-.cs-insights li {
-  padding: 10px 19px;
-  border-radius: 8px;
-  background: rgba(255, 255, 255, 0.05);
-  color: rgba(255, 255, 255, 0.85);
-}
-
 /* ---------- Market problems + closing ---------- */
 .cs-market {
   position: relative;
@@ -525,7 +505,6 @@ html:has(.cs) { background: #17181c; }
 
   .personas { grid-template-columns: 1fr; margin-top: 60px; }
   .persona__head, .persona:last-child .persona__head { margin-inline: auto; }
-  .cs-insights { gap: 12px; padding-block: 44px; font-size: 12px; }
   .cs-market__cols { padding-right: 0; }
   .cs-closing { min-height: 380px; }
   .cs-closing__logo { top: 60px; width: 80%; }
