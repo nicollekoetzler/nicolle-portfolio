@@ -214,19 +214,23 @@ export default function CaseConnectorPage() {
               <article key={p.name} className="persona">
                 <header className="persona__head">
                   <img src={p.image} width={160} height={160} loading="lazy" alt="" />
-                  <h3>{p.name}</h3>
+                  <div>
+                    <p className="persona__label">{p.label}</p>
+                    <h3>{p.name}</h3>
+                    <p className="persona__role">{p.role}</p>
+                  </div>
                   <blockquote>{p.quote}</blockquote>
                 </header>
-                <h4>Goals:</h4>
-                <ul className="persona__bullets">
+                <h4 className="persona__heading persona__heading--goals">Goals</h4>
+                <ul className="persona__list persona__list--goals">
                   {p.goals.map((g) => <li key={g}>{g}</li>)}
                 </ul>
-                <h4>Pain Points:</h4>
-                <ol className="persona__numbers">
+                <h4 className="persona__heading persona__heading--pains">Pain Points</h4>
+                <ul className="persona__list persona__list--pains">
                   {p.pains.map((g) => <li key={g}>{g}</li>)}
-                </ol>
-                <h4>Solution Insights:</h4>
-                <ul className="persona__bullets">
+                </ul>
+                <h4 className="persona__heading persona__heading--insights">Solution Insights</h4>
+                <ul className="persona__list persona__list--insights">
                   {p.insights.map((g) => <li key={g}>{g}</li>)}
                 </ul>
               </article>

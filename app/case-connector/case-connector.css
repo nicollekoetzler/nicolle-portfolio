@@ -356,54 +356,122 @@ html:has(.cs) { background: #17181c; }
 .personas {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 60px 120px;
-  margin-top: 90px;
+  gap: 32px;
+  margin-top: 72px;
+}
+/* Each card spans the same 7 rows (header + 3 headings + 3 lists) so both columns line up */
+.persona {
+  --accent: var(--cs-blue);
+  display: grid;
+  grid-row: span 7;
+  grid-template-rows: subgrid;
+  row-gap: 0;
+  padding: 40px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 24px;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.045), rgba(255, 255, 255, 0.015));
 }
 .persona__head {
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: auto 1fr;
   align-items: center;
-  width: min(100%, 400px);
-  margin-bottom: 60px;
-  text-align: center;
+  gap: 24px;
+  padding-bottom: 32px;
+  border-bottom: 1px solid var(--cs-line);
 }
-.persona:last-child .persona__head { margin-left: auto; margin-right: 0; }
-.persona__head img { width: 160px; height: 160px; border-radius: 50%; }
+.persona__head img {
+  width: 88px;
+  height: 88px;
+  border-radius: 50%;
+  box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.06);
+}
+.persona__label {
+  margin: 0 0 4px !important;
+  font-family: var(--cs-font-mono), monospace;
+  font-size: 12px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--cs-muted);
+}
 .persona__head h3 {
-  margin: 44px 0 18px;
+  margin: 0;
   font-family: var(--cs-font-display), sans-serif;
   font-weight: 400;
-  font-size: clamp(22px, 1.8vw, 28px);
+  font-size: clamp(24px, 2vw, 30px);
+}
+.persona__role {
+  display: inline-block;
+  margin-top: 10px !important;
+  padding: 4px 12px;
+  border: 1px solid rgba(21, 112, 218, 0.6);
+  border-radius: 100px;
+  font-size: 13px;
+  color: #8fbaf0;
 }
 .persona__head blockquote {
+  grid-column: 1 / -1;
   margin: 0;
+  padding-left: 16px;
+  border-left: 2px solid var(--cs-blue);
   font-family: var(--cs-font-mono), monospace;
   font-style: italic;
   font-size: 15px;
   line-height: 1.6;
-  letter-spacing: 0.06em;
-  color: var(--cs-muted);
+  letter-spacing: 0.02em;
+  color: rgba(255, 255, 255, 0.8);
 }
-.persona h4 {
-  margin: 44px 0 20px;
+.persona__heading {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 32px 0 16px;
   font-family: var(--cs-font-mono), monospace;
   font-weight: 400;
-  font-size: 20px;
-  letter-spacing: 0.08em;
+  font-size: 13px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--cs-ink);
 }
-.persona__bullets, .persona__numbers {
+.persona__heading::before {
+  content: "";
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--tone);
+  box-shadow: 0 0 10px var(--tone);
+}
+.persona__heading--goals, .persona__list--goals { --tone: #4c9bff; }
+.persona__heading--pains, .persona__list--pains { --tone: #ff7a6b; }
+.persona__heading--insights, .persona__list--insights { --tone: #3fd6a0; }
+.persona__list {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 12px;
   margin: 0;
   padding: 0;
   font-size: 15px;
-  line-height: 1.35;
-  color: var(--cs-muted);
+  line-height: 1.4;
+  color: rgba(255, 255, 255, 0.75);
 }
-.persona__bullets li { padding-left: 14px; position: relative; }
-.persona__bullets li::before { content: "•"; position: absolute; left: 4px; }
-.persona__numbers { padding-left: 22px; list-style: decimal; }
+.persona__list li { position: relative; padding-left: 30px; }
+/* small tinted badge with a mark per list type */
+.persona__list li::before {
+  position: absolute;
+  left: 0;
+  top: 1px;
+  width: 19px;
+  height: 19px;
+  border-radius: 6px;
+  display: grid;
+  place-items: center;
+  font-size: 11px;
+  line-height: 1;
+  color: var(--tone);
+  background: color-mix(in srgb, var(--tone) 16%, transparent);
+}
+.persona__list--goals li::before { content: "◎"; }
+.persona__list--pains li::before { content: "✕"; font-size: 10px; }
+.persona__list--insights li::before { content: "✓"; }
 
 /* ---------- Market problems + closing ---------- */
 .cs-market {
@@ -503,8 +571,10 @@ html:has(.cs) { background: #17181c; }
   .cs-architecture { width: 900px; max-width: none; }
   .cs-roadmap { margin-inline: 16px; }
 
-  .personas { grid-template-columns: 1fr; margin-top: 60px; }
-  .persona__head, .persona:last-child .persona__head { margin-inline: auto; }
+  .personas { grid-template-columns: 1fr; gap: 24px; margin-top: 48px; }
+  .persona { grid-row: auto; grid-template-rows: none; padding: 24px; }
+  .persona__head { gap: 16px; padding-bottom: 24px; }
+  .persona__head img { width: 64px; height: 64px; }
   .cs-market__cols { padding-right: 0; }
   .cs-closing { min-height: 380px; }
   .cs-closing__logo { top: 60px; width: 80%; }
