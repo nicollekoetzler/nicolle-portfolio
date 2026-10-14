@@ -3,7 +3,6 @@ import type { Metadata } from "next";
 import { DM_Mono } from "next/font/google";
 import Link from "next/link";
 import "../case-connector/case-connector.css";
-import DesignSystem from "./DesignSystem";
 import "./performance-dashboard.css";
 
 const mono = DM_Mono({ subsets: ["latin"], weight: ["400"], variable: "--cs-font-mono" });
@@ -185,8 +184,6 @@ export default function PerformanceDashboardPage() {
             </article>
           ))}
         </section>
-
-        <DesignSystem />
 
         <section className="pd-closing">
           <img src={`${A}/cg-performance-logo.svg`} width={246} height={29} loading="lazy" alt="CG Performance" />
