@@ -501,9 +501,8 @@ html:has(.cs) { background: #17181c; }
   margin: 32px 0 16px;
   font-family: var(--cs-font-mono), monospace;
   font-weight: 400;
-  font-size: 13px;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
+  font-size: 17px;
+  letter-spacing: 0.04em;
   color: var(--cs-ink);
 }
 .persona__heading::before {
@@ -514,9 +513,9 @@ html:has(.cs) { background: #17181c; }
   background: var(--tone);
   box-shadow: 0 0 10px var(--tone);
 }
-.persona__heading--goals, .persona__list--goals { --tone: #4c9bff; }
-.persona__heading--pains, .persona__list--pains { --tone: #ff7a6b; }
-.persona__heading--insights, .persona__list--insights { --tone: #3fd6a0; }
+.persona__heading--goals { --tone: #4c9bff; }
+.persona__heading--pains { --tone: #ff7a6b; }
+.persona__heading--insights { --tone: #3fd6a0; }
 .persona__list {
   display: flex;
   flex-direction: column;
@@ -527,26 +526,6 @@ html:has(.cs) { background: #17181c; }
   line-height: 1.4;
   color: rgba(255, 255, 255, 0.75);
 }
-.persona__list li { position: relative; padding-left: 30px; }
-/* small tinted badge with a mark per list type */
-.persona__list li::before {
-  position: absolute;
-  left: 0;
-  top: 1px;
-  width: 19px;
-  height: 19px;
-  border-radius: 6px;
-  display: grid;
-  place-items: center;
-  font-size: 11px;
-  line-height: 1;
-  color: var(--tone);
-  background: color-mix(in srgb, var(--tone) 16%, transparent);
-}
-.persona__list--goals li::before { content: "◎"; }
-.persona__list--pains li::before { content: "✕"; font-size: 10px; }
-.persona__list--insights li::before { content: "✓"; }
-
 /* ---------- Market problems + closing ---------- */
 .cs-market {
   position: relative;
