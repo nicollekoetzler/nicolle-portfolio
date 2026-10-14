@@ -282,6 +282,50 @@ html:has(.cs) { background: #17181c; }
   background: var(--cs-blue);
 }
 
+/* Animated run: a yellow dot walks from phase to phase (driven by TimelineRunner) */
+.timeline__runner {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0;
+  z-index: 2;
+}
+.timeline.is-running .timeline__runner { opacity: var(--run-fade, 1); }
+.timeline__trail {
+  position: absolute;
+  left: var(--run-x);
+  top: var(--run-y);
+  width: var(--run-done, 0);
+  height: 4px;
+  margin-top: -2px;
+  border-radius: 2px;
+  background: linear-gradient(90deg, rgba(245, 166, 35, 0.3), var(--cs-orange));
+}
+.timeline.is-vertical .timeline__trail {
+  width: 2px;
+  height: var(--run-done, 0);
+  margin: 0 0 0 -1px;
+  background: linear-gradient(180deg, rgba(245, 166, 35, 0.3), var(--cs-orange));
+}
+.timeline__dot {
+  position: absolute;
+  left: var(--run-pos-x);
+  top: var(--run-pos-y);
+  width: 17px;
+  height: 17px;
+  border-radius: 50%;
+  background: var(--cs-orange);
+  box-shadow: 0 0 0 3px rgba(245, 166, 35, 0.25), 0 0 18px rgba(245, 166, 35, 0.7);
+  transform: translate(-50%, -50%);
+}
+.phase__dot { transition: background-color .4s, box-shadow .4s; }
+.phase__body { transition: border-color .4s; }
+.phase.is-reached .phase__dot {
+  background: var(--cs-orange);
+  box-shadow: 0 0 10px rgba(245, 166, 35, 0.55);
+}
+.phase.is-reached .phase__body { border-color: var(--cs-orange); }
+
 /* ---------- Presentation ---------- */
 .cs-presentation { padding-top: clamp(100px, 10vw, 170px); }
 .cs-presentation__title {

@@ -2,6 +2,7 @@
 import type { Metadata } from "next";
 import { DM_Mono, Space_Grotesk } from "next/font/google";
 import { goals, insights, marketProblems, marketSolutions, personas, phases, type Phase } from "./data";
+import TimelineRunner from "./TimelineRunner";
 import "./case-connector.css";
 
 const display = Space_Grotesk({ subsets: ["latin"], weight: ["400", "500"], variable: "--cs-font-display" });
@@ -176,6 +177,7 @@ export default function CaseConnectorPage() {
             {phases.map((phase, i) => (
               <PhaseCard key={phase.title} phase={phase} index={i} />
             ))}
+            <TimelineRunner />
           </ol>
         </section>
 
