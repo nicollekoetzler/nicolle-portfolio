@@ -2,7 +2,7 @@
 import type { Metadata } from "next";
 import { DM_Mono } from "next/font/google";
 import localFont from "next/font/local";
-import { goals, marketProblems, marketSolutions, personas, phases, type Phase } from "./data";
+import { goals, marketProblems, marketSolutions, personas, phases, sitemap, type Phase, type SitemapNode } from "./data";
 import TimelineRunner from "./TimelineRunner";
 import "./case-connector.css";
 
@@ -36,6 +36,24 @@ function DeliverableIcon() {
     <svg className="phase__icon" viewBox="0 0 16 16" aria-hidden="true">
       <path d="M14.5 1.5L1.5 7l5 2 2 5 6-12.5zM6.5 9l8-7.5" fill="none" stroke="currentColor" strokeWidth="1.2" strokeLinejoin="round" />
     </svg>
+  );
+}
+
+function TreeNode({ node, depth = 0 }: { node: SitemapNode; depth?: number }) {
+  return (
+    <li className={`tree__item tree__item--d${depth}`}>
+      {/* nodes with children sit in a fixed-width slot so each level lines up in a column */}
+      <span className={node.children ? "tree__slot" : undefined}>
+        <span className={node.primary ? "tree__node tree__node--primary" : "tree__node"}>{node.label}</span>
+      </span>
+      {node.children && (
+        <ul>
+          {node.children.map((child, i) => (
+            <TreeNode key={`${child.label}-${i}`} node={child} depth={depth + 1} />
+          ))}
+        </ul>
+      )}
+    </li>
   );
 }
 
@@ -150,15 +168,10 @@ export default function CaseConnectorPage() {
           </div>
         </section>
 
-        <div className="cs-scroll">
-          <img
-            className="cs-architecture"
-            src={`${A}/cc-architecture.webp`}
-            width={1560}
-            height={1189}
-            loading="lazy"
-            alt="Sitemap: Sign Up leads to Home, which branches into My Profile, My Cases, Dashboard and Home, each with their own screens such as Profile Settings, Case Status, Payments, Find Cases and Notifications."
-          />
+        <div className="sitemap">
+          <ul className="tree" aria-label="App sitemap">
+            <TreeNode node={sitemap} />
+          </ul>
         </div>
 
         <section className="cs-roadmap">

@@ -159,12 +159,85 @@ html:has(.cs) { background: #17181c; }
   margin: 80px auto 0;
 }
 
-.cs-scroll {
-  max-width: 1600px;
-  margin: 72px auto 0;
-  padding-inline: 20px;
+/* ---------- App Architecture sitemap (tree drawn with CSS connectors) ---------- */
+.sitemap {
+  --gap: 56px;
+  --line: rgba(110, 145, 200, 0.45);
+  display: flex;
+  justify-content: center;
+  max-width: 1560px;
+  margin: 72px 20px 0;
+  padding: clamp(40px, 5vw, 80px) clamp(20px, 4vw, 60px);
+  border-radius: 24px;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.015), rgba(21, 42, 72, 0.55));
 }
-.cs-architecture { width: 100%; height: auto; border-radius: 24px; }
+@media (min-width: 1600px) { .sitemap { margin-inline: auto; } }
+.tree, .tree ul { margin: 0; padding: 0; list-style: none; }
+.tree li { position: relative; display: flex; align-items: center; }
+.tree ul {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  padding-left: var(--gap);
+}
+/* parent → trunk */
+.tree ul::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 50%;
+  width: calc(var(--gap) / 2);
+  border-top: 1px solid var(--line);
+}
+.tree ul > li { padding-block: 10px; }
+.tree__item--d2 { padding-block: 18px !important; }
+/* trunk → child */
+.tree ul > li::before {
+  content: "";
+  position: absolute;
+  left: calc(var(--gap) / -2);
+  top: 50%;
+  width: calc(var(--gap) / 2);
+  border-top: 1px solid var(--line);
+}
+/* the trunk itself, from the first child's centre to the last child's */
+.tree ul > li::after {
+  content: "";
+  position: absolute;
+  left: calc(var(--gap) / -2);
+  top: 0;
+  bottom: 0;
+  border-left: 1px solid var(--line);
+}
+.tree ul > li:first-child::after { top: 50%; border-top-left-radius: 10px; }
+.tree ul > li:last-child::after { bottom: 50%; }
+.tree ul > li:only-child::after { display: none; }
+.tree__node {
+  position: relative;
+  z-index: 1;
+  flex: none;
+  padding: 6px 15px;
+  border: 1px solid var(--line);
+  border-radius: 100px;
+  background: #161b24;
+  font-size: 15px;
+  line-height: 1.4;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+  color: rgba(255, 255, 255, 0.82);
+}
+.tree__slot { position: relative; display: flex; align-items: center; flex: none; }
+.tree__slot::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50%;
+  border-top: 1px solid var(--line);
+}
+.tree__item--d2 > .tree__slot { width: 116px; }
+.tree__item--d3 > .tree__slot { width: 168px; }
+.tree__node--primary { border-color: #0b5bd3; background: #0b5bd3; color: #fff; font-weight: 400; }
 
 /* ---------- Roadmap ---------- */
 .cs-roadmap {
@@ -522,6 +595,23 @@ html:has(.cs) { background: #17181c; }
 }
 
 /* ---------- Responsive ---------- */
+@media (max-width: 900px) {
+  /* the sitemap becomes an indented, top-to-bottom tree */
+  .sitemap { --gap: 22px; justify-content: flex-start; }
+  .tree li { display: block; }
+  .tree ul { padding-left: var(--gap); margin-left: 14px; }
+  .tree ul::before { display: none; }
+  .tree ul > li { padding-block: 10px 0 !important; }
+  .tree ul > li::before { top: 27px; width: calc(var(--gap) - 2px); left: calc(var(--gap) * -1); }
+  .tree ul > li::after { left: calc(var(--gap) * -1); top: 0 !important; bottom: 0 !important; border-top-left-radius: 0 !important; }
+  .tree ul > li:last-child::after { bottom: auto !important; height: 27px; }
+  .tree ul > li:only-child::after { display: block; }
+  .tree__node { display: inline-block; font-size: 14px; }
+  .tree__slot, .tree__item--d2 > .tree__slot, .tree__item--d3 > .tree__slot { display: inline; width: auto; }
+  .tree__slot::before { display: none; }
+  .tree__item--d1 > ul > li { padding-top: 18px !important; }
+}
+
 @media (max-width: 1100px) {
   .cs-goals { grid-template-columns: repeat(2, minmax(0, 1fr)); row-gap: 56px; }
   .cs-goal:nth-child(2)::before { right: 0; }
@@ -557,8 +647,9 @@ html:has(.cs) { background: #17181c; }
 @media (max-width: 800px) {
   .cs-bar { grid-template-columns: 1fr 1fr; padding: 20px 16px 16px; }
   .cs-bar__center { display: none; }
-  .cs-hero, .cs-architecture, .cs-roadmap { border-radius: 16px; }
+  .cs-hero, .sitemap, .cs-roadmap { border-radius: 16px; }
   .cs-hero { margin-inline: 16px; }
+  .sitemap { margin-inline: 16px; }
   .cs-split { grid-template-columns: 1fr; gap: 28px; }
   .cs-split__text { font-size: 15px; }
   .cs-goals { grid-template-columns: 1fr; padding-top: 64px; }
@@ -567,8 +658,6 @@ html:has(.cs) { background: #17181c; }
   .cs-lockscreen { width: calc(100% - 32px); margin-top: 56px; }
 
   /* the sitemap keeps its size and scrolls sideways */
-  .cs-scroll { overflow-x: auto; padding-inline: 16px; -webkit-overflow-scrolling: touch; }
-  .cs-architecture { width: 900px; max-width: none; }
   .cs-roadmap { margin-inline: 16px; }
 
   .personas { grid-template-columns: 1fr; gap: 24px; margin-top: 48px; }

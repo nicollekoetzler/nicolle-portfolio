@@ -192,3 +192,69 @@ export const marketSolutions = [
   "Dashboard with tracking + notifications",
   "Secure, structured client-transition path",
 ];
+
+export type SitemapNode = { label: string; primary?: boolean; children?: SitemapNode[] };
+
+/** App Architecture sitemap from the Figma file, rendered as a tree */
+export const sitemap: SitemapNode = {
+  label: "Sign Up",
+  children: [
+    {
+      label: "Home",
+      children: [
+        {
+          label: "My Profile",
+          primary: true,
+          children: [
+            {
+              label: "Profile Settings",
+              children: [
+                { label: "Languages" },
+                { label: "Verifications" },
+                { label: "Video Introduction" },
+                { label: "Biography" },
+                { label: "Education" },
+                { label: "Experience" },
+              ],
+            },
+            { label: "Account Settings" },
+            { label: "Dashboard" },
+            { label: "Logout" },
+          ],
+        },
+        {
+          label: "My Cases",
+          primary: true,
+          children: [
+            { label: "Case Status", children: [{ label: "Chat" }] },
+            { label: "Payments", children: [{ label: "Dashboard" }] },
+          ],
+        },
+        {
+          label: "Dashboard",
+          primary: true,
+          children: [
+            { label: "Cases in Progress" },
+            { label: "In Review" },
+            { label: "Payments", children: [{ label: "Withdrawal" }] },
+            { label: "Weekly/Monthly Summary" },
+          ],
+        },
+        {
+          label: "Home",
+          primary: true,
+          children: [
+            { label: "My Network" },
+            {
+              label: "Find Cases",
+              children: [{ label: "Apply" }, { label: "Save" }, { label: "Case Overview" }, { label: "Ask Question/Chat" }],
+            },
+            { label: "Notifications" },
+            { label: "My Cases", children: [{ label: "Listed Cases" }, { label: "Chat" }] },
+            { label: "Payments", children: [{ label: "Dashboard" }] },
+          ],
+        },
+      ],
+    },
+  ],
+};
