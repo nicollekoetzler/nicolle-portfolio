@@ -1,5 +1,6 @@
 /* eslint-disable @next/next/no-img-element -- SVG logos/icons keep their Figma root sizes as plain <img> */
 import Image from "next/image";
+import { Arrow, SiteFooter, SiteHeader } from "./components/site";
 import { featured, projects, roles, type Project } from "./data";
 
 function Logos({ hidden = false }: { hidden?: boolean }) {
@@ -31,14 +32,6 @@ function Logos({ hidden = false }: { hidden?: boolean }) {
         <img src="/assets/logo-trial-lawyers.svg" width={204} height={43} alt={alt("Trial Lawyers University")} />
       </li>
     </ul>
-  );
-}
-
-function Arrow({ variant }: { variant: "white" | "dark" }) {
-  return (
-    <span className="btn__arrow">
-      <img src={`/assets/arrow-${variant}.svg`} alt="" />
-    </span>
   );
 }
 
@@ -114,20 +107,7 @@ export default function Home() {
       <img className="glow glow--left" src="/assets/ellipse-8.svg" alt="" aria-hidden="true" />
       <img className="glow glow--right" src="/assets/ellipse-7.svg" alt="" aria-hidden="true" />
 
-      <header className="nav container">
-        <a className="nav__logo" href="#top" aria-label="Nicolle Koetzler, home">
-          <img src="/assets/nk-logo.svg" width={45.741} height={35.5} alt="NK" />
-        </a>
-        <nav className="nav__links" aria-label="Main">
-          <a href="#portfolio">Portfolio</a>
-          <a href="#services">Services</a>
-          <a href="#about">About</a>
-          <a href="#contact">Contact</a>
-          <a className="nav__icon" href="https://www.linkedin.com/" target="_blank" rel="noopener" aria-label="LinkedIn">
-            <img src="/assets/linkedin.svg" width={17} height={17} alt="" />
-          </a>
-        </nav>
-      </header>
+      <SiteHeader />
 
       <main id="top">
         <section className="hero container" id="about">
@@ -153,11 +133,11 @@ export default function Home() {
             </div>
 
             <div className="hero__actions">
-              <a className="btn btn--primary" href="#about">
+              <a className="btn btn--primary" href="/about">
                 Learn More About Us
                 <Arrow variant="white" />
               </a>
-              <a className="btn btn--link" href="#contact" id="contact">
+              <a className="btn btn--link" href="/contact">
                 Contact me
                 <Arrow variant="dark" />
               </a>
@@ -202,18 +182,7 @@ export default function Home() {
         </section>
       </main>
 
-      <footer className="footer container">
-        <div className="footer__brand">
-          <img src="/assets/nk-logo.svg" width={30} height={23.3} alt="NK" />
-          <span>© {new Date().getFullYear()} Nicolle Koetzler</span>
-        </div>
-        <nav className="footer__links" aria-label="Footer">
-          <a href="#portfolio">Portfolio</a>
-          <a href="#services">Services</a>
-          <a href="https://www.linkedin.com/" target="_blank" rel="noopener">LinkedIn</a>
-          <a href="#top">Back to top ↑</a>
-        </nav>
-      </footer>
+      <SiteFooter />
     </div>
   );
 }
