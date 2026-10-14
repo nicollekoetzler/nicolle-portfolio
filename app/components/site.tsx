@@ -10,7 +10,6 @@ export const EMAIL = "hello@nicollekoetzler.com";
 type Page = "home" | "about" | "cv" | "contact";
 
 const links: { href: string; label: string; page?: Page }[] = [
-  { href: "/#portfolio", label: "Portfolio" },
   { href: "/#services", label: "Services" },
   { href: "/about", label: "About", page: "about" },
   { href: "/cv", label: "CV", page: "cv" },

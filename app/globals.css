@@ -414,7 +414,6 @@ header, main { position: relative; z-index: 1; }
 .project__media--wide img,
 .project__media--wide video { object-position: center; }
 .project__media img.pos-law-di-gras { object-position: 50% 9%; }
-.project__media img.pos-wilk { object-position: 50% 9%; }
 
 .project__info { display: flex; flex-direction: column; gap: 20px; max-width: 824px; }
 .project__title {
@@ -624,7 +623,6 @@ header, main { position: relative; z-index: 1; }
   .cv-section { grid-template-columns: 1fr; }
 }
 @media (max-width: 600px) {
-  .nav__links a:nth-child(2) { display: none; }
   .prose { font-size: 16px; }
   .stats li, .card, .channel { padding: 22px; border-radius: 20px; }
   .about-hero__photo { border-radius: 28px; }
@@ -672,5 +670,4 @@ header, main { position: relative; z-index: 1; }
 
 @media (max-width: 380px) {
   .nav__links { gap: 12px; }
-  .nav__links a:nth-child(2) { display: none; }
 }
