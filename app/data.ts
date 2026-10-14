@@ -11,6 +11,8 @@ export type Project = {
   video?: string;
   /** Case study page, opened in a new tab from the image and title */
   caseStudy?: string;
+  /** Live site, opened in a new tab from the image and a "View Project" link */
+  site?: string;
   /** External link shown to the right of the title */
   link?: { href: string; label: string };
 };
@@ -29,8 +31,8 @@ export const featured: Project = {
 const lawFirmTags = ["LAW FIRM WEBSITE", "UI/UX DESIGN", "SOFTWARE DEVELOPMENT"];
 
 export const projects: Project[] = [
-  { title: "California Trial Law Group", image: "/assets/project-california-trial.png", alt: "California Trial Law Group website", tags: lawFirmTags },
+  { title: "California Trial Law Group", site: "https://california-trial-law-group-c53x5nd6y.thecaselygroup.dev", image: "/assets/project-california-trial.png", alt: "California Trial Law Group website", tags: lawFirmTags },
   { title: "Moore Payne Law", image: "/assets/project-moore-payne.png", alt: "Moore Payne Law website", tags: lawFirmTags },
-  { title: "Law-Di-Gras", image: "/assets/project-law-di-gras.png", alt: "Law-Di-Gras event website", tags: lawFirmTags, position: "50% 9%" },
+  { title: "Law-Di-Gras", site: "https://lawdigras.org", image: "/assets/project-law-di-gras.png", alt: "Law-Di-Gras event website", tags: lawFirmTags, position: "50% 9%" },
   { title: "Wilk Law", image: "/assets/project-wilk-law.png", alt: "Wilk Law website", tags: lawFirmTags, position: "50% 9%" },
 ];

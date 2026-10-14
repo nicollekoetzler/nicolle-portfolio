@@ -31,7 +31,24 @@ function Logos({ hidden = false }: { hidden?: boolean }) {
       <li className="logo">
         <img src="/assets/logo-trial-lawyers.svg" width={204} height={43} alt={alt("Trial Lawyers University")} />
       </li>
+      <li className="logo">
+        <img src="/assets/logo-hostgator.svg" width={225} height={40} alt={alt("HostGator")} />
+      </li>
     </ul>
+  );
+}
+
+/** Hand-drawn style arrow that curls once and draws itself downward, on a loop */
+function CurlArrow() {
+  return (
+    <svg className="curl-arrow" viewBox="0 0 40 64" aria-hidden="true">
+      <path
+        className="curl-arrow__shaft"
+        pathLength={1}
+        d="M20 2 C20 12 8 14 8 24 C8 34 30 34 28 22 C26 12 12 20 16 34 C18 42 20 48 20 58"
+      />
+      <path className="curl-arrow__head" pathLength={1} d="M13 51 L20 59 L27 51" />
+    </svg>
   );
 }
 
@@ -50,8 +67,8 @@ function ProjectCard({ project, wide = false }: { project: Project; wide?: boole
   return (
     <article className={wide ? "project project--wide" : "project"}>
       <MediaLink
-        href={project.caseStudy}
-        label={`${project.title} case study (opens in a new tab)`}
+        href={project.caseStudy ?? project.site}
+        label={`${project.title}, ${project.caseStudy ? "case study" : "live site"} (opens in a new tab)`}
         className={wide ? "project__media project__media--wide" : "project__media"}
       >
         {project.video ? (
@@ -79,8 +96,8 @@ function ProjectCard({ project, wide = false }: { project: Project; wide?: boole
       <div className="project__info">
         <div className="project__heading">
           <h2 className="project__title">{project.title}</h2>
-          {project.caseStudy && (
-            <a className="project__link" href={project.caseStudy} target="_blank" rel="noopener">
+          {(project.caseStudy ?? project.site) && (
+            <a className="project__link" href={project.caseStudy ?? project.site} target="_blank" rel="noopener">
               View Project <span aria-hidden="true">↗</span>
             </a>
           )}
@@ -175,7 +192,10 @@ export default function Home() {
           </div>
         </section>
 
-        <h2 className="featured-title">Featured Work</h2>
+        <div className="featured">
+          <CurlArrow />
+          <h2 className="featured-title">Featured Work</h2>
+        </div>
 
         <section className="projects" id="portfolio" aria-label="Projects">
           <ProjectCard project={featured} wide />
