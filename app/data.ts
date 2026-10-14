@@ -1,4 +1,4 @@
-export const roles = ["DEVELOPER", "DESIGNER", "THINKER", "BUILDER"];
+export const roles = ["DEVELOPER", "DESIGNER", "THINKER", "+10 YEARS EXPERIENCE"];
 
 export type Project = {
   title: string;
@@ -20,7 +20,7 @@ export const featured: Project = {
   image: "/assets/case-connector.png",
   video: "/assets/case-connector.mp4",
   caseStudy: "/case-connector",
-  link: { href: "https://apps.apple.com/us/app/tlu-case-connector/id6759930495", label: "View on the App Store" },
+  link: { href: "https://apps.apple.com/us/app/tlu-case-connector/id6759930495", label: "Download on the App Store" },
   alt: "Case Connector app shown on a phone in a futuristic blue room",
   tags: ["CASE REFERRAL SOLUTION", "MOBILE APP", "SOFTWARE DEVELOPMENT", "UI/UX DESIGN"],
   position: "center",

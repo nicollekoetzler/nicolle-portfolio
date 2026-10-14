@@ -1,6 +1,6 @@
 /* eslint-disable @next/next/no-img-element -- SVG logos/icons keep their Figma root sizes as plain <img> */
 import Image from "next/image";
-import { Arrow, SiteFooter, SiteHeader } from "./components/site";
+import { Arrow, EMAIL, LINKEDIN, SiteFooter, SiteHeader } from "./components/site";
 import { featured, projects, roles, type Project } from "./data";
 
 function Logos({ hidden = false }: { hidden?: boolean }) {
@@ -81,7 +81,7 @@ function ProjectCard({ project, wide = false }: { project: Project; wide?: boole
           <h2 className="project__title">{project.title}</h2>
           {project.caseStudy && (
             <a className="project__link" href={project.caseStudy} target="_blank" rel="noopener">
-              View case study <span aria-hidden="true">↗</span>
+              View Project <span aria-hidden="true">↗</span>
             </a>
           )}
           {project.link && (
@@ -126,21 +126,39 @@ export default function Home() {
                 Hey! I&apos;m <span className="muted">Nicolle Koetzler</span>,<br />
                 a Product Designer and Software Engineer.
               </h1>
-              <p className="hero__lead">
-                Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem Lorem ipsum Lorem ipsum Lorem ipsum Lorem
-                ipsum Lorem ipsum Lorem ipsum
-              </p>
             </div>
 
             <div className="hero__actions">
               <a className="btn btn--primary" href="/about">
-                Learn More About Us
+                Learn More About Me
                 <Arrow variant="white" />
               </a>
-              <a className="btn btn--link" href="/contact">
-                Contact me
-                <Arrow variant="dark" />
-              </a>
+            </div>
+
+            <ul className="hero__contact" aria-label="Contact">
+              <li>
+                <a href={LINKEDIN} target="_blank" rel="noopener">
+                  LinkedIn
+                  <Arrow variant="dark" />
+                </a>
+              </li>
+              <li>
+                <a href={`mailto:${EMAIL}`}>
+                  {EMAIL}
+                  <Arrow variant="dark" />
+                </a>
+              </li>
+            </ul>
+
+            <div className="trusted" id="services">
+              <p className="trusted__title">Trusted by:</p>
+              <div className="marquee">
+                {/* The set is repeated once so the loop is seamless */}
+                <div className="marquee__track">
+                  <Logos />
+                  <Logos hidden />
+                </div>
+              </div>
             </div>
           </div>
 
@@ -157,20 +175,7 @@ export default function Home() {
           </div>
         </section>
 
-        <section className="clients" id="services">
-          <p className="clients__title">Companies that I already helped:</p>
-          <div className="marquee">
-            {/* The set is repeated once so the loop is seamless */}
-            <div className="marquee__track">
-              <Logos />
-              <Logos hidden />
-            </div>
-          </div>
-        </section>
-
-        <p className="scroll-hint">
-          <a href="#portfolio">Scroll down to see my projects</a>
-        </p>
+        <h2 className="featured-title">Featured Work</h2>
 
         <section className="projects" id="portfolio" aria-label="Projects">
           <ProjectCard project={featured} wide />

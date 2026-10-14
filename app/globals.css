@@ -85,7 +85,7 @@ header, main { position: relative; z-index: 1; }
 /* ---------- Hero ---------- */
 .hero {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
   gap: clamp(48px, 11.6vw, 223px);
   padding-block: 80px;
@@ -104,6 +104,8 @@ header, main { position: relative; z-index: 1; }
 .chips { display: flex; flex-wrap: wrap; gap: 12px; }
 .chip {
   position: relative;
+  flex: none;
+  white-space: nowrap;
   padding: 11px 20px;
   border-radius: 100px;
   font-weight: 300;
@@ -149,15 +151,13 @@ header, main { position: relative; z-index: 1; }
   color: var(--ink);
 }
 @media (min-width: 1200px) { .hero__title { width: 668px; } }
-.hero__title .muted { color: var(--ink-muted); }
-.hero__lead {
-  margin: 0;
-  max-width: 470px;
-  font-weight: 300;
-  font-size: 18px;
-  line-height: 1.5;
-  color: var(--ink-body);
+/* Wide screens: like the design, the tags, title and logos run past the 605px column */
+@media (min-width: 1400px) {
+  .hero .chips { flex-wrap: nowrap; }
+  .hero__title { width: 766px; }
+  .hero .trusted { width: 733px; }
 }
+.hero__title .muted { color: var(--ink-muted); }
 
 .hero__actions { display: flex; flex-wrap: wrap; align-items: center; gap: 19px; }
 .btn {
@@ -238,23 +238,60 @@ header, main { position: relative; z-index: 1; }
 }
 .collage__small img { object-position: 50% 26%; }
 
-/* ---------- Client logos ---------- */
-.clients {
+/* ---------- Hero contact links + "Trusted by" logos ---------- */
+.hero__contact {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  gap: 40px;
-  width: min(1448.219px, 100% - 2 * var(--gutter));
-  margin-inline: auto;
+  align-items: flex-end;
+  gap: 8px;
+  align-self: flex-end;
+  /* sits just under the button row, right-aligned, as in the design */
+  margin-top: -26px;
 }
-.clients__title {
+.hero__contact a {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 300;
+  font-size: 18px;
+  line-height: 1.5;
+  color: var(--ink-body);
+  transition: opacity .2s;
+}
+.hero__contact a:hover { opacity: .6; }
+.trusted {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  /* 733px in the design, a little wider than the text column */
+  width: min(733px, 100%);
+  margin-top: 16px;
+}
+.trusted__title {
   margin: 0;
   font-weight: 300;
   font-size: 18px;
   line-height: 1.5;
   color: var(--ink-body);
-  text-align: center;
 }
+/* logos are 69% of their carousel size here */
+.trusted .logos { zoom: 0.69; }
+.trusted .marquee {
+  -webkit-mask-image: linear-gradient(90deg, #000 calc(100% - 156px), transparent);
+          mask-image: linear-gradient(90deg, #000 calc(100% - 156px), transparent);
+}
+
+.featured-title {
+  margin: 0;
+  padding: 80px var(--gutter);
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: 32px;
+  line-height: normal;
+  text-align: center;
+  color: var(--ink-body);
+}
+
 .marquee {
   width: 100%;
   overflow: hidden;
@@ -301,16 +338,6 @@ header, main { position: relative; z-index: 1; }
 @media (prefers-reduced-motion: reduce) {
   .marquee__track { animation: none; }
   .marquee { overflow-x: auto; }
-}
-
-.scroll-hint {
-  margin: 0;
-  padding: 80px 10px;
-  text-align: center;
-  font-weight: 300;
-  font-size: 18px;
-  line-height: 1.5;
-  color: var(--ink-body);
 }
 
 /* ---------- Projects ---------- */
@@ -583,7 +610,9 @@ header, main { position: relative; z-index: 1; }
   .collage { width: min(100%, 633px); align-self: center; }
   .projects__grid { grid-template-columns: 1fr; gap: 56px; }
   .projects { gap: 56px; }
-  .scroll-hint { padding-block: 56px; }
+  .featured-title { padding-block: 56px; }
+  .hero__contact { align-self: flex-start; align-items: flex-start; margin-top: 0; }
+  .trusted { width: 100%; }
 }
 
 @media (max-width: 600px) {
@@ -593,13 +622,9 @@ header, main { position: relative; z-index: 1; }
   .chip { font-size: 13px; padding: 8px 15px; }
   .chip__border rect { rx: 17.25px; }
   .tags { gap: 8px; }
-  .hero__lead { font-size: 16px; }
   .collage__main { border-radius: 28px; }
   .collage__bw, .collage__small { border-radius: 22px; }
-  .marquee {
-    -webkit-mask-image: linear-gradient(90deg, transparent, #000 48px, #000 calc(100% - 48px), transparent);
-            mask-image: linear-gradient(90deg, transparent, #000 48px, #000 calc(100% - 48px), transparent);
-  }
+  .featured-title { font-size: 26px; }
   .project { gap: 20px; }
   .project__media { border-radius: 16px; }
   .project__media--wide { border-radius: 20px; aspect-ratio: 4 / 3; }
