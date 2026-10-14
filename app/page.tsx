@@ -92,8 +92,6 @@ function ProjectCard({ project, wide = false }: { project: Project; wide?: boole
             style={project.position ? { objectPosition: project.position } : undefined}
           />
         )}
-        {/* on phones the project name sits on the image instead of below it */}
-        <span className="project__badge">{project.title}</span>
       </MediaLink>
       <div className="project__info">
         <div className="project__heading">
