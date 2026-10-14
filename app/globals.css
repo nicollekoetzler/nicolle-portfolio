@@ -86,7 +86,7 @@ header, main { position: relative; z-index: 1; }
 .hero {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
   gap: clamp(48px, 11.6vw, 223px);
   padding-block: 80px;
   margin-top: 7px;
@@ -207,8 +207,7 @@ header, main { position: relative; z-index: 1; }
 /* Photo collage: 633 × 571 group in the design */
 .collage {
   position: relative;
-  flex: 0 1 633px;
-  min-width: 0;
+  flex: none;
   width: 633px;
   aspect-ratio: 633 / 571;
 }
