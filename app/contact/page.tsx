@@ -30,8 +30,7 @@ export default function Contact() {
             Let’s build something <span className="muted">together.</span>
           </h1>
           <p className="prose prose--lead">
-            I’m open to freelance projects and product design or design engineering roles. Tell me about your product
-            and where you’d like to take it.
+            Tell me about your product and where you’d like to take it.
           </p>
 
           <a className="contact-email" href={`mailto:${EMAIL}`}>
