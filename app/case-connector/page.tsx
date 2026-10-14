@@ -86,6 +86,7 @@ export default function CaseConnectorPage() {
             muted
             loop
             playsInline
+            controls
             preload="metadata"
           />
         </div>
