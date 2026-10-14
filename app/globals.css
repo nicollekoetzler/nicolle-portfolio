@@ -653,7 +653,9 @@ header, main { position: relative; z-index: 1; }
 @media (max-width: 600px) {
   .page { padding-top: 20px; }
   .nav__logo img { width: 34px; height: 26.4px; }
-  .hero__title, .inner-title { font-size: 24px; }
+  .hero__title, .inner-title { font-size: 28px; }
+  /* phones: no photo collage, no arrow / "Featured Work" heading */
+  .collage, .featured { display: none; }
   .nav__links { gap: 16px; font-size: 14px; }
   .chips { gap: 8px; }
   .chip { font-size: 13px; padding: 8px 15px; }
