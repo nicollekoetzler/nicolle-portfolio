@@ -32,7 +32,13 @@ const lawFirmTags = ["LAW FIRM WEBSITE", "UI/UX DESIGN", "SOFTWARE DEVELOPMENT"]
 
 export const projects: Project[] = [
   { title: "California Trial Law Group", site: "https://california-trial-law-group-c53x5nd6y.thecaselygroup.dev", image: "/assets/project-california-trial.png", alt: "California Trial Law Group website", tags: lawFirmTags },
-  { title: "Moore Payne Law", image: "/assets/project-moore-payne.png", alt: "Moore Payne Law website", tags: lawFirmTags },
+  {
+    title: "CG Performance Dashboard",
+    caseStudy: "/performance-dashboard",
+    image: "/assets/project-performance-dashboard.webp",
+    alt: "CG Performance dashboard: overview and Speed Insights screens",
+    tags: ["SAAS DASHBOARD", "UI/UX DESIGN", "PRODUCT DESIGN"],
+  },
   { title: "Law-Di-Gras", site: "https://lawdigras.org", image: "/assets/project-law-di-gras.png", alt: "Law-Di-Gras event website", tags: lawFirmTags, position: "50% 9%" },
   {
     title: "Attorney Share",
