@@ -54,9 +54,7 @@ export default function About() {
               </p>
               <p>
                 I like taking a product from a short brief to a shipped build: information architecture, data model,
-                visual design and runnable React / Next.js + Tailwind code. I work every day with AI coding agents as a
-                design-to-code partner, directing the work, reviewing every output and correcting it down to spacing
-                and typography.
+                visual design and runnable React / Next.js + Tailwind code.
               </p>
               <p>
                 Most recently I led a 20-person design and development team at The Casely Group, shipping websites,
