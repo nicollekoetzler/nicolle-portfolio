@@ -85,7 +85,10 @@ export default function CV() {
 
       <main id="top" className="inner container">
         <section className="inner-hero">
-          <p className="eyebrow">Curriculum Vitae</p>
+          <p className="chip eyebrow">
+            Curriculum Vitae
+            <svg className="chip__border" aria-hidden="true"><rect /></svg>
+          </p>
           <h1 className="inner-title">
             Nicolle Koetzler <span className="muted">Senior Product Designer &amp; Design Engineer</span>
           </h1>

@@ -22,7 +22,10 @@ export default function Contact() {
 
       <main id="top" className="inner container">
         <section className="inner-hero contact-hero">
-          <p className="eyebrow">Contact</p>
+          <p className="chip eyebrow">
+            Contact
+            <svg className="chip__border" aria-hidden="true"><rect /></svg>
+          </p>
           <h1 className="inner-title">
             Let’s build something <span className="muted">together.</span>
           </h1>

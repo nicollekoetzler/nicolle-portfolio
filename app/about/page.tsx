@@ -40,7 +40,10 @@ export default function About() {
       <main id="top" className="inner container">
         <section className="inner-hero about-hero">
           <div className="about-hero__text">
-            <p className="eyebrow">About me</p>
+            <p className="chip eyebrow">
+              About me
+              <svg className="chip__border" aria-hidden="true"><rect /></svg>
+            </p>
             <h1 className="inner-title">
               I design products, <span className="muted">and I build them too.</span>
             </h1>

@@ -413,13 +413,8 @@ header, main { position: relative; z-index: 1; }
 
 .inner { padding-block: clamp(56px, 7vw, 110px) clamp(72px, 8vw, 130px); }
 .inner-hero { display: flex; flex-direction: column; align-items: flex-start; gap: 24px; }
-.eyebrow {
-  margin: 0;
-  font-size: 14px;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--ink-muted);
-}
+/* Page eyebrows reuse the hero role chip (animated dashed border) */
+.eyebrow { margin: 0; white-space: nowrap; text-transform: uppercase; }
 .inner-title {
   margin: 0;
   max-width: 900px;
