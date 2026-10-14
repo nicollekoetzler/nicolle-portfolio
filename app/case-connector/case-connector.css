@@ -573,7 +573,7 @@ html:has(.cs) { background: #17181c; }
 }
 
 /* ---------- Responsive ---------- */
-@media (max-width: 600px) {
+@media (max-width: 768px) {
   /* 16px side margins on phones */
   .cs { --cs-pad: 16px; }
   .cs-empathize, .cs-market { padding-inline: 16px; }
