@@ -23,7 +23,6 @@ export default function TimelineRunner() {
     const self = ref.current;
     const list = self?.parentElement;
     if (!self || !list) return;
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
 
     const phases = Array.from(list.querySelectorAll<HTMLElement>(".phase"));
     let points: Point[] = [];
@@ -39,6 +38,8 @@ export default function TimelineRunner() {
       list.classList.toggle("is-vertical", vertical);
       list.style.setProperty("--run-x", `${points[0].x}px`);
       list.style.setProperty("--run-y", `${points[0].y}px`);
+      // lets the vertical (mobile) line stop at the last phase instead of running past it
+      list.style.setProperty("--run-end-y", `${points[points.length - 1].y}px`);
     };
 
     const runTime = () => (phases.length - 1) * (TRAVEL + REST);
@@ -96,6 +97,7 @@ export default function TimelineRunner() {
     measure();
     const resize = new ResizeObserver(measure);
     resize.observe(list);
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return () => resize.disconnect();
     const seen = new IntersectionObserver(([entry]) => (entry.isIntersecting ? play() : stop()), {
       // the vertical (mobile) timeline is taller than the screen, so watch for any overlap
       rootMargin: "-15% 0px",

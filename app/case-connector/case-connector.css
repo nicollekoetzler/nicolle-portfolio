@@ -497,6 +497,7 @@ html:has(.cs) { background: #17181c; }
     background: linear-gradient(180deg, var(--cs-orange) 0 40px, rgba(21, 112, 218, 0.5) 40px);
   }
   .timeline::after { display: none; }
+  .timeline.is-vertical::before { bottom: auto; height: var(--run-end-y); }
   .phase--top, .phase--bottom { height: auto; display: block; }
   .phase__body { border-left: 0; padding: 22px 0 0 24px !important; }
   .phase__dot, .phase--1 .phase__dot { top: 2px !important; bottom: auto !important; left: -6px; }
