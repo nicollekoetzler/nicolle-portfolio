@@ -9,16 +9,6 @@ export const metadata: Metadata = {
 
 const experience = [
   {
-    role: "Freelance Product Designer & Design Engineer",
-    company: "Self-employed",
-    dates: "Jul 2026 – Present",
-    place: "Remote · U.S. clients",
-    points: [
-      "Designing the product UI and session reports for inSession, an AI litigation-prep platform where attorneys rehearse with simulated judges, witnesses and juries.",
-      "Delivered UX audits, redesign proposals and website work for small U.S. businesses, including a law firm site and a leasing-page redesign for a mixed-use real estate development.",
-    ],
-  },
-  {
     role: "Head of UX/UI Engineering",
     company: "The Casely Group",
     dates: "Oct 2023 – Oct 2026",

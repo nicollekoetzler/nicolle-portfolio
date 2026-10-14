@@ -573,6 +573,13 @@ html:has(.cs) { background: #17181c; }
 }
 
 /* ---------- Responsive ---------- */
+@media (max-width: 600px) {
+  /* 16px side margins on phones */
+  .cs { --cs-pad: 16px; }
+  .cs-empathize, .cs-market { padding-inline: 16px; }
+  .cs-bar { padding-inline: 16px; }
+}
+
 @media (max-width: 900px) {
   /* the sitemap becomes an indented, top-to-bottom tree */
   .sitemap { --gap: 22px; justify-content: flex-start; }

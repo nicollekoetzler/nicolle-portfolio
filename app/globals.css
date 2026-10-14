@@ -648,6 +648,8 @@ header, main { position: relative; z-index: 1; }
 }
 
 @media (max-width: 600px) {
+  /* 16px side margins on phones */
+  :root { --gutter: 16px; }
   .page { padding-top: 20px; }
   .nav__links { gap: 16px; font-size: 14px; }
   .chips { gap: 8px; }
