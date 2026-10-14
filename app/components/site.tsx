@@ -37,9 +37,6 @@ export function SiteHeader({ current = "home" }: { current?: Page }) {
             {link.label}
           </Link>
         ))}
-        <a className="nav__icon" href={LINKEDIN} target="_blank" rel="noopener" aria-label="LinkedIn">
-          <img src="/assets/linkedin.svg" width={17} height={17} alt="" />
-        </a>
       </nav>
     </header>
   );

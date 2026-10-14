@@ -6,8 +6,17 @@ const inter = Inter({ subsets: ["latin"], weight: ["300", "400", "500"], variabl
 const instrumentSans = Instrument_Sans({ subsets: ["latin"], weight: ["500"], variable: "--font-instrument-sans" });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://nicollekoetzler.com"),
   title: "Nicolle Koetzler · Product Designer & Software Engineer",
   description: "Portfolio of Nicolle Koetzler, Product Designer and Software Engineer.",
+  openGraph: {
+    title: "Nicolle Koetzler · Product Designer & Software Engineer",
+    description: "Portfolio of Nicolle Koetzler, Product Designer and Software Engineer.",
+    url: "/",
+    siteName: "Nicolle Koetzler",
+    type: "website",
+  },
+  twitter: { card: "summary_large_image" },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

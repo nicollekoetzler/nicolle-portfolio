@@ -79,7 +79,6 @@ header, main { position: relative; z-index: 1; }
 }
 .nav__links a { transition: opacity .2s; }
 .nav__links a:hover { opacity: .6; }
-.nav__icon img { width: 17px; height: 17px; }
 
 /* ---------- Hero ---------- */
 .hero {
