@@ -119,8 +119,8 @@ export default function CaseConnectorPage() {
         <img
           className="cs-lockscreen"
           src={`${A}/cc-lockscreen.webp`}
-          width={1600}
-          height={840}
+          width={1560}
+          height={888}
           loading="lazy"
           alt="Lock screen showing Case Connector notifications. Stay connected to your cases, wherever you are: receive real-time updates on referrals, approvals, and case activity."
         />

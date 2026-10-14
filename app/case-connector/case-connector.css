@@ -145,14 +145,19 @@ html:has(.cs) { background: #17181c; }
 .cs-goal p { font-size: 15px; line-height: 1.5; letter-spacing: 0.02em; color: var(--cs-muted); max-width: 280px; }
 
 /* ---------- Full-width design images ---------- */
-.cs-lockscreen,
 .cs-presentation img {
   width: 100%;
   max-width: 1600px;
   height: auto;
   margin: 0 auto;
 }
-.cs-lockscreen { margin-top: 80px; }
+/* Same width and side margins as the hero */
+.cs-lockscreen {
+  width: calc(100% - 40px);
+  max-width: 1560px;
+  height: auto;
+  margin: 80px auto 0;
+}
 
 .cs-scroll {
   max-width: 1600px;
@@ -466,7 +471,7 @@ html:has(.cs) { background: #17181c; }
   .cs-goals { grid-template-columns: 1fr; padding-top: 64px; }
   .cs-goal::before { right: 0; }
   .cs-goal p { max-width: none; }
-  .cs-lockscreen { margin-top: 56px; }
+  .cs-lockscreen { width: calc(100% - 32px); margin-top: 56px; }
 
   /* the sitemap keeps its size and scrolls sideways */
   .cs-scroll { overflow-x: auto; padding-inline: 16px; -webkit-overflow-scrolling: touch; }
