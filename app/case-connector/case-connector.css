@@ -161,7 +161,8 @@ html:has(.cs) { background: #17181c; }
 
 /* ---------- App Architecture sitemap (tree drawn with CSS connectors) ---------- */
 .sitemap {
-  --gap: 56px;
+  /* wider spacing on bigger screens so the tree fills the card */
+  --gap: clamp(56px, 16.6vw - 104px, 170px);
   --line: rgba(110, 145, 200, 0.45);
   display: flex;
   justify-content: center;
