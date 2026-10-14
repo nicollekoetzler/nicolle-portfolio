@@ -136,7 +136,7 @@ html:has(.cs) { background: #17181c; }
 .cs-goal__title {
   display: flex;
   flex-direction: column;
-  margin: 0 0 30px;
+  margin: 0 0 22px;
   font-family: var(--cs-font-display), sans-serif;
   font-weight: 400;
   font-size: clamp(18px, 1.4vw, 21px);
