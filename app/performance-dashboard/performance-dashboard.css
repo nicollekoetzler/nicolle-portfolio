@@ -1,5 +1,7 @@
 /* CG Performance Dashboard case study. Builds on the shared case-study styles in case-connector.css (.cs) */
 .pd {
+  /* Bomstad belongs to Case Connector; this study uses Inter SemiBold for headings */
+  --cs-font-display: var(--font-inter);
   --pd-green: #2bb36b;
   --pd-orange: #f2a33a;
   background:
@@ -7,6 +9,13 @@
     radial-gradient(60vw 40vw at -10% 30%, rgba(43, 179, 107, 0.08), transparent 70%),
     var(--cs-bg);
 }
+
+.pd .cs-h2, .pd .pd-hero__title, .pd .pd-screen__title, .pd .pd-modules h3, .pd .pd-principles h3, .pd .pd-goals h3 {
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+.pd .cs-bar { font-weight: 500; letter-spacing: -0.01em; }
+.pd-center { text-align: center; }
 
 /* Screens sit in a thin, rounded frame like a browser window */
 .pd-frame {
@@ -62,6 +71,62 @@
 .pd-meta dt { color: var(--cs-muted); }
 .pd-meta dd { margin: 0; color: var(--cs-ink); }
 .pd-hero__shot { width: 100%; max-width: 1280px; margin-top: clamp(48px, 6vw, 88px); }
+
+/* ---------- Challenges & Goals ---------- */
+.pd-challenge {
+  max-width: 1600px;
+  margin: 0 auto;
+  padding: clamp(100px, 10vw, 170px) var(--cs-pad) 0;
+}
+.pd-challenge__panels {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  gap: 16px;
+  margin-top: 56px;
+}
+.pd-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: clamp(28px, 3vw, 44px);
+  border-radius: 24px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  font-size: 17px;
+  line-height: 1.6;
+  color: var(--cs-body);
+}
+.pd-panel--accent {
+  background: linear-gradient(160deg, rgba(43, 179, 107, 0.22), rgba(43, 179, 107, 0.04) 70%);
+  border-color: rgba(43, 179, 107, 0.35);
+  color: var(--cs-ink);
+}
+.pd-panel__label {
+  font-family: var(--cs-font-mono), monospace;
+  font-size: 13px !important;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--pd-green) !important;
+}
+.pd-goals {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 40px 64px;
+  margin: 72px 0 0;
+  padding: 0;
+  list-style: none;
+}
+.pd-goals li { display: flex; gap: 24px; align-items: flex-start; }
+.pd-goals__num {
+  flex: none;
+  font-weight: 600;
+  font-size: clamp(36px, 3.2vw, 52px);
+  line-height: 1;
+  letter-spacing: -0.03em;
+  color: var(--pd-green);
+}
+.pd-goals h3 { margin: 4px 0 10px; font-size: 20px; }
+.pd-goals p { font-size: 15px; line-height: 1.55; color: var(--cs-muted); max-width: 440px; }
 
 /* ---------- Modules ---------- */
 .pd-modules {
@@ -123,22 +188,16 @@
 .pd-principles {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 40px;
+  gap: 16px;
   max-width: 1600px;
   margin: 56px auto 0;
   padding: 0 var(--cs-pad);
 }
-.pd-principles li { position: relative; padding-top: 28px; border-top: 1px solid var(--cs-line); }
-.pd-principles li::before {
-  content: "";
-  position: absolute;
-  top: -4px;
-  left: 0;
-  width: 7px;
-  height: 7px;
-  border-radius: 50%;
-  background: var(--pd-green);
-  box-shadow: 0 0 10px var(--pd-green);
+.pd-principles li {
+  padding: 28px;
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
 }
 .pd-principles h3 { margin: 0 0 14px; font-family: var(--cs-font-display), sans-serif; font-weight: 400; font-size: 20px; line-height: 1.25; }
 .pd-principles p { font-size: 15px; line-height: 1.55; color: var(--cs-muted); }
@@ -164,12 +223,15 @@
 /* ---------- Responsive ---------- */
 @media (max-width: 1100px) {
   .pd-modules, .pd-principles { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .pd-challenge__panels { grid-template-columns: 1fr; }
   .pd-screen, .pd-screen--flip { grid-template-columns: 1fr; }
   .pd-screen--flip .pd-screen__text { order: 0; }
   .pd-screen__text { max-width: 640px; }
 }
 @media (max-width: 600px) {
-  .pd-modules, .pd-principles { grid-template-columns: 1fr; }
+  .pd-modules, .pd-principles, .pd-goals { grid-template-columns: 1fr; }
+  .pd-goals { gap: 32px; margin-top: 48px; }
+  .pd-goals li { gap: 16px; }
   .pd-frame { border-radius: 12px; }
   .pd-meta div { font-size: 13px; }
 }

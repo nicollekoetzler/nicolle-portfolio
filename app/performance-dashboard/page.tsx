@@ -1,16 +1,10 @@
 /* eslint-disable @next/next/no-img-element -- design exports keep their Figma sizes as plain <img> */
 import type { Metadata } from "next";
 import { DM_Mono } from "next/font/google";
-import localFont from "next/font/local";
 import Link from "next/link";
 import "../case-connector/case-connector.css";
 import "./performance-dashboard.css";
 
-const display = localFont({
-  src: "../case-connector/fonts/BomstadDisplay-Regular.ttf",
-  weight: "400",
-  variable: "--cs-font-display",
-});
 const mono = DM_Mono({ subsets: ["latin"], weight: ["400"], variable: "--cs-font-mono" });
 
 export const metadata: Metadata = {
@@ -29,10 +23,10 @@ const meta = [
 ];
 
 const goals = [
-  { title: ["One source", "of truth"], text: "Bring web, SEO, speed, call and lead data into a single dashboard for each firm." },
-  { title: ["Plain-language", "metrics"], text: "Pair technical scores like RES, LCP and CLS with a clear status and a short explanation." },
-  { title: ["Attention", "at a glance"], text: "Use color-coded status and trends so what needs attention stands out without reading every number." },
-  { title: ["Built", "to scale"], text: "Serve many firms with a client switcher and one consistent, reusable component system." },
+  { title: "One source of truth", text: "Bring web, SEO, speed, call and lead data into a single dashboard for each firm." },
+  { title: "Plain-language metrics", text: "Pair technical scores like RES, LCP and CLS with a clear status and a short explanation." },
+  { title: "Attention at a glance", text: "Use color-coded status and trends so what needs attention stands out without reading every number." },
+  { title: "Built to scale", text: "Serve many firms with a client switcher and one consistent, reusable component system." },
 ];
 
 const modules = [
@@ -108,7 +102,7 @@ const principles = [
 
 export default function PerformanceDashboardPage() {
   return (
-    <div className={`cs pd ${display.variable} ${mono.variable}`}>
+    <div className={`cs pd ${mono.variable}`}>
       <header className="cs-bar">
         <Link href="/" className="cs-bar__item">CG Performance</Link>
         <span className="cs-bar__item cs-bar__center">Case Study</span>
@@ -135,35 +129,40 @@ export default function PerformanceDashboardPage() {
           </div>
         </section>
 
-        <section className="cs-split">
-          <div className="cs-split__head">
-            <h2 className="cs-h2">Challenges &amp; Goals</h2>
+        <section className="pd-challenge">
+          <h2 className="cs-h2 pd-center">Challenges &amp; Goals</h2>
+          <div className="pd-challenge__panels">
+            <div className="pd-panel">
+              <p className="pd-panel__label">The challenge</p>
+              <p>
+                Law firms invest heavily in their websites and marketing, but the data that shows whether it is
+                working lives in separate tools (hosting, SEO audits, call tracking, form submissions) and is full of
+                technical jargon. Without a single view, it is hard for a firm to know what is working and what needs
+                attention.
+              </p>
+            </div>
+            <div className="pd-panel pd-panel--accent">
+              <p className="pd-panel__label">The goal</p>
+              <p>
+                A dashboard any attorney can open and understand in seconds, while still giving The Casely Group’s
+                team the depth they need to manage dozens of firms.
+              </p>
+            </div>
           </div>
-          <div className="cs-split__text">
-            <p>
-              Law firms invest heavily in their websites and marketing, but the data that shows whether it is working
-              lives in separate tools (hosting, SEO audits, call tracking, form submissions) and is full of technical
-              jargon. Without a single view, it is hard for a firm to know what is working and what needs attention.
-            </p>
-            <p>
-              The goal was a dashboard that any attorney could open and understand in seconds, while still giving The
-              Casely Group’s team the depth they need to manage dozens of firms.
-            </p>
-          </div>
+          <ol className="pd-goals">
+            {goals.map((goal, i) => (
+              <li key={goal.title}>
+                <span className="pd-goals__num">{String(i + 1).padStart(2, "0")}</span>
+                <div>
+                  <h3>{goal.title}</h3>
+                  <p>{goal.text}</p>
+                </div>
+              </li>
+            ))}
+          </ol>
         </section>
 
-        <ul className="cs-goals">
-          {goals.map((goal) => (
-            <li key={goal.text} className="cs-goal">
-              <h3 className="cs-goal__title">
-                {goal.title.map((line) => <span key={line}>{line}</span>)}
-              </h3>
-              <p>{goal.text}</p>
-            </li>
-          ))}
-        </ul>
-
-        <section className="cs-split cs-split--ruled">
+        <section className="cs-split">
           <div className="cs-split__head">
             <h2 className="cs-h2">Product Structure</h2>
           </div>
@@ -205,7 +204,7 @@ export default function PerformanceDashboardPage() {
           ))}
         </section>
 
-        <section className="cs-split cs-split--ruled">
+        <section className="cs-split">
           <div className="cs-split__head">
             <h2 className="cs-h2">Design Principles</h2>
           </div>
