@@ -412,19 +412,21 @@ header, main { position: relative; z-index: 1; }
   object-position: center;
   transition: transform .9s cubic-bezier(.2, .7, .2, 1);
 }
-.project:hover .project__media--cover img:not(.project__cover-logo) { transform: scale(1.07); }
+/* the zoom only runs while hovering the colored container itself, not the title or tags */
+.project:hover .project__media--cover img:not(.project__cover-logo) { transform: none; }
+.project .project__media--cover:hover img:not(.project__cover-logo) { transform: scale(1.07); }
 /* a cover with a logo leaves room for it at the top */
 .project__media--cover:has(.project__cover-logo) img:not(.project__cover-logo) {
-  inset: clamp(64px, 12%, 104px) 5% clamp(24px, 6%, 56px) !important;
+  inset: clamp(76px, calc(12% + 12px), 116px) 5% clamp(24px, 6%, 56px) !important;
   width: 90% !important;
-  height: calc(100% - clamp(64px, 12%, 104px) - clamp(24px, 6%, 56px)) !important;
+  height: calc(100% - clamp(76px, calc(12% + 12px), 116px) - clamp(24px, 6%, 56px)) !important;
 }
 .project__media img.project__cover-logo,
 .project:hover .project__media img.project__cover-logo {
   position: absolute;
   inset: auto;
   z-index: 1;
-  top: clamp(20px, 3.4%, 40px);
+  top: clamp(32px, calc(3.4% + 12px), 52px);
   left: 50%;
   width: clamp(140px, 16%, 220px);
   height: auto;
@@ -435,7 +437,7 @@ header, main { position: relative; z-index: 1; }
 }
 @media (prefers-reduced-motion: reduce) {
   .project__media--cover img { transition: none; }
-  .project:hover .project__media--cover img:not(.project__cover-logo) { transform: none; }
+  .project .project__media--cover:hover img:not(.project__cover-logo) { transform: none; }
 }
 .project__media--wide {
   border-radius: 35.836px;
