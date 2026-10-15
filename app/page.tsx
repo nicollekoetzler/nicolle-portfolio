@@ -53,13 +53,25 @@ function CurlArrow() {
 }
 
 /** The project image, linked to its case study (in a new tab) when there is one */
-function MediaLink({ href, label, className, children }: { href?: string; label: string; className: string; children: React.ReactNode }) {
+function MediaLink({
+  href,
+  label,
+  className,
+  style,
+  children,
+}: {
+  href?: string;
+  label: string;
+  className: string;
+  style?: React.CSSProperties;
+  children: React.ReactNode;
+}) {
   return href ? (
-    <a className={className} href={href} target="_blank" rel="noopener" aria-label={label}>
+    <a className={className} style={style} href={href} target="_blank" rel="noopener" aria-label={label}>
       {children}
     </a>
   ) : (
-    <div className={className}>{children}</div>
+    <div className={className} style={style}>{children}</div>
   );
 }
 
@@ -69,7 +81,12 @@ function ProjectCard({ project, wide = false }: { project: Project; wide?: boole
       <MediaLink
         href={project.caseStudy ?? project.site}
         label={`${project.title}, ${project.caseStudy ? "case study" : "live site"} (opens in a new tab)`}
-        className={wide ? "project__media project__media--wide" : "project__media"}
+        className={[
+          "project__media",
+          wide && "project__media--wide",
+          project.coverBackground && "project__media--cover",
+        ].filter(Boolean).join(" ")}
+        style={project.coverBackground ? { background: project.coverBackground } : undefined}
       >
         {project.video ? (
           <video

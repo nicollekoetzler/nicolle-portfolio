@@ -406,6 +406,17 @@ header, main { position: relative; z-index: 1; }
 }
 .project:hover .project__media img,
 .project:hover .project__media video { transform: scale(1.02); }
+/* transparent cover art: whole image on a color, with a softer, bigger zoom on hover */
+.project__media--cover img {
+  object-fit: contain;
+  object-position: center;
+  transition: transform .9s cubic-bezier(.2, .7, .2, 1);
+}
+.project:hover .project__media--cover img { transform: scale(1.07); }
+@media (prefers-reduced-motion: reduce) {
+  .project__media--cover img { transition: none; }
+  .project:hover .project__media--cover img { transform: none; }
+}
 .project__media--wide {
   border-radius: 35.836px;
   aspect-ratio: 1880 / 883.579;

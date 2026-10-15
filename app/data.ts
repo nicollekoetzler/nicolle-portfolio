@@ -7,6 +7,8 @@ export type Project = {
   tags: string[];
   /** CSS object-position matching the crop in the Figma design */
   position?: string;
+  /** Transparent cover art: shown whole (contain) on this background color, with a zoom on hover */
+  coverBackground?: string;
   /** Muted looping video shown instead of the image (the image becomes its poster) */
   video?: string;
   /** Case study page, opened in a new tab from the image and title */
@@ -35,8 +37,9 @@ export const projects: Project[] = [
   {
     title: "CG Performance Dashboard",
     caseStudy: "/performance-dashboard",
-    image: "/assets/project-performance-dashboard-laptop.webp",
-    alt: "CG Performance leads dashboard on a laptop",
+    image: "/assets/project-performance-dashboard-cover.webp",
+    coverBackground: "#356CFF",
+    alt: "CG Performance sign-in, site performance and leads dashboard screens",
     tags: ["SAAS DASHBOARD", "UI/UX DESIGN", "PRODUCT DESIGN"],
   },
   { title: "Law-Di-Gras", site: "https://lawdigras.org", image: "/assets/project-law-di-gras.png", alt: "Law-Di-Gras event website", tags: lawFirmTags, position: "50% 9%" },
