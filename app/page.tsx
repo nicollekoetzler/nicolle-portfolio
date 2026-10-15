@@ -1,7 +1,7 @@
 /* eslint-disable @next/next/no-img-element -- SVG logos/icons keep their Figma root sizes as plain <img> */
 import Image from "next/image";
 import { Arrow, EMAIL, LINKEDIN, SiteFooter, SiteHeader } from "./components/site";
-import { featured, projects, roles, type Project } from "./data";
+import { featured, featuredDashboard, projects, roles, type Project } from "./data";
 
 function Logos({ hidden = false }: { hidden?: boolean }) {
   const alt = (text: string) => (hidden ? "" : text);
@@ -109,6 +109,7 @@ function ProjectCard({ project, wide = false }: { project: Project; wide?: boole
             style={project.position ? { objectPosition: project.position } : undefined}
           />
         )}
+        {project.coverLogo && <img className="project__cover-logo" src={project.coverLogo} alt="" />}
       </MediaLink>
       <div className="project__info">
         <div className="project__heading">
@@ -216,6 +217,7 @@ export default function Home() {
 
         <section className="projects" id="portfolio" aria-label="Projects">
           <ProjectCard project={featured} wide />
+          <ProjectCard project={featuredDashboard} wide />
           <div className="projects__grid">
             {projects.map((project) => (
               <ProjectCard key={project.title} project={project} />
