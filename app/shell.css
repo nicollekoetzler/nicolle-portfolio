@@ -113,7 +113,8 @@ html:has(.v2) { background: #1c1c1c; }
   color: var(--v2-strong);
   box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
 }
-.v2-status__dot { position: relative; flex: none; width: 8px; height: 8px; border-radius: 4px; background: #7539ff; box-shadow: 0 0 8px rgba(117, 57, 255, 0.7); }
+/* 6px extra breathing room before the email */
+.v2-status__dot { position: relative; flex: none; width: 8px; height: 8px; margin-right: 6px; border-radius: 4px; background: #7539ff; box-shadow: 0 0 8px rgba(117, 57, 255, 0.7); }
 /* radar ping: a ring that grows out of the dot and fades */
 .v2-status__dot::after {
   content: "";
@@ -355,10 +356,12 @@ html:has(.v2) { background: #1c1c1c; }
   /* inner pages: the sidebar shrinks to nav + contact pill so the page content comes first */
   .v2--inner .v2-title, .v2--inner .v2-lead, .v2--inner .v2-aside__bottom { display: none; }
   .v2--inner .v2-aside { gap: 0; padding: 0; background: none; }
+  /* the contact pill sits centered on its own above the page content */
+  .v2--inner .v2-aside__top { display: flex; justify-content: center; }
 }
 @media (max-width: 600px) {
   .v2 { padding-top: 76px; }
-  .v2-aside { padding: 24px 20px; }
+  .v2-aside { padding: 24px 16px; }
   /* floating, rounded navbar pinned to the top */
   .v2-nav {
     position: fixed;
@@ -385,7 +388,8 @@ html:has(.v2) { background: #1c1c1c; }
   .v2 .v2-title { margin-top: 0; font-size: 30px; }
   /* email and "Get in touch" stay on one line */
   .v2-status { flex-wrap: nowrap; gap: 8px; padding: 4px 4px 4px 10px; font-size: 12.5px; white-space: nowrap; }
-  .v2-status__cta { margin-left: 0; padding: 4px 8px; }
+  /* ~40px between the email and the button (8px gap + 32px) */
+  .v2-status__cta { margin-left: 32px; padding: 4px 8px; }
   /* "Product Design / Websites" goes under the heading */
   .v2-work__head { flex-direction: column; align-items: flex-start; gap: 14px; }
   /* taller project cards */
@@ -420,8 +424,13 @@ html:has(.v2) { background: #1c1c1c; }
   .v2-banner + .v2-intro { margin-top: -40px; }
   .v2--inner .v2-status { margin-top: 0; }
 }
+/* phones narrower than 375px: less room, so a smaller gap before the button */
+@media (max-width: 374px) {
+  .v2-status__cta { margin-left: 12px; }
+}
 /* very narrow phones: the email pill shrinks a little more to stay on one line */
 @media (max-width: 359px) {
   .v2-status { gap: 6px; padding-left: 8px; font-size: 11px; }
-  .v2-status__cta { padding: 3px 6px; }
+  .v2-status__dot { margin-right: 3px; }
+  .v2-status__cta { margin-left: 14px; padding: 3px 6px; }
 }
