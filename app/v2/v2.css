@@ -50,8 +50,8 @@ html:has(.v2) { background: #1c1c1c; }
 
 .v2-title {
   margin: 48px 0 0;
-  max-width: 420px;
-  font-size: clamp(34px, 3vw, 48px);
+  max-width: 489px;
+  font-size: clamp(32px, 3vw - 2px, 46px);
   font-weight: 600;
   line-height: 1.25;
   letter-spacing: -0.04em;
@@ -238,9 +238,32 @@ html:has(.v2) { background: #1c1c1c; }
   .v2-main { padding-top: 0; }
 }
 @media (max-width: 600px) {
+  .v2 { padding-top: 76px; }
   .v2-aside { padding: 24px; }
-  .v2-nav { gap: 2px; font-size: 15px; }
-  .v2-title { font-size: 32px; }
+  /* floating, rounded navbar pinned to the top */
+  .v2-nav {
+    position: fixed;
+    z-index: 50;
+    top: 12px;
+    left: 16px;
+    right: 16px;
+    justify-content: space-between;
+    gap: 2px;
+    padding: 6px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 999px;
+    background: rgba(33, 33, 33, 0.82);
+    -webkit-backdrop-filter: blur(14px);
+            backdrop-filter: blur(14px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+    font-size: 15px;
+  }
+  .v2-nav a { padding: 6px 10px; border-radius: 999px; }
+  .v2-title { margin-top: 0; font-size: 30px; }
+  /* "Product Design / Websites" goes under the heading */
+  .v2-work__head { flex-direction: column; align-items: flex-start; gap: 14px; }
+  /* taller project cards */
+  .v2-card { aspect-ratio: 4 / 3.4; }
   .v2-lead { font-size: 16px; }
   .v2-main { gap: 64px; }
   .v2-h2 { font-size: 24px; }
