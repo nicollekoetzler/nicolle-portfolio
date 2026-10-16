@@ -426,6 +426,7 @@ html:has(.v2) { background: #1c1c1c; }
   /* Contact already shows the email big on the page, so the pill goes (the nav stays, it floats on its own) */
   .v2--contact .v2-side { display: contents; }
   .v2--contact .v2-aside { display: none; }
+  .v2--contact .v2-main { padding-top: 32px; }
 }
 /* phones narrower than 375px: less room, so a smaller gap before the button */
 @media (max-width: 374px) {
