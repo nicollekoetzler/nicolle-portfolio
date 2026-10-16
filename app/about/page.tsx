@@ -16,21 +16,6 @@ const stats = [
   { value: "20", label: "designers & developers led" },
 ];
 
-const services = [
-  {
-    title: "Product design",
-    text: "Information architecture, user flows, prototyping and design systems, from the first sketch to a polished UI.",
-  },
-  {
-    title: "Design engineering",
-    text: "Production React, Next.js and Tailwind, built from my own designs and kept in sync with Figma.",
-  },
-  {
-    title: "AI-assisted delivery",
-    text: "Directing and reviewing AI coding agents to ship faster without losing the details that matter.",
-  },
-];
-
 export default function About() {
   return (
     <Shell current="about">
@@ -66,19 +51,6 @@ export default function About() {
           </li>
         ))}
       </ul>
-
-      <section className="v2-section">
-        <h2 className="v2-h2">What I do</h2>
-        <ul className="v2-tiles">
-          {services.map((s, i) => (
-            <li key={s.title}>
-              <span className="v2-tiles__index">0{i + 1}</span>
-              <h3>{s.title}</h3>
-              <p>{s.text}</p>
-            </li>
-          ))}
-        </ul>
-      </section>
 
       <section className="v2-section">
         <h2 className="v2-h2">Languages</h2>
