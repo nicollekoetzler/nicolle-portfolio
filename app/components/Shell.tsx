@@ -4,6 +4,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useLayoutEffect, useRef, useState } from "react";
+import { liquidClass, useLiquidPill } from "./useLiquidPill";
 import { BEHANCE, EMAIL, GITHUB, LINKEDIN } from "./site";
 import "../shell.css";
 
@@ -33,38 +34,15 @@ function SocialIcon({ name }: { name: "mail" | "linkedin" | "github" | "behance"
 function Nav({ current }: { current: Page }) {
   const navRef = useRef<HTMLElement>(null);
   const [target, setTarget] = useState(current);
-  const [pill, setPill] = useState<{ left: number; right: number; dir: "left" | "right" | null }>();
-  const [moving, setMoving] = useState(false);
-
   // follow the route (back/forward included); clicks move the pill straight away
   useLayoutEffect(() => setTarget(current), [current]);
-
-  useLayoutEffect(() => {
-    const nav = navRef.current;
-    if (!nav) return;
-    const measure = (animate: boolean) => {
-      const link = nav.querySelector<HTMLElement>(`[data-page="${target}"]`);
-      if (!link) return;
-      const left = link.offsetLeft;
-      const right = nav.clientWidth - left - link.offsetWidth;
-      setPill((prev) => ({ left, right, dir: animate && prev ? (left > prev.left ? "right" : left < prev.left ? "left" : prev.dir) : null }));
-    };
-    measure(true);
-    setMoving(true);
-    const settle = window.setTimeout(() => setMoving(false), 420);
-    const onResize = () => measure(false);
-    window.addEventListener("resize", onResize);
-    return () => {
-      window.clearTimeout(settle);
-      window.removeEventListener("resize", onResize);
-    };
-  }, [target]);
+  const pill = useLiquidPill(navRef, `[data-page="${target}"]`);
 
   return (
     <nav ref={navRef} className={pill ? "v2-nav has-pill" : "v2-nav"} aria-label="Main">
       {pill && (
         <span
-          className={["v2-nav__pill", pill.dir && `is-${pill.dir}`, moving && pill.dir && "is-moving"].filter(Boolean).join(" ")}
+          className={liquidClass("v2-nav__pill", pill)}
           style={{ left: pill.left, right: pill.right }}
           aria-hidden="true"
         />

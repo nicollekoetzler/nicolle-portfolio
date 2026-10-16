@@ -1,7 +1,8 @@
 "use client";
 
 /* eslint-disable @next/next/no-img-element -- project covers are plain <img> inside fixed-ratio cards */
-import { useState } from "react";
+import { useRef, useState } from "react";
+import { liquidClass, useLiquidPill } from "./useLiquidPill";
 
 type Work = {
   title: string;
@@ -57,17 +58,21 @@ const groups: { label: string; items: Work[] }[] = [
 
 export default function WorkTabs() {
   const [active, setActive] = useState(0);
+  const toggleRef = useRef<HTMLDivElement>(null);
+  const pill = useLiquidPill(toggleRef, `[data-tab="${active}"]`);
 
   return (
     <section className="v2-work" aria-labelledby="featured-work">
       <div className="v2-work__head">
         <h2 className="v2-h2" id="featured-work">Featured Work</h2>
-        <div className="v2-toggle" role="tablist" aria-label="Project type">
+        <div ref={toggleRef} className={pill ? "v2-toggle has-pill" : "v2-toggle"} role="tablist" aria-label="Project type">
+          {pill && <span className={liquidClass("v2-toggle__pill", pill)} style={{ left: pill.left, right: pill.right }} aria-hidden="true" />}
           {groups.map((g, i) => (
             <button
               key={g.label}
               type="button"
               role="tab"
+              data-tab={i}
               aria-selected={active === i}
               className={active === i ? "is-active" : undefined}
               onClick={() => setActive(i)}

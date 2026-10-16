@@ -69,7 +69,6 @@ export default function CV() {
   return (
     <>
       <section className="v2-section v2-intro">
-        <p className="v2-eyebrow">Curriculum Vitae</p>
         <h1 className="v2-page-title">
           Nicolle Koetzler <span>Senior Product Designer &amp; Design Engineer</span>
         </h1>
