@@ -27,12 +27,14 @@ function SocialIcon({ name }: { name: "mail" | "linkedin" | "github" | "behance"
 }
 
 /* The active page sits in its own lighter pill, cut out of the bar (Figma "Nicolle Website" › node 39:1447).
-   When the page changes the pill moves like a drop of liquid: it stretches toward the new page while a small
-   droplet lags behind it; an SVG "goo" filter fuses the two, so a liquid neck forms and is pulled back in. */
+   When the page changes the pill moves like a drop of liquid, in plain CSS so it stays sharp: the leading edge
+   pulls ahead, the pill thins and rounds out while it stretches, then the trailing edge catches up and it
+   settles with a small jelly wobble. */
 function Nav({ current }: { current: Page }) {
   const navRef = useRef<HTMLElement>(null);
   const [target, setTarget] = useState(current);
   const [pill, setPill] = useState<{ left: number; right: number; dir: "left" | "right" | null }>();
+  const [moving, setMoving] = useState(false);
 
   // follow the route (back/forward included); clicks move the pill straight away
   useLayoutEffect(() => setTarget(current), [current]);
@@ -48,32 +50,24 @@ function Nav({ current }: { current: Page }) {
       setPill((prev) => ({ left, right, dir: animate && prev ? (left > prev.left ? "right" : left < prev.left ? "left" : prev.dir) : null }));
     };
     measure(true);
+    setMoving(true);
+    const settle = window.setTimeout(() => setMoving(false), 420);
     const onResize = () => measure(false);
     window.addEventListener("resize", onResize);
-    return () => window.removeEventListener("resize", onResize);
+    return () => {
+      window.clearTimeout(settle);
+      window.removeEventListener("resize", onResize);
+    };
   }, [target]);
-
-  const blobs = pill && (
-    <>
-      <i style={{ left: pill.left, right: pill.right }} />
-      <i className="v2-nav__drop" style={{ left: pill.left, right: pill.right }} />
-    </>
-  );
 
   return (
     <nav ref={navRef} className={pill ? "v2-nav has-pill" : "v2-nav"} aria-label="Main">
-      <svg className="v2-nav__filter" aria-hidden="true">
-        <filter id="v2-goo">
-          <feGaussianBlur in="SourceGraphic" stdDeviation="7" result="blur" />
-          <feColorMatrix in="blur" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 22 -10" />
-        </filter>
-      </svg>
       {pill && (
-        <>
-          {/* page-colored copy, 8px wider, that cuts the gap around the pill */}
-          <span className={`v2-nav__goo v2-nav__goo--gap${pill.dir ? ` is-${pill.dir}` : ""}`} aria-hidden="true">{blobs}</span>
-          <span className={`v2-nav__goo${pill.dir ? ` is-${pill.dir}` : ""}`} aria-hidden="true">{blobs}</span>
-        </>
+        <span
+          className={["v2-nav__pill", pill.dir && `is-${pill.dir}`, moving && pill.dir && "is-moving"].filter(Boolean).join(" ")}
+          style={{ left: pill.left, right: pill.right }}
+          aria-hidden="true"
+        />
       )}
       {nav.map((l) => (
         <Link
