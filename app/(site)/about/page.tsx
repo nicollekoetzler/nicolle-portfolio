@@ -27,7 +27,7 @@ export default function About() {
       />
 
       <section className="v2-section v2-intro v2-intro--full">
-        <h1 className="v2-page-title">Designer by craft, engineer by habit.</h1>
+        <h1 className="v2-page-title">Hi, I’m Nicolle.</h1>
         <div className="v2-prose">
           <p>
             I’m a product designer and design engineer with 12+ years in digital

@@ -104,7 +104,7 @@ export default function Shell({ children }: { children: React.ReactNode }) {
             <div className="v2-id">
               <p className="v2-id__name">Nicolle Koetzler</p>
               <p>Product Designer and Software Developer</p>
-              <p>+10 years experience</p>
+              <p>+12 years experience</p>
             </div>
           </div>
         </aside>
