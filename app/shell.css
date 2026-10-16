@@ -333,7 +333,9 @@ html:has(.v2) { background: #1c1c1c; }
   .v2-lead { font-size: 16px; }
   .v2-main { gap: 64px; }
   .v2-h2 { font-size: 24px; }
-  .v2-toggle button { padding: 7px 12px; font-size: 14px; }
+  /* the toggle spans the full width, one half per tab */
+  .v2-toggle { display: flex; align-self: stretch; }
+  .v2-toggle button { flex: 1; padding: 7px 12px; font-size: 14px; }
   .v2-card__title { font-size: 20px; }
   .v2-card__desc { font-size: 14px; }
   /* no hover on touch: keep the title visible */
