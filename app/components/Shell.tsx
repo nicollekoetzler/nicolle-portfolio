@@ -27,7 +27,8 @@ function SocialIcon({ name }: { name: "mail" | "linkedin" | "github" | "behance"
 }
 
 /* The active page sits in its own lighter pill, cut out of the bar (Figma "Nicolle Website" › node 39:1447).
-   When the page changes the pill glides over with a sticky stretch: the leading edge goes first, the trailing edge catches up. */
+   When the page changes the pill moves like a drop of liquid: it stretches toward the new page while a small
+   droplet lags behind it; an SVG "goo" filter fuses the two, so a liquid neck forms and is pulled back in. */
 function Nav({ current }: { current: Page }) {
   const navRef = useRef<HTMLElement>(null);
   const [target, setTarget] = useState(current);
@@ -52,14 +53,27 @@ function Nav({ current }: { current: Page }) {
     return () => window.removeEventListener("resize", onResize);
   }, [target]);
 
+  const blobs = pill && (
+    <>
+      <i style={{ left: pill.left, right: pill.right }} />
+      <i className="v2-nav__drop" style={{ left: pill.left, right: pill.right }} />
+    </>
+  );
+
   return (
     <nav ref={navRef} className={pill ? "v2-nav has-pill" : "v2-nav"} aria-label="Main">
+      <svg className="v2-nav__filter" aria-hidden="true">
+        <filter id="v2-goo">
+          <feGaussianBlur in="SourceGraphic" stdDeviation="7" result="blur" />
+          <feColorMatrix in="blur" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 22 -10" />
+        </filter>
+      </svg>
       {pill && (
-        <span
-          className={pill.dir ? `v2-nav__pill v2-nav__pill--${pill.dir}` : "v2-nav__pill"}
-          style={{ left: pill.left, right: pill.right }}
-          aria-hidden="true"
-        />
+        <>
+          {/* page-colored copy, 8px wider, that cuts the gap around the pill */}
+          <span className={`v2-nav__goo v2-nav__goo--gap${pill.dir ? ` is-${pill.dir}` : ""}`} aria-hidden="true">{blobs}</span>
+          <span className={`v2-nav__goo${pill.dir ? ` is-${pill.dir}` : ""}`} aria-hidden="true">{blobs}</span>
+        </>
       )}
       {nav.map((l) => (
         <Link
