@@ -371,39 +371,18 @@ html:has(.v2) { background: #1c1c1c; }
     width: 70vw;
     height: auto;
     transform: translateX(-50%);
-    padding: 6px;
+    padding: 5px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
     border-radius: 999px;
-    /* frosted glass: see-through dark tint, strong blur, a soft top highlight */
-    background: linear-gradient(180deg, rgba(255, 255, 255, 0.07), rgba(255, 255, 255, 0.02)), rgba(28, 28, 28, 0.42);
-    -webkit-backdrop-filter: blur(22px) saturate(170%);
-            backdrop-filter: blur(22px) saturate(170%);
-    box-shadow:
-      inset 0 1px 0 rgba(255, 255, 255, 0.06),
-      0 10px 30px rgba(0, 0, 0, 0.4);
+    background: rgba(33, 33, 33, 0.82);
+    -webkit-backdrop-filter: blur(14px);
+            backdrop-filter: blur(14px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
     font-size: 13px;
   }
-  /* hairline border that lights up at two opposite corners (top-left, bottom-right) and fades out between */
-  .v2-nav::before {
-    content: "";
-    position: absolute;
-    z-index: 2;
-    inset: 0;
-    padding: 1px;
-    border-radius: inherit;
-    background: linear-gradient(115deg,
-      rgba(255, 255, 255, 0.55) 0%,
-      rgba(255, 255, 255, 0.08) 22%,
-      rgba(255, 255, 255, 0.04) 50%,
-      rgba(255, 255, 255, 0.08) 78%,
-      rgba(255, 255, 255, 0.45) 100%);
-    -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
-    -webkit-mask-composite: xor;
-            mask: linear-gradient(#000 0 0) content-box exclude, linear-gradient(#000 0 0);
-    pointer-events: none;
-  }
   .v2-nav a { height: auto; padding: 5px 10px; border-radius: 999px; white-space: nowrap; }
-  .v2-nav:not(.has-pill) a[aria-current] { background: rgba(255, 255, 255, 0.12); box-shadow: none; }
-  .v2-nav__pill { top: 6px; bottom: 6px; border-radius: 999px; background: rgba(255, 255, 255, 0.12); box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08); }
+  .v2-nav:not(.has-pill) a[aria-current] { background: rgba(255, 255, 255, 0.1); box-shadow: none; }
+  .v2-nav__pill { top: 5px; bottom: 5px; border-radius: 999px; background: rgba(255, 255, 255, 0.1); box-shadow: none; }
   /* 70% wide is tight for four links: the CV icon goes */
   .v2-nav__cv svg { display: none; }
   .v2 .v2-title { margin-top: 0; font-size: 30px; }
