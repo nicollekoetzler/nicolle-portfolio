@@ -2,6 +2,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { BEHANCE, EMAIL, GITHUB, LINKEDIN } from "../components/site";
+import Logos from "../components/Logos";
 import WorkTabs from "./WorkTabs";
 import "./v2.css";
 
@@ -93,6 +94,16 @@ export default function HomeV2() {
 
       <main className="v2-main" id="work">
         <WorkTabs />
+
+        <section className="v2-section v2-trusted">
+          <h2 className="v2-h2">Trusted by</h2>
+          <div className="marquee">
+            <div className="marquee__track">
+              <Logos />
+              <Logos hidden />
+            </div>
+          </div>
+        </section>
 
         <section className="v2-section">
           <h2 className="v2-h2">Skills</h2>

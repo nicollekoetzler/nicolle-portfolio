@@ -176,6 +176,14 @@ html:has(.v2) { background: #1c1c1c; }
 @keyframes v2-drift { to { transform: translateX(calc(-50% - 6px)); } }
 .v2-skills:hover ul { animation-play-state: paused; }
 
+/* Trusted by: the shared logo carousel, turned white for the dark background */
+.v2-trusted .marquee {
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 10%, #000 90%, transparent);
+          mask-image: linear-gradient(90deg, transparent, #000 10%, #000 90%, transparent);
+}
+/* grayscale + invert keeps details like the California "LAW GROUP" band readable */
+.v2-trusted .logo img { filter: grayscale(1) invert(1); opacity: 0.8; }
+
 /* Tech stack */
 .v2-stack { display: flex; flex-wrap: wrap; gap: 8px; margin: 0; padding: 0; list-style: none; }
 .v2-stack li { padding: 6px 12px; border: 1px solid var(--v2-border); border-radius: 8px; font-size: 16px; font-weight: 300; color: var(--v2-body); }
