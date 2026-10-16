@@ -1,6 +1,4 @@
 import type { Metadata } from "next";
-import Link from "next/link";
-import Shell from "../components/Shell";
 
 export const metadata: Metadata = {
   title: "CV · Nicolle Koetzler",
@@ -69,7 +67,7 @@ const education = [
 
 export default function CV() {
   return (
-    <Shell current="cv">
+    <>
       <section className="v2-section v2-intro">
         <p className="v2-eyebrow">Curriculum Vitae</p>
         <h1 className="v2-page-title">
@@ -141,6 +139,6 @@ export default function CV() {
           <li><strong>German</strong> Elementary (A2)</li>
         </ul>
       </section>
-    </Shell>
+    </>
   );
 }

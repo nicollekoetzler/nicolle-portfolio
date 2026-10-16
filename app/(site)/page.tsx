@@ -1,7 +1,6 @@
 /* eslint-disable @next/next/no-img-element -- stack icons keep their design sizes as plain <img> */
-import Logos from "./components/Logos";
-import Shell from "./components/Shell";
-import WorkTabs from "./components/WorkTabs";
+import Logos from "../components/Logos";
+import WorkTabs from "../components/WorkTabs";
 
 const skills = [
   ["Product Design", "UI Design", "Visual Design", "Typography & Layout", "Information Architecture", "User Flows"],
@@ -27,7 +26,7 @@ const stack = [
 
 export default function Home() {
   return (
-    <Shell current="home">
+    <>
       <WorkTabs />
 
       <section className="v2-section v2-trusted">
@@ -67,6 +66,6 @@ export default function Home() {
           ))}
         </ul>
       </section>
-    </Shell>
+    </>
   );
 }

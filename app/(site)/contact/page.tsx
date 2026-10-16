@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
-import Shell from "../components/Shell";
-import { BEHANCE, EMAIL, GITHUB, LINKEDIN, LINKTREE } from "../components/site";
+import { BEHANCE, EMAIL, GITHUB, LINKEDIN, LINKTREE } from "../../components/site";
 
 export const metadata: Metadata = {
   title: "Contact · Nicolle Koetzler",
@@ -16,7 +15,7 @@ const channels = [
 
 export default function Contact() {
   return (
-    <Shell current="contact">
+    <>
       <section className="v2-section v2-intro">
         <p className="v2-eyebrow">Contact</p>
         <h1 className="v2-page-title">Let’s build something together.</h1>
@@ -43,6 +42,6 @@ export default function Contact() {
         </ul>
         <p className="v2-meta">Based in Brazil (UTC-3), working remotely with teams in the U.S. and beyond.</p>
       </section>
-    </Shell>
+    </>
   );
 }

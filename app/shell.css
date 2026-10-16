@@ -26,30 +26,67 @@ html:has(.v2) { background: #1c1c1c; }
 .v2 p { margin: 0; }
 .v2 a { color: inherit; text-decoration: none; }
 
-/* ---------- Aside ---------- */
-.v2-aside {
+/* ---------- Sidebar: menu bar + card ---------- */
+.v2-side {
   position: sticky;
   top: 20px;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  gap: 48px;
+  gap: 9px;
   /* fills the window top to bottom (20px margin each side) */
   height: calc(100vh - 40px);
   height: calc(100dvh - 40px);
+}
+.v2-aside {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 48px;
   padding: 32px;
   border-radius: 8px;
   background: var(--v2-panel);
   overflow: auto;
 }
-.v2-nav { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; font-size: 16px; color: var(--v2-body); }
-.v2-nav a { display: inline-flex; align-items: center; gap: 6px; padding: 3px 8px; border: 1px solid transparent; border-radius: 10.8px; transition: color .2s; }
-.v2-nav a:hover { color: #fff; }
-.v2-nav a.is-active { border-color: #8b5cf6; color: #fff; font-weight: 500; }
+
+/* Menu: one dark bar, the current page in a lighter pill cut out of it by an 8px page-colored gap */
+.v2-nav {
+  position: relative;
+  isolation: isolate;
+  display: flex;
+  flex: none;
+  justify-content: space-between;
+  align-items: center;
+  height: 38px;
+  border-radius: 10px;
+  background: var(--v2-panel);
+  font-size: 16px;
+  color: var(--v2-body);
+}
+.v2-nav a { position: relative; z-index: 1; display: inline-flex; align-items: center; gap: 6px; height: 100%; padding: 0 24px; border-radius: 10px; transition: color .2s; }
+.v2-nav a:hover, .v2-nav a[aria-current] { color: #fff; }
 .v2-nav__cv svg { width: 14px; height: 14px; fill: none; stroke: currentColor; stroke-width: 1.4; stroke-linecap: round; stroke-linejoin: round; }
+.v2-nav__pill {
+  position: absolute;
+  z-index: 0;
+  top: 0;
+  bottom: 0;
+  border-radius: 10px;
+  background: #2d2d2d;
+  box-shadow: 0 0 0 8px var(--v2-bg);
+}
+/* before hydration the current link draws the pill itself */
+.v2-nav:not(.has-pill) a[aria-current] { background: #2d2d2d; box-shadow: 0 0 0 8px var(--v2-bg); }
+/* sticky glide: the edge in the direction of travel leads, the other one catches up */
+.v2-nav__pill--right, .v2-nav__pill--left {
+  transition: left .42s cubic-bezier(.45, 0, .2, 1), right .42s cubic-bezier(.45, 0, .2, 1);
+}
+.v2-nav__pill--right { transition-delay: .12s, 0s; }
+.v2-nav__pill--left { transition-delay: 0s, .12s; }
 
 .v2 .v2-title {
-  margin: 48px 0 0;
+  margin: 0;
   max-width: 489px;
   font-size: clamp(32px, 3vw - 2px, 46px);
   font-weight: 600;
@@ -279,6 +316,7 @@ html:has(.v2) { background: #1c1c1c; }
 .v2-channels__arrow { position: absolute; top: 22px; right: 24px; font-size: 18px; color: var(--v2-muted); }
 
 @media (prefers-reduced-motion: reduce) {
+  .v2-nav__pill { transition: none; }
   .v2-marquee ul { animation: none; flex-wrap: wrap; width: auto; }
   .v2-marquee li[aria-hidden] { display: none; }
 }
@@ -286,13 +324,13 @@ html:has(.v2) { background: #1c1c1c; }
 /* ---------- Responsive ---------- */
 @media (max-width: 1100px) {
   .v2 { grid-template-columns: 1fr; gap: 40px; padding: 16px 16px 40px; }
-  .v2-aside { position: static; height: auto; overflow: visible; }
-  .v2 .v2-title { margin-top: 36px; }
+  .v2-side { position: static; height: auto; }
+  .v2-aside { overflow: visible; }
   .v2-main { padding-top: 0; }
   .v2-stats { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   /* inner pages: the sidebar shrinks to nav + contact pill so the page content comes first */
   .v2--inner .v2-title, .v2--inner .v2-lead, .v2--inner .v2-aside__bottom { display: none; }
-  .v2--inner .v2-aside { gap: 0; }
+  .v2--inner .v2-aside { gap: 0; padding: 0; background: none; }
 }
 @media (max-width: 600px) {
   .v2 { padding-top: 76px; }
@@ -304,10 +342,8 @@ html:has(.v2) { background: #1c1c1c; }
     top: 12px;
     left: 50%;
     width: 70vw;
+    height: auto;
     transform: translateX(-50%);
-    flex-wrap: nowrap;
-    justify-content: space-between;
-    gap: 0;
     padding: 5px;
     border: 1px solid rgba(255, 255, 255, 0.08);
     border-radius: 999px;
@@ -317,8 +353,10 @@ html:has(.v2) { background: #1c1c1c; }
     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
     font-size: 13px;
   }
-  .v2-nav a { padding: 5px 6px; border-radius: 999px; white-space: nowrap; }
-  /* 70% wide is tight for five links: the CV icon goes */
+  .v2-nav a { height: auto; padding: 5px 10px; border-radius: 999px; white-space: nowrap; }
+  .v2-nav:not(.has-pill) a[aria-current] { background: rgba(255, 255, 255, 0.1); box-shadow: none; }
+  .v2-nav__pill { top: 5px; bottom: 5px; border-radius: 999px; background: rgba(255, 255, 255, 0.1); box-shadow: none; }
+  /* 70% wide is tight for four links: the CV icon goes */
   .v2-nav__cv svg { display: none; }
   .v2 .v2-title { margin-top: 0; font-size: 30px; }
   /* email and "Get in touch" stay on one line */
@@ -346,8 +384,6 @@ html:has(.v2) { background: #1c1c1c; }
   .v2-stats li { padding: 20px; }
   .v2-banner { aspect-ratio: 4 / 3; object-position: 50% 30%; }
   .v2-banner + .v2-intro { margin-top: -40px; }
-  /* the nav floats on its own, so the inner-page sidebar is just the contact pill */
-  .v2--inner .v2-aside { padding: 0; background: none; }
   .v2--inner .v2-status { margin-top: 0; }
 }
 /* very narrow phones: the email pill shrinks a little more to stay on one line */

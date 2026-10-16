@@ -1,7 +1,6 @@
 /* eslint-disable @next/next/no-img-element -- the banner keeps its export size as a plain <img> */
 import type { Metadata } from "next";
 import Link from "next/link";
-import Shell from "../components/Shell";
 
 export const metadata: Metadata = {
   title: "About · Nicolle Koetzler",
@@ -18,7 +17,7 @@ const stats = [
 
 export default function About() {
   return (
-    <Shell current="about">
+    <>
       <img className="v2-banner" src="/assets/v2/about-me.webp" width={2104} height={893} alt="Nicolle Koetzler" />
 
       <section className="v2-section v2-intro v2-intro--full">
@@ -60,6 +59,6 @@ export default function About() {
           <li><strong>German</strong> Elementary (A2)</li>
         </ul>
       </section>
-    </Shell>
+    </>
   );
 }
