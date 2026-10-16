@@ -7,11 +7,11 @@ const instrumentSans = Instrument_Sans({ subsets: ["latin"], weight: ["500"], va
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://nicollekoetzler.com"),
-  title: "Nicolle Koetzler · Product Designer & Software Engineer",
-  description: "Portfolio of Nicolle Koetzler, Product Designer and Software Engineer.",
+  title: "Nicolle Koetzler · Product Designer & Software Developer",
+  description: "Portfolio of Nicolle Koetzler, Product Designer and Software Developer.",
   openGraph: {
-    title: "Nicolle Koetzler · Product Designer & Software Engineer",
-    description: "Portfolio of Nicolle Koetzler, Product Designer and Software Engineer.",
+    title: "Nicolle Koetzler · Product Designer & Software Developer",
+    description: "Portfolio of Nicolle Koetzler, Product Designer and Software Developer.",
     url: "/",
     siteName: "Nicolle Koetzler",
     type: "website",

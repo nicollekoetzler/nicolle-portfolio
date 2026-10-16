@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { Arrow, SiteFooter, SiteHeader } from "../components/site";
+import Shell from "../components/Shell";
 
 export const metadata: Metadata = {
   title: "CV · Nicolle Koetzler",
@@ -69,97 +69,78 @@ const education = [
 
 export default function CV() {
   return (
-    <div className="page">
-      <img className="glow glow--left" src="/assets/ellipse-8.svg" alt="" aria-hidden="true" />
-      <SiteHeader current="cv" />
-
-      <main id="top" className="inner container">
-        <section className="inner-hero">
-          <p className="chip eyebrow">
-            Curriculum Vitae
-            <svg className="chip__border" aria-hidden="true"><rect /></svg>
-          </p>
-          <h1 className="inner-title">
-            Nicolle Koetzler <span className="muted">Senior Product Designer &amp; Design Engineer</span>
-          </h1>
-          <p className="cv-meta">Brazil (UTC-3) · Remote · Working with U.S. teams</p>
-          <p className="prose prose--lead">
+    <Shell current="cv">
+      <section className="v2-section v2-intro">
+        <p className="v2-eyebrow">Curriculum Vitae</p>
+        <h1 className="v2-page-title">
+          Nicolle Koetzler <span>Senior Product Designer &amp; Design Engineer</span>
+        </h1>
+        <p className="v2-meta">Brazil (UTC-3) · Remote · Working with U.S. teams</p>
+        <div className="v2-prose">
+          <p>
             Senior product designer and design engineer with 12+ years in digital design and 4+ years building
             production front ends. I take products from a short brief to a shipped build: information architecture,
             data model, visual design, and runnable React/Next.js + Tailwind code. Led a 20-person design and
             development team shipping websites and web apps for 40+ U.S. law firms.
           </p>
-        </section>
-
-        <section className="cv-section">
-          <h2 className="section-title">Experience</h2>
-          <ol className="jobs">
-            {experience.map((job) => (
-              <li key={job.role + job.company} className="job">
-                <div className="job__head">
-                  <h3>
-                    {job.role} <span className="muted">· {job.company}</span>
-                  </h3>
-                  <p className="job__dates">{job.dates}</p>
-                </div>
-                <p className="job__place">{job.place}</p>
-                <ul className="job__points">
-                  {job.points.map((point) => <li key={point}>{point}</li>)}
-                </ul>
-              </li>
-            ))}
-          </ol>
-        </section>
-
-        <section className="cv-section">
-          <h2 className="section-title">Skills</h2>
-          <div className="skills">
-            {skills.map((s) => (
-              <div key={s.group} className="skills__group">
-                <h3>{s.group}</h3>
-                <ul className="tags">
-                  {s.items.map((item) => <li key={item} className="tag">{item}</li>)}
-                </ul>
-              </div>
-            ))}
-          </div>
-        </section>
-
-        <section className="cv-section">
-          <h2 className="section-title">Education</h2>
-          <ol className="jobs">
-            {education.map((e) => (
-              <li key={e.title} className="job">
-                <div className="job__head">
-                  <h3>
-                    {e.title} <span className="muted">· {e.school}</span>
-                  </h3>
-                  <p className="job__dates">{e.dates}</p>
-                </div>
-                <p className="job__text">{e.text}</p>
-              </li>
-            ))}
-          </ol>
-        </section>
-
-        <section className="cv-section">
-          <h2 className="section-title">Languages</h2>
-          <ul className="inline-list">
-            <li><strong>Portuguese</strong> Native</li>
-            <li><strong>English</strong> Fluent (C2)</li>
-            <li><strong>German</strong> Elementary (A2)</li>
-          </ul>
-        </section>
-
-        <div className="inner-cta">
-          <Link className="btn btn--primary" href="/contact">
-            Let’s work together
-            <Arrow variant="white" />
-          </Link>
         </div>
-      </main>
+      </section>
 
-      <SiteFooter />
-    </div>
+      <section className="v2-section">
+        <h2 className="v2-h2">Experience</h2>
+        <ol className="v2-jobs">
+          {experience.map((job) => (
+            <li key={job.role + job.company}>
+              <div className="v2-jobs__head">
+                <h3>{job.role} <span>· {job.company}</span></h3>
+                <p className="v2-jobs__dates">{job.dates}</p>
+              </div>
+              <p className="v2-jobs__place">{job.place}</p>
+              <ul className="v2-jobs__points">
+                {job.points.map((point) => <li key={point}>{point}</li>)}
+              </ul>
+            </li>
+          ))}
+        </ol>
+      </section>
+
+      <section className="v2-section">
+        <h2 className="v2-h2">Skills</h2>
+        <div className="v2-skill-groups">
+          {skills.map((s) => (
+            <div key={s.group}>
+              <h3>{s.group}</h3>
+              <ul className="v2-stack">
+                {s.items.map((item) => <li key={item}>{item}</li>)}
+              </ul>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <section className="v2-section">
+        <h2 className="v2-h2">Education</h2>
+        <ol className="v2-jobs">
+          {education.map((e) => (
+            <li key={e.title}>
+              <div className="v2-jobs__head">
+                <h3>{e.title} <span>· {e.school}</span></h3>
+                <p className="v2-jobs__dates">{e.dates}</p>
+              </div>
+              <p className="v2-jobs__text">{e.text}</p>
+            </li>
+          ))}
+        </ol>
+      </section>
+
+      <section className="v2-section">
+        <h2 className="v2-h2">Languages</h2>
+        <ul className="v2-pills">
+          <li><strong>Portuguese</strong> Native</li>
+          <li><strong>English</strong> Fluent (C2)</li>
+          <li><strong>German</strong> Elementary (A2)</li>
+        </ul>
+      </section>
+    </Shell>
   );
 }

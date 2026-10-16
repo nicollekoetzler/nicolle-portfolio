@@ -1,198 +1,72 @@
-/* eslint-disable @next/next/no-img-element -- SVG logos/icons keep their Figma root sizes as plain <img> */
-import Image from "next/image";
-import { Arrow, EMAIL, LINKEDIN, SiteFooter, SiteHeader } from "./components/site";
+/* eslint-disable @next/next/no-img-element -- stack icons keep their design sizes as plain <img> */
 import Logos from "./components/Logos";
-import { featured, featuredDashboard, projects, roles, type Project } from "./data";
+import Shell from "./components/Shell";
+import WorkTabs from "./components/WorkTabs";
 
-/** Hand-drawn style arrow that curls once and draws itself downward, on a loop */
-function CurlArrow() {
-  return (
-    <svg className="curl-arrow" viewBox="0 0 40 64" aria-hidden="true">
-      <path
-        className="curl-arrow__shaft"
-        pathLength={1}
-        d="M20 2 C20 12 8 14 8 24 C8 34 30 34 28 22 C26 12 12 20 16 34 C18 42 20 48 20 58"
-      />
-      <path className="curl-arrow__head" pathLength={1} d="M13 51 L20 59 L27 51" />
-    </svg>
-  );
-}
+const skills = [
+  ["Product Design", "UI Design", "Visual Design", "Typography & Layout", "Information Architecture", "User Flows"],
+  ["Prototyping", "Design Systems", "Responsive Design", "Web & Mobile Design", "Design Engineering", "UX Strategy"],
+  ["React", "Next.js", "TypeScript", "Tailwind CSS", "Node.js", "GraphQL", "PostgreSQL"],
+];
 
-/** The project image, linked to its case study (in a new tab) when there is one */
-function MediaLink({
-  href,
-  label,
-  className,
-  style,
-  children,
-}: {
-  href?: string;
-  label: string;
-  className: string;
-  style?: React.CSSProperties;
-  children: React.ReactNode;
-}) {
-  return href ? (
-    <a className={className} style={style} href={href} target="_blank" rel="noopener" aria-label={label}>
-      {children}
-    </a>
-  ) : (
-    <div className={className} style={style}>{children}</div>
-  );
-}
-
-function ProjectCard({ project, wide = false }: { project: Project; wide?: boolean }) {
-  return (
-    <article className={wide ? "project project--wide" : "project"}>
-      <MediaLink
-        href={project.caseStudy ?? project.site}
-        label={`${project.title}, ${project.caseStudy ? "case study" : "live site"} (opens in a new tab)`}
-        className={[
-          "project__media",
-          wide && "project__media--wide",
-          project.coverBackground && "project__media--cover",
-        ].filter(Boolean).join(" ")}
-        style={project.coverBackground ? { background: project.coverBackground } : undefined}
-      >
-        {project.video ? (
-          <video
-            src={project.video}
-            poster={project.image}
-            aria-label={project.alt}
-            autoPlay
-            muted
-            loop
-            playsInline
-            preload="metadata"
-            style={project.position ? { objectPosition: project.position } : undefined}
-          />
-        ) : (
-          <Image
-            src={project.image}
-            alt={project.alt}
-            fill
-            sizes={wide ? "100vw" : "(max-width: 960px) 100vw, 50vw"}
-            style={project.position ? { objectPosition: project.position } : undefined}
-          />
-        )}
-        {project.coverLogo && <img className="project__cover-logo" src={project.coverLogo} alt="" />}
-      </MediaLink>
-      <div className="project__info">
-        <div className="project__heading">
-          <h2 className="project__title">{project.title}</h2>
-          {(project.caseStudy ?? project.site) && (
-            <a className="project__link" href={project.caseStudy ?? project.site} target="_blank" rel="noopener">
-              View Project <span aria-hidden="true">↗</span>
-            </a>
-          )}
-          {project.link && (
-            <a className="project__link" href={project.link.href} target="_blank" rel="noopener">
-              {project.link.label} <span aria-hidden="true">↗</span>
-            </a>
-          )}
-        </div>
-        <ul className="tags">
-          {project.tags.map((tag) => (
-            <li key={tag} className="tag">{tag}</li>
-          ))}
-        </ul>
-      </div>
-    </article>
-  );
-}
+/* icons: Simple Icons (CC0) in brand colors, Photoshop from the Figma file; black marks drawn white for the dark UI */
+const stack = [
+  { name: "Figma", icon: "figma" },
+  { name: "Photoshop", icon: "photoshop" },
+  { name: "React", icon: "react" },
+  { name: "Next.js", icon: "nextdotjs" },
+  { name: "TypeScript", icon: "typescript" },
+  { name: "Tailwind CSS", icon: "tailwindcss" },
+  { name: "Node.js", icon: "nodedotjs" },
+  { name: "PostgreSQL", icon: "postgresql" },
+  { name: "Prisma", icon: "prisma" },
+  { name: "GitHub", icon: "github" },
+  { name: "Notion", icon: "notion" },
+  { name: "Slack", icon: "slack" },
+];
 
 export default function Home() {
   return (
-    <div className="page">
-      {/* Background glows (Ellipse 7 / Ellipse 8) */}
-      <img className="glow glow--left" src="/assets/ellipse-8.svg" alt="" aria-hidden="true" />
-      <img className="glow glow--right" src="/assets/ellipse-7.svg" alt="" aria-hidden="true" />
+    <Shell current="home">
+      <WorkTabs />
 
-      <SiteHeader />
-
-      <main id="top">
-        <section className="hero container" id="about">
-          <div className="hero__text">
-            <ul className="chips" aria-label="Roles">
-              {roles.map((role) => (
-                <li key={role} className="chip">
-                  {role}
-                  <svg className="chip__border" aria-hidden="true"><rect /></svg>
-                </li>
-              ))}
-            </ul>
-
-            <div className="hero__copy">
-              <h1 className="hero__title">
-                Hey! I&apos;m <span className="muted">Nicolle Koetzler</span>,<br />
-                a Product Designer and Software Engineer.
-              </h1>
-            </div>
-
-            <div className="hero__actions">
-              <a className="btn btn--primary" href="/about">
-                Learn More About Me
-                <Arrow variant="white" />
-              </a>
-            </div>
-
-            <ul className="hero__contact" aria-label="Contact">
-              <li>
-                <a href={LINKEDIN} target="_blank" rel="noopener">
-                  LinkedIn
-                  <Arrow variant="dark" />
-                </a>
-              </li>
-              <li>
-                <a href={`mailto:${EMAIL}`}>
-                  {EMAIL}
-                  <Arrow variant="dark" />
-                </a>
-              </li>
-            </ul>
-
-            <div className="trusted" id="services">
-              <p className="trusted__title">Trusted by:</p>
-              <div className="marquee">
-                {/* The set is repeated once so the loop is seamless */}
-                <div className="marquee__track">
-                  <Logos />
-                  <Logos hidden />
-                </div>
-              </div>
-            </div>
+      <section className="v2-section v2-trusted">
+        <h2 className="v2-h2">Trusted by</h2>
+        <div className="marquee">
+          <div className="marquee__track">
+            <Logos />
+            <Logos hidden />
           </div>
-
-          <div className="collage" aria-hidden="true">
-            <div className="collage__main">
-              <Image src="/assets/photo-london.png" alt="" fill sizes="(max-width: 960px) 80vw, 490px" priority />
-            </div>
-            <div className="collage__bw">
-              <Image src="/assets/photo-bw.png" alt="" fill sizes="170px" />
-            </div>
-            <div className="collage__small">
-              <Image src="/assets/photo-portrait.png" alt="" fill sizes="132px" />
-            </div>
-          </div>
-        </section>
-
-        <div className="featured">
-          <CurlArrow />
-          <h2 className="featured-title">Featured Work</h2>
         </div>
+      </section>
 
-        <section className="projects" id="portfolio" aria-label="Projects">
-          <ProjectCard project={featured} wide />
-          <ProjectCard project={featuredDashboard} wide />
-          <div className="projects__grid">
-            {projects.map((project) => (
-              <ProjectCard key={project.title} project={project} />
-            ))}
-          </div>
-        </section>
-      </main>
+      <section className="v2-section">
+        <h2 className="v2-h2">Skills</h2>
+        <div className="v2-skills">
+          {skills.map((row, i) => (
+            <div key={i} className={i % 2 ? "v2-marquee v2-marquee--reverse" : "v2-marquee"}>
+              {/* each row is repeated once so the loop is seamless */}
+              <ul>
+                {[...row, ...row].map((s, j) => (
+                  <li key={`${s}-${j}`} aria-hidden={j >= row.length || undefined}>{s}</li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </div>
+      </section>
 
-      <SiteFooter />
-    </div>
+      <section className="v2-section">
+        <h2 className="v2-h2">Tech Stack</h2>
+        <ul className="v2-stack">
+          {stack.map((t) => (
+            <li key={t.name}>
+              <img src={`/assets/v2/stack/${t.icon}.svg`} width={17} height={17} alt="" />
+              {t.name}
+            </li>
+          ))}
+        </ul>
+      </section>
+    </Shell>
   );
 }

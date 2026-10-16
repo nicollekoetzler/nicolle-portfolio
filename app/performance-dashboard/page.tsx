@@ -187,7 +187,7 @@ export default function PerformanceDashboardPage() {
 
         <section className="pd-closing">
           <img src={`${A}/cg-performance-logo.svg`} width={246} height={29} loading="lazy" alt="CG Performance" />
-          <Link className="pd-closing__link" href="/#portfolio">
+          <Link className="pd-closing__link" href="/#work">
             Back to all projects <span aria-hidden="true">↗</span>
           </Link>
         </section>

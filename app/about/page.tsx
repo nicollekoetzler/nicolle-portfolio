@@ -1,7 +1,7 @@
+/* eslint-disable @next/next/no-img-element -- the banner keeps its export size as a plain <img> */
 import type { Metadata } from "next";
-import Image from "next/image";
 import Link from "next/link";
-import { Arrow, SiteFooter, SiteHeader } from "../components/site";
+import Shell from "../components/Shell";
 
 export const metadata: Metadata = {
   title: "About · Nicolle Koetzler",
@@ -33,83 +33,62 @@ const services = [
 
 export default function About() {
   return (
-    <div className="page">
-      <img className="glow glow--left" src="/assets/ellipse-8.svg" alt="" aria-hidden="true" />
-      <SiteHeader current="about" />
+    <Shell current="about">
+      <img className="v2-banner" src="/assets/v2/about-me.webp" width={2104} height={893} alt="Nicolle Koetzler" />
 
-      <main id="top" className="inner container">
-        <section className="inner-hero about-hero">
-          <div className="about-hero__text">
-            <p className="chip eyebrow">
-              About me
-              <svg className="chip__border" aria-hidden="true"><rect /></svg>
-            </p>
-            <h1 className="inner-title">
-              I design products, <span className="muted">and I build them too.</span>
-            </h1>
-            <div className="prose">
-              <p>
-                I’m Nicolle, a senior product designer and design engineer based in Brazil, working remotely with
-                U.S. teams. I’ve spent 12+ years in digital design and the last 4+ building production front ends.
-              </p>
-              <p>
-                I like taking a product from a short brief to a shipped build: information architecture, data model,
-                visual design and runnable React / Next.js + Tailwind code.
-              </p>
-              <p>
-                Most recently I led a 20-person design and development team at The Casely Group, shipping websites,
-                dashboards and web apps for 40+ U.S. law firms.
-              </p>
-            </div>
-            <div className="hero__actions">
-              <Link className="btn btn--primary" href="/cv">
-                See my CV
-                <Arrow variant="white" />
-              </Link>
-              <Link className="btn btn--link" href="/contact">
-                Get in touch
-                <Arrow variant="dark" />
-              </Link>
-            </div>
-          </div>
-          <div className="about-hero__photo">
-            <Image src="/assets/photo-london.png" alt="Nicolle in London" fill sizes="(max-width: 960px) 90vw, 480px" priority />
-          </div>
-        </section>
+      <section className="v2-section v2-intro">
+        <p className="v2-eyebrow">About me</p>
+        <h1 className="v2-page-title">I design products, and I build them too.</h1>
+        <div className="v2-prose">
+          <p>
+            I’m Nicolle, a senior product designer and design engineer based in Brazil, working remotely with U.S.
+            teams. I’ve spent 12+ years in digital design and the last 4+ building production front ends.
+          </p>
+          <p>
+            I like taking a product from a short brief to a shipped build: information architecture, data model,
+            visual design and runnable React / Next.js + Tailwind code.
+          </p>
+          <p>
+            Most recently I led a 20-person design and development team at The Casely Group, shipping websites,
+            dashboards and web apps for 40+ U.S. law firms.
+          </p>
+        </div>
+        <div className="v2-actions">
+          <Link className="v2-btn v2-btn--primary" href="/cv">See my CV</Link>
+          <Link className="v2-btn" href="/contact">Get in touch</Link>
+        </div>
+      </section>
 
-        <ul className="stats" aria-label="In numbers">
-          {stats.map((s) => (
-            <li key={s.label}>
-              <strong>{s.value}</strong>
-              <span>{s.label}</span>
+      <ul className="v2-stats" aria-label="In numbers">
+        {stats.map((s) => (
+          <li key={s.label}>
+            <strong>{s.value}</strong>
+            <span>{s.label}</span>
+          </li>
+        ))}
+      </ul>
+
+      <section className="v2-section">
+        <h2 className="v2-h2">What I do</h2>
+        <ul className="v2-tiles">
+          {services.map((s, i) => (
+            <li key={s.title}>
+              <span className="v2-tiles__index">0{i + 1}</span>
+              <h3>{s.title}</h3>
+              <p>{s.text}</p>
             </li>
           ))}
         </ul>
+      </section>
 
-        <section className="inner-section">
-          <h2 className="section-title">What I do</h2>
-          <ul className="cards">
-            {services.map((s, i) => (
-              <li key={s.title} className="card">
-                <span className="card__index">0{i + 1}</span>
-                <h3>{s.title}</h3>
-                <p>{s.text}</p>
-              </li>
-            ))}
-          </ul>
-        </section>
-
-        <section className="inner-section inner-section--split">
-          <h2 className="section-title">Languages</h2>
-          <ul className="inline-list">
-            <li><strong>Portuguese</strong> Native</li>
-            <li><strong>English</strong> Fluent (C2)</li>
-            <li><strong>German</strong> Elementary (A2)</li>
-          </ul>
-        </section>
-      </main>
-
-      <SiteFooter />
-    </div>
+      <section className="v2-section">
+        <h2 className="v2-h2">Languages</h2>
+        <ul className="v2-pills">
+          <li><strong>Portuguese</strong> Native</li>
+          <li><strong>English</strong> Fluent (C2)</li>
+          <li><strong>German</strong> Elementary (A2)</li>
+        </ul>
+      </section>
+    </Shell>
   );
 }
