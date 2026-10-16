@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import JobMedia, { type Media } from "../../components/JobMedia";
 import StatusPill from "../../components/StatusPill";
 
 export const metadata: Metadata = {
@@ -6,7 +7,7 @@ export const metadata: Metadata = {
   description: "Experience, skills and education of Nicolle Koetzler, Senior Product Designer & Design Engineer.",
 };
 
-const experience = [
+const experience: { role: string; company: string; dates: string; place: string; points: string[]; media?: Media[] }[] = [
   {
     role: "Head of UX/UI Engineering",
     company: "The Casely Group",
@@ -19,6 +20,18 @@ const experience = [
       "Introduced AI-assisted design-to-code workflows across the team, speeding up development and tightening the design–engineering handoff.",
       "Primary contact for attorneys: turned client-acquisition and case-management needs into product requirements, flows and data structures.",
       "Mentored designers and developers on connecting UX decisions with engineering execution.",
+    ],
+    media: [
+      { src: "/assets/cv/case-assessment-tool.webp", w: 1800, h: 1350, alt: "AI case assessment tool for GetCompensation.law on a laptop" },
+      { src: "/assets/cv/leads-dashboard.webp", w: 1800, h: 1350, alt: "Leads dashboard from the CG Performance platform on a laptop" },
+      {
+        src: "/assets/cv/casely-team.webp",
+        w: 1800,
+        h: 1536,
+        alt: "The Casely Group team together at an in-person meeting",
+        title: "The Casely Group — In-Person Team Meeting",
+        caption: "Bringing our US and Brazil teams together 🇺🇸🇧🇷",
+      },
     ],
   },
   {
@@ -99,6 +112,7 @@ export default function CV() {
               <ul className="v2-jobs__points">
                 {job.points.map((point) => <li key={point}>{point}</li>)}
               </ul>
+              {job.media && <JobMedia items={job.media} />}
             </li>
           ))}
         </ol>

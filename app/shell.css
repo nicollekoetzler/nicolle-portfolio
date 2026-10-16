@@ -335,6 +335,22 @@ html:has(.v2), html:has(.v2) body { background: #1c1c1c; }
 .v2-jobs__points { display: flex; flex-direction: column; gap: 10px; margin: 18px 0 0; padding: 0; list-style: none; }
 .v2-jobs__points li { position: relative; padding-left: 20px; font-size: 16px; font-weight: 300; line-height: 1.55; color: var(--v2-body); }
 .v2-jobs__points li::before { content: ""; position: absolute; left: 4px; top: 10px; width: 5px; height: 5px; border-radius: 50%; background: var(--v2-faint); }
+/* LinkedIn-style media under a job (JobMedia) */
+.jm { display: flex; flex-direction: column; gap: 16px; margin-top: 22px; }
+.jm__row { display: flex; flex-wrap: wrap; gap: 10px; }
+.jm__thumb { display: block; width: 168px; aspect-ratio: 16 / 10; padding: 0; overflow: hidden; border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 10px; background: #111; cursor: zoom-in; transition: border-color .2s, transform .2s; }
+.jm__thumb:hover { border-color: rgba(255, 255, 255, 0.28); transform: translateY(-2px); }
+.jm__thumb img { display: block; width: 100%; height: 100%; object-fit: cover; }
+.jm__captioned { display: flex; align-items: center; gap: 16px; }
+.jm__title { font-size: 16px; font-weight: 500; color: var(--v2-ink); }
+.jm__caption { margin-top: 4px !important; font-size: 15px; font-weight: 300; color: var(--v2-muted); }
+.jm__overlay { position: fixed; z-index: 100; inset: 0; display: grid; place-items: center; padding: 24px; background: rgba(10, 10, 10, 0.85); -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px); cursor: zoom-out; animation: jm-fade .2s ease; }
+.jm__figure { display: flex; flex-direction: column; gap: 12px; max-width: min(1100px, 100%); margin: 0; animation: jm-pop .25s cubic-bezier(.2, .9, .3, 1.1); }
+.jm__figure img { display: block; max-width: 100%; max-height: calc(100vh - 120px); max-height: calc(100dvh - 120px); width: auto; height: auto; border-radius: 12px; }
+.jm__figure figcaption { display: flex; flex-direction: column; gap: 2px; font-size: 15px; color: var(--v2-muted); }
+.jm__figure figcaption strong { font-weight: 500; color: var(--v2-ink); }
+@keyframes jm-fade { from { opacity: 0; } }
+@keyframes jm-pop { from { opacity: 0; transform: scale(.96); } }
 .v2-jobs__text { margin-top: 12px !important; max-width: 720px; font-size: 16px; font-weight: 300; line-height: 1.55; color: var(--v2-body); }
 .v2-skill-lines { display: flex; flex-direction: column; gap: 18px; padding-top: 24px; border-top: 1px solid var(--v2-border); }
 .v2-skill-lines p { font-size: 17px; font-weight: 300; line-height: 1.8; color: var(--v2-body); }
@@ -467,6 +483,11 @@ html:has(.v2), html:has(.v2) body { background: #1c1c1c; }
   .v2-skill-lines p { font-size: 16px; line-height: 1.7; }
   .v2-channels { grid-template-columns: 1fr; }
   .v2-jobs > li { padding: 20px; }
+  .jm__row > div { flex: 1 1 0; }
+  .jm__row .jm__thumb { width: 100%; }
+  .jm__captioned .jm__thumb { flex: none; width: 120px; }
+  .jm__title { font-size: 15px; }
+  .jm__caption { font-size: 14px; }
   .v2-stats li { padding: 20px; }
   .v2-banner { aspect-ratio: 4 / 3; object-position: 50% 30%; }
   .v2-banner + .v2-intro { margin-top: -40px; }
