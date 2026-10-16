@@ -296,7 +296,7 @@ html:has(.v2) { background: #1c1c1c; }
 /* About: the headline sits close under the photo instead of a full section gap */
 .v2-banner + .v2-intro { margin-top: -50px; }
 .v2-intro--full .v2-page-title, .v2-intro--full .v2-prose { max-width: none; }
-.v2 .v2-intro--full .v2-page-title { font-size: 32px; }
+.v2 .v2-intro--full .v2-page-title { font-size: 28px; }
 .v2-page-title { margin: 0; max-width: 820px; font-size: clamp(34px, 3.4vw, 52px); font-weight: 600; line-height: 1.15; letter-spacing: -0.04em; color: var(--v2-strong); }
 .v2-page-title span { display: block; color: var(--v2-muted); font-weight: 500; }
 .v2-prose { display: flex; flex-direction: column; gap: 16px; max-width: 720px; font-size: 18px; font-weight: 300; line-height: 1.6; color: var(--v2-body); }
@@ -332,6 +332,42 @@ html:has(.v2) { background: #1c1c1c; }
 
 .v2-email { font-size: clamp(22px, 2.4vw, 34px); font-weight: 500; letter-spacing: -0.02em; color: var(--v2-strong) !important; text-decoration: underline !important; text-decoration-color: var(--v2-border) !important; text-underline-offset: 6px; transition: text-decoration-color .2s; word-break: break-all; }
 .v2-email:hover { text-decoration-color: #8b5cf6 !important; }
+.v2-email-row { display: flex; align-items: center; gap: 12px; }
+/* minimal copy button: a quiet round icon, with a small "Copy" / "Copied" label on hover */
+.v2-copy {
+  position: relative;
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--v2-muted);
+  cursor: pointer;
+  transition: color .2s, background .2s;
+}
+.v2-copy:hover { color: #fff; background: rgba(255, 255, 255, 0.1); }
+.v2-copy.is-copied { color: #fff; background: rgba(117, 57, 255, 0.35); }
+.v2-copy svg { width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width: 1.4; stroke-linecap: round; stroke-linejoin: round; }
+.v2-copy__tip {
+  position: absolute;
+  bottom: calc(100% + 6px);
+  left: 50%;
+  padding: 3px 7px;
+  border-radius: 6px;
+  background: #2d2d2d;
+  font-size: 12px;
+  color: #fff;
+  white-space: nowrap;
+  opacity: 0;
+  transform: translate(-50%, 4px);
+  transition: opacity .2s, transform .2s;
+  pointer-events: none;
+}
+.v2-copy:hover .v2-copy__tip, .v2-copy:focus-visible .v2-copy__tip, .v2-copy.is-copied .v2-copy__tip { opacity: 1; transform: translate(-50%, 0); }
 .v2-channels { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; margin: 0; padding: 0; list-style: none; }
 .v2-channels a { position: relative; display: flex; flex-direction: column; gap: 6px; padding: 24px; border: 1px solid var(--v2-line); border-radius: 16px; background: var(--v2-panel); transition: border-color .2s; }
 .v2-channels a:hover { border-color: #8b5cf6; }
@@ -427,10 +463,14 @@ html:has(.v2) { background: #1c1c1c; }
   .v2--contact .v2-side { display: contents; }
   .v2--contact .v2-aside { display: none; }
   .v2--contact .v2-main { padding-top: 32px; }
+  /* About headline: 28px on desktop, unchanged 32px on phones */
+  .v2 .v2-intro--full .v2-page-title { font-size: 32px; }
+  .v2-copy { width: 32px; height: 32px; }
 }
 /* phones narrower than 375px: less room, so a smaller gap before the button */
 @media (max-width: 374px) {
   .v2-status__cta { margin-left: 12px; }
+  .v2-email { font-size: 19px; }
 }
 /* very narrow phones: the email pill shrinks a little more to stay on one line */
 @media (max-width: 359px) {

@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import CopyButton from "../../components/CopyButton";
 import { BEHANCE, EMAIL, GITHUB, LINKEDIN, LINKTREE } from "../../components/site";
 
 export const metadata: Metadata = {
@@ -21,7 +22,10 @@ export default function Contact() {
         <div className="v2-prose">
           <p>Tell me about your product and where you’d like to take it.</p>
         </div>
-        <a className="v2-email" href={`mailto:${EMAIL}`}>{EMAIL}</a>
+        <div className="v2-email-row">
+          <a className="v2-email" href={`mailto:${EMAIL}`}>{EMAIL}</a>
+          <CopyButton text={EMAIL} label="Copy email address" />
+        </div>
         <div className="v2-actions">
           <a className="v2-btn v2-btn--primary" href={`mailto:${EMAIL}`}>Send me an email</a>
         </div>
