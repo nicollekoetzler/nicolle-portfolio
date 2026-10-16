@@ -298,7 +298,7 @@ html:has(.v2) { background: #1c1c1c; }
 }
 @media (max-width: 600px) {
   .v2 { padding-top: 76px; }
-  .v2-aside { padding: 24px; }
+  .v2-aside { padding: 24px 20px; }
   /* floating, rounded navbar pinned to the top */
   .v2-nav {
     position: fixed;
@@ -323,6 +323,9 @@ html:has(.v2) { background: #1c1c1c; }
   /* 70% wide is tight for five links: the CV icon goes */
   .v2-nav__cv svg { display: none; }
   .v2 .v2-title { margin-top: 0; font-size: 30px; }
+  /* email and "Get in touch" stay on one line */
+  .v2-status { flex-wrap: nowrap; gap: 8px; padding: 4px 4px 4px 10px; font-size: 12.5px; white-space: nowrap; }
+  .v2-status__cta { padding: 4px 8px; }
   /* "Product Design / Websites" goes under the heading */
   .v2-work__head { flex-direction: column; align-items: flex-start; gap: 14px; }
   /* taller project cards */
@@ -345,4 +348,9 @@ html:has(.v2) { background: #1c1c1c; }
   /* the nav floats on its own, so the inner-page sidebar is just the contact pill */
   .v2--inner .v2-aside { padding: 0; background: none; }
   .v2--inner .v2-status { margin-top: 0; }
+}
+/* very narrow phones: the email pill shrinks a little more to stay on one line */
+@media (max-width: 359px) {
+  .v2-status { gap: 6px; padding-left: 8px; font-size: 11px; }
+  .v2-status__cta { padding: 3px 6px; }
 }
