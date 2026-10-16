@@ -76,7 +76,7 @@ export default function Shell({ children }: { children: React.ReactNode }) {
   const Title = home ? "h1" : "p";
 
   return (
-    <div className={home ? "v2" : "v2 v2--inner"}>
+    <div className={home ? "v2 v2--home" : `v2 v2--inner v2--${current}`}>
       <div className="v2-side">
         <Nav current={current} />
         <aside className="v2-aside">
