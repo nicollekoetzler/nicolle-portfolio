@@ -34,7 +34,9 @@ html:has(.v2) { background: #1c1c1c; }
   flex-direction: column;
   justify-content: space-between;
   gap: 48px;
-  height: min(810px, calc(100vh - 40px));
+  /* fills the window top to bottom (20px margin each side) */
+  height: calc(100vh - 40px);
+  height: calc(100dvh - 40px);
   padding: 32px;
   border-radius: 8px;
   background: var(--v2-panel);
