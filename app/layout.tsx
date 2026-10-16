@@ -32,7 +32,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body>
         {children}
         {/* Microsoft Clarity: heatmaps, session recordings and visit stats; loads after the page is interactive */}
-        <Script id="clarity" strategy="afterInteractive">
+        <Script id="ms-clarity-init" strategy="afterInteractive">
           {`(function(c,l,a,r,i,t,y){
             c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
             t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
