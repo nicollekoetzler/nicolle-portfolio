@@ -30,19 +30,31 @@ export default function About() {
         <h1 className="v2-page-title">Designer by craft, engineer by habit.</h1>
         <div className="v2-prose">
           <p>
-            I’m Nicolle, a senior product designer and design engineer based in
-            Brazil, working remotely with U.S. teams. I’ve spent 12+ years in
-            digital design and the last 4+ building production front ends.
+            I’m a product designer and design engineer with 12+ years in digital
+            design, and I build what I design. As Head of UX/UI Engineering at
+            The Casely Group, I led a team of 20 designers and developers
+            building websites, dashboards and web apps for more than 40 U.S. law
+            firms, from client-facing performance dashboards to Case Connector,
+            an attorney-to-attorney referral app that went from research to the
+            App Store.
           </p>
           <p>
-            I like taking a product from a short brief to a shipped build:
-            information architecture, data model, visual design and runnable
-            React / Next.js + Tailwind code.
+            My work lives where interface craft meets engineering. I design in
+            Figma and build in React, Next.js and Tailwind, so the details
+            survive the handoff, because I’m usually on both sides of it. I built
+            and maintained our design system in Figma and code, and I brought
+            AI-assisted design-to-code workflows into the team. AI helps me move
+            from a rough brief to something real much faster; judgment, taste and
+            a lot of care decide what’s actually worth shipping.
           </p>
           <p>
-            Most recently I led a 20-person design and development team at The
-            Casely Group, shipping websites, dashboards and web apps for 40+
-            U.S. law firms.
+            Before The Casely Group, I designed and built a learning platform
+            that helps doctors prepare for nephrology residency, on web and
+            mobile. I came to code by choice: after years of design, I went
+            through more than 1,000 hours of software engineering training and a
+            degree in Internet Systems, because I wanted to understand the whole
+            product, not just the screens. I work remotely from Brazil with teams
+            in the U.S., in Portuguese, fluent English and a little German.
           </p>
           <p>
             Outside of work, I’m a music nerd, a psychology enthusiast, and a
