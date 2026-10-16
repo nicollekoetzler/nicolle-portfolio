@@ -132,6 +132,13 @@ html:has(.v2), html:has(.v2) body { background: #1c1c1c; }
 }
 .v2-status__email { transition: color .2s; }
 .v2-status__email:hover { color: #c4b5fd; }
+/* typing animation (TypedText): the ghost holds the width, the typed copy sits on top */
+.typed { position: relative; display: inline-block; }
+.typed__ghost { visibility: hidden; }
+.typed__shown { position: absolute; inset: 0; white-space: nowrap; }
+.typed__caret { display: inline-block; width: 1.5px; height: 1.05em; margin-left: 1px; vertical-align: -0.15em; background: #7539ff; animation: typed-blink .9s steps(1) infinite; }
+.typed__caret.is-done { animation: none; opacity: 0; transition: opacity .4s; }
+@keyframes typed-blink { 50% { opacity: 0; } }
 /* 80px between the email and the button on wider screens (10px flex gap + 70px) */
 .v2-status__cta { margin-left: 70px; padding: 4px 10px; border-radius: 6px; background: rgba(255, 255, 255, 0.05); transition: background .2s; }
 .v2-status__cta:hover { background: rgba(255, 255, 255, 0.1); }
