@@ -394,8 +394,18 @@ html:has(.v2) { background: #1c1c1c; }
   .v2-main { gap: 64px; }
   .v2-h2 { font-size: 24px; }
   /* the toggle spans the full width, one half per tab */
-  .v2-toggle { display: flex; align-self: stretch; }
-  .v2-toggle button { flex: 1; padding: 7px 12px; font-size: 14px; }
+  /* same look as the floating navbar: rounded glass bar, soft light pill */
+  .v2-toggle {
+    display: flex;
+    align-self: stretch;
+    padding: 5px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 999px;
+    background: rgba(33, 33, 33, 0.82);
+  }
+  .v2-toggle button { flex: 1; padding: 6px 12px; border-radius: 999px; white-space: nowrap; font-size: 13px; font-weight: 400; color: var(--v2-body); }
+  .v2-toggle:not(.has-pill) button.is-active { background: rgba(255, 255, 255, 0.1); box-shadow: none; }
+  .v2-toggle__pill { top: 5px; bottom: 5px; border-radius: 999px; background: rgba(255, 255, 255, 0.1); box-shadow: none; --liquid-r: 999px; }
   .v2-card__title { font-size: 20px; }
   .v2-card__desc { font-size: 14px; }
   /* no hover on touch: keep the title visible */
