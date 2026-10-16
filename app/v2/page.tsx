@@ -64,7 +64,7 @@ export default function HomeV2() {
             </Link>
           </nav>
 
-          <h1 className="v2-title">I’ll design your app, and build it too</h1>
+          <h1 className="v2-title">I design products, and I build them too.</h1>
           <p className="v2-lead">
             I help companies think through product decisions, design for web and mobile, and build production front
             ends in React and Next.js.
