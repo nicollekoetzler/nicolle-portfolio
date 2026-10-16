@@ -4,6 +4,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useLayoutEffect, useRef, useState } from "react";
+import PolaroidStack from "./PolaroidStack";
 import StatusPill from "./StatusPill";
 import { liquidClass, useLiquidPill } from "./useLiquidPill";
 import { BEHANCE, EMAIL, GITHUB, LINKEDIN } from "./site";
@@ -91,7 +92,7 @@ export default function Shell({ children }: { children: React.ReactNode }) {
           </div>
 
           <div className="v2-aside__bottom">
-            <img className="v2-photo" src="/assets/v2/nicolle.webp" width={127} height={127} alt="Nicolle Koetzler" />
+            <PolaroidStack />
             <ul className="v2-social" aria-label="Elsewhere">
               <li><a href={`mailto:${EMAIL}`} aria-label="Email"><SocialIcon name="mail" /></a></li>
               <li><a href={LINKEDIN} target="_blank" rel="noopener" aria-label="LinkedIn"><SocialIcon name="linkedin" /></a></li>
