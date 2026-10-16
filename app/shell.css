@@ -50,44 +50,40 @@ html:has(.v2) { background: #1c1c1c; }
   overflow: auto;
 }
 
-/* Menu: one dark bar, the current page in a lighter pill cut out of it by an 8px page-colored gap */
+/* Menu: dark segments with the current page detached as a purple pill, 8px clear on each side */
 .v2-nav {
-  position: relative;
-  isolation: isolate;
   display: flex;
   flex: none;
-  justify-content: space-between;
-  align-items: center;
   height: 38px;
-  border-radius: 10px;
-  background: var(--v2-panel);
   font-size: 16px;
   color: var(--v2-body);
+  --nav-r: 10px;
+  --nav-gap: 8px;
 }
-.v2-nav a { position: relative; z-index: 1; display: inline-flex; align-items: center; gap: 6px; height: 100%; padding: 0 24px; border-radius: 10px; transition: color .2s; }
-.v2-nav a:hover, .v2-nav a[aria-current] { color: #fff; }
-.v2-nav__cv svg { width: 14px; height: 14px; fill: none; stroke: currentColor; stroke-width: 1.4; stroke-linecap: round; stroke-linejoin: round; }
-.v2-nav__pill {
-  position: absolute;
-  z-index: 0;
-  top: 0;
-  bottom: 0;
-  border-radius: 10px;
-  background: #2d2d2d;
-  box-shadow: 0 0 0 8px var(--v2-bg);
-}
-/* liquid move: the edge facing the new page leads and the far edge follows, so the pill stretches;
-   while it travels it thins and goes fully round, then springs back with a little overshoot */
-.v2-nav__pill.is-right, .v2-nav__pill.is-left {
+.v2-nav a {
+  flex: 1 1 auto;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  padding: 0 14px;
+  margin: 0;
+  border-radius: 0;
+  background: var(--v2-panel);
+  white-space: nowrap;
   transition:
-    left .46s cubic-bezier(.6, 0, .2, 1),
-    right .46s cubic-bezier(.6, 0, .2, 1),
-    transform .5s cubic-bezier(.3, 1.8, .5, 1),
-    border-radius .5s ease;
+    margin .45s cubic-bezier(.5, 0, .15, 1),
+    border-radius .45s cubic-bezier(.5, 0, .15, 1),
+    background-color .45s ease,
+    color .25s;
 }
-.v2-nav__pill.is-right { transition-delay: .14s, 0s, 0s, 0s; }
-.v2-nav__pill.is-left { transition-delay: 0s, .14s, 0s, 0s; }
-.v2-nav__pill.is-moving { transform: scaleY(.74); border-radius: 19px; transition-duration: .46s, .46s, .22s, .22s; }
+.v2-nav a:hover { color: #fff; }
+.v2-nav a.is-start { border-top-left-radius: var(--nav-r); border-bottom-left-radius: var(--nav-r); }
+.v2-nav a.is-end { border-top-right-radius: var(--nav-r); border-bottom-right-radius: var(--nav-r); }
+.v2-nav a.is-active { margin: 0 var(--nav-gap); background: #7539ff; color: #fff; font-weight: 500; }
+.v2-nav a.is-active:first-child { margin-left: 0; }
+.v2-nav a.is-active:last-child { margin-right: 0; }
+.v2-nav svg { width: 15px; height: 15px; flex: none; fill: none; stroke: currentColor; stroke-width: 1.4; stroke-linecap: round; stroke-linejoin: round; }
 
 .v2 .v2-title {
   margin: 0;
@@ -112,7 +108,7 @@ html:has(.v2) { background: #1c1c1c; }
   color: var(--v2-strong);
   box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
 }
-.v2-status__dot { width: 8px; height: 8px; border-radius: 4px; background: #22c55e; box-shadow: 0 0 8px rgba(34, 197, 94, 0.6); }
+.v2-status__dot { width: 8px; height: 8px; border-radius: 4px; background: #7539ff; box-shadow: 0 0 8px rgba(117, 57, 255, 0.7); }
 .v2-status__email { transition: color .2s; }
 .v2-status__email:hover { color: #c4b5fd; }
 .v2-status__cta { padding: 4px 10px; border: 1px solid var(--v2-border); border-radius: 6px; background: var(--v2-bg); transition: border-color .2s; }
@@ -320,7 +316,7 @@ html:has(.v2) { background: #1c1c1c; }
 .v2-channels__arrow { position: absolute; top: 22px; right: 24px; font-size: 18px; color: var(--v2-muted); }
 
 @media (prefers-reduced-motion: reduce) {
-  .v2-nav__pill { transition: none !important; transform: none !important; }
+  .v2-nav a { transition: none; }
   .v2-marquee ul { animation: none; flex-wrap: wrap; width: auto; }
   .v2-marquee li[aria-hidden] { display: none; }
 }
@@ -339,29 +335,28 @@ html:has(.v2) { background: #1c1c1c; }
 @media (max-width: 600px) {
   .v2 { padding-top: 76px; }
   .v2-aside { padding: 24px 20px; }
-  /* floating, rounded navbar pinned to the top */
+  /* floating navbar pinned to the top: same segments, fully rounded, on a blurred glass background */
   .v2-nav {
     position: fixed;
     z-index: 50;
     top: 12px;
     left: 50%;
-    width: 70vw;
-    height: auto;
+    width: min(92vw, 360px);
+    height: 34px;
     transform: translateX(-50%);
-    padding: 5px;
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    border-radius: 999px;
-    background: rgba(33, 33, 33, 0.82);
+    font-size: 13px;
+    --nav-r: 17px;
+    --nav-gap: 6px;
+  }
+  .v2-nav a {
+    padding: 0 8px;
+    background-color: rgba(33, 33, 33, 0.88);
     -webkit-backdrop-filter: blur(14px);
             backdrop-filter: blur(14px);
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
-    font-size: 13px;
   }
-  .v2-nav a { height: auto; padding: 5px 10px; border-radius: 999px; white-space: nowrap; }
-  .v2-nav:not(.has-pill) a[aria-current] { background: rgba(255, 255, 255, 0.1); box-shadow: none; }
-  .v2-nav__pill { top: 5px; bottom: 5px; border-radius: 999px; background: rgba(255, 255, 255, 0.1); box-shadow: none; }
-  /* 70% wide is tight for four links: the CV icon goes */
-  .v2-nav__cv svg { display: none; }
+  .v2-nav a.is-active { background-color: #7539ff; }
+  /* tight on phones: icons only on the current page */
+  .v2-nav a:not(.is-active) svg { display: none; }
   .v2 .v2-title { margin-top: 0; font-size: 30px; }
   /* email and "Get in touch" stay on one line */
   .v2-status { flex-wrap: nowrap; gap: 8px; padding: 4px 4px 4px 10px; font-size: 12.5px; white-space: nowrap; }

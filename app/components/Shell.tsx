@@ -3,7 +3,7 @@
 /* eslint-disable @next/next/no-img-element -- portrait and icons keep their design sizes as plain <img> */
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useLayoutEffect, useRef, useState } from "react";
+import { useLayoutEffect, useState } from "react";
 import { BEHANCE, EMAIL, GITHUB, LINKEDIN } from "./site";
 import "../shell.css";
 
@@ -26,64 +26,43 @@ function SocialIcon({ name }: { name: "mail" | "linkedin" | "github" | "behance"
   return <svg viewBox="0 0 24 24" aria-hidden="true">{paths[name]}</svg>;
 }
 
-/* The active page sits in its own lighter pill, cut out of the bar (Figma "Nicolle Website" › node 39:1447).
-   When the page changes the pill moves like a drop of liquid, in plain CSS so it stays sharp: the leading edge
-   pulls ahead, the pill thins and rounds out while it stretches, then the trailing edge catches up and it
-   settles with a small jelly wobble. */
+const navIcons: Record<Page, React.ReactNode> = {
+  home: <path d="M2.5 7 8 2.5 13.5 7v6a.5.5 0 0 1-.5.5H10V10H6v3.5H3a.5.5 0 0 1-.5-.5V7Z" />,
+  about: <><circle cx="8" cy="8" r="5.75" /><path d="M8 7.25v3.5M8 5.25v.01" /></>,
+  contact: <><rect x="2" y="3.5" width="12" height="9" rx="1.5" /><path d="m2.5 4.5 5.5 4 5.5-4" /></>,
+  cv: <path d="M8 2.5v8M4.5 7.5 8 11l3.5-3.5M3 13.5h10" />,
+};
+
+/* The current page detaches from the bar as its own purple pill, with a gap on both sides; the other links
+   stay grouped in dark segments. Changing page slides the gaps over and fades the color across, in plain CSS. */
 function Nav({ current }: { current: Page }) {
-  const navRef = useRef<HTMLElement>(null);
   const [target, setTarget] = useState(current);
-  const [pill, setPill] = useState<{ left: number; right: number; dir: "left" | "right" | null }>();
-  const [moving, setMoving] = useState(false);
-
-  // follow the route (back/forward included); clicks move the pill straight away
+  // follow the route (back/forward included); clicks switch straight away
   useLayoutEffect(() => setTarget(current), [current]);
-
-  useLayoutEffect(() => {
-    const nav = navRef.current;
-    if (!nav) return;
-    const measure = (animate: boolean) => {
-      const link = nav.querySelector<HTMLElement>(`[data-page="${target}"]`);
-      if (!link) return;
-      const left = link.offsetLeft;
-      const right = nav.clientWidth - left - link.offsetWidth;
-      setPill((prev) => ({ left, right, dir: animate && prev ? (left > prev.left ? "right" : left < prev.left ? "left" : prev.dir) : null }));
-    };
-    measure(true);
-    setMoving(true);
-    const settle = window.setTimeout(() => setMoving(false), 420);
-    const onResize = () => measure(false);
-    window.addEventListener("resize", onResize);
-    return () => {
-      window.clearTimeout(settle);
-      window.removeEventListener("resize", onResize);
-    };
-  }, [target]);
+  const active = nav.findIndex((l) => l.page === target);
 
   return (
-    <nav ref={navRef} className={pill ? "v2-nav has-pill" : "v2-nav"} aria-label="Main">
-      {pill && (
-        <span
-          className={["v2-nav__pill", pill.dir && `is-${pill.dir}`, moving && pill.dir && "is-moving"].filter(Boolean).join(" ")}
-          style={{ left: pill.left, right: pill.right }}
-          aria-hidden="true"
-        />
-      )}
-      {nav.map((l) => (
-        <Link
-          key={l.page}
-          href={l.href}
-          data-page={l.page}
-          className={l.page === "cv" ? "v2-nav__cv" : undefined}
-          aria-current={l.page === current ? "page" : undefined}
-          onClick={() => setTarget(l.page)}
-        >
-          {l.label}
-          {l.page === "cv" && (
-            <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 2.5v8M4.5 7.5 8 11l3.5-3.5M3 13.5h10" /></svg>
-          )}
-        </Link>
-      ))}
+    <nav className="v2-nav" aria-label="Main">
+      {nav.map((l, i) => {
+        const classes = [
+          i === active && "is-active",
+          // a dark segment ends wherever it meets the active pill (or the end of the bar)
+          (i === 0 || i === active || i - 1 === active) && "is-start",
+          (i === nav.length - 1 || i === active || i + 1 === active) && "is-end",
+        ];
+        return (
+          <Link
+            key={l.page}
+            href={l.href}
+            className={classes.filter(Boolean).join(" ")}
+            aria-current={l.page === current ? "page" : undefined}
+            onClick={() => setTarget(l.page)}
+          >
+            <svg viewBox="0 0 16 16" aria-hidden="true">{navIcons[l.page]}</svg>
+            {l.label}
+          </Link>
+        );
+      })}
     </nav>
   );
 }
