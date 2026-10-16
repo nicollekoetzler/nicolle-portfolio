@@ -36,9 +36,8 @@ export default function About() {
     <Shell current="about">
       <img className="v2-banner" src="/assets/v2/about-me.webp" width={2104} height={893} alt="Nicolle Koetzler" />
 
-      <section className="v2-section v2-intro">
-        <p className="v2-eyebrow">About me</p>
-        <h1 className="v2-page-title">I design products, and I build them too.</h1>
+      <section className="v2-section v2-intro v2-intro--full">
+        <h1 className="v2-page-title">Designer by craft, engineer by habit.</h1>
         <div className="v2-prose">
           <p>
             I’m Nicolle, a senior product designer and design engineer based in Brazil, working remotely with U.S.

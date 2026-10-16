@@ -230,6 +230,8 @@ html:has(.v2) { background: #1c1c1c; }
 /* ---------- Inner pages (About, Contact, CV) ---------- */
 .v2-banner { display: block; width: 100%; height: auto; aspect-ratio: 2104 / 893; object-fit: cover; border: 1px solid var(--v2-line); border-radius: 16px; background: var(--v2-panel); }
 .v2-intro { align-items: flex-start; gap: 20px; }
+/* About: the intro runs the full width of the column */
+.v2-intro--full .v2-page-title, .v2-intro--full .v2-prose { max-width: none; }
 .v2-eyebrow { font-size: 14px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: #a78bfa; }
 .v2-page-title { margin: 0; max-width: 820px; font-size: clamp(34px, 3.4vw, 52px); font-weight: 600; line-height: 1.15; letter-spacing: -0.04em; color: var(--v2-strong); }
 .v2-page-title span { display: block; color: var(--v2-muted); font-weight: 500; }
