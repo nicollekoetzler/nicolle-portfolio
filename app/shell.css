@@ -1,5 +1,5 @@
 /* Site shell: dark sidebar + main column (Figma "Nicolle Website" › 1728w default) */
-html:has(.v2) { background: #1c1c1c; }
+html:has(.v2), html:has(.v2) body { background: #1c1c1c; }
 
 .v2 {
   --v2-bg: #1c1c1c;

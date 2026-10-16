@@ -1,5 +1,5 @@
 /* Case Connector case study, built from the Figma file "Case Connector" (frame Case Connector Case Study) */
-html:has(.cs) { background: #17181c; }
+html:has(.cs), html:has(.cs) body { background: #17181c; }
 
 .cs {
   --cs-bg: #17181c;

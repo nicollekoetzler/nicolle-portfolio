@@ -21,11 +21,12 @@
 *::before,
 *::after { box-sizing: border-box; }
 
-html { scroll-behavior: smooth; }
+/* every page is dark now; iOS Safari tints its status bar and toolbar from these backgrounds */
+html { scroll-behavior: smooth; background: #1c1c1c; color-scheme: dark; }
 
 body {
   margin: 0;
-  background: var(--bg);
+  background: #1c1c1c;
   color: var(--ink);
   font-family: var(--font-body);
   -webkit-font-smoothing: antialiased;
