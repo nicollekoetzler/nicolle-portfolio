@@ -346,24 +346,6 @@ header, main { position: relative; z-index: 1; }
 }
 .logo { flex: none; display: flex; align-items: center; }
 .logo img { max-width: none; }
-.logo--morrell { position: relative; width: 207px; height: 48.457px; overflow: hidden; }
-.logo--morrell span {
-  position: absolute;
-  inset: 0.97% -0.37% 0.97% 0.23%;
-  -webkit-mask-image: var(--mask);
-          mask-image: var(--mask);
-  -webkit-mask-size: 207px 48.457px;
-          mask-size: 207px 48.457px;
-  -webkit-mask-position: -0.471px -0.47px;
-          mask-position: -0.471px -0.47px;
-  -webkit-mask-repeat: no-repeat;
-          mask-repeat: no-repeat;
-}
-.logo--morrell span img { width: 100%; height: 100%; }
-.logo--simmons { position: relative; width: 197px; height: 45.182px; }
-.logo--simmons__mark { position: absolute; left: 0; top: 0; }
-.logo--simmons__word { position: absolute; left: 51.54px; top: 12px; }
-
 @keyframes marquee {
   to { transform: translateX(-50%); }
 }

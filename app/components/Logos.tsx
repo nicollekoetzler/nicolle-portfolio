@@ -1,37 +1,26 @@
-/* eslint-disable @next/next/no-img-element -- SVG logos keep their Figma root sizes as plain <img> */
+/* eslint-disable @next/next/no-img-element -- SVG logos keep their Figma sizes as plain <img> */
+
+/* light-on-dark versions from the Figma file; Trial Lawyers University has its grey wordmark lightened to match */
+const logos = [
+  { src: "morrell", name: "The Morrell Law Firm", w: 144, h: 34 },
+  { src: "california", name: "California Trial Law Group", w: 156, h: 36 },
+  { src: "justice", name: "Justice 4 Elders", w: 158, h: 39 },
+  { src: "simmons", name: "Simmons Law", w: 137, h: 32 },
+  { src: "bush", name: "Bush & Bush", w: 65, h: 24 },
+  { src: "taylor", name: "Taylor & Siemens", w: 143, h: 30 },
+  { src: "trial-lawyers", name: "Trial Lawyers University", w: 153, h: 32 },
+  { src: "hostgator", name: "HostGator", w: 139, h: 30 },
+];
 
 /** Client logos for the "Trusted by" carousel; render it twice (the second hidden) for a seamless loop */
 export default function Logos({ hidden = false }: { hidden?: boolean }) {
-  const alt = (text: string) => (hidden ? "" : text);
   return (
     <ul className="logos" aria-hidden={hidden || undefined}>
-      <li className="logo logo--morrell" aria-label={hidden ? undefined : "The Morrell Law Firm"}>
-        <span style={{ ["--mask" as string]: "url('/assets/logo-morrell-mask.svg')" }}>
-          <img src="/assets/logo-morrell.svg" alt="" />
-        </span>
-      </li>
-      <li className="logo">
-        <img src="/assets/logo-california-trial.svg" width={225} height={52} alt={alt("California Trial Law Group")} />
-      </li>
-      <li className="logo">
-        <img src="/assets/logo-justice4elders.svg" width={228.219} height={56} alt={alt("Justice 4 Elders")} />
-      </li>
-      <li className="logo logo--simmons" aria-label={hidden ? undefined : "Simmons Law"}>
-        <img className="logo--simmons__mark" src="/assets/logo-simmons-mark.svg" width={42} height={45.182} alt="" />
-        <img className="logo--simmons__word" src="/assets/logo-simmons-word.svg" width={145.464} height={27.017} alt="" />
-      </li>
-      <li className="logo">
-        <img src="/assets/logo-bush.svg" width={93} height={34.128} alt={alt("Bush & Bush")} />
-      </li>
-      <li className="logo">
-        <img src="/assets/logo-taylor-siemens.svg" width={206} height={42.429} alt={alt("Taylor & Siemens")} />
-      </li>
-      <li className="logo">
-        <img src="/assets/logo-trial-lawyers.svg" width={204} height={43} alt={alt("Trial Lawyers University")} />
-      </li>
-      <li className="logo">
-        <img src="/assets/logo-hostgator.svg" width={225} height={40} alt={alt("HostGator")} />
-      </li>
+      {logos.map((l) => (
+        <li key={l.src} className="logo">
+          <img src={`/assets/logos/${l.src}.svg`} width={l.w} height={l.h} alt={hidden ? "" : l.name} />
+        </li>
+      ))}
     </ul>
   );
 }
