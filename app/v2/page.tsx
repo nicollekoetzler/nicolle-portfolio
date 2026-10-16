@@ -19,23 +19,20 @@ const skills = [
   ["React", "Next.js", "TypeScript", "Tailwind CSS", "Node.js", "GraphQL", "PostgreSQL"],
 ];
 
-const stack = ["Figma", "Photoshop", "React", "Next.js", "TypeScript", "Tailwind CSS", "Node.js", "PostgreSQL", "Prisma", "GitHub", "Notion", "Slack"];
-
-const experience = [
-  {
-    role: "Head of UX/UI Engineering",
-    dates: "Oct 2023 to Oct 2026",
-    text: "Led a team of 20 designers and developers delivering websites, dashboards and web apps for 40+ U.S. law firms. Designed and built products from concept to production (Figma to React + Tailwind) and maintained a design system kept in sync between design and code.",
-    company: "The Casely Group",
-    place: "Miami, FL · Remote",
-  },
-  {
-    role: "UX/UI Engineer",
-    dates: "Jan 2023 to Feb 2024",
-    text: "Designed and built the website and app for a learning platform that prepares doctors for nephrology residency, owning front-end features end to end across web (React + Tailwind) and mobile (React Native).",
-    company: "NefroAtual",
-    place: "Toronto, Canada · Remote",
-  },
+/* icons: Simple Icons (CC0) in brand colors, Photoshop from the Figma file; black marks drawn white for the dark UI */
+const stack = [
+  { name: "Figma", icon: "figma" },
+  { name: "Photoshop", icon: "photoshop" },
+  { name: "React", icon: "react" },
+  { name: "Next.js", icon: "nextdotjs" },
+  { name: "TypeScript", icon: "typescript" },
+  { name: "Tailwind CSS", icon: "tailwindcss" },
+  { name: "Node.js", icon: "nodedotjs" },
+  { name: "PostgreSQL", icon: "postgresql" },
+  { name: "Prisma", icon: "prisma" },
+  { name: "GitHub", icon: "github" },
+  { name: "Notion", icon: "notion" },
+  { name: "Slack", icon: "slack" },
 ];
 
 function SocialIcon({ name }: { name: "mail" | "linkedin" | "github" | "behance" }) {
@@ -124,23 +121,13 @@ export default function HomeV2() {
         <section className="v2-section">
           <h2 className="v2-h2">Tech Stack</h2>
           <ul className="v2-stack">
-            {stack.map((t) => <li key={t}>{t}</li>)}
-          </ul>
-        </section>
-
-        <section className="v2-section">
-          <h2 className="v2-h2">Experience</h2>
-          <ol className="v2-exp">
-            {experience.map((e) => (
-              <li key={e.role}>
-                <h3>{e.role}</h3>
-                <p className="v2-exp__muted">{e.dates}</p>
-                <p>{e.text}</p>
-                <p>{e.company}</p>
-                <p className="v2-exp__muted">{e.place}</p>
+            {stack.map((t) => (
+              <li key={t.name}>
+                <img src={`/assets/v2/stack/${t.icon}.svg`} width={17} height={17} alt="" />
+                {t.name}
               </li>
             ))}
-          </ol>
+          </ul>
         </section>
 
         <footer className="v2-footer">
