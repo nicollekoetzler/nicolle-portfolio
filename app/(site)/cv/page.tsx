@@ -105,15 +105,13 @@ export default function CV() {
       </section>
 
       <section className="v2-section">
-        <h2 className="v2-h2">Skills</h2>
-        <div className="v2-skill-groups">
+        <h2 className="v2-h2">Skills &amp; Tools</h2>
+        {/* one flowing line per group: "Group — item · item · item" */}
+        <div className="v2-skill-lines">
           {skills.map((s) => (
-            <div key={s.group}>
-              <h3>{s.group}</h3>
-              <ul className="v2-stack">
-                {s.items.map((item) => <li key={item}>{item}</li>)}
-              </ul>
-            </div>
+            <p key={s.group}>
+              <strong>{s.group}</strong> — {s.items.join(" · ")}
+            </p>
           ))}
         </div>
       </section>

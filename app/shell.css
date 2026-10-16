@@ -328,9 +328,9 @@ html:has(.v2), html:has(.v2) body { background: #1c1c1c; }
 .v2-jobs__points li { position: relative; padding-left: 20px; font-size: 16px; font-weight: 300; line-height: 1.55; color: var(--v2-body); }
 .v2-jobs__points li::before { content: ""; position: absolute; left: 4px; top: 10px; width: 5px; height: 5px; border-radius: 50%; background: var(--v2-faint); }
 .v2-jobs__text { margin-top: 12px !important; max-width: 720px; font-size: 16px; font-weight: 300; line-height: 1.55; color: var(--v2-body); }
-.v2-skill-groups { display: flex; flex-direction: column; gap: 24px; }
-.v2-skill-groups h3 { margin: 0 0 12px; font-size: 14px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: var(--v2-muted); }
-.v2-skill-groups .v2-stack li { padding: 0 12px; }
+.v2-skill-lines { display: flex; flex-direction: column; gap: 18px; padding-top: 24px; border-top: 1px solid var(--v2-border); }
+.v2-skill-lines p { font-size: 17px; font-weight: 300; line-height: 1.8; color: var(--v2-body); }
+.v2-skill-lines strong { font-weight: 600; color: var(--v2-strong); }
 
 .v2-email { font-size: clamp(22px, 2.4vw, 34px); font-weight: 500; letter-spacing: -0.02em; color: var(--v2-strong) !important; text-decoration: underline !important; text-decoration-color: var(--v2-border) !important; text-underline-offset: 6px; transition: text-decoration-color .2s; word-break: break-all; }
 .v2-email:hover { text-decoration-color: #8b5cf6 !important; }
@@ -455,6 +455,7 @@ html:has(.v2), html:has(.v2) body { background: #1c1c1c; }
   .v2-card__desc { display: none; }
   .v2-page-title { font-size: 30px; }
   .v2-prose { font-size: 16px; }
+  .v2-skill-lines p { font-size: 16px; line-height: 1.7; }
   .v2-channels { grid-template-columns: 1fr; }
   .v2-jobs > li { padding: 20px; }
   .v2-stats li { padding: 20px; }
