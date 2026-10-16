@@ -188,6 +188,7 @@ html:has(.v2), html:has(.v2) body { background: #1c1c1c; }
 .v2-main { display: flex; flex-direction: column; gap: 82px; padding-top: 32px; min-width: 0; }
 .v2-h2 { margin: 0; font-size: 28px; font-weight: 500; line-height: 1.25; color: var(--v2-ink); }
 .v2-section { display: flex; flex-direction: column; gap: 24px; }
+.v2-section__lead { max-width: 620px; margin-top: -12px !important; font-size: 18px; font-weight: 300; line-height: 1.5; color: var(--v2-muted); }
 
 /* Featured work */
 .v2-work__head { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px; margin-bottom: 24px; }
@@ -474,6 +475,7 @@ html:has(.v2), html:has(.v2) body { background: #1c1c1c; }
   .v2-lead { font-size: 16px; }
   .v2-main { gap: 64px; }
   .v2-h2 { font-size: 24px; }
+  .v2-section__lead { font-size: 16px; }
   /* the toggle spans the full width, one half per tab */
   /* same look as the floating navbar: rounded glass bar, soft light pill */
   .v2-toggle {
