@@ -77,14 +77,15 @@ html:has(.v2) { background: #1c1c1c; }
 .v2-status__cta { padding: 4px 10px; border: 1px solid var(--v2-border); border-radius: 6px; background: var(--v2-bg); transition: border-color .2s; }
 .v2-status__cta:hover { border-color: #8b5cf6; }
 
-.v2-aside__bottom { display: flex; flex-direction: column; gap: 26px; }
+/* photo, icons and name sit the same distance apart */
+.v2-aside__bottom { display: flex; flex-direction: column; gap: 24px; }
 .v2-photo { width: 127px; height: 127px; border-radius: 15px; object-fit: cover; }
-.v2-social { display: flex; gap: 4px; margin: -8px 0 0 -6px; padding: 0; list-style: none; }
-.v2-social a { display: grid; place-items: center; width: 32px; height: 32px; border-radius: 6px; color: var(--v2-muted); transition: color .2s, background .2s; }
-.v2-social a:hover { color: #fff; background: rgba(255, 255, 255, 0.06); }
+.v2-social { display: flex; gap: 8px; margin: 0; padding: 0; list-style: none; }
+.v2-social a { display: grid; place-items: center; width: 36px; height: 36px; border-radius: 50%; background: rgba(255, 255, 255, 0.05); color: var(--v2-muted); transition: color .2s, background .2s; }
+.v2-social a:hover { color: #fff; background: rgba(255, 255, 255, 0.1); }
 .v2-social svg { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
 .v2-id { display: flex; flex-direction: column; gap: 2px; font-size: 16px; font-weight: 300; color: var(--v2-body); }
-.v2-id__name { margin-bottom: 6px !important; font-size: 28px; font-weight: 500; line-height: 1.25; color: var(--v2-ink); }
+.v2-id__name { margin: -7px 0 6px !important; /* pulls the cap height in line with the 24px gaps */ font-size: 28px; font-weight: 500; line-height: 1.25; color: var(--v2-ink); }
 
 /* ---------- Main ---------- */
 .v2-main { display: flex; flex-direction: column; gap: 82px; padding-top: 32px; min-width: 0; }
