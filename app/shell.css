@@ -335,22 +335,53 @@ html:has(.v2), html:has(.v2) body { background: #1c1c1c; }
 .v2-jobs__points { display: flex; flex-direction: column; gap: 10px; margin: 18px 0 0; padding: 0; list-style: none; }
 .v2-jobs__points li { position: relative; padding-left: 20px; font-size: 16px; font-weight: 300; line-height: 1.55; color: var(--v2-body); }
 .v2-jobs__points li::before { content: ""; position: absolute; left: 4px; top: 10px; width: 5px; height: 5px; border-radius: 50%; background: var(--v2-faint); }
-/* LinkedIn-style media under a job (JobMedia) */
-.jm { display: flex; flex-direction: column; gap: 16px; margin-top: 22px; }
-.jm__row { display: flex; flex-wrap: wrap; gap: 10px; }
-.jm__thumb { display: block; width: 168px; aspect-ratio: 16 / 10; padding: 0; overflow: hidden; border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 10px; background: #111; cursor: zoom-in; transition: border-color .2s, transform .2s; }
-.jm__thumb:hover { border-color: rgba(255, 255, 255, 0.28); transform: translateY(-2px); }
-.jm__thumb img { display: block; width: 100%; height: 100%; object-fit: cover; }
-.jm__captioned { display: flex; align-items: center; gap: 16px; }
-.jm__title { font-size: 16px; font-weight: 500; color: var(--v2-ink); }
-.jm__caption { margin-top: 4px !important; font-size: 15px; font-weight: 300; color: var(--v2-muted); }
-.jm__overlay { position: fixed; z-index: 100; inset: 0; display: grid; place-items: center; padding: 24px; background: rgba(10, 10, 10, 0.85); -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px); cursor: zoom-out; animation: jm-fade .2s ease; }
-.jm__figure { display: flex; flex-direction: column; gap: 12px; max-width: min(1100px, 100%); margin: 0; animation: jm-pop .25s cubic-bezier(.2, .9, .3, 1.1); }
-.jm__figure img { display: block; max-width: 100%; max-height: calc(100vh - 120px); max-height: calc(100dvh - 120px); width: auto; height: auto; border-radius: 12px; }
-.jm__figure figcaption { display: flex; flex-direction: column; gap: 2px; font-size: 15px; color: var(--v2-muted); }
-.jm__figure figcaption strong { font-weight: 500; color: var(--v2-ink); }
-@keyframes jm-fade { from { opacity: 0; } }
-@keyframes jm-pop { from { opacity: 0; transform: scale(.96); } }
+/* Job media (JobMedia): a pile of white-bordered photos that opens into a window viewer */
+.jm { display: flex; align-items: center; gap: 22px; margin-top: 24px; }
+.jm-pile { position: relative; flex: none; width: 196px; height: 128px; margin: 6px 0 6px 6px; padding: 0; border: 0; background: none; cursor: pointer; }
+.jm-pile__card { position: absolute; inset: 0; padding: 5px; border-radius: 4px; background: #fff; box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3), 0 10px 22px rgba(0, 0, 0, 0.35); transform: rotate(var(--tilt)); transition: transform .35s cubic-bezier(.3, 1.4, .5, 1); }
+.jm-pile__card img { display: block; width: 100%; height: 100%; object-fit: cover; border-radius: 2px; }
+.jm-pile:hover .jm-pile__card, .jm-pile:focus-visible .jm-pile__card { transform: rotate(calc(var(--tilt) * 1.9)) translateY(-3px); }
+.jm-pile:focus-visible { outline: 2px solid #7539ff; outline-offset: 10px; border-radius: 6px; }
+.jm-pile.is-out .jm-pile__card { visibility: hidden; }
+.jm-label__title { font-size: 16px; font-weight: 500; color: var(--v2-ink); }
+.jm-label__meta { margin-top: 4px !important; font-size: 14px; font-weight: 300; color: var(--v2-muted); }
+
+/* portaled to <body>, outside .v2, so it brings its own colors */
+.jm-stage { --v2-ink: #ededed; --v2-muted: #9ca3af; --v2-faint: #6b7280; font-family: var(--font-inter), system-ui, sans-serif; position: fixed; z-index: 100; inset: 0; background: rgba(10, 10, 10, 0); -webkit-backdrop-filter: blur(0); backdrop-filter: blur(0); transition: background .45s ease, backdrop-filter .45s ease, -webkit-backdrop-filter .45s ease; }
+.jm-stage.is-spread, .jm-stage.is-focus, .jm-stage.is-unfocus { background: rgba(10, 10, 10, 0.84); -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px); }
+.jm-card { position: fixed; padding: 6px; border-radius: 5px; background: #fff; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3), 0 18px 40px rgba(0, 0, 0, 0.45); transition: transform .52s cubic-bezier(.22, .9, .28, 1.05), opacity .3s ease; will-change: transform; }
+.jm-card img { display: block; width: 100%; height: 100%; object-fit: cover; border-radius: 2px; }
+/* focused: the row fades away behind the window; on the way out it comes back */
+.is-focus .jm-card { opacity: 0; }
+.is-unfocus .jm-card { opacity: 1; }
+.is-unfocus .jm-card.is-current { opacity: 0; }
+
+.jm-window { position: fixed; z-index: 10; left: 50%; top: 50%; width: min(960px, calc(100vw - 32px)); transform: translate(-50%, -50%); }
+.jm-window::before { content: ""; position: absolute; z-index: -1; inset: 0; border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 14px; background: #1b1b1b; box-shadow: 0 30px 80px rgba(0, 0, 0, 0.6); animation: jm-in .35s ease .12s both; }
+.jm-window__bar, .jm-window__text { animation: jm-in .35s ease .18s both; }
+.is-unfocus .jm-window::before, .is-unfocus .jm-window__bar, .is-unfocus .jm-window__text, .is-unfocus .jm-nav { opacity: 0; transition: opacity .2s ease; animation: none; }
+.jm-window__bar { display: flex; align-items: center; gap: 8px; height: 44px; padding: 0 14px; }
+.jm-dot { display: grid; place-items: center; width: 12px; height: 12px; padding: 0; border: 0; border-radius: 50%; }
+.jm-dot--close { background: #ff5f57; cursor: pointer; }
+.jm-dot--min { background: #febc2e; }
+.jm-dot--max { background: #28c840; }
+.jm-dot svg { width: 8px; height: 8px; fill: none; stroke: rgba(0, 0, 0, 0.6); stroke-width: 1.6; stroke-linecap: round; opacity: 0; transition: opacity .15s; }
+.jm-window__bar:hover .jm-dot svg { opacity: 1; }
+.jm-window__count { flex: 1; text-align: center; font-size: 13px; color: var(--v2-faint); }
+.jm-window__x { display: grid; place-items: center; width: 28px; height: 28px; margin-right: -6px; padding: 0; border: 0; border-radius: 50%; background: transparent; color: var(--v2-muted); cursor: pointer; transition: background .2s, color .2s; }
+.jm-window__x:hover { background: rgba(255, 255, 255, 0.08); color: #fff; }
+.jm-window__x svg { width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width: 1.6; stroke-linecap: round; }
+.jm-window__media { position: relative; margin: 0 14px; }
+.jm-window__media img { display: block; width: auto; max-width: 100%; margin: 0 auto; height: auto; max-height: calc(100vh - 250px); max-height: calc(100dvh - 250px); border-radius: 8px; background: #111; cursor: pointer; transition: transform .42s cubic-bezier(.22, .9, .28, 1.05); }
+.jm-nav { position: absolute; top: 50%; display: grid; place-items: center; width: 40px; height: 40px; padding: 0; border: 0; border-radius: 50%; background: rgba(0, 0, 0, 0.5); color: #fff; cursor: pointer; transform: translateY(-50%); transition: background .2s; -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px); }
+.jm-nav:hover { background: rgba(0, 0, 0, 0.75); }
+.jm-nav svg { width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+.jm-nav--prev { left: 12px; }
+.jm-nav--next { right: 12px; }
+.jm-window__text { padding: 16px 20px 20px; }
+.jm-window__title { margin: 0; font-size: 18px; font-weight: 500; color: var(--v2-ink); }
+.jm-window__desc { max-width: 720px; margin: 6px 0 0; font-size: 15px; font-weight: 300; line-height: 1.55; color: var(--v2-muted); }
+@keyframes jm-in { from { opacity: 0; } }
 .v2-jobs__text { margin-top: 12px !important; max-width: 720px; font-size: 16px; font-weight: 300; line-height: 1.55; color: var(--v2-body); }
 .v2-skill-lines { display: flex; flex-direction: column; gap: 18px; padding-top: 24px; border-top: 1px solid var(--v2-border); }
 .v2-skill-lines p { font-size: 17px; font-weight: 300; line-height: 1.8; color: var(--v2-body); }
@@ -402,6 +433,7 @@ html:has(.v2), html:has(.v2) body { background: #1c1c1c; }
 .v2-channels__arrow { position: absolute; top: 22px; right: 24px; font-size: 18px; color: var(--v2-muted); }
 
 @media (prefers-reduced-motion: reduce) {
+  .jm-card, .jm-window__media img, .jm-pile__card { transition: none; }
   .v2-status__dot::after { animation: none; display: none; }
   .v2-liquid { transition: none !important; transform: none !important; }
   .v2-marquee ul { animation: none; flex-wrap: wrap; width: auto; }
@@ -483,11 +515,13 @@ html:has(.v2), html:has(.v2) body { background: #1c1c1c; }
   .v2-skill-lines p { font-size: 16px; line-height: 1.7; }
   .v2-channels { grid-template-columns: 1fr; }
   .v2-jobs > li { padding: 20px; }
-  .jm__row > div { flex: 1 1 0; }
-  .jm__row .jm__thumb { width: 100%; }
-  .jm__captioned .jm__thumb { flex: none; width: 120px; }
-  .jm__title { font-size: 15px; }
-  .jm__caption { font-size: 14px; }
+  .jm { gap: 18px; }
+  .jm-pile { width: 150px; height: 98px; }
+  .jm-window__media { margin: 0 10px; }
+  .jm-nav { width: 34px; height: 34px; }
+  .jm-window__text { padding: 14px 14px 16px; }
+  .jm-window__title { font-size: 16px; }
+  .jm-window__desc { font-size: 14px; }
   .v2-stats li { padding: 20px; }
   .v2-banner { aspect-ratio: 4 / 3; object-position: 50% 30%; }
   .v2-banner + .v2-intro { margin-top: -40px; }

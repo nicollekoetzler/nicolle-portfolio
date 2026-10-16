@@ -22,15 +22,29 @@ const experience: { role: string; company: string; dates: string; place: string;
       "Mentored designers and developers on connecting UX decisions with engineering execution.",
     ],
     media: [
-      { src: "/assets/cv/case-assessment-tool.webp", w: 1800, h: 1350, alt: "AI case assessment tool for GetCompensation.law on a laptop" },
-      { src: "/assets/cv/leads-dashboard.webp", w: 1800, h: 1350, alt: "Leads dashboard from the CG Performance platform on a laptop" },
       {
-        src: "/assets/cv/casely-team.webp",
-        w: 1800,
-        h: 1536,
+        src: "/assets/cv/case-assessment-tool.webp", w: 1800, h: 1350,
+        alt: "AI case assessment tool for GetCompensation.law on a laptop",
+        title: "Case Assessment Tool",
+        description: "An AI-powered legal assessment tool that helps accident victims estimate the potential value of their compensation claims through a quick, data-driven evaluation.",
+      },
+      {
+        src: "/assets/cv/case-connector.webp", w: 1800, h: 1215,
+        alt: "Case Connector landing page with the app on a phone",
+        title: "TLU Case Connector — The Future of Attorney Referrals",
+        description: "The app that makes attorney-to-attorney referrals simple, transparent, and reliable, across every state and every practice area.",
+      },
+      {
+        src: "/assets/cv/leads-dashboard.webp", w: 1800, h: 1350,
+        alt: "Leads dashboard from the CG Performance platform on a laptop",
+        title: "CG Performance Dashboard",
+        description: "A client-facing dashboard that brings website, SEO, call and lead data for law firms into one place.",
+      },
+      {
+        src: "/assets/cv/casely-team.webp", w: 1800, h: 1536,
         alt: "The Casely Group team together at an in-person meeting",
         title: "The Casely Group — In-Person Team Meeting",
-        caption: "Bringing our US and Brazil teams together 🇺🇸🇧🇷",
+        description: "Bringing our US and Brazil teams together 🇺🇸🇧🇷",
       },
     ],
   },
@@ -112,7 +126,7 @@ export default function CV() {
               <ul className="v2-jobs__points">
                 {job.points.map((point) => <li key={point}>{point}</li>)}
               </ul>
-              {job.media && <JobMedia items={job.media} />}
+              {job.media && <JobMedia items={job.media} label="Projects & team" />}
             </li>
           ))}
         </ol>
