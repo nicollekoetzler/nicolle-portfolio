@@ -7,10 +7,13 @@ import { createPortal } from "react-dom";
 
 const hand = Caveat({ subsets: ["latin"], weight: ["500"] });
 
-/* the two photos tucked behind the top polaroid; they fly out big when the stack is opened */
+/* tilt of the single polaroid tucked behind the portrait */
+const BACK_TILT = 7;
+
+/* the two photos that fly out of the back polaroid when the stack is opened */
 const photos = [
-  { src: "/assets/v2/polaroid-london.webp", alt: "Nicolle in London", caption: "london", stackTilt: -8, openTilt: -4 },
-  { src: "/assets/v2/polaroid-street.webp", alt: "Nicolle walking down a street", caption: "wandering", stackTilt: 7, openTilt: 3 },
+  { src: "/assets/v2/polaroid-london.webp", alt: "Nicolle in London", openTilt: -4 },
+  { src: "/assets/v2/polaroid-street.webp", alt: "Nicolle walking down a street", openTilt: 3 },
 ];
 
 type Phase = "closed" | "opening" | "open" | "closing";
@@ -22,13 +25,13 @@ type Phase = "closed" | "opening" | "open" | "closing";
  */
 export default function PolaroidStack() {
   const [phase, setPhase] = useState<Phase>("closed");
-  const backRefs = useRef<(HTMLSpanElement | null)[]>([]);
+  const backRef = useRef<HTMLSpanElement>(null);
   const bigRefs = useRef<(HTMLDivElement | null)[]>([]);
   const triggerRef = useRef<HTMLButtonElement>(null);
 
   /** transform that puts big polaroid i exactly over its small copy in the stack */
   const fromStack = (i: number) => {
-    const small = backRefs.current[i]?.getBoundingClientRect();
+    const small = backRef.current?.getBoundingClientRect();
     const big = bigRefs.current[i];
     if (!small || !big) return "";
     // measure the big card untransformed
@@ -39,8 +42,8 @@ export default function PolaroidStack() {
     const dx = small.left + small.width / 2 - (r.left + r.width / 2);
     const dy = small.top + small.height / 2 - (r.top + r.height / 2);
     // the small copy's box is its rotated bounding box; scale by the unrotated width instead
-    const scale = (backRefs.current[i]?.offsetWidth ?? r.width) / r.width;
-    return `translate(${dx}px, ${dy}px) scale(${scale}) rotate(${photos[i].stackTilt}deg)`;
+    const scale = (backRef.current?.offsetWidth ?? r.width) / r.width;
+    return `translate(${dx}px, ${dy}px) scale(${scale}) rotate(${BACK_TILT}deg)`;
   };
 
   useLayoutEffect(() => {
@@ -103,21 +106,12 @@ export default function PolaroidStack() {
         aria-label="Open photos of Nicolle"
         aria-expanded={showing}
       >
-        {photos.map((p, i) => (
-          <span
-            key={p.src}
-            ref={(el) => { backRefs.current[i] = el; }}
-            className="pl pl--back"
-            style={{ ["--tilt" as string]: `${p.stackTilt}deg` }}
-            aria-hidden="true"
-          >
-            <img src={p.src} alt="" width={115} height={115} />
-            <span className="pl__caption">{p.caption}</span>
-          </span>
-        ))}
+        {/* both big photos start and end tucked behind this one */}
+        <span ref={backRef} className="pl pl--back" style={{ ["--tilt" as string]: `${BACK_TILT}deg` }} aria-hidden="true">
+          <img src={photos[0].src} alt="" width={115} height={115} />
+        </span>
         <span className="pl pl--top">
           <img src="/assets/v2/nicolle.webp" alt="Nicolle Koetzler" width={115} height={115} />
-          <span className="pl__caption">that’s me</span>
         </span>
       </button>
 
@@ -134,7 +128,6 @@ export default function PolaroidStack() {
               {photos.map((p, i) => (
                 <div key={p.src} ref={(el) => { bigRefs.current[i] = el; }} className="pl pl--big" style={{ transitionDelay: `${i * 70}ms` }}>
                   <img src={p.src} alt={p.alt} width={800} height={1000} />
-                  <span className="pl__caption">{p.caption}</span>
                 </div>
               ))}
             </div>
