@@ -141,8 +141,10 @@ html:has(.v2), html:has(.v2) body { background: #1c1c1c; }
 /* Portrait as a little stack of polaroids (PolaroidStack) */
 .pl { display: flex; flex-direction: column; background: #f3f0e8; border-radius: 3px; box-shadow: 0 1px 2px rgba(0, 0, 0, 0.25), 0 8px 18px rgba(0, 0, 0, 0.35); }
 .pl img { display: block; width: 100%; height: auto; aspect-ratio: 1; object-fit: cover; object-position: 50% 25%; background: #ddd; }
+.pl__caption { display: block; text-align: center; color: #2b2b2b; line-height: 1; }
 .pl-stack { position: relative; display: block; width: 127px; height: 143px; margin: 0; padding: 0; border: 0; background: none; cursor: pointer; }
-.pl-stack .pl { position: absolute; inset: 0; padding: 6px 6px 22px; transition: transform .35s cubic-bezier(.3, 1.4, .5, 1); }
+.pl-stack .pl { position: absolute; inset: 0; padding: 6px 6px 0; transition: transform .35s cubic-bezier(.3, 1.4, .5, 1); }
+.pl-stack .pl__caption { padding: 4px 0 0; font-size: 15px; }
 .pl--back { transform: rotate(var(--tilt)); }
 .pl-stack:hover .pl--back, .pl-stack:focus-visible .pl--back { transform: rotate(calc(var(--tilt) * 1.7)) translateY(-3px); }
 .pl-stack:hover .pl--top { transform: translateY(-2px) rotate(-1deg); }
@@ -169,12 +171,13 @@ html:has(.v2), html:has(.v2) body { background: #1c1c1c; }
 .pl-overlay__row { display: flex; align-items: center; justify-content: center; gap: 48px; }
 .pl--big {
   width: min(300px, 36vw);
-  padding: 12px 12px 56px;
+  padding: 12px 12px 0;
   transform-origin: 50% 50%;
   transition: transform .6s cubic-bezier(.22, .9, .28, 1.08);
   will-change: transform;
 }
 .pl--big img { aspect-ratio: 4 / 5; }
+.pl--big .pl__caption { padding: 14px 0 18px; font-size: 30px; }
 .pl-overlay__hint { margin: 0; font-size: 20px; color: rgba(255, 255, 255, 0); transition: color .4s ease .2s; }
 .pl-overlay.is-open .pl-overlay__hint { color: rgba(255, 255, 255, 0.55); }
 .v2-social { display: flex; gap: 8px; margin: 0; padding: 0; list-style: none; }
@@ -511,7 +514,7 @@ html:has(.v2), html:has(.v2) body { background: #1c1c1c; }
   .pl-overlay__row { gap: 0; }
   .pl--big { width: 50vw; }
   .pl--big + .pl--big { margin: 18vh 0 0 -10vw; }
-  .pl--big { padding-bottom: 44px; }
+  .pl--big .pl__caption { font-size: 24px; padding: 10px 0 14px; }
   /* CV: the pill sits under the page title instead of above it */
   .v2--cv .v2-side { display: contents; }
   .v2--cv .v2-aside { display: none; }
