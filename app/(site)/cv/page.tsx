@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import StatusPill from "../../components/StatusPill";
 
 export const metadata: Metadata = {
   title: "CV · Nicolle Koetzler",
@@ -72,6 +73,8 @@ export default function CV() {
         <h1 className="v2-page-title">
           Nicolle Koetzler <span>Senior Product Designer &amp; Design Engineer</span>
         </h1>
+        {/* phones only: the email pill moves here, under the title (the sidebar copy is hidden) */}
+        <StatusPill className="v2-status--page" />
         <p className="v2-meta">Brazil (UTC-3) · Remote · Working with U.S. teams</p>
         <div className="v2-prose">
           <p>

@@ -4,6 +4,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useLayoutEffect, useRef, useState } from "react";
+import StatusPill from "./StatusPill";
 import { liquidClass, useLiquidPill } from "./useLiquidPill";
 import { BEHANCE, EMAIL, GITHUB, LINKEDIN } from "./site";
 import "../shell.css";
@@ -86,11 +87,7 @@ export default function Shell({ children }: { children: React.ReactNode }) {
               I help companies think through product decisions, design for web and mobile, and build production front
               ends in React and Next.js.
             </p>
-            <div className="v2-status">
-              <span className="v2-status__dot" aria-hidden="true" />
-              <a href={`mailto:${EMAIL}`} className="v2-status__email">{EMAIL}</a>
-              <Link href="/contact" className="v2-status__cta">Get in touch</Link>
-            </div>
+            <StatusPill />
           </div>
 
           <div className="v2-aside__bottom">

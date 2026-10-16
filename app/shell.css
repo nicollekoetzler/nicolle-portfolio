@@ -113,6 +113,8 @@ html:has(.v2), html:has(.v2) body { background: #1c1c1c; }
   color: var(--v2-strong);
   box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
 }
+/* an in-page copy of the pill, shown only on phones (CV) */
+.v2-status--page { display: none; }
 /* 6px extra breathing room before the email */
 .v2-status__dot { position: relative; flex: none; width: 8px; height: 8px; margin-right: 6px; border-radius: 4px; background: #7539ff; box-shadow: 0 0 8px rgba(117, 57, 255, 0.7); }
 /* radar ping: a ring that grows out of the dot and fades */
@@ -463,6 +465,11 @@ html:has(.v2), html:has(.v2) body { background: #1c1c1c; }
   .v2--contact .v2-side { display: contents; }
   .v2--contact .v2-aside { display: none; }
   .v2--contact .v2-main { padding-top: 32px; }
+  /* CV: the pill sits under the page title instead of above it */
+  .v2--cv .v2-side { display: contents; }
+  .v2--cv .v2-aside { display: none; }
+  .v2--cv .v2-main { padding-top: 32px; }
+  .v2-status--page { display: inline-flex; margin-top: 4px; }
   /* About headline: 28px on desktop, unchanged 32px on phones */
   .v2 .v2-intro--full .v2-page-title { font-size: 32px; }
   .v2-copy { width: 32px; height: 32px; }
