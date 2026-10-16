@@ -34,6 +34,8 @@ function spreadRects(count: number): Rect[] {
   }));
 }
 
+const slug = (t: string) => t.toLowerCase().split("—")[0].trim().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "");
+
 /** transform that makes an element laid out at `to` appear over `from` */
 const flip = (from: DOMRect | Rect, to: Rect, tilt: number) =>
   `translate(${from.left + from.width / 2 - (to.left + to.width / 2)}px, ${from.top + from.height / 2 - (to.top + to.height / 2)}px) scale(${from.width / to.width}) rotate(${tilt}deg)`;
@@ -47,6 +49,9 @@ export default function JobMedia({ items, label }: { items: Media[]; label: stri
   const [phase, setPhase] = useState<Phase>("closed");
   const [index, setIndex] = useState(0);
   const [spread, setSpread] = useState<Rect[]>([]);
+  // the photo sliding out while the next one slides in, and which way they move
+  const [leaving, setLeaving] = useState<{ index: number; dir: 1 | -1 } | null>(null);
+  const [navigated, setNavigated] = useState(false);
   const pileRefs = useRef<(HTMLSpanElement | null)[]>([]);
   const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
   const winImgRef = useRef<HTMLImageElement>(null);
@@ -58,6 +63,8 @@ export default function JobMedia({ items, label }: { items: Media[]; label: stri
 
   const open = (i = 0) => {
     setIndex(i);
+    setLeaving(null);
+    setNavigated(false);
     setSpread(spreadRects(items.length));
     setPhase("spreading");
   };
@@ -128,7 +135,15 @@ export default function JobMedia({ items, label }: { items: Media[]; label: stri
     }, T_FOCUS);
   }, [phase, index, spread]);
 
-  const step = useCallback((d: number) => setIndex((i) => (i + d + items.length) % items.length), [items.length]);
+  const step = useCallback(
+    (d: 1 | -1) =>
+      setIndex((i) => {
+        setLeaving({ index: i, dir: d });
+        setNavigated(true);
+        return (i + d + items.length) % items.length;
+      }),
+    [items.length],
+  );
 
   useEffect(() => {
     if (phase !== "focus") return;
@@ -185,39 +200,66 @@ export default function JobMedia({ items, label }: { items: Media[]; label: stri
             ))}
 
             {windowUp && (
-              <div className="jm-window" onClick={(e) => e.stopPropagation()}>
-                <div className="jm-window__bar">
-                  <button type="button" className="jm-dot jm-dot--close" onClick={close} aria-label="Close">
-                    <svg viewBox="0 0 10 10" aria-hidden="true"><path d="M3 3l4 4M7 3l-4 4" /></svg>
-                  </button>
-                  <span className="jm-dot jm-dot--min" aria-hidden="true" />
-                  <span className="jm-dot jm-dot--max" aria-hidden="true" />
-                  <span className="jm-window__count">{index + 1} / {items.length}</span>
-                  <button type="button" className="jm-window__x" onClick={close} aria-label="Close">
-                    <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M4 4l8 8M12 4l-8 8" /></svg>
-                  </button>
+              <div className="jm-viewer">
+                <button type="button" className="jm-nav jm-nav--prev" onClick={(e) => { e.stopPropagation(); step(-1); }} aria-label="Previous photo">
+                  <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M10 3 5 8l5 5" /></svg>
+                </button>
+                <div className="jm-window" onClick={(e) => e.stopPropagation()}>
+                  {/* browser-like top bar */}
+                  <div className="jm-window__bar">
+                    <div className="jm-window__lights">
+                      <button type="button" className="jm-dot jm-dot--close" onClick={close} aria-label="Close">
+                        <svg viewBox="0 0 10 10" aria-hidden="true"><path d="M3 3l4 4M7 3l-4 4" /></svg>
+                      </button>
+                      <span className="jm-dot jm-dot--min" aria-hidden="true" />
+                      <span className="jm-dot jm-dot--max" aria-hidden="true" />
+                    </div>
+                    <div className="jm-window__arrows" aria-hidden="true">
+                      <svg viewBox="0 0 16 16"><path d="M10 3 5 8l5 5" /></svg>
+                      <svg viewBox="0 0 16 16"><path d="m6 3 5 5-5 5" /></svg>
+                    </div>
+                    <div className="jm-window__url">
+                      <svg viewBox="0 0 16 16" aria-hidden="true"><rect x="4" y="7" width="8" height="6" rx="1.2" /><path d="M5.8 7V5.4a2.2 2.2 0 0 1 4.4 0V7" /></svg>
+                      <span>nicollekoetzler.com/work/{slug(current.title)}</span>
+                    </div>
+                    <button type="button" className="jm-window__x" onClick={close} aria-label="Close">
+                      <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M4 4l8 8M12 4l-8 8" /></svg>
+                    </button>
+                  </div>
+                  <div className="jm-window__media">
+                    {leaving && (
+                      <img
+                        key={`out-${items[leaving.index].src}`}
+                        className={`jm-slide-out jm-dir-${leaving.dir === 1 ? "next" : "prev"}`}
+                        src={items[leaving.index].src}
+                        alt=""
+                        aria-hidden="true"
+                        onAnimationEnd={() => setLeaving(null)}
+                      />
+                    )}
+                    <img
+                      key={current.src}
+                      ref={winImgRef}
+                      className={leaving ? `jm-slide-in jm-dir-${leaving.dir === 1 ? "next" : "prev"}` : undefined}
+                      src={current.src}
+                      alt={current.alt}
+                      width={current.w}
+                      height={current.h}
+                      onClick={() => step(1)}
+                    />
+                  </div>
+                  <div className="jm-window__text">
+                    {/* keyed by photo: each switch mounts a fresh copy, which plays the slide-up once */}
+                    <div key={current.title} className={navigated ? "jm-text-in" : undefined}>
+                      <p className="jm-window__title">{current.title}</p>
+                      <p className="jm-window__desc">{current.description}</p>
+                    </div>
+                    <span className="jm-window__count">{index + 1} / {items.length}</span>
+                  </div>
                 </div>
-                <div className="jm-window__media">
-                  <img
-                    key={current.src}
-                    ref={winImgRef}
-                    src={current.src}
-                    alt={current.alt}
-                    width={current.w}
-                    height={current.h}
-                    onClick={() => step(1)}
-                  />
-                  <button type="button" className="jm-nav jm-nav--prev" onClick={() => step(-1)} aria-label="Previous photo">
-                    <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M10 3 5 8l5 5" /></svg>
-                  </button>
-                  <button type="button" className="jm-nav jm-nav--next" onClick={() => step(1)} aria-label="Next photo">
-                    <svg viewBox="0 0 16 16" aria-hidden="true"><path d="m6 3 5 5-5 5" /></svg>
-                  </button>
-                </div>
-                <div className="jm-window__text" key={current.title}>
-                  <p className="jm-window__title">{current.title}</p>
-                  <p className="jm-window__desc">{current.description}</p>
-                </div>
+                <button type="button" className="jm-nav jm-nav--next" onClick={(e) => { e.stopPropagation(); step(1); }} aria-label="Next photo">
+                  <svg viewBox="0 0 16 16" aria-hidden="true"><path d="m6 3 5 5-5 5" /></svg>
+                </button>
               </div>
             )}
           </div>,

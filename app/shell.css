@@ -356,31 +356,57 @@ html:has(.v2), html:has(.v2) body { background: #1c1c1c; }
 .is-unfocus .jm-card { opacity: 1; }
 .is-unfocus .jm-card.is-current { opacity: 0; }
 
-.jm-window { position: fixed; z-index: 10; left: 50%; top: 50%; width: min(960px, calc(100vw - 32px)); transform: translate(-50%, -50%); }
-.jm-window::before { content: ""; position: absolute; z-index: -1; inset: 0; border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 14px; background: #1b1b1b; box-shadow: 0 30px 80px rgba(0, 0, 0, 0.6); animation: jm-in .35s ease .12s both; }
-.jm-window__bar, .jm-window__text { animation: jm-in .35s ease .18s both; }
+/* viewer: arrows outside the window, all centered on screen */
+.jm-viewer { position: fixed; z-index: 10; left: 50%; top: 50%; display: flex; align-items: center; gap: 20px; transform: translate(-50%, -50%); }
+.jm-window { position: relative; width: min(960px, calc(100vw - 150px), calc((100vh - 200px) * 1.6)); width: min(960px, calc(100vw - 150px), calc((100dvh - 200px) * 1.6)); }
+/* frosted, slightly see-through window */
+.jm-window::before { content: ""; position: absolute; z-index: -1; inset: 0; border: 1px solid rgba(255, 255, 255, 0.12); border-radius: 14px; background: rgba(30, 30, 30, 0.62); -webkit-backdrop-filter: blur(24px) saturate(140%); backdrop-filter: blur(24px) saturate(140%); box-shadow: 0 30px 80px rgba(0, 0, 0, 0.55); animation: jm-in .35s ease .12s both; }
+.jm-window__bar, .jm-window__text, .jm-nav { animation: jm-in .35s ease .18s both; }
 .is-unfocus .jm-window::before, .is-unfocus .jm-window__bar, .is-unfocus .jm-window__text, .is-unfocus .jm-nav { opacity: 0; transition: opacity .2s ease; animation: none; }
-.jm-window__bar { display: flex; align-items: center; gap: 8px; height: 44px; padding: 0 14px; }
+
+/* browser-like top bar: lights, back/forward, address field, close */
+.jm-window__bar { display: grid; grid-template-columns: auto auto 1fr auto; align-items: center; gap: 14px; height: 46px; padding: 0 12px 0 14px; border-bottom: 1px solid rgba(255, 255, 255, 0.07); }
+.jm-window__lights { display: flex; gap: 8px; }
 .jm-dot { display: grid; place-items: center; width: 12px; height: 12px; padding: 0; border: 0; border-radius: 50%; }
 .jm-dot--close { background: #ff5f57; cursor: pointer; }
 .jm-dot--min { background: #febc2e; }
 .jm-dot--max { background: #28c840; }
 .jm-dot svg { width: 8px; height: 8px; fill: none; stroke: rgba(0, 0, 0, 0.6); stroke-width: 1.6; stroke-linecap: round; opacity: 0; transition: opacity .15s; }
-.jm-window__bar:hover .jm-dot svg { opacity: 1; }
-.jm-window__count { flex: 1; text-align: center; font-size: 13px; color: var(--v2-faint); }
-.jm-window__x { display: grid; place-items: center; width: 28px; height: 28px; margin-right: -6px; padding: 0; border: 0; border-radius: 50%; background: transparent; color: var(--v2-muted); cursor: pointer; transition: background .2s, color .2s; }
+.jm-window__lights:hover .jm-dot svg { opacity: 1; }
+.jm-window__arrows { display: flex; gap: 6px; color: rgba(255, 255, 255, 0.35); }
+.jm-window__arrows svg { width: 15px; height: 15px; fill: none; stroke: currentColor; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+.jm-window__arrows svg + svg { opacity: .6; }
+.jm-window__url { display: flex; align-items: center; justify-content: center; gap: 6px; justify-self: center; width: min(100%, 420px); height: 28px; padding: 0 12px; overflow: hidden; border-radius: 8px; background: rgba(255, 255, 255, 0.07); font-size: 12.5px; color: var(--v2-muted); white-space: nowrap; }
+.jm-window__url span { overflow: hidden; text-overflow: ellipsis; }
+.jm-window__url svg { flex: none; width: 12px; height: 12px; fill: none; stroke: currentColor; stroke-width: 1.4; stroke-linecap: round; }
+.jm-window__x { display: grid; place-items: center; width: 28px; height: 28px; padding: 0; border: 0; border-radius: 50%; background: transparent; color: var(--v2-muted); cursor: pointer; transition: background .2s, color .2s; }
 .jm-window__x:hover { background: rgba(255, 255, 255, 0.08); color: #fff; }
 .jm-window__x svg { width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width: 1.6; stroke-linecap: round; }
-.jm-window__media { position: relative; margin: 0 14px; }
-.jm-window__media img { display: block; width: auto; max-width: 100%; margin: 0 auto; height: auto; max-height: calc(100vh - 250px); max-height: calc(100dvh - 250px); border-radius: 8px; background: #111; cursor: pointer; transition: transform .42s cubic-bezier(.22, .9, .28, 1.05); }
-.jm-nav { position: absolute; top: 50%; display: grid; place-items: center; width: 40px; height: 40px; padding: 0; border: 0; border-radius: 50%; background: rgba(0, 0, 0, 0.5); color: #fff; cursor: pointer; transform: translateY(-50%); transition: background .2s; -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px); }
-.jm-nav:hover { background: rgba(0, 0, 0, 0.75); }
+
+/* every photo: same height, full width of the window */
+.jm-window__media { position: relative; aspect-ratio: 16 / 10; overflow: hidden; background: #111; }
+.jm-window__media img { position: absolute; inset: 0; display: block; width: 100%; height: 100%; object-fit: cover; cursor: pointer; transition: transform .42s cubic-bezier(.22, .9, .28, 1.05); }
+
+/* switching photos: the old one drifts out, the new one slides in from the side you're heading to */
+.jm-slide-in { animation: jm-slide-in .55s cubic-bezier(.22, .8, .2, 1) both; }
+.jm-slide-out { z-index: 0; pointer-events: none; animation: jm-slide-out .55s cubic-bezier(.22, .8, .2, 1) both; }
+.jm-slide-in.jm-dir-prev { animation-name: jm-slide-in-prev; }
+.jm-slide-out.jm-dir-prev { animation-name: jm-slide-out-prev; }
+@keyframes jm-slide-in { from { opacity: 0; transform: translateX(12%) scale(1.04); } }
+@keyframes jm-slide-out { to { opacity: 0; transform: translateX(-8%) scale(.97); } }
+@keyframes jm-slide-in-prev { from { opacity: 0; transform: translateX(-12%) scale(1.04); } }
+@keyframes jm-slide-out-prev { to { opacity: 0; transform: translateX(8%) scale(.97); } }
+.jm-text-in { animation: jm-text-in .45s ease .08s both; }
+@keyframes jm-text-in { from { opacity: 0; transform: translateY(6px); } }
+
+.jm-nav { flex: none; display: grid; place-items: center; width: 44px; height: 44px; padding: 0; border: 1px solid rgba(255, 255, 255, 0.12); border-radius: 50%; background: rgba(30, 30, 30, 0.6); color: #fff; cursor: pointer; -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); transition: background .2s, transform .2s; }
+.jm-nav:hover { background: rgba(60, 60, 60, 0.75); transform: scale(1.06); }
 .jm-nav svg { width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
-.jm-nav--prev { left: 12px; }
-.jm-nav--next { right: 12px; }
-.jm-window__text { padding: 16px 20px 20px; }
+
+.jm-window__text { display: flex; align-items: flex-start; justify-content: space-between; gap: 24px; padding: 16px 20px 20px; }
 .jm-window__title { margin: 0; font-size: 18px; font-weight: 500; color: var(--v2-ink); }
 .jm-window__desc { max-width: 720px; margin: 6px 0 0; font-size: 15px; font-weight: 300; line-height: 1.55; color: var(--v2-muted); }
+.jm-window__count { flex: none; padding-top: 3px; font-size: 13px; color: var(--v2-faint); }
 @keyframes jm-in { from { opacity: 0; } }
 .v2-jobs__text { margin-top: 12px !important; max-width: 720px; font-size: 16px; font-weight: 300; line-height: 1.55; color: var(--v2-body); }
 .v2-skill-lines { display: flex; flex-direction: column; gap: 18px; padding-top: 24px; border-top: 1px solid var(--v2-border); }
@@ -517,8 +543,13 @@ html:has(.v2), html:has(.v2) body { background: #1c1c1c; }
   .v2-jobs > li { padding: 20px; }
   .jm { gap: 18px; }
   .jm-pile { width: 150px; height: 98px; }
-  .jm-window__media { margin: 0 10px; }
-  .jm-nav { width: 34px; height: 34px; }
+  /* phones: the window takes the width, arrows sit side by side under it */
+  .jm-viewer { flex-wrap: wrap; justify-content: center; gap: 14px 16px; }
+  .jm-window { order: -1; width: calc(100vw - 32px); }
+  .jm-window__arrows { display: none; }
+  .jm-window__bar { grid-template-columns: auto 1fr auto; gap: 10px; }
+  .jm-window__url { font-size: 11.5px; }
+  .jm-nav { width: 40px; height: 40px; }
   .jm-window__text { padding: 14px 14px 16px; }
   .jm-window__title { font-size: 16px; }
   .jm-window__desc { font-size: 14px; }
