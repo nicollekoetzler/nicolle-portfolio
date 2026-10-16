@@ -14,8 +14,8 @@ type Page = "home" | "about" | "contact" | "cv";
 const nav: { href: string; label: string; page: Page }[] = [
   { href: "/", label: "Home", page: "home" },
   { href: "/about", label: "About", page: "about" },
-  { href: "/contact", label: "Contact", page: "contact" },
   { href: "/cv", label: "CV", page: "cv" },
+  { href: "/contact", label: "Contact", page: "contact" },
 ];
 
 function SocialIcon({ name }: { name: "mail" | "linkedin" | "github" | "behance" }) {
@@ -118,7 +118,7 @@ export default function Shell({ children }: { children: React.ReactNode }) {
             <li><Link href="/cv">CV</Link></li>
             <li><Link href="/contact">Contact</Link></li>
           </ul>
-          <p className="v2-footer__small">Made with love,<br />© {new Date().getFullYear()} Nicolle Koetzler. All rights reserved.</p>
+          <p className="v2-footer__small">© {new Date().getFullYear()} Nicolle Koetzler. All rights reserved.</p>
         </footer>
       </main>
     </div>
