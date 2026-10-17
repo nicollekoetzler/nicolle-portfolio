@@ -145,7 +145,9 @@ html:has(.v2), html:has(.v2) body { background: #1c1c1c; }
 
 /* photo, icons and name sit the same distance apart */
 .v2-aside__bottom { display: flex; flex-direction: column; gap: 24px; }
-.v2-photo { width: 127px; height: 127px; border-radius: 15px; object-fit: cover; }
+.v2-photo { width: 127px; height: 127px; border-radius: 15px; object-fit: cover; transform-origin: 0 100%; transition: transform .35s cubic-bezier(.3, 1.4, .5, 1), box-shadow .35s ease; }
+/* grows a little on hover, anchored at its bottom-left corner so it doesn't spill out of the card */
+.v2-photo:hover { transform: scale(1.12); box-shadow: 0 12px 30px rgba(0, 0, 0, 0.45); }
 .v2-social { display: flex; gap: 8px; margin: 0; padding: 0; list-style: none; }
 .v2-social a { display: grid; place-items: center; width: 36px; height: 36px; border-radius: 50%; background: rgba(255, 255, 255, 0.05); color: var(--v2-muted); transition: color .2s, background .2s; }
 .v2-social a:hover { color: #fff; background: rgba(255, 255, 255, 0.1); }
@@ -460,6 +462,7 @@ html:has(.v2), html:has(.v2) body { background: #1c1c1c; }
 .v2-channels__arrow { position: absolute; top: 22px; right: 24px; font-size: 18px; color: var(--v2-muted); }
 
 @media (prefers-reduced-motion: reduce) {
+  .v2-photo { transition: none; }
   .jm-card, .jm-window__media img, .jm-pile__card { transition: none; }
   .v2-status__dot::after { animation: none; display: none; }
   .v2-liquid { transition: none !important; transform: none !important; }
