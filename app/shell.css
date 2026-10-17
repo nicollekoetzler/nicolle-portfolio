@@ -358,7 +358,7 @@ html:has(.v2), html:has(.v2) body { background: #1c1c1c; }
 
 /* viewer: arrows outside the window, all centered on screen */
 .jm-viewer { position: fixed; z-index: 10; left: 50%; top: 50%; display: flex; align-items: center; gap: 20px; transform: translate(-50%, -50%); }
-.jm-window { position: relative; width: min(960px, calc(100vw - 150px), calc((100vh - 200px) * 1.6)); width: min(960px, calc(100vw - 150px), calc((100dvh - 200px) * 1.6)); }
+.jm-window { position: relative; width: min(960px, calc(100vw - 150px), calc((100vh - 290px) * 16 / 9)); width: min(960px, calc(100vw - 150px), calc((100dvh - 290px) * 16 / 9)); }
 /* frosted, slightly see-through window */
 .jm-window::before { content: ""; position: absolute; z-index: -1; inset: 0; border: 1px solid rgba(255, 255, 255, 0.12); border-radius: 14px; background: rgba(30, 30, 30, 0.62); -webkit-backdrop-filter: blur(24px) saturate(140%); backdrop-filter: blur(24px) saturate(140%); box-shadow: 0 30px 80px rgba(0, 0, 0, 0.55); animation: jm-in .35s ease .12s both; }
 .jm-window__bar, .jm-window__text, .jm-nav { animation: jm-in .35s ease .18s both; }
@@ -384,7 +384,7 @@ html:has(.v2), html:has(.v2) body { background: #1c1c1c; }
 .jm-window__x svg { width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width: 1.6; stroke-linecap: round; }
 
 /* every photo: same height, full width of the window */
-.jm-window__media { position: relative; aspect-ratio: 16 / 10; overflow: hidden; background: #111; }
+.jm-window__media { position: relative; aspect-ratio: 16 / 9; overflow: hidden; background: #111; }
 .jm-window__media img { position: absolute; inset: 0; display: block; width: 100%; height: 100%; object-fit: cover; cursor: pointer; transition: transform .42s cubic-bezier(.22, .9, .28, 1.05); }
 
 /* switching photos: the old one drifts out, the new one slides in from the side you're heading to */
@@ -403,7 +403,7 @@ html:has(.v2), html:has(.v2) body { background: #1c1c1c; }
 .jm-nav:hover { background: rgba(60, 60, 60, 0.75); transform: scale(1.06); }
 .jm-nav svg { width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
 
-.jm-window__text { display: flex; align-items: flex-start; justify-content: space-between; gap: 24px; padding: 16px 20px 20px; }
+.jm-window__text { display: flex; align-items: flex-start; justify-content: space-between; gap: 24px; padding: 30px 28px 34px; }
 .jm-window__title { margin: 0; font-size: 18px; font-weight: 500; color: var(--v2-ink); }
 .jm-window__desc { max-width: 720px; margin: 6px 0 0; font-size: 15px; font-weight: 300; line-height: 1.55; color: var(--v2-muted); }
 .jm-window__count { flex: none; padding-top: 3px; font-size: 13px; color: var(--v2-faint); }
@@ -550,7 +550,7 @@ html:has(.v2), html:has(.v2) body { background: #1c1c1c; }
   .jm-window__bar { grid-template-columns: auto 1fr auto; gap: 10px; }
   .jm-window__url { font-size: 11.5px; }
   .jm-nav { width: 40px; height: 40px; }
-  .jm-window__text { padding: 14px 14px 16px; }
+  .jm-window__text { padding: 22px 18px 24px; }
   .jm-window__title { font-size: 16px; }
   .jm-window__desc { font-size: 14px; }
   .v2-stats li { padding: 20px; }
