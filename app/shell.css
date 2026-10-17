@@ -156,7 +156,11 @@ html:has(.v2), html:has(.v2) body { background: #1c1c1c; }
 .v2-id__name { margin: -7px 0 6px !important; /* pulls the cap height in line with the 24px gaps */ font-size: 28px; font-weight: 500; line-height: 1.25; color: var(--v2-ink); }
 
 /* ---------- Main ---------- */
-.v2-main { display: flex; flex-direction: column; gap: 82px; padding-top: 32px; min-width: 0; }
+.v2-main { display: flex; flex-direction: column; gap: 82px; padding-top: 50px; min-width: 0; }
+/* location + local time, top-right corner, level with the menu bar (desktop only) */
+.v2 { position: relative; }
+.v2-clock { position: absolute; top: 20px; right: 52px; display: flex; flex-direction: column; justify-content: center; align-items: flex-end; height: 38px; font-size: 13px; line-height: 1.35; color: var(--v2-muted); text-align: right; }
+.v2-clock__time { color: var(--v2-body); font-variant-numeric: tabular-nums; }
 .v2-h2 { margin: 0; font-size: 28px; font-weight: 500; line-height: 1.25; color: var(--v2-ink); }
 .v2-section { display: flex; flex-direction: column; gap: 24px; }
 .v2-section__lead { max-width: 620px; margin-top: -12px !important; font-size: 18px; font-weight: 300; line-height: 1.5; color: var(--v2-muted); }
@@ -476,6 +480,7 @@ html:has(.v2), html:has(.v2) body { background: #1c1c1c; }
   .v2-side { position: static; height: auto; }
   .v2-aside { overflow: visible; }
   .v2-main { padding-top: 0; }
+  .v2-clock { display: none; }
   .v2-stats { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   /* inner pages: the sidebar shrinks to nav + contact pill so the page content comes first */
   .v2--inner .v2-title, .v2--inner .v2-lead, .v2--inner .v2-aside__bottom { display: none; }

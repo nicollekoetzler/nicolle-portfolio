@@ -4,6 +4,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useLayoutEffect, useRef, useState } from "react";
+import LocalTime from "./LocalTime";
 import StatusPill from "./StatusPill";
 import { liquidClass, useLiquidPill } from "./useLiquidPill";
 import { BEHANCE, EMAIL, GITHUB, LINKEDIN } from "./site";
@@ -106,6 +107,8 @@ export default function Shell({ children }: { children: React.ReactNode }) {
           </div>
         </aside>
       </div>
+
+      <LocalTime />
 
       <main className="v2-main" id={home ? "work" : "top"}>
         {children}
