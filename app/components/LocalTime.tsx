@@ -79,25 +79,9 @@ export default function LocalTime() {
 
   return (
     <div className="v2-clock" tabIndex={0} onMouseEnter={loadWeather} onFocus={loadWeather}>
-      <AnalogClock now={now} />
       <div className="v2-clock__text">
         <p className="v2-clock__place">Curitiba, Brazil</p>
         <p className="v2-clock__time">{time ? `${time} GMT -3` : "\u00a0"}</p>
-      </div>
-
-      <div className="v2-clock__card" role="tooltip">
-        {ok && sky ? (
-          <>
-            <p className="v2-clock__weather">
-              <span className="v2-clock__icon" aria-hidden="true">{sky.icon}</span>
-              <span className="v2-clock__temp">{ok.temp}°C</span>
-              <span className="v2-clock__sky">{sky.text}</span>
-            </p>
-            <p className="v2-clock__note">{gloomy ? "Curitiba being Curitiba." : "A good day to design something."}</p>
-          </>
-        ) : (
-          <p className="v2-clock__note">{weather === "error" ? "Weather is shy right now." : "Checking the sky…"}</p>
-        )}
       </div>
     </div>
   );
