@@ -607,9 +607,9 @@ html:has(.v2), html:has(.v2) body { background: #1c1c1c; }
   .v2-banner + .v2-intro { margin-top: -40px; }
   .v2--inner .v2-status { margin-top: 0; }
   /* Contact already shows the email big on the page, so the pill goes (the nav stays, it floats on its own) */
-  .v2--contact .v2-side { display: contents; }
-  .v2--contact .v2-aside { display: none; }
-  .v2--contact .v2-main { padding-top: 32px; }
+  .v2--contact .v2-side, .v2--about .v2-side { display: contents; }
+  .v2--contact .v2-aside, .v2--about .v2-aside { display: none; }
+  .v2--contact .v2-main, .v2--about .v2-main { padding-top: 32px; }
   /* CV: the pill sits under the page title instead of above it */
   .v2--cv .v2-side { display: contents; }
   .v2--cv .v2-aside { display: none; }
