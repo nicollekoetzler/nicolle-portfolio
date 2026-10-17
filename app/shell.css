@@ -384,7 +384,8 @@ html:has(.v2), html:has(.v2) body { background: #1c1c1c; }
 .jm-window__x svg { width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width: 1.6; stroke-linecap: round; }
 
 /* every photo: same height, full width of the window */
-.jm-window__media { position: relative; aspect-ratio: 16 / 9; overflow: hidden; background: #111; }
+/* inset from the window edges, with rounded corners */
+.jm-window__media { position: relative; aspect-ratio: 16 / 9; margin: 14px 14px 0; overflow: hidden; border-radius: 10px; background: #111; }
 .jm-window__media img { position: absolute; inset: 0; display: block; width: 100%; height: 100%; object-fit: cover; cursor: pointer; transition: transform .42s cubic-bezier(.22, .9, .28, 1.05); }
 
 /* switching photos: the old one drifts out, the new one slides in from the side you're heading to */
@@ -403,7 +404,7 @@ html:has(.v2), html:has(.v2) body { background: #1c1c1c; }
 .jm-nav:hover { background: rgba(60, 60, 60, 0.75); transform: scale(1.06); }
 .jm-nav svg { width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
 
-.jm-window__text { display: flex; align-items: flex-start; justify-content: space-between; gap: 24px; padding: 30px 28px 34px; }
+.jm-window__text { display: flex; align-items: flex-start; justify-content: space-between; gap: 24px; padding: 28px 28px 32px; }
 .jm-window__title { margin: 0; font-size: 18px; font-weight: 500; color: var(--v2-ink); }
 .jm-window__desc { max-width: 720px; margin: 6px 0 0; font-size: 15px; font-weight: 300; line-height: 1.55; color: var(--v2-muted); }
 .jm-window__count { flex: none; padding-top: 3px; font-size: 13px; color: var(--v2-faint); }
@@ -546,6 +547,7 @@ html:has(.v2), html:has(.v2) body { background: #1c1c1c; }
   /* phones: the window takes the width, arrows sit side by side under it */
   .jm-viewer { flex-wrap: wrap; justify-content: center; gap: 14px 16px; }
   .jm-window { order: -1; width: calc(100vw - 32px); }
+  .jm-window__media { margin: 10px 10px 0; border-radius: 8px; }
   .jm-window__arrows { display: none; }
   .jm-window__bar { grid-template-columns: auto 1fr auto; gap: 10px; }
   .jm-window__url { font-size: 11.5px; }
