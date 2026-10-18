@@ -1,0 +1,63 @@
+/* Fixed project-context panel for case studies (ProjectAside), in the site's sidebar style */
+.pa {
+  --pa-w: 380px;
+  --pa-gap: 20px;
+  --pa-panel: #212121;
+  --pa-ink: #ededed;
+  --pa-strong: #f9fafb;
+  --pa-body: #d1d5db;
+  --pa-muted: #9ca3af;
+  --pa-faint: #6b7280;
+  --pa-line: #2f2f33;
+}
+.pa__content { margin-right: calc(var(--pa-w) + var(--pa-gap)); }
+.pa-aside {
+  position: fixed;
+  z-index: 40;
+  top: var(--pa-gap);
+  right: var(--pa-gap);
+  bottom: var(--pa-gap);
+  display: flex;
+  flex-direction: column;
+  width: var(--pa-w);
+  overflow: hidden;
+  border-radius: 8px;
+  background: var(--pa-panel);
+  color: var(--pa-ink);
+  font-family: var(--font-inter), system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+.pa-aside p { margin: 0; }
+.pa-aside__head { display: flex; align-items: center; justify-content: space-between; gap: 12px; height: 60px; padding: 0 16px 0 24px; border-bottom: 1px solid var(--pa-line); }
+.pa-aside__kicker { font-size: 12px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: var(--pa-muted); }
+.pa-aside__close { flex: none; display: grid; place-items: center; width: 32px; height: 32px; border-radius: 50%; background: rgba(255, 255, 255, 0.05); color: var(--pa-muted); transition: background .2s, color .2s; }
+.pa-aside__close:hover { background: rgba(255, 255, 255, 0.1); color: #fff; }
+.pa-aside__close svg { width: 14px; height: 14px; fill: none; stroke: currentColor; stroke-width: 1.6; stroke-linecap: round; }
+
+.pa-aside__body { flex: 1; display: flex; flex-direction: column; gap: 16px; padding: 24px; overflow-y: auto; scrollbar-width: thin; }
+.pa-aside__logo { display: flex; align-items: center; min-height: 48px; }
+.pa-aside__logo img { display: block; }
+.pa-mark { display: grid; place-items: center; width: 48px; height: 48px; overflow: hidden; border-radius: 12px; background: #2b2b2b; font-size: 22px; font-weight: 600; color: #fff; }
+.pa-mark img { width: 100%; height: 100%; object-fit: cover; }
+.pa-aside__title { margin: 4px 0 0; font-size: 22px; font-weight: 500; line-height: 1.25; letter-spacing: -0.01em; color: var(--pa-strong); }
+.pa-aside__tagline { font-size: 16px; font-weight: 400; line-height: 1.5; color: var(--pa-ink); }
+.pa-aside__text { font-size: 15px; font-weight: 300; line-height: 1.6; color: var(--pa-muted); }
+
+.pa-aside__details { margin: 8px 0 0; }
+.pa-aside__details > div { display: flex; justify-content: space-between; gap: 16px; padding: 12px 0; border-top: 1px solid var(--pa-line); }
+.pa-aside__details dt { flex: none; font-size: 14px; color: var(--pa-faint); }
+.pa-aside__details dd { display: flex; flex-direction: column; align-items: flex-end; gap: 4px; margin: 0; font-size: 14px; text-align: right; color: var(--pa-body); }
+
+/* tablets and phones: the panel sits on top of the page as a regular card */
+@media (max-width: 1100px) {
+  .pa { display: flex; flex-direction: column; }
+  .pa__content { margin-right: 0; }
+  .pa-aside { position: relative; order: -1; top: auto; right: auto; bottom: auto; width: auto; margin: 16px 16px 0; }
+  .pa-aside__body { overflow: visible; }
+}
+/* phones: keep the panel short (title, tagline and details); the case itself tells the story */
+@media (max-width: 600px) {
+  .pa-aside__body { gap: 12px; padding: 20px; }
+  .pa-aside__head { padding-left: 20px; }
+  .pa-aside__text { display: none; }
+}

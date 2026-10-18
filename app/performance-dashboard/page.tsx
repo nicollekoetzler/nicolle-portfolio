@@ -2,6 +2,7 @@
 import type { Metadata } from "next";
 import { DM_Mono } from "next/font/google";
 import Link from "next/link";
+import ProjectLayout, { type ProjectInfo } from "../components/ProjectAside";
 import "../case-connector/case-connector.css";
 import "./performance-dashboard.css";
 
@@ -81,8 +82,27 @@ const screens = [
   },
 ];
 
+const project: ProjectInfo = {
+  kicker: "The Casely Group",
+  logo: <img src="/assets/performance-dashboard/cg-performance-logo.svg" width={197} height={23} alt="CG Performance" />,
+  title: "CG Performance Dashboard",
+  tagline: "One place for law firms to see how their website, SEO, calls and leads are performing, in plain language.",
+  paragraphs: [
+    "Law firms invest heavily in their websites and marketing, but the data that shows whether it works lived in separate tools and was full of technical jargon.",
+    "I designed a client-facing dashboard that brings it all together: technical scores paired with clear status and short explanations, color-coded trends, and a firm switcher so the team can manage dozens of clients.",
+    "Every module follows the same reusable component system, so the product can grow with new data without losing consistency.",
+  ],
+  details: [
+    { term: "Client", value: "The Casely Group" },
+    { term: "Audience", value: "U.S. law firms" },
+    { term: "Platform", value: "Web app" },
+    { term: "My Role", value: "Product Designer" },
+    { term: "Responsibilities", value: ["Information Architecture", "Data Visualization", "UI Design", "Design System"] },
+  ],
+};
 export default function PerformanceDashboardPage() {
   return (
+    <ProjectLayout info={project}>
     <div className={`cs pd ${mono.variable}`}>
       <header className="cs-bar">
         <Link href="/" className="cs-bar__item">CG Performance</Link>
@@ -193,5 +213,6 @@ export default function PerformanceDashboardPage() {
         </section>
       </main>
     </div>
+    </ProjectLayout>
   );
 }
