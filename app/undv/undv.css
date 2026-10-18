@@ -1,0 +1,57 @@
+/* UNDV case study: a reading column with full-width screens, built on the shared case-study styles (.cs) */
+.ud {
+  --ud-orange: #f26b1d;
+  background:
+    radial-gradient(60vw 40vw at 110% 2%, rgba(242, 107, 29, 0.14), transparent 70%),
+    radial-gradient(60vw 40vw at -10% 30%, rgba(242, 107, 29, 0.07), transparent 70%),
+    var(--cs-bg);
+}
+
+.ud-main {
+  display: flex;
+  flex-direction: column;
+  gap: 80px;
+  max-width: 1064px;
+  margin: 0 auto;
+  padding: clamp(40px, 6vw, 80px) 24px clamp(80px, 9vw, 140px);
+}
+
+.ud-meta { display: flex; justify-content: space-between; gap: 16px; margin-bottom: -60px; font-size: 15px; color: var(--cs-muted); }
+.ud-hero, .ud-shot img { display: block; width: 100%; height: auto; border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 18px; background: #0d0d10; box-shadow: 0 30px 80px rgba(0, 0, 0, 0.45); }
+
+/* text sections */
+.ud-text { display: flex; flex-direction: column; gap: 16px; }
+.ud-text h1 { margin: 0 0 8px; font-size: clamp(30px, 3.4vw, 42px); font-weight: 500; line-height: 1.15; letter-spacing: -0.02em; color: var(--cs-ink); }
+.ud-text h2 { margin: 0 0 8px; font-size: clamp(26px, 2.6vw, 34px); font-weight: 500; line-height: 1.2; letter-spacing: -0.02em; color: var(--cs-ink); }
+.ud-text p, .ud-text li { font-size: 17px; line-height: 1.65; color: var(--cs-body); }
+.ud-text .ud-lead { font-weight: 500; color: var(--cs-ink); }
+.ud-question { padding: 18px 22px; border-left: 2px solid var(--ud-orange); border-radius: 0 12px 12px 0; background: rgba(242, 107, 29, 0.07); font-size: 19px !important; font-weight: 400; color: var(--cs-ink) !important; }
+.ud-text ul, .ud-text ol { display: flex; flex-direction: column; gap: 8px; margin: 0; padding-left: 22px; }
+.ud-text ul { list-style: disc; }
+.ud-text ol { list-style: decimal; }
+.ud-text li { display: list-item; padding-left: 4px; }
+.ud-text li::marker { color: var(--ud-orange); }
+
+/* screens */
+.ud-shot { display: flex; flex-direction: column; gap: 12px; margin: 0; }
+/* Before / After label above the screen */
+.ud-shot__label { align-self: flex-start; padding: 4px 12px; border: 1px solid rgba(255, 255, 255, 0.14); border-radius: 999px; font-size: 13px; font-weight: 500; color: var(--cs-body); }
+.ud-ba .ud-shot:last-child .ud-shot__label { border-color: rgba(242, 107, 29, 0.6); color: #ffb38a; }
+.ud-ba { display: flex; flex-direction: column; gap: 32px; }
+.ud-ba .ud-shot:first-child img { opacity: .9; }
+.ud-pair { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+
+/* closing links */
+.ud-actions { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; }
+.ud-btn { display: inline-flex; align-items: center; gap: 8px; padding: 10px 18px; border: 1px solid rgba(255, 255, 255, 0.16); border-radius: 999px; font-size: 15px; font-weight: 400; color: var(--cs-ink); transition: border-color .2s, background .2s; }
+.ud-btn:hover { border-color: rgba(255, 255, 255, 0.4); }
+.ud-btn--primary { border-color: var(--ud-orange); background: var(--ud-orange); }
+.ud-btn--primary:hover { background: #ff7d33; border-color: #ff7d33; }
+
+@media (max-width: 700px) {
+  .ud-main { gap: 56px; padding-inline: 16px; }
+  .ud-meta { margin-bottom: -40px; font-size: 13px; }
+  .ud-text p, .ud-text li { font-size: 16px; }
+  .ud-pair { grid-template-columns: 1fr; }
+  .ud-hero, .ud-shot img { border-radius: 12px; }
+}

@@ -27,6 +27,12 @@ const groups: { label: string; items: Work[] }[] = [
         video: "/assets/case-connector.mp4",
       },
       {
+        title: "UNDV",
+        text: "A design audit and redesign of a discovery platform where people’s work becomes their identity.",
+        href: "/undv",
+        image: "/assets/undv/project.webp",
+      },
+      {
         title: "CG Performance Dashboard",
         text: "A client dashboard that brings website, SEO, call and lead data for law firms into one place.",
         href: "/performance-dashboard",
