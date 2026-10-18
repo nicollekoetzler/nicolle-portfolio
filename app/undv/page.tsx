@@ -1,7 +1,6 @@
 /* eslint-disable @next/next/no-img-element -- design exports keep their Figma sizes as plain <img> */
 import type { Metadata } from "next";
 import Link from "next/link";
-import ProjectLayout, { type ProjectInfo } from "../components/ProjectAside";
 import "../case-connector/case-connector.css";
 import "./undv.css";
 
@@ -34,24 +33,8 @@ function BeforeAfter(props: { before: Parameters<typeof Shot>[0]; after: Paramet
   );
 }
 
-const project: ProjectInfo = {
-  kicker: "UNDV · Design Audit & Redesign",
-  logo: <span className="pa-mark">U</span>,
-  title: "UNDV",
-  tagline: "A discovery platform where what people create becomes their identity.",
-  paragraphs: [
-    "UNDV is a place to discover and share digital work: landing pages, apps, dashboards and AI products. The product was already live, with a strong visual foundation.",
-    "My first deliverable was a design audit, followed by redesign proposals for the project view, search, onboarding and the profile design editor, all built around connecting each project to the person who made it.",
-  ],
-  details: [
-    { term: "Platform", value: "Web app" },
-    { term: "My Role", value: "Product Designer" },
-    { term: "Responsibilities", value: ["Design Audit", "Benchmarking", "UX Strategy", "UI Design", "Prototyping"] },
-  ],
-};
 export default function UndvCaseStudy() {
   return (
-    <ProjectLayout info={project}>
     <div className="cs ud">
       <header className="cs-bar">
         <Link href="/" className="cs-bar__item">UNDV</Link>
@@ -323,6 +306,5 @@ export default function UndvCaseStudy() {
         </div>
       </main>
     </div>
-    </ProjectLayout>
   );
 }
