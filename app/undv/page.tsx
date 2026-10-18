@@ -8,6 +8,8 @@ export const metadata: Metadata = {
   title: "UNDV · Case Study · Nicolle Koetzler",
   description:
     "Case study: auditing and redesigning UNDV, a discovery platform where people's work becomes their identity: project details, search, onboarding and the profile design editor.",
+  // still being refined: reachable by direct link only, kept out of search engines
+  robots: { index: false, follow: false },
 };
 
 const A = "/assets/undv";
