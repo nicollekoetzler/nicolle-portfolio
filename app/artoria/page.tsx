@@ -1,6 +1,7 @@
 /* eslint-disable @next/next/no-img-element -- design exports keep their sizes as plain <img> */
 import type { Metadata } from "next";
 import Link from "next/link";
+import ProjectLayout, { type ProjectInfo } from "../components/ProjectAside";
 import "../case-connector/case-connector.css";
 import "../undv/undv.css";
 import "./artoria.css";
@@ -21,16 +22,28 @@ const img = {
   project: { src: "project.webp", w: 1812, h: 934, alt: "Job detail with the 3D model, the 2D drawing and the parts list side by side" },
   projectBefore: { src: "project-before.webp", w: 1728, h: 915, alt: "Original job screen with the 3D view, parts and budget competing for space" },
   jobs: { src: "jobs.webp", w: 1729, h: 868, alt: "Jobs list with status cards, current stage and progress" },
-  budget: { src: "budget.webp", w: 2000, h: 1190, alt: "Budget modal with items grouped by cost and a summary with the margin" },
   timeline: { src: "timeline.webp", w: 1812, h: 934, alt: "Job timeline with every stage, the selected stage panel and voice reports" },
   timelineBefore: { src: "timeline-before.webp", w: 1728, h: 856, alt: "Original timeline with stages and a single large 3D view" },
-  budgetStage: { src: "budget-stage.webp", w: 2000, h: 1190, alt: "Budget stage in the timeline, Values tab" },
-  voice: { src: "voice.webp", w: 2000, h: 1190, alt: "Voice log with the transcript, the AI report and what changes in the timeline" },
-  suppliers: { src: "suppliers.webp", w: 2000, h: 1190, alt: "Suppliers with an AI alert and the supplier detail" },
   team: { src: "team.webp", w: 1728, h: 850, alt: "Team by department, with a profile, AI summary and feedback" },
-  type: { src: "type.webp", w: 2228, h: 1560, alt: "ArtorIA type scale in light and dark" },
-  tokens: { src: "tokens.webp", w: 1123, h: 795, alt: "Grays, radius and spacing from the design system" },
 } satisfies Record<string, Img>;
+
+const project: ProjectInfo = {
+  kicker: "ArtorIA · 2026",
+  logo: <span className="pa-mark">A</span>,
+  title: "ArtorIA",
+  tagline: "An AI-powered management platform for furniture and metalwork factories, from the 3D project to delivery.",
+  paragraphs: [
+    "The founder hired me to design the core screens of the product for its first client: a factory of about 10,000 m² with more than 100 employees.",
+    "The screens I designed became the foundation of the platform’s design system.",
+  ],
+  details: [
+    { term: "Role", value: "Product Designer" },
+    { term: "Client", value: ["ArtorIA, for a furniture", "and metalwork factory"] },
+    { term: "Platform", value: "Web app" },
+    { term: "Year", value: "2026" },
+    { term: "Deliverables", value: ["7 screens", "Modals", "Design system", "Type guide"] },
+  ],
+};
 
 function Shot({ i, label }: { i: Img; label?: string }) {
   return (
@@ -52,6 +65,7 @@ function BeforeAfter({ before, after }: { before: Img; after: Img }) {
 
 export default function ArtoriaCaseStudy() {
   return (
+    <ProjectLayout info={project}>
     <div className="cs ud ar">
       <header className="cs-bar">
         <Link href="/" className="cs-bar__item">ArtorIA</Link>
@@ -79,11 +93,6 @@ export default function ArtoriaCaseStudy() {
             job detail with its budget, the timeline, voice logging, team and suppliers. These screens became the
             foundation of the platform’s design system.
           </p>
-          <dl className="ar-facts">
-            <div><dt>Role</dt><dd>Product Designer (UX, UI and design system)</dd></div>
-            <div><dt>Client</dt><dd>ArtorIA, for a furniture and metalwork factory</dd></div>
-            <div><dt>Deliverables</dt><dd>7 screens, modals, design system and type guide</dd></div>
-          </dl>
         </section>
 
         <section className="ud-text">
@@ -197,7 +206,6 @@ export default function ArtoriaCaseStudy() {
           </p>
         </section>
         <BeforeAfter before={img.projectBefore} after={img.project} />
-        <Shot i={img.budget} />
 
         <section className="ud-text">
           <h2>Key UX Decision 3: A 360° Timeline of the Job</h2>
@@ -210,7 +218,6 @@ export default function ArtoriaCaseStudy() {
           <p>In the budget stage, the approved total stays fixed at the top and the content is split into two tabs: Values and Overview.</p>
         </section>
         <BeforeAfter before={img.timelineBefore} after={img.timeline} />
-        <Shot i={img.budgetStage} />
 
         <section className="ud-text">
           <h2>Key UX Decision 4: Workers Just Send a Voice Note</h2>
@@ -225,7 +232,6 @@ export default function ArtoriaCaseStudy() {
             for the whole factory, and the timeline now shows only the current stage’s notes.
           </p>
         </section>
-        <Shot i={img.voice} />
 
         <section className="ud-text">
           <h2>Key UX Decision 5: Suppliers and Team Answer “Who’s Holding Up the Job?”</h2>
@@ -240,7 +246,6 @@ export default function ArtoriaCaseStudy() {
             their voice reports.
           </p>
         </section>
-        <Shot i={img.suppliers} />
         <Shot i={img.team} />
 
         <section className="ud-text">
@@ -255,8 +260,6 @@ export default function ArtoriaCaseStudy() {
             with progress, status chips, tables, tabs with counters, modals, AI blocks and an audio player.
           </p>
         </section>
-        <Shot i={img.type} />
-        <Shot i={img.tokens} />
 
         <section className="ud-text">
           <h2>Results</h2>
@@ -293,5 +296,6 @@ export default function ArtoriaCaseStudy() {
         </div>
       </main>
     </div>
+    </ProjectLayout>
   );
 }
