@@ -1,0 +1,28 @@
+/* ArtorIA case study: reuses the UNDV reading layout (.ud), with ArtorIA's white accent */
+.ar {
+  --ud-orange: #e8e8ea;
+  background:
+    radial-gradient(60vw 40vw at 110% 2%, rgba(255, 255, 255, 0.06), transparent 70%),
+    radial-gradient(60vw 40vw at -10% 30%, rgba(255, 255, 255, 0.03), transparent 70%),
+    var(--cs-bg);
+}
+.ar .ud-question { background: rgba(255, 255, 255, 0.05); }
+.ar .ud-ba .ud-shot:last-child .ud-shot__label { border-color: rgba(255, 255, 255, 0.5); color: #fff; }
+.ar .ud-btn--primary { border-color: #f3f3f3; background: #f3f3f3; color: #171718; }
+.ar .ud-btn--primary:hover { border-color: #fff; background: #fff; }
+
+/* role / client / deliverables and the who-needs-what table */
+.ar-facts, .ar-table { margin: 8px 0 0; }
+.ar-facts { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
+.ar-facts > div { padding: 16px 18px; border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 14px; background: rgba(255, 255, 255, 0.03); }
+.ar-facts dt, .ar-table dt { font-size: 13px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--cs-muted); }
+.ar-facts dd { margin: 6px 0 0; font-size: 16px; line-height: 1.45; color: var(--cs-ink); }
+.ar-table > div { display: grid; grid-template-columns: 220px 1fr; gap: 24px; padding: 14px 0; border-top: 1px solid rgba(255, 255, 255, 0.08); }
+.ar-table > div:last-child { border-bottom: 1px solid rgba(255, 255, 255, 0.08); }
+.ar-table dt { padding-top: 3px; font-weight: 500; color: var(--cs-ink); text-transform: none; letter-spacing: 0; font-size: 16px; }
+.ar-table dd { margin: 0; font-size: 16px; line-height: 1.55; color: var(--cs-body); }
+
+@media (max-width: 700px) {
+  .ar-facts { grid-template-columns: 1fr; }
+  .ar-table > div { grid-template-columns: 1fr; gap: 4px; }
+}
