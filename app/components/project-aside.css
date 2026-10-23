@@ -53,7 +53,7 @@
 
 /* flush variant: full height, against the right edge of the window */
 .pa--flush .pa__content { margin-right: var(--pa-w); }
-.pa--flush .pa-aside { top: 0; right: 0; bottom: 0; border-radius: 0; border-left: 1px solid var(--pa-line); }
+.pa--flush .pa-aside { top: 0; right: 0; bottom: 0; border-radius: 0; }
 /* the case page's own top bar (name · Case Study · Nicolle Koetzler) is redundant next to the panel */
 .pa--flush .cs-bar { display: none; }
 .pa--flush .cs-hero { margin-top: 20px !important; }
