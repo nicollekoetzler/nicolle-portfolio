@@ -18,9 +18,10 @@ export type ProjectInfo = {
  * (who, what, my role, responsibilities), styled like the site's sidebar card. Below 1100px the panel
  * becomes a regular block at the top of the page.
  */
-export default function ProjectLayout({ info, children }: { info: ProjectInfo; children: React.ReactNode }) {
+export default function ProjectLayout({ info, flush = false, children }: { info: ProjectInfo; flush?: boolean; children: React.ReactNode }) {
+  // flush: the panel runs the full height of the window and sits against its right edge, with no margins
   return (
-    <div className="pa">
+    <div className={flush ? "pa pa--flush" : "pa"}>
       <div className="pa__content">{children}</div>
       <aside className="pa-aside" aria-label="About this project">
         <div className="pa-aside__head">

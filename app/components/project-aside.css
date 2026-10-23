@@ -51,11 +51,20 @@
 .pa-aside__link { align-self: flex-start; display: inline-flex; gap: 6px; margin-top: 4px; padding: 8px 14px; border-radius: 8px; background: rgba(255, 255, 255, 0.05); font-size: 14px; color: var(--pa-ink); transition: background .2s; }
 .pa-aside__link:hover { background: rgba(255, 255, 255, 0.1); }
 
+/* flush variant: full height, against the right edge of the window */
+.pa--flush .pa__content { margin-right: var(--pa-w); }
+.pa--flush .pa-aside { top: 0; right: 0; bottom: 0; border-radius: 0; border-left: 1px solid var(--pa-line); }
+/* Case Connector's architecture tree sizes its spacing from the viewport: size it from the narrower column instead */
+@media (min-width: 1101px) {
+  .pa .sitemap { --gap: clamp(40px, (100vw - var(--pa-w)) * 0.166 - 110px, 170px); overflow-x: auto; }
+}
+
 /* tablets and phones: the panel sits on top of the page as a regular card */
 @media (max-width: 1100px) {
   .pa { display: flex; flex-direction: column; }
   .pa__content { margin-right: 0; }
-  .pa-aside { position: relative; order: -1; top: auto; right: auto; bottom: auto; width: auto; margin: 16px 16px 0; }
+  .pa-aside, .pa--flush .pa-aside { position: relative; order: -1; top: auto; right: auto; bottom: auto; width: auto; margin: 16px 16px 0; border-radius: 8px; border-left: 0; }
+  .pa--flush .pa__content { margin-right: 0; }
   .pa-aside__body { overflow: visible; }
 }
 /* phones: keep the panel short (title, tagline and details); the case itself tells the story */
