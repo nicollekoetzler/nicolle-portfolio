@@ -14,7 +14,7 @@ export const metadata: Metadata = {
 
 const project: ProjectInfo = {
   kicker: "Trial Lawyers University",
-  logo: <span className="pa-mark"><img src="/assets/case-connector/cc-emblem.png" width={48} height={48} alt="" /></span>,
+  logo: <img src="/assets/case-connector/cc-seal.png" width={76} height={76} alt="Case Connector by Trial Lawyers University" />,
   title: "Case Connector",
   tagline: "Attorney referrals lived across calls, emails and texts. We gave them one home.",
   paragraphs: [

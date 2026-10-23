@@ -54,6 +54,10 @@
 /* flush variant: full height, against the right edge of the window */
 .pa--flush .pa__content { margin-right: var(--pa-w); }
 .pa--flush .pa-aside { top: 0; right: 0; bottom: 0; border-radius: 0; border-left: 1px solid var(--pa-line); }
+/* no rule under the header; role & details sit at the bottom of the panel */
+.pa--flush .pa-aside__head { border-bottom: 0; }
+.pa--flush .pa-aside__body { padding-top: 20px; }
+.pa--flush .pa-aside__details { margin-top: auto; padding-top: 16px; }
 /* Case Connector's architecture tree sizes its spacing from the viewport: size it from the narrower column instead */
 @media (min-width: 1101px) {
   .pa .sitemap { --gap: clamp(40px, (100vw - var(--pa-w)) * 0.166 - 110px, 170px); overflow-x: auto; }
