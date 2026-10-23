@@ -9,6 +9,8 @@ export type ProjectInfo = {
   tagline: string;
   paragraphs: string[];
   details: { term: string; value: string | string[] }[];
+  /** optional link at the end of the panel, e.g. to the full case study */
+  link?: { href: string; label: string };
 };
 
 /**
@@ -40,6 +42,11 @@ export default function ProjectLayout({ info, children }: { info: ProjectInfo; c
               </div>
             ))}
           </dl>
+          {info.link && (
+            <Link href={info.link.href} className="pa-aside__link">
+              {info.link.label} <span aria-hidden="true">↗</span>
+            </Link>
+          )}
         </div>
       </aside>
     </div>
