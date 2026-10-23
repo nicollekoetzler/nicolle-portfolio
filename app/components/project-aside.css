@@ -57,6 +57,11 @@
 /* the case page's own top bar (name · Case Study · Nicolle Koetzler) is redundant next to the panel */
 .pa--flush .cs-bar { display: none; }
 .pa--flush .cs-hero { margin-top: 20px !important; }
+/* full-bleed cards (video, architecture, roadmap) keep a 20px gutter on both sides of the narrower column,
+   the same as the gap above the video; the case's own rules switch to auto margins from 1600px of window */
+@media (min-width: 1101px) {
+  .pa--flush .cs-hero, .pa--flush .sitemap, .pa--flush .cs-roadmap { margin-inline: max(20px, (100% - 1560px) / 2) !important; }
+}
 /* no rule under the header; role & details sit at the bottom of the panel */
 .pa--flush .pa-aside__head { border-bottom: 0; }
 .pa--flush .pa-aside__body { padding-top: 20px; }
