@@ -62,6 +62,9 @@
 @media (min-width: 1101px) {
   .pa--flush .cs-hero, .pa--flush .sitemap, .pa--flush .cs-roadmap { margin-inline: max(20px, (100% - 1560px) / 2) !important; }
 }
+/* presentation background: the portfolio's #1c1c1c, without the case's blue glows */
+html:has(.pa--flush), html:has(.pa--flush) body { background: #1c1c1c !important; }
+.pa--flush .cs { --cs-bg: #1c1c1c; background: #1c1c1c; }
 /* no rule under the header; role & details sit at the bottom of the panel */
 .pa--flush .pa-aside__head { border-bottom: 0; }
 .pa--flush .pa-aside__body { padding-top: 20px; }
