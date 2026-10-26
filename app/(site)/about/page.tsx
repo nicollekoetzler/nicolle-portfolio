@@ -27,11 +27,11 @@ export default function About() {
       />
 
       <section className="v2-section v2-intro v2-intro--full">
-        <h1 className="v2-page-title">Hi, I’m Nicolle.</h1>
+        <h1 className="v2-page-title">I’m Nicolle, Founder, Product Designer and Engineer.</h1>
         <div className="v2-prose">
           <p>
-            I’m a product designer and design engineer with 12+ years in digital
-            design, and I build what I design. As Head of UX/UI Engineering at
+            For more than 12 years, I’ve worked across product, design and development,
+            helping shape ideas from the first sketch through to launch. As Head of UX/UI Engineering at
             The Casely Group, I led a team of 20 designers and developers
             building websites, dashboards and web apps for more than 40 U.S. law
             firms, from client-facing performance dashboards to Case Connector,
