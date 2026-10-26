@@ -20,9 +20,9 @@ export default function About() {
     <>
       <img
         className="v2-banner"
-        src="/assets/v2/about-me.webp"
+        src="/assets/v2/about-me-2.webp"
         width={2104}
-        height={893}
+        height={892}
         alt="Nicolle Koetzler"
       />
 
