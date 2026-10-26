@@ -59,9 +59,6 @@ function Nav({ current }: { current: Page }) {
           onClick={() => setTarget(l.page)}
         >
           {l.label}
-          {l.page === "cv" && (
-            <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 2.5v8M4.5 7.5 8 11l3.5-3.5M3 13.5h10" /></svg>
-          )}
         </Link>
       ))}
     </nav>
