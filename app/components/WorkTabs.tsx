@@ -50,7 +50,7 @@ const groups: { label: string; items: Work[] }[] = [
         text: "An event website for Law-Di-Gras.",
         href: "https://lawdigras.org",
         image: "/assets/v2/law-di-gras.webp",
-        position: "50% 9%",
+        position: "50% 0%",
       },
     ],
   },
