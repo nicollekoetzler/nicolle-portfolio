@@ -1,0 +1,56 @@
+/* Case Connector presentation: a short, skimmable summary above the full case (portfolio colors and type) */
+.cp {
+  display: flex;
+  flex-direction: column;
+  gap: 64px;
+  padding: 20px 20px 80px;
+  color: #ededed;
+  font-family: var(--font-inter), system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+.cp p { margin: 0; }
+.cp-hero { overflow: hidden; aspect-ratio: 1560 / 785; border-radius: 24px; background: #000; }
+.cp-hero video { display: block; width: 100%; height: 100%; object-fit: cover; }
+
+.cp-text { display: flex; flex-direction: column; gap: 16px; max-width: 820px; margin: 0 auto; width: 100%; }
+.cp-eyebrow { font-size: 13px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: #9ca3af; }
+.cp-text h1, .cp-text h2 { margin: 0; font-size: clamp(28px, 2.6vw, 36px); font-weight: 500; line-height: 1.2; letter-spacing: -0.02em; color: #f9fafb; }
+.cp-text h3 { display: flex; align-items: baseline; gap: 12px; margin: 0; font-size: 22px; font-weight: 500; line-height: 1.3; color: #f9fafb; }
+.cp-text h3 span { font-size: 14px; color: #6b7280; font-variant-numeric: tabular-nums; }
+.cp-text p { font-size: 17px; font-weight: 300; line-height: 1.65; color: #d1d5db; }
+.cp-context { padding: 18px 20px; border-radius: 12px; background: #212121; }
+.cp-context strong { font-weight: 500; color: #f9fafb; }
+
+.cp-psr { display: flex; flex-direction: column; margin: 8px 0 0; }
+.cp-psr > div { display: grid; grid-template-columns: 120px 1fr; gap: 24px; padding: 14px 0; border-top: 1px solid #2f2f33; }
+.cp-psr > div:last-child { border-bottom: 1px solid #2f2f33; }
+.cp-psr dt { font-size: 15px; font-weight: 500; color: #f9fafb; }
+.cp-psr dd { margin: 0; font-size: 16px; font-weight: 300; line-height: 1.55; color: #d1d5db; }
+
+.cp-facts { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; margin: 8px 0 0; padding: 0; list-style: none; }
+.cp-facts li { display: flex; flex-direction: column; gap: 6px; padding: 18px 20px; border-radius: 12px; background: #212121; }
+.cp-facts strong { font-size: 28px; font-weight: 600; line-height: 1; letter-spacing: -0.02em; color: #f9fafb; }
+.cp-facts span { font-size: 14px; font-weight: 300; color: #9ca3af; }
+
+.cp-decision { display: flex; flex-direction: column; gap: 24px; }
+.cp-decision img { display: block; width: 100%; height: auto; border-radius: 16px; }
+
+/* the full process, collapsed by default */
+.cp-process { border-radius: 16px; background: #212121; }
+.cp-process summary { display: flex; flex-direction: column; gap: 4px; padding: 22px 24px; list-style: none; cursor: pointer; }
+.cp-process summary::-webkit-details-marker { display: none; }
+.cp-process summary span { display: flex; align-items: center; justify-content: space-between; font-size: 18px; font-weight: 500; color: #f9fafb; }
+.cp-process summary span::after { content: "+"; font-size: 22px; font-weight: 300; color: #9ca3af; transition: transform .25s; }
+.cp-process[open] summary span::after { transform: rotate(45deg); }
+.cp-process summary small { font-size: 14px; font-weight: 300; color: #9ca3af; }
+.cp-process__body { padding-bottom: 20px; border-radius: 0 0 16px 16px; background: #1c1c1c; }
+/* inside the toggle: the case's own hero video and lock screen already appear above */
+.cp-process .cs-hero, .cp-process .cs-lockscreen { display: none; }
+
+@media (max-width: 700px) {
+  .cp { gap: 48px; padding: 16px 16px 56px; }
+  .cp-hero { border-radius: 16px; }
+  .cp-text p { font-size: 16px; }
+  .cp-psr > div { grid-template-columns: 1fr; gap: 4px; }
+  .cp-facts { grid-template-columns: 1fr; }
+}
