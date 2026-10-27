@@ -65,6 +65,8 @@
 /* presentation background: the portfolio's #1c1c1c, without the case's blue glows */
 html:has(.pa--flush), html:has(.pa--flush) body { background: #1c1c1c !important; }
 .pa--flush .cs { --cs-bg: #1c1c1c; background: #1c1c1c; }
+/* inner cards (architecture / user flow and roadmap): flat #212121 instead of the blue gradient */
+.pa--flush .sitemap, .pa--flush .cs-roadmap { background: #212121; }
 /* the new presentation drops the case's "Presentation:" boards section */
 .pa--flush .cs-presentation { display: none; }
 /* no rule under the header; role & details sit at the bottom of the panel */
