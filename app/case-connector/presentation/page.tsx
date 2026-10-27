@@ -1,12 +1,12 @@
 /* eslint-disable @next/next/no-img-element -- logo mark and design exports as plain <img> */
 import type { Metadata } from "next";
 import ProjectLayout, { type ProjectInfo } from "../../components/ProjectAside";
-import CaseConnectorPage from "../page";
+import { goals, marketProblems, marketSolutions, personas, phases, sitemap } from "../data";
 import "./presentation.css";
 
-/* New presentation for Case Connector, reworked after portfolio feedback: a 60-second summary (context for
-   people outside legal tech, a clear role, key facts), three key decisions, and the full process tucked
-   behind a toggle. The project's context sits in a full-height panel fixed to the right edge.
+/* New presentation for Case Connector, reworked after portfolio feedback: one short, skimmable page that
+   still covers the whole project (context, role, research, market, architecture, key decisions, delivery),
+   each part condensed to what a reviewer needs. The project's context sits in a full-height panel fixed to the right edge.
    Kept apart from the live page while it's being refined. */
 export const metadata: Metadata = {
   title: "Case Connector · Nicolle Koetzler",
@@ -33,6 +33,9 @@ const project: ProjectInfo = {
     { term: "Responsibilities", value: ["Product vision", "Research & interviews", "UX & UI design", "Team leadership", "Development"] },
   ],
 };
+
+/* the four main areas of the app, from the architecture sitemap */
+const areas = (sitemap.children?.[0]?.children ?? []).map((a) => ({ label: a.label === "Home" ? "Find & refer" : a.label, items: (a.children ?? []).map((c) => c.label) }));
 
 const facts = [
   { value: "4 months", label: "from idea to the App Store" },
@@ -88,6 +91,64 @@ export default function CaseConnectorPresentation() {
         </section>
 
         <section className="cp-text">
+          <p className="cp-eyebrow">Goals</p>
+          <h2>What the app had to do</h2>
+          <ol className="cp-goals">
+            {goals.map((g) => (
+              <li key={g.text}><strong>{g.title.join(" ")}</strong><span>{g.text}</span></li>
+            ))}
+          </ol>
+        </section>
+
+        <section className="cp-text">
+          <p className="cp-eyebrow">Research</p>
+          <h2>Two sides of every referral</h2>
+          <p>
+            I interviewed attorneys and met weekly with Trial Lawyers University. Every referral has two people with
+            different needs: the attorney who sends the case and the one who takes it.
+          </p>
+          <div className="cp-personas">
+            {personas.map((p) => (
+              <article key={p.name} className="cp-persona">
+                <header>
+                  <img src={p.image} width={48} height={48} alt="" />
+                  <div><strong>{p.name}</strong><span>{p.role}</span></div>
+                </header>
+                <p className="cp-persona__quote">{p.quote}</p>
+                <dl>
+                  <div><dt>Pain points</dt><dd>{p.pains.slice(0, 3).map((x) => <span key={x}>{x}</span>)}</dd></div>
+                  <div><dt>What we built</dt><dd>{p.insights.slice(0, 3).map((x) => <span key={x}>{x}</span>)}</dd></div>
+                </dl>
+              </article>
+            ))}
+          </div>
+        </section>
+
+        <section className="cp-text">
+          <p className="cp-eyebrow">Market</p>
+          <h2>From problems to product</h2>
+          <ul className="cp-map">
+            {marketProblems.map((problem, i) => (
+              <li key={problem}><span>{problem}</span><span aria-hidden="true">→</span><span>{marketSolutions[i]}</span></li>
+            ))}
+          </ul>
+        </section>
+
+        <section className="cp-text">
+          <p className="cp-eyebrow">Architecture</p>
+          <h2>Four areas, one connected app</h2>
+          <p>Networking, case discovery and case management, usually spread across tools, live in one place.</p>
+          <div className="cp-areas">
+            {areas.map((a) => (
+              <div key={a.label}>
+                <strong>{a.label}</strong>
+                <ul>{a.items.map((it) => <li key={it}>{it}</li>)}</ul>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        <section className="cp-text">
           <p className="cp-eyebrow">Key decisions</p>
           <h2>How I thought about it</h2>
         </section>
@@ -101,15 +162,33 @@ export default function CaseConnectorPresentation() {
           </section>
         ))}
 
-        <details className="cp-process">
-          <summary>
-            <span>See the full process</span>
-            <small>Research, personas, market, app architecture, timeline and roadmap</small>
-          </summary>
-          <div className="cp-process__body">
-            <CaseConnectorPage />
-          </div>
-        </details>
+        <section className="cp-text">
+          <p className="cp-eyebrow">Delivery</p>
+          <h2>Built in 7 phases, in 4 months</h2>
+          <p>I planned the build with the team in two-week phases, each ending in a working deliverable reviewed in our weekly meetings.</p>
+          <ol className="cp-phases">
+            {phases.map((ph, i) => (
+              <li key={ph.title}>
+                <span className="cp-phases__num">{i + 1}</span>
+                <div>
+                  <strong>{ph.title.replace(/^Phase \d+:\s*/, "")}</strong>
+                  <small>{ph.date}</small>
+                  <p>{ph.deliverable ?? ph.goal}</p>
+                </div>
+              </li>
+            ))}
+          </ol>
+        </section>
+
+        <section className="cp-text">
+          <p className="cp-eyebrow">Outcome</p>
+          <h2>Launched on the App Store</h2>
+          <p>
+            In 4 months, Case Connector went from an idea to a launch-ready app on the App Store: attorneys can find
+            the right partner, refer cases with clear and compliant fees, and follow every case to the end, sponsored
+            and validated by Trial Lawyers University along the way.
+          </p>
+        </section>
       </main>
     </ProjectLayout>
   );
