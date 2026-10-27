@@ -1,7 +1,7 @@
 /* eslint-disable @next/next/no-img-element -- small logo marks */
 import type { Metadata } from "next";
 import ProjectLayout, { type ProjectInfo } from "../../components/ProjectAside";
-import CaseConnectorPage from "../../case-connector/page";
+import CaseConnectorPage from "../../case-connector/CaseConnectorCase";
 
 /* Work in progress: the case-connector case study with the fixed project-context panel. Not linked anywhere. */
 export const metadata: Metadata = { title: "Lab · case-connector", robots: { index: false, follow: false } };
