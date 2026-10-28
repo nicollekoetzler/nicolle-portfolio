@@ -115,6 +115,10 @@ export default function CaseConnectorPresentation() {
           </ol>
         </div></section>
 
+        <figure className="cp-block cp-shot">
+          <img src={`${A}/cc-app-screens-2.webp`} width={2616} height={1712} alt="Four Case Connector screens: home with a suggested case, an attorney profile, case details with the referral fee, and case management" loading="lazy" />
+        </figure>
+
         <section className="cp-block"><div className="cp-text">
           <p className="cp-eyebrow">Research</p>
           <h2>Two sides of every referral</h2>
@@ -171,10 +175,6 @@ export default function CaseConnectorPresentation() {
             </ul>
           </div>
         </section>
-
-        <figure className="cp-block cp-shot">
-          <img src={`${A}/cc-app-screens-2.webp`} width={2616} height={1712} alt="Four Case Connector screens: home with a suggested case, an attorney profile, case details with the referral fee, and case management" loading="lazy" />
-        </figure>
 
         <section className="cp-block cp-cta" aria-label="Case Connector on the App Store">
           <div className="cp-cta__copy">
