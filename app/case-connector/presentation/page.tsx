@@ -1,5 +1,6 @@
 /* eslint-disable @next/next/no-img-element -- logo mark and design exports as plain <img> */
 import type { Metadata } from "next";
+import Link from "next/link";
 import ProjectLayout, { type ProjectInfo } from "../../components/ProjectAside";
 import { goals, marketProblems, marketSolutions, personas, phases, sitemap } from "../data";
 import Reveal from "./Reveal";
@@ -176,10 +177,16 @@ export default function CaseConnectorPresentation() {
             <img className="cp-cta__logo" src={`${A}/cc-emblem.png`} width={88} height={88} alt="" />
             <p className="cp-cta__kicker">Trusted Connections.</p>
             <h2>Your Professional Network, Upgraded.</h2>
-            <a className="cp-cta__btn" href={APP_STORE} target="_blank" rel="noopener">
-              <span className="cp-cta__icon" aria-hidden="true"><svg viewBox="0 0 16 16"><path d="M4.5 11.5 11.5 4.5M5.5 4.5h6v6" /></svg></span>
-              Get it on the App Store
-            </a>
+            <div className="cp-cta__actions">
+              <a className="cp-cta__btn" href={APP_STORE} target="_blank" rel="noopener">
+                <span className="cp-cta__icon" aria-hidden="true"><svg viewBox="0 0 16 16"><path d="M4.5 11.5 11.5 4.5M5.5 4.5h6v6" /></svg></span>
+                View on the App Store
+              </a>
+              <Link className="cp-cta__btn cp-cta__btn--ghost" href="/contact">
+                <span className="cp-cta__icon" aria-hidden="true"><svg viewBox="0 0 16 16"><path d="M4.5 11.5 11.5 4.5M5.5 4.5h6v6" /></svg></span>
+                Get in touch with me
+              </Link>
+            </div>
           </div>
           <img className="cp-cta__phone" src={`${A}/cc-cta-phone.webp`} width={408} height={434} alt="Case Connector home screen" loading="lazy" />
           <img className="cp-cta__phone2" src={`${A}/cc-cta-phone-2.webp`} width={257} height={486} alt="" loading="lazy" />
