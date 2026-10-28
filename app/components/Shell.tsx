@@ -67,9 +67,22 @@ function Nav({ current }: { current: Page }) {
 
 const pages: Record<string, Page> = { "/": "home", "/about": "about", "/contact": "contact", "/cv": "cv" };
 
+/* the sidebar's headline and lead; legal.nicollekoetzler.com shows the same site pitched at legal tech */
+const intro = {
+  main: {
+    title: "I design products, and I build them too.",
+    lead: "I help companies think through product decisions, design for web and mobile, and build production front ends in React and Next.js.",
+  },
+  legal: {
+    title: "I design and build products for the legal industry.",
+    lead: "I help law firms and legal tech companies turn their workflows into clear, fast products, from the first flow to production code in React and Next.js.",
+  },
+};
+
 /* Sidebar + main column shared by Home, About, Contact and CV (Figma "Nicolle Website" › 1728w default) */
-export default function Shell({ children }: { children: React.ReactNode }) {
-  const current = pages[usePathname().replace(/\/$/, "") || "/"] ?? "home";
+export default function Shell({ variant = "main", children }: { variant?: keyof typeof intro; children: React.ReactNode }) {
+  // the legal site's pages live under /legal and are served at the root of its own domain
+  const current = pages[usePathname().replace(/^\/legal(?=\/|$)/, "").replace(/\/$/, "") || "/"] ?? "home";
   const home = current === "home";
   // the sidebar headline is the page title only on Home; inner pages have their own h1
   const Title = home ? "h1" : "p";
@@ -80,11 +93,8 @@ export default function Shell({ children }: { children: React.ReactNode }) {
         <Nav current={current} />
         <aside className="v2-aside">
           <div className="v2-aside__top">
-            <Title className="v2-title">I design products, and I build them too.</Title>
-            <p className="v2-lead">
-              I help companies think through product decisions, design for web and mobile, and build production front
-              ends in React and Next.js.
-            </p>
+            <Title className="v2-title">{intro[variant].title}</Title>
+            <p className="v2-lead">{intro[variant].lead}</p>
             <StatusPill />
           </div>
 
