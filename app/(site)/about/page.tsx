@@ -27,38 +27,42 @@ export default function About() {
       />
 
       <section className="v2-section v2-intro v2-intro--full">
-        <h1 className="v2-page-title">I’m Nicolle, Founder, Product Designer and Engineer.</h1>
+        <h1 className="v2-page-title">
+          I’m Nicolle, a Product Designer and Engineer with a background in building digital products from concept
+          to implementation.
+        </h1>
         <div className="v2-prose">
           <p>
-            For more than 12 years, I’ve worked across product, design and development,
-            helping shape ideas from the first sketch through to launch. As Head of UX/UI Engineering at
-            The Casely Group, I led a team of 20 designers and developers
-            building websites, dashboards and web apps for more than 40 U.S. law
-            firms, from client-facing performance dashboards to Case Connector,
-            an attorney-to-attorney referral app that went from research to the
-            App Store.
+            My journey began in 2012, when I started creating digital products and online communities across
+            entertainment, education, and service-based businesses. I also worked as a designer, creating visual
+            content for Facebook pages and local businesses. These early experiences helped me develop a deeper
+            understanding of people, their needs, and how design and communication can connect them with products.
           </p>
           <p>
-            My work lives where interface craft meets engineering. I design in
-            Figma and build in React, Next.js and Tailwind, so the details
-            survive the handoff, because I’m usually on both sides of it. I built
-            and maintained our design system in Figma and code, and I brought
-            AI-assisted design-to-code workflows into the team. AI helps me move
-            from a rough brief to something real much faster; judgment, taste and
-            a lot of care decide what’s actually worth shipping.
+            Over time, my interest in technology grew beyond design. In 2020, I began studying software development,
+            expanding my ability to combine product thinking, interface design, and implementation. Since then, I’ve
+            been working toward a more integrated approach to building digital products, connecting the experience,
+            the design, and the technology behind them.
           </p>
           <p>
-            Before The Casely Group, I designed and built a learning platform
-            that helps doctors prepare for nephrology residency, on web and
-            mobile. I came to code by choice: after years of design, I went
-            through more than 1,000 hours of software engineering training and a
-            degree in Internet Systems, because I wanted to understand the whole
-            product, not just the screens. I work remotely from Brazil with teams
-            in the U.S., in Portuguese, fluent English and a little German.
+            Three years ago, my responsibilities expanded further when I became responsible for leading a team of 20
+            designers and developers. This experience broadened my understanding of product delivery, team
+            leadership, client communication, problem-solving, and process organization. It also strengthened my
+            appreciation for structured design systems, maintainable code, and scalable product development.
           </p>
           <p>
-            Outside of work, I’m a music nerd, a psychology enthusiast, and a
-            cinephile. You’ll probably find me playing gigs as a bassist or DJ 🎧
+            Through team leadership, stronger client communication, and a more structured product delivery process,
+            we increased client approval rates from 30% to 80%.
+          </p>
+          <p>
+            Today, I work across product design and software development, using technologies such as React, Next.js,
+            and Tailwind CSS to turn ideas into functional digital products.
+          </p>
+          <p>
+            AI-assisted development has expanded how I work across the product lifecycle. It allows me to prototype
+            faster, test ideas earlier, and translate design decisions into working products with fewer handoffs. The
+            tools are evolving, but the fundamentals remain the same: sound judgment, clarity, craftsmanship, and
+            understanding what is worth building.
           </p>
         </div>
         <div className="v2-actions">
