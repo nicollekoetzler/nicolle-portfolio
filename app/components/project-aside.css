@@ -73,6 +73,28 @@ html:has(.pa--flush), html:has(.pa--flush) body { background: #1c1c1c !important
 .pa--flush .pa-aside__head { border-bottom: 0; }
 .pa--flush .pa-aside__body { padding-top: 20px; }
 .pa--flush .pa-aside__details { margin-top: auto; padding-top: 16px; }
+/* previous / next project arrows, in the close button's style */
+.pa-aside__arrows { display: flex; gap: 8px; }
+.pa-aside__btn { flex: none; display: grid; place-items: center; width: 32px; height: 32px; border-radius: 50%; background: rgba(255, 255, 255, 0.05); color: var(--pa-muted); transition: background .2s, color .2s; }
+.pa-aside__btn:hover { background: rgba(255, 255, 255, 0.1); color: #fff; }
+.pa-aside__btn svg { width: 14px; height: 14px; fill: none; stroke: currentColor; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+
+/* Figma "Nicolle Website" › 219:220: bigger title, lighter tagline, airy detail rows, tags at the very bottom */
+.pa--flush .pa-aside__title { margin-top: 12px; font-size: 35px; font-weight: 600; line-height: 1.25; letter-spacing: -0.04em; }
+.pa--flush .pa-aside__tagline { font-size: 18px; font-weight: 300; line-height: 1.42; color: var(--pa-muted); }
+.pa--flush .pa-aside__details { margin-top: 16px; padding-top: 0; }
+.pa--flush .pa-aside__details > div { padding: 12px 0 28px; }
+.pa-aside__tags { display: flex; flex-wrap: wrap; gap: 8px; margin: auto 0 0; padding: 24px 0 0; list-style: none; }
+.pa-aside__tags li { display: inline-flex; align-items: center; gap: 16px; height: 37px; padding: 0 14px 0 12px; border: 1px solid #3f3f46; border-radius: 10px; box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05); font-size: 14px; color: var(--pa-strong); }
+.pa-aside__tags li::before { content: ""; flex: none; width: 8px; height: 8px; border-radius: 4px; background: var(--dot); box-shadow: 0 0 8px color-mix(in srgb, var(--dot) 70%, transparent); }
+/* the typing effect (TypedText), same as the email pill in the site's sidebar */
+.pa .typed { position: relative; display: inline-block; }
+.pa .typed__ghost { visibility: hidden; }
+.pa .typed__shown { position: absolute; inset: 0; white-space: nowrap; }
+.pa .typed__caret { display: inline-block; width: 1.5px; height: 1.05em; margin-left: 1px; vertical-align: -0.15em; background: #7539ff; animation: pa-blink .9s steps(1) infinite; }
+.pa .typed__caret.is-done { animation: none; opacity: 0; transition: opacity .4s; }
+@keyframes pa-blink { 50% { opacity: 0; } }
+
 /* Case Connector's architecture tree sizes its spacing from the viewport: size it from the narrower column instead */
 @media (min-width: 1101px) {
   .pa .sitemap { --gap: clamp(40px, (100vw - var(--pa-w)) * 0.166 - 110px, 170px); overflow-x: auto; }

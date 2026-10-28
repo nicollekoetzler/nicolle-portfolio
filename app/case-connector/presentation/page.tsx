@@ -17,20 +17,20 @@ export const metadata: Metadata = {
 const A = "/assets/case-connector";
 
 const project: ProjectInfo = {
-  kicker: "Trial Lawyers University",
+  href: "/case-connector",
   logo: <span className="pa-mark"><img src={`${A}/cc-emblem.png`} width={48} height={48} alt="" /></span>,
   title: "Case Connector",
   tagline: "A mobile app where U.S. attorneys refer cases to each other, from the first contact to the fee.",
-  paragraphs: [
-    "I led the product from the idea to the App Store: market research and interviews with attorneys, the full design on my own, and a team of 6 developers who built the app, with my hands in the code too.",
-    "Every week I met with the team and with the attorneys at Trial Lawyers University, who sponsored the app, to review progress and decide what came next.",
-  ],
+  paragraphs: [],
   details: [
-    { term: "My Role", value: ["Product Designer & Lead", "Design + Front-end"] },
-    { term: "Team", value: ["Me (design)", "6 developers"] },
+    { term: "My Role", value: ["Product Designer & Lead", "Design + Development"] },
+    { term: "Team", value: "Me + 6 developers" },
     { term: "Timeline", value: "4 months" },
-    { term: "Platform", value: "iOS app" },
-    { term: "Responsibilities", value: ["Product vision", "Research & interviews", "UX & UI design", "Team leadership", "Development"] },
+  ],
+  tags: [
+    { label: "Product Design", color: "#7539ff" },
+    { label: "Team Leadership", color: "#b3ff39" },
+    { label: "Full Stack Development", color: "#ff6426" },
   ],
 };
 
