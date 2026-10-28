@@ -21,13 +21,15 @@ function Arrow({ href, dir }: { href: string; dir: "prev" | "next" }) {
     : <Link href={to.href} className="pa-aside__btn" aria-label={label} title={to.label}>{icon}</Link>;
 }
 
-type TagIcon = "design" | "team" | "code";
+type TagIcon = "design" | "team" | "code" | "chart" | "layers";
 
-/* 16px line icons for the skill tags: pen nib, people, code brackets */
+/* 16px line icons for the skill tags: pen nib, people, code brackets, bar chart, stacked layers */
 const tagIcons: Record<TagIcon, React.ReactNode> = {
   design: <><path d="M12 19l7-7 3 3-7 7-3-3Z" /><path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5Z" /><path d="M2 2l7.59 7.59" /><circle cx="11" cy="11" r="2" /></>,
   team: <><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" /><circle cx="9" cy="7" r="4" /><path d="M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75" /></>,
   code: <><path d="m16 18 6-6-6-6M8 6l-6 6 6 6" /></>,
+  chart: <><path d="M3 3v18h18" /><path d="M8 17v-5M13 17V8M18 17v-8" /></>,
+  layers: <><path d="m12 2 10 5-10 5L2 7l10-5Z" /><path d="m2 17 10 5 10-5M2 12l10 5 10-5" /></>,
 };
 
 export type ProjectInfo = {
