@@ -27,10 +27,7 @@ export default function About() {
       />
 
       <section className="v2-section v2-intro v2-intro--full">
-        <h1 className="v2-page-title">
-          I’m Nicolle, a Product Designer and Engineer with a background in building digital products from concept
-          to implementation.
-        </h1>
+        <h1 className="v2-page-title">I’m Nicolle, a Product Designer and Engineer.</h1>
         <div className="v2-prose">
           <p>
             My journey began in 2012, when I started creating digital products and online communities across
