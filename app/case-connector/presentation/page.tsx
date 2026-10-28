@@ -4,6 +4,7 @@ import Link from "next/link";
 import Logos from "../../components/Logos";
 import ProjectLayout, { type ProjectInfo } from "../../components/ProjectAside";
 import { goals, marketProblems, marketSolutions, personas, phases, sitemap } from "../data";
+import TimelineRunner from "../TimelineRunner";
 import Reveal from "./Reveal";
 import "./presentation.css";
 
@@ -198,23 +199,26 @@ export default function CaseConnectorPresentation() {
           <img className="cp-cta__phone2" src={`${A}/cc-cta-phone-2.webp`} width={257} height={486} alt="" loading="lazy" />
         </section>
 
-        <section className="cp-block"><div className="cp-text">
+        <section className="cp-block cp-delivery"><div className="cp-text">
           <p className="cp-eyebrow">Delivery</p>
           <h2>Built in 7 phases, in 4 months</h2>
           <p>I planned the build with the team in two-week phases, each ending in a working deliverable reviewed in our weekly meetings.</p>
-          <ol className="cp-phases">
+        </div>
+          {/* the live case's animated roadmap, condensed: a dot walks the phases and lights each one up */}
+          <ol className="timeline cp-road">
             {phases.map((ph, i) => (
-              <li key={ph.title}>
-                <span className="cp-phases__num">{i + 1}</span>
-                <div>
-                  <strong>{ph.title.replace(/^Phase \d+:\s*/, "")}</strong>
+              <li key={ph.title} className={`phase phase--${i + 1} ${i % 2 ? "phase--top" : "phase--bottom"}`}>
+                <span className="phase__dot" aria-hidden="true" />
+                <div className="phase__body">
                   <small>{ph.date}</small>
+                  <strong>{ph.title.replace(/^Phase \d+:\s*/, "")}</strong>
                   <p>{ph.deliverable ?? ph.goal}</p>
                 </div>
               </li>
             ))}
+            <TimelineRunner />
           </ol>
-        </div></section>
+        </section>
 
         <section className="cp-block cp-outcome"><div className="cp-text">
           <p className="cp-eyebrow">Outcome</p>

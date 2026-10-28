@@ -29,10 +29,10 @@ export default function TimelineRunner() {
     let vertical = false;
 
     const measure = () => {
-      const box = list.getBoundingClientRect();
+      // layout offsets rather than on-screen boxes, so a transform on a parent (e.g. a reveal animation) can't skew them
       points = phases.map((phase) => {
-        const dot = phase.querySelector(".phase__dot")!.getBoundingClientRect();
-        return { x: dot.left + dot.width / 2 - box.left, y: dot.top + dot.height / 2 - box.top };
+        const dot = phase.querySelector<HTMLElement>(".phase__dot")!;
+        return { x: phase.offsetLeft + dot.offsetLeft + dot.offsetWidth / 2, y: phase.offsetTop + dot.offsetTop + dot.offsetHeight / 2 };
       });
       vertical = Math.abs(points[points.length - 1].x - points[0].x) < 4;
       list.classList.toggle("is-vertical", vertical);
