@@ -1,7 +1,7 @@
 /* eslint-disable @next/next/no-img-element -- small logo marks */
 import type { Metadata } from "next";
 import ProjectLayout, { type ProjectInfo } from "../../components/ProjectAside";
-import PerformanceDashboardPage from "../../performance-dashboard/page";
+import PerformanceDashboardPage from "../../performance-dashboard/original/page";
 
 /* Work in progress: the performance-dashboard case study with the fixed project-context panel. Not linked anywhere. */
 export const metadata: Metadata = { title: "Lab · performance-dashboard", robots: { index: false, follow: false } };

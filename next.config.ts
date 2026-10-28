@@ -9,6 +9,7 @@ const nextConfig: NextConfig = {
       { source: "/v2", destination: "/", permanent: true },
       // the new Case Connector presentation was previewed here before it replaced the case study
       { source: "/case-connector/presentation", destination: "/case-connector", permanent: false },
+      { source: "/performance-dashboard/presentation", destination: "/performance-dashboard", permanent: false },
     ];
   },
 };
