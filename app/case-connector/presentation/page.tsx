@@ -156,7 +156,7 @@ export default function CaseConnectorPresentation() {
         </div></section>
 
         <figure className="cp-block cp-shot">
-          <img src={`${A}/cc-app-screens.webp`} width={2616} height={1874} alt="Four Case Connector screens: home with a suggested case, an attorney profile, case details with the referral fee, and case management" loading="lazy" />
+          <img src={`${A}/cc-app-screens-2.webp`} width={2616} height={1712} alt="Four Case Connector screens: home with a suggested case, an attorney profile, case details with the referral fee, and case management" loading="lazy" />
         </figure>
 
         <section className="cp-block">
