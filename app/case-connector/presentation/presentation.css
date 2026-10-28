@@ -201,6 +201,7 @@
 
 /* Outcome ends on the "Stay connected" image, its card the same distance from the bottom as from the sides */
 .cp-outcome { gap: 40px; padding-bottom: 20px; }
+.cp-outcome__btn { align-self: flex-start; margin-top: 8px; }
 .cp-lockscreen { display: block; width: 100%; height: auto; }
 
 /* goals, personas, market, architecture, delivery: compact cards */

@@ -234,6 +234,10 @@ export default function CaseConnectorPresentation() {
             the right partner, refer cases with clear and compliant fees, and follow every case to the end, sponsored
             and validated by Trial Lawyers University along the way.
           </p>
+          <a className="cp-cta__btn cp-outcome__btn" href={APP_STORE} target="_blank" rel="noopener">
+            <span className="cp-cta__icon" aria-hidden="true"><svg viewBox="0 0 16 16"><path d="M4.5 11.5 11.5 4.5M5.5 4.5h6v6" /></svg></span>
+            View on the App Store
+          </a>
         </div>
           <img
             className="cp-lockscreen"
