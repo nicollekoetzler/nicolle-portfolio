@@ -8,20 +8,24 @@ import { useEffect } from "react";
 export default function Reveal() {
   useEffect(() => {
     const blocks = Array.from(document.querySelectorAll<HTMLElement>(".cp-hero, .cp-block"));
-    // they start hidden in the CSS, so the ones already on screen animate in too instead of flashing first
-    let first = true;
-    let order = 0;
-    // in: once a block is a little way into the screen
+    // they start hidden in the CSS, so the ones already on screen animate in too instead of flashing first.
+    // On load, every block with any part on screen rises in, one after another
+    blocks
+      .filter((b) => b.getBoundingClientRect().top < window.innerHeight)
+      .forEach((b, i) => {
+        b.style.transitionDelay = `${i * 120}ms`;
+        b.classList.add("is-in");
+      });
+    // after that: once a block is a little way into the screen
     const enter = new IntersectionObserver(
       (entries) => {
         entries.forEach((e) => {
           if (!e.isIntersecting) return;
           const el = e.target as HTMLElement;
-          // on load, stagger the visible blocks; later ones come in as they're reached
-          el.style.transitionDelay = first ? `${order++ * 120}ms` : "";
+          if (el.classList.contains("is-in")) return;
+          el.style.transitionDelay = "";
           el.classList.add("is-in");
         });
-        first = false;
       },
       { rootMargin: "0px 0px -8% 0px" },
     );
