@@ -4,7 +4,6 @@ import Link from "next/link";
 import Logos from "../../components/Logos";
 import ProjectLayout, { type ProjectInfo } from "../../components/ProjectAside";
 import { goals, marketProblems, marketSolutions, personas, phases, sitemap } from "../data";
-import TimelineRunner from "../TimelineRunner";
 import Reveal from "./Reveal";
 import "./presentation.css";
 
@@ -42,6 +41,9 @@ const project: ProjectInfo = {
 
 /* the four main areas of the app, from the architecture sitemap */
 const areas = (sitemap.children?.[0]?.children ?? []).map((a) => ({ label: a.label === "Home" ? "Find & refer" : a.label, items: (a.children ?? []).map((c) => c.label) }));
+
+/* the build ran from December to March in half-month steps (phase 1 took all of December) */
+const months = ["Dec 2025", "Jan 2026", "Feb 2026", "Mar 2026"];
 
 const facts = [
   { value: "4 months", label: "from idea to the App Store" },
@@ -204,20 +206,29 @@ export default function CaseConnectorPresentation() {
           <h2>Built in 7 phases, in 4 months</h2>
           <p>I planned the build with the team in two-week phases, each ending in a working deliverable reviewed in our weekly meetings.</p>
         </div>
-          {/* the live case's animated roadmap, condensed: a dot walks the phases and lights each one up */}
-          <ol className="timeline cp-road">
-            {phases.map((ph, i) => (
-              <li key={ph.title} className={`phase phase--${i + 1} ${i % 2 ? "phase--top" : "phase--bottom"}`}>
-                <span className="phase__dot" aria-hidden="true" />
-                <div className="phase__body">
-                  <small>{ph.date}</small>
-                  <strong>{ph.title.replace(/^Phase \d+:\s*/, "")}</strong>
-                  <p>{ph.deliverable ?? ph.goal}</p>
-                </div>
-              </li>
-            ))}
-            <TimelineRunner />
-          </ol>
+          {/* when each phase happened, as a small timeline across the 4 months: the bars grow in one after another */}
+          <div className="cp-gantt">
+            <div className="cp-gantt__head" aria-hidden="true">
+              <span />
+              <div className="cp-gantt__months">{months.map((m) => <span key={m}>{m}</span>)}</div>
+            </div>
+            <ol>
+              {phases.map((ph, i) => (
+                <li key={ph.title} style={{ "--i": i } as React.CSSProperties}>
+                  <div className="cp-gantt__label">
+                    <span className="cp-gantt__num">{String(i + 1).padStart(2, "0")}</span>
+                    <div>
+                      <strong>{ph.title.replace(/^Phase \d+:\s*/, "")}</strong>
+                      <p>{ph.deliverable ?? ph.goal}</p>
+                    </div>
+                  </div>
+                  <div className="cp-gantt__track">
+                    <span className="cp-gantt__bar" style={{ gridColumn: i === 0 ? "1 / span 2" : `${i + 2} / span 1` }} title={ph.date} />
+                  </div>
+                </li>
+              ))}
+            </ol>
+          </div>
         </section>
 
         <section className="cp-block cp-outcome"><div className="cp-text">
