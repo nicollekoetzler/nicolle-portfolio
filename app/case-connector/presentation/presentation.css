@@ -66,6 +66,14 @@
   .cp-cta__phone { right: 3%; }
 }
 
+/* client logo carousel: a slim block, logos fading out at both edges */
+.cp-logos { padding: 32px 0; }
+.cp-logos .marquee {
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent);
+          mask-image: linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent);
+}
+.cp-logos .logos { zoom: 0.8; }
+
 .cp-text { display: flex; flex-direction: column; gap: 16px; max-width: 900px; margin: 0 auto; width: 100%; }
 .cp-text .cp-eyebrow { margin-bottom: 4px; line-height: 1; }
 .cp-eyebrow { font-size: 13px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: #9ca3af; }
@@ -135,6 +143,8 @@
   .cp-hero, .cp-block { border-radius: 16px; }
   .cp-block { gap: 40px; padding: 40px 16px; }
   .cp-shot { padding: 0; }
+  .cp-logos { padding: 20px 0; }
+  .cp-logos .logos { zoom: 0.6; }
   .cp-cta { flex-direction: column; align-items: stretch; min-height: 0; padding: 40px 24px 0; }
   .cp-cta__copy { max-width: none; }
   .cp-cta__logo { width: 64px; height: 64px; margin-bottom: 28px; }

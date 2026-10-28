@@ -1,6 +1,7 @@
 /* eslint-disable @next/next/no-img-element -- logo mark and design exports as plain <img> */
 import type { Metadata } from "next";
 import Link from "next/link";
+import Logos from "../../components/Logos";
 import ProjectLayout, { type ProjectInfo } from "../../components/ProjectAside";
 import { goals, marketProblems, marketSolutions, personas, phases, sitemap } from "../data";
 import Reveal from "./Reveal";
@@ -69,6 +70,16 @@ export default function CaseConnectorPresentation() {
         <div className="cp-hero">
           <video src="/assets/case-connector.mp4" poster={`${A}/cc-hero.webp`} autoPlay muted loop playsInline preload="metadata" aria-label="Case Connector app on a phone in a blue control room" />
         </div>
+
+        {/* the home's client logo carousel, minus HostGator */}
+        <section className="cp-block cp-logos" aria-label="Trusted by">
+          <div className="marquee">
+            <div className="marquee__track">
+              <Logos without={["hostgator"]} />
+              <Logos without={["hostgator"]} hidden />
+            </div>
+          </div>
+        </section>
 
         <section className="cp-block"><div className="cp-text">
           <p className="cp-eyebrow">The case in 60 seconds</p>

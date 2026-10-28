@@ -101,7 +101,7 @@ html:has(.pa--flush), html:has(.pa--flush) body { background: #1c1c1c !important
 .pa .v2-status__email { transition: color .2s; }
 .pa .v2-status__email:hover { color: #c4b5fd; }
 /* the panel is narrower than the sidebar: a smaller gap before the button */
-.pa .v2-status__cta { margin-left: 16px; padding: 4px 10px; border-radius: 6px; background: rgba(255, 255, 255, 0.05); transition: background .2s; }
+.pa .v2-status__cta { margin-left: 4px; padding: 4px 10px; border-radius: 6px; background: rgba(255, 255, 255, 0.05); transition: background .2s; }
 .pa .v2-status__cta:hover { background: rgba(255, 255, 255, 0.1); }
 @media (prefers-reduced-motion: reduce) { .pa .v2-status__dot::after { display: none; } }
 /* the typing effect (TypedText), same as the email pill in the site's sidebar */

@@ -13,10 +13,10 @@ const logos = [
 ];
 
 /** Client logos for the "Trusted by" carousel; render it twice (the second hidden) for a seamless loop */
-export default function Logos({ hidden = false }: { hidden?: boolean }) {
+export default function Logos({ hidden = false, without = [] }: { hidden?: boolean; without?: string[] }) {
   return (
     <ul className="logos" aria-hidden={hidden || undefined}>
-      {logos.map((l) => (
+      {logos.filter((l) => !without.includes(l.src)).map((l) => (
         <li key={l.src} className="logo">
           <img src={`/assets/logos/${l.src}.svg`} width={l.w} height={l.h} alt={hidden ? "" : l.name} />
         </li>
