@@ -1,50 +1,60 @@
-/* eslint-disable @next/next/no-img-element -- design exports keep their Figma sizes as plain <img> */
+/* eslint-disable @next/next/no-img-element -- logo mark and design exports as plain <img> */
 import type { Metadata } from "next";
-import { DM_Mono } from "next/font/google";
-import localFont from "next/font/local";
-import { goals, marketProblems, marketSolutions, personas, phases, sitemap, type Phase, type SitemapNode } from "./data";
-import TimelineRunner from "./TimelineRunner";
-import "./case-connector.css";
+import Link from "next/link";
+import Logos from "../components/Logos";
+import ProjectLayout, { type ProjectInfo } from "../components/ProjectAside";
+import { goals, marketProblems, marketSolutions, personas, phases, sitemap, type SitemapNode } from "./data";
+import Reveal from "./presentation/Reveal";
+import "./presentation/presentation.css";
 
-const display = localFont({
-  src: "./fonts/BomstadDisplay-Regular.ttf",
-  weight: "400",
-  variable: "--cs-font-display",
-});
-const mono = DM_Mono({ subsets: ["latin"], weight: ["400"], style: ["normal", "italic"], variable: "--cs-font-mono" });
-
+/* New presentation for Case Connector, reworked after portfolio feedback: one short, skimmable page that
+   still covers the whole project (context, role, research, market, architecture, delivery, outcome),
+   each part condensed to what a reviewer needs. The project's context sits in a full-height panel fixed to the right edge.
+   The previous, longer case study is kept at /case-connector/original. */
 export const metadata: Metadata = {
   title: "Case Connector · Case Study · Nicolle Koetzler",
   description:
-    "How Case Connector, an attorney-to-attorney referral app by Trial Lawyers University, was researched, structured, designed and built.",
+    "How Case Connector, an attorney-to-attorney referral app for Trial Lawyers University, went from research to the App Store in 4 months.",
 };
 
 const A = "/assets/case-connector";
+const APP_STORE = "https://apps.apple.com/us/app/tlu-case-connector/id6759930495";
 
-function GoalIcon() {
-  return (
-    <svg className="phase__icon" viewBox="0 0 16 16" aria-hidden="true">
-      <circle cx="8" cy="8" r="6.5" fill="none" stroke="currentColor" strokeWidth="1.2" />
-      <circle cx="8" cy="8" r="3.5" fill="none" stroke="currentColor" strokeWidth="1.2" />
-      <path d="M8 8l5-5M11 3h2v2" fill="none" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" />
-    </svg>
-  );
-}
+const project: ProjectInfo = {
+  href: "/case-connector",
+  logo: <span className="pa-mark"><img src={`${A}/cc-emblem.png`} width={48} height={48} alt="" /></span>,
+  title: "Case Connector",
+  tagline: "A mobile app where U.S. attorneys refer cases to each other, from the first contact to the fee.",
+  paragraphs: [],
+  details: [
+    { term: "My Role", value: ["Product Designer & Lead", "Design + Development"] },
+    { term: "Team", value: "Me + 6 developers" },
+    { term: "Timeline", value: "4 months" },
+  ],
+  contact: true,
+  tags: [
+    { label: "Product Design", icon: "design" },
+    { label: "Team Leadership", icon: "team" },
+    { label: "Full Stack Development", icon: "code" },
+  ],
+};
 
-function DeliverableIcon() {
-  return (
-    <svg className="phase__icon" viewBox="0 0 16 16" aria-hidden="true">
-      <path d="M14.5 1.5L1.5 7l5 2 2 5 6-12.5zM6.5 9l8-7.5" fill="none" stroke="currentColor" strokeWidth="1.2" strokeLinejoin="round" />
-    </svg>
-  );
-}
 
+/* the build ran from December to March in half-month steps (phase 1 took all of December) */
+const months = ["Dec 2025", "Jan 2026", "Feb 2026", "Mar 2026"];
+
+const facts = [
+  { value: "4 months", label: "from idea to the App Store" },
+  { value: "6", label: "developers led" },
+  { value: "1", label: "designer: me, end to end" },
+];
+
+/* the app's sitemap as a tree; each level lines up in a column (indented list on narrow screens) */
 function TreeNode({ node, depth = 0 }: { node: SitemapNode; depth?: number }) {
   return (
-    <li className={`tree__item tree__item--d${depth}`}>
-      {/* nodes with children sit in a fixed-width slot so each level lines up in a column */}
-      <span className={node.children ? "tree__slot" : undefined}>
-        <span className={node.primary ? "tree__node tree__node--primary" : "tree__node"}>{node.label}</span>
+    <li className={`cp-tree__item cp-tree__item--d${depth}`}>
+      <span className={node.children ? "cp-tree__slot" : undefined}>
+        <span className={node.primary ? "cp-tree__node cp-tree__node--primary" : "cp-tree__node"}>{node.label}</span>
       </span>
       {node.children && (
         <ul>
@@ -57,218 +67,189 @@ function TreeNode({ node, depth = 0 }: { node: SitemapNode; depth?: number }) {
   );
 }
 
-function PhaseCard({ phase, index }: { phase: Phase; index: number }) {
-  const top = index % 2 === 1;
+export default function CaseConnectorPresentation() {
   return (
-    <li className={`phase phase--${index + 1} ${top ? "phase--top" : "phase--bottom"}`}>
-      <span className="phase__date">{phase.date}</span>
-      <span className="phase__dot" aria-hidden="true" />
-      <div className="phase__body">
-        <h3 className="phase__title">{phase.title}</h3>
-        <ul className="phase__list">
-          <li className="phase__goal">
-            <GoalIcon />
-            <span><strong>Goal:</strong> {phase.goal}</span>
-          </li>
-          {phase.items.map((item) => (
-            <li key={item} className="phase__item">{item}</li>
-          ))}
-          {phase.deliverable && (
-            <li className="phase__goal">
-              <DeliverableIcon />
-              <span><strong>Deliverable:</strong> {phase.deliverable}</span>
-            </li>
-          )}
-        </ul>
-      </div>
-    </li>
-  );
-}
-
-export default function CaseConnectorPage() {
-  return (
-    <div className={`cs ${display.variable} ${mono.variable}`}>
-      <header className="cs-bar">
-        <a href="/" className="cs-bar__item">Case Connector</a>
-        <span className="cs-bar__item cs-bar__center">Case Study</span>
-        <a href="/" className="cs-bar__item cs-bar__right">Nicolle Koetzler</a>
-      </header>
-
-      <main>
-        <div className="cs-hero">
-          <video
-            src="/assets/case-connector.mp4"
-            poster={`${A}/cc-hero.webp`}
-            aria-label="Case Connector app on a phone in a futuristic blue control room"
-            autoPlay
-            muted
-            loop
-            playsInline
-            controls
-            preload="metadata"
-          />
+    <ProjectLayout info={project} flush>
+      <main className="cp">
+        <div className="cp-hero">
+          <video src="/assets/case-connector.mp4" poster={`${A}/cc-hero.webp`} autoPlay muted loop playsInline preload="metadata" aria-label="Case Connector app on a phone in a blue control room" />
         </div>
 
-        <section className="cs-split">
-          <div className="cs-split__head">
-            <h1 className="cs-h2">Challenges &amp; Goals</h1>
-          </div>
-          <div className="cs-split__text">
-            <p>
-              Attorney referrals are still heavily driven by personal relationships, but the process itself often
-              happens across multiple channels. As opportunities move between firms, it becomes difficult to keep
-              everything organized, track progress, and maintain visibility into what’s happening.
-            </p>
-            <p>
-              The challenge was creating a platform that could bring structure to this process without disrupting the
-              relationship-driven nature of the legal industry. Attorneys needed a simple way to discover
-              opportunities, showcase their expertise, communicate with other firms, and stay informed throughout the
-              referral process.
-            </p>
+        {/* the home's client logo carousel, minus HostGator */}
+        <section className="cp-block cp-logos" aria-label="Trusted by">
+          <div className="marquee">
+            <div className="marquee__track">
+              <Logos without={["hostgator"]} />
+              <Logos without={["hostgator"]} hidden />
+            </div>
           </div>
         </section>
 
-        <ul className="cs-goals">
-          {goals.map((goal) => (
-            <li key={goal.text} className="cs-goal">
-              <h2 className="cs-goal__title">
-                {goal.title.map((line) => (
-                  <span key={line}>{line}</span>
-                ))}
-              </h2>
-              <p>{goal.text}</p>
-            </li>
-          ))}
-        </ul>
-
-        <img
-          className="cs-lockscreen"
-          src={`${A}/cc-lockscreen.webp`}
-          width={1560}
-          height={888}
-          loading="lazy"
-          alt="Lock screen showing Case Connector notifications. Stay connected to your cases, wherever you are: receive real-time updates on referrals, approvals, and case activity."
-        />
-
-        <section className="cs-split cs-split--ruled">
-          <div className="cs-split__head">
-            <h2 className="cs-h2">App Architecture</h2>
-          </div>
-          <div className="cs-split__text">
-            <p>
-              Case Connector architecture was built around the attorney referral workflow, creating a clear and
-              intuitive structure for discovering cases, managing referrals, tracking progress, and handling payments
-              within a single connected experience.
-            </p>
-            <p>
-              The structure was intentionally designed around the natural flow of attorney referrals. Research showed
-              that attorneys follow a consistent process: building trust, evaluating opportunities, and managing ongoing
-              referrals. The app was built to support those behaviors directly.
-            </p>
-          </div>
-        </section>
-
-        <div className="sitemap">
-          <ul className="tree" aria-label="App sitemap">
-            <TreeNode node={sitemap} />
-          </ul>
-        </div>
-
-        <section className="cs-roadmap">
-          <div className="cs-split cs-split--ruled">
-            <div className="cs-split__head">
-              <h2 className="cs-h2">Development Roadmap</h2>
-            </div>
-            <div className="cs-split__text">
-              <p>
-                Case Connector was organized into <strong>seven strategic phases</strong>. The roadmap was designed to
-                prioritize foundational infrastructure first, followed by core user workflows, financial operations,
-                and final product refinement.
-              </p>
-              <p>
-                Rather than attempting to launch a fully featured platform at once, development focused on delivering
-                value incrementally while validating critical assumptions throughout the process.
-              </p>
-            </div>
-          </div>
-
-          <ol className="timeline">
-            {phases.map((phase, i) => (
-              <PhaseCard key={phase.title} phase={phase} index={i} />
+        <section className="cp-block"><div className="cp-text">
+          <h1>A home for attorney-to-attorney referrals</h1>
+          <p className="cp-context">
+            <strong>Some context:</strong> in the U.S., when an attorney can’t take a case (it’s outside their
+            practice area or their state), they refer the client to another attorney and share the fee. Referrals are
+            a major source of new business for law firms, yet they still happen over phone calls, emails and texts,
+            and nobody really knows where a case stands once it changes hands.
+          </p>
+          <dl className="cp-psr">
+            <div><dt>Problem</dt><dd>Referrals were scattered across channels, with no visibility, no status and no record of who owed what.</dd></div>
+            <div><dt>Solution</dt><dd>A mobile app where attorneys find the right partner, send and accept referrals, and follow each case to the end.</dd></div>
+            <div><dt>My role</dt><dd>I shaped the product idea, interviewed attorneys, designed the whole app on my own, and led the 6 developers who built it, coding alongside them.</dd></div>
+          </dl>
+          <ul className="cp-facts">
+            {facts.map((f) => (
+              <li key={f.label}><strong>{f.value}</strong><span>{f.label}</span></li>
             ))}
-            <TimelineRunner />
+          </ul>
+        </div></section>
+
+        <section className="cp-block"><div className="cp-text">
+          <p className="cp-eyebrow">Goals</p>
+          <h2>What the app had to do</h2>
+          <ol className="cp-goals">
+            {goals.map((g) => (
+              <li key={g.text}><strong>{g.title.join(" ")}</strong><span>{g.text}</span></li>
+            ))}
           </ol>
-        </section>
+        </div></section>
 
-        <section className="cs-presentation" aria-labelledby="presentation">
-          <h2 className="cs-h2 cs-presentation__title" id="presentation">Presentation:</h2>
-          <img src={`${A}/cc-pres-1.webp`} width={1600} height={1080} loading="lazy"
-            alt="Case Connector website hero: The Future of Attorney Referrals, with app screens, 184 matched referrals, 138+ attorneys, and partner firm logos." />
-          <img src={`${A}/cc-pres-2.webp`} width={1600} height={1600} loading="lazy"
-            alt="The Smartest Way to Exchange Cases: monetize overflow and get better leads. A Faster, Safer Referral Workflow designed for busy law firms." />
-          <img src={`${A}/cc-pres-3.webp`} width={1600} height={1200} loading="lazy"
-            alt="Tools That Eliminate Guesswork and Risk: four app screens showing the home feed, an attorney profile, a case overview and case management." />
-          <img src={`${A}/cc-pres-4.webp`} width={1600} height={1660} loading="lazy"
-            alt="Case Connector brand mark by Trial Lawyers University, and a banner: Trusted Connections. Your Professional Network, Upgraded." />
-        </section>
+        <figure className="cp-block cp-shot">
+          <img src={`${A}/cc-app-screens-2.webp`} width={2616} height={1712} alt="Four Case Connector screens: home with a suggested case, an attorney profile, case details with the referral fee, and case management" loading="lazy" />
+        </figure>
 
-        <section className="cs-empathize">
-          <h2 className="cs-h2 cs-h2--sm">Empathize UX Study</h2>
-          <p className="cs-lead">
-            <strong>Attorneys posting cases (Case Posters):</strong> want to delegate cases and earn referral fees.
+        <section className="cp-block"><div className="cp-text">
+          <p className="cp-eyebrow">Research</p>
+          <h2>Two sides of every referral</h2>
+          <p>
+            I interviewed attorneys and met weekly with Trial Lawyers University. Every referral has two people with
+            different needs: the attorney who sends the case and the one who takes it.
           </p>
-          <p className="cs-lead">
-            <strong>Attorneys bidding on cases (Case Bidders):</strong> want to acquire new clients and grow their
-            caseload.
-          </p>
-
-          <div className="personas">
+          <div className="cp-personas">
             {personas.map((p) => (
-              <article key={p.name} className="persona">
-                <header className="persona__head">
-                  <img src={p.image} width={160} height={160} loading="lazy" alt="" />
+              <article key={p.name} className="cp-persona">
+                <header>
+                  <img src={p.image} width={96} height={96} alt="" />
                   <div>
-                    <p className="persona__label">{p.label}</p>
-                    <h3>{p.name}</h3>
-                    <p className="persona__role">{p.role}</p>
+                    <span className="cp-persona__label">{p.label}</span>
+                    <strong>{p.name}</strong>
+                    <span>{p.role}</span>
                   </div>
-                  <blockquote>{p.quote}</blockquote>
                 </header>
-                <h4 className="persona__heading persona__heading--goals">Goals</h4>
-                <ul className="persona__list persona__list--goals">
-                  {p.goals.map((g) => <li key={g}>{g}</li>)}
-                </ul>
-                <h4 className="persona__heading persona__heading--pains">Pain Points</h4>
-                <ul className="persona__list persona__list--pains">
-                  {p.pains.map((g) => <li key={g}>{g}</li>)}
-                </ul>
-                <h4 className="persona__heading persona__heading--insights">Solution Insights</h4>
-                <ul className="persona__list persona__list--insights">
-                  {p.insights.map((g) => <li key={g}>{g}</li>)}
-                </ul>
+                <blockquote className="cp-persona__quote">{p.quote}</blockquote>
+                <div className="cp-persona__lists">
+                  <section>
+                    <h4>Pain points</h4>
+                    <ul className="cp-persona__pains">{p.pains.slice(0, 3).map((x) => <li key={x}>{x}</li>)}</ul>
+                  </section>
+                  <section>
+                    <h4>What we built</h4>
+                    <ul className="cp-persona__built">{p.insights.slice(0, 3).map((x) => <li key={x}>{x}</li>)}</ul>
+                  </section>
+                </div>
               </article>
             ))}
           </div>
+        </div></section>
+
+        <section className="cp-block"><div className="cp-text">
+          <p className="cp-eyebrow">Market</p>
+          <h2>From problems to product</h2>
+          <ul className="cp-map">
+            {marketProblems.map((problem, i) => (
+              <li key={problem}><span>{problem}</span><span aria-hidden="true">→</span><span>{marketSolutions[i]}</span></li>
+            ))}
+          </ul>
+        </div></section>
+
+        <section className="cp-block cp-arch">
+          <div className="cp-text">
+            <p className="cp-eyebrow">Architecture</p>
+            <h2>How the app is organized</h2>
+            <p>Networking, case discovery and case management, usually spread across tools, live in one connected app.</p>
+          </div>
+          <div className="cp-sitemap">
+            <ul className="cp-tree" aria-label="App sitemap">
+              <TreeNode node={sitemap} />
+            </ul>
+          </div>
         </section>
 
-        <section className="cs-market">
-          <h2 className="cs-h3">Market-Wide Problems the App Solves:</h2>
-          <div className="cs-market__cols">
-            <div>
-              <h3>Market Problem:</h3>
-              <ul>{marketProblems.map((t) => <li key={t}>{t}</li>)}</ul>
-            </div>
-            <div>
-              <h3>Solution:</h3>
-              <ul>{marketSolutions.map((t) => <li key={t}>{t}</li>)}</ul>
+        <section className="cp-block cp-cta" aria-label="Case Connector on the App Store">
+          <div className="cp-cta__copy">
+            <img className="cp-cta__logo" src={`${A}/tlu-logo-white.svg`} width={90} height={90} alt="Trial Lawyers University" />
+            <p className="cp-cta__kicker">Trusted Connections.</p>
+            <h2>Your Professional Network, Upgraded.</h2>
+            <div className="cp-cta__actions">
+              <a className="cp-cta__btn" href={APP_STORE} target="_blank" rel="noopener">
+                <span className="cp-cta__icon" aria-hidden="true"><svg viewBox="0 0 16 16"><path d="M4.5 11.5 11.5 4.5M5.5 4.5h6v6" /></svg></span>
+                View on the App Store
+              </a>
+              <Link className="cp-cta__btn cp-cta__btn--ghost" href="/contact">
+                <span className="cp-cta__icon" aria-hidden="true"><svg viewBox="0 0 16 16"><path d="M4.5 11.5 11.5 4.5M5.5 4.5h6v6" /></svg></span>
+                Get in touch with me
+              </Link>
             </div>
           </div>
-          <div className="cs-closing">
-            <img className="cs-closing__logo" src={`${A}/cc-closing-logo.png`} width={624} height={104} loading="lazy" alt="Case Connector" />
-            <img className="cs-closing__phone" src={`${A}/cc-closing-phone.png`} width={375} height={591} loading="lazy" alt="" />
+          <img className="cp-cta__phone" src={`${A}/cc-cta-phone.webp`} width={408} height={434} alt="Case Connector home screen" loading="lazy" />
+          <img className="cp-cta__phone2" src={`${A}/cc-cta-phone-2.webp`} width={257} height={486} alt="" loading="lazy" />
+        </section>
+
+        <section className="cp-block cp-delivery"><div className="cp-text">
+          <p className="cp-eyebrow">Delivery</p>
+          <h2>Built in 7 phases, in 4 months</h2>
+          <p>I planned the build with the team in two-week phases, each ending in a working deliverable reviewed in our weekly meetings.</p>
+        </div>
+          {/* when each phase happened, as a small timeline across the 4 months: the bars grow in one after another */}
+          <div className="cp-gantt">
+            <div className="cp-gantt__head" aria-hidden="true">
+              <span />
+              <div className="cp-gantt__months">{months.map((m) => <span key={m}>{m}</span>)}</div>
+            </div>
+            <ol>
+              {phases.map((ph, i) => (
+                <li key={ph.title} style={{ "--i": i } as React.CSSProperties}>
+                  <div className="cp-gantt__label">
+                    <span className="cp-gantt__num">{String(i + 1).padStart(2, "0")}</span>
+                    <div>
+                      <strong>{ph.title.replace(/^Phase \d+:\s*/, "")}</strong>
+                      <p>{ph.deliverable ?? ph.goal}</p>
+                    </div>
+                  </div>
+                  <div className="cp-gantt__track">
+                    <span className="cp-gantt__bar" style={{ gridColumn: i === 0 ? "1 / span 2" : `${i + 2} / span 1` }} title={ph.date} />
+                  </div>
+                </li>
+              ))}
+            </ol>
           </div>
         </section>
+
+        <section className="cp-block cp-outcome"><div className="cp-text">
+          <p className="cp-eyebrow">Outcome</p>
+          <h2>Launched on the App Store</h2>
+          <p>
+            In 4 months, Case Connector went from an idea to a launch-ready app on the App Store: attorneys can find
+            the right partner, refer cases with clear and compliant fees, and follow every case to the end, sponsored
+            and validated by Trial Lawyers University along the way.
+          </p>
+          <a className="cp-cta__btn cp-outcome__btn" href={APP_STORE} target="_blank" rel="noopener">
+            <span className="cp-cta__icon" aria-hidden="true"><svg viewBox="0 0 16 16"><path d="M4.5 11.5 11.5 4.5M5.5 4.5h6v6" /></svg></span>
+            View on the App Store
+          </a>
+        </div>
+          <img
+            className="cp-lockscreen"
+            src={`${A}/cc-lockscreen-trim.webp`}
+            width={3120}
+            height={1561}
+            loading="lazy"
+            alt="Lock screen showing Case Connector notifications. Stay connected to your cases, wherever you are: receive real-time updates on referrals, approvals, and case activity."
+          />
+        </section>
+        <Reveal />
       </main>
-    </div>
+    </ProjectLayout>
   );
 }
