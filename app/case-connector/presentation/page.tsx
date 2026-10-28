@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import Logos from "../../components/Logos";
 import ProjectLayout, { type ProjectInfo } from "../../components/ProjectAside";
-import { goals, marketProblems, marketSolutions, personas, phases } from "../data";
+import { goals, marketProblems, marketSolutions, personas, phases, sitemap, type SitemapNode } from "../data";
 import Reveal from "./Reveal";
 import "./presentation.css";
 
@@ -63,6 +63,24 @@ const decisions = [
     text: "Attorneys live in their phones between hearings. Real-time notifications for new candidates, approvals and case activity mean nobody has to open the app to know something changed.",
   },
 ];
+
+/* the app's sitemap as a tree; each level lines up in a column (indented list on narrow screens) */
+function TreeNode({ node, depth = 0 }: { node: SitemapNode; depth?: number }) {
+  return (
+    <li className={`cp-tree__item cp-tree__item--d${depth}`}>
+      <span className={node.children ? "cp-tree__slot" : undefined}>
+        <span className={node.primary ? "cp-tree__node cp-tree__node--primary" : "cp-tree__node"}>{node.label}</span>
+      </span>
+      {node.children && (
+        <ul>
+          {node.children.map((child, i) => (
+            <TreeNode key={`${child.label}-${i}`} node={child} depth={depth + 1} />
+          ))}
+        </ul>
+      )}
+    </li>
+  );
+}
 
 export default function CaseConnectorPresentation() {
   return (
@@ -145,6 +163,19 @@ export default function CaseConnectorPresentation() {
             ))}
           </ul>
         </div></section>
+
+        <section className="cp-block cp-arch">
+          <div className="cp-text">
+            <p className="cp-eyebrow">Architecture</p>
+            <h2>How the app is organized</h2>
+            <p>Networking, case discovery and case management, usually spread across tools, live in one connected app.</p>
+          </div>
+          <div className="cp-sitemap">
+            <ul className="cp-tree" aria-label="App sitemap">
+              <TreeNode node={sitemap} />
+            </ul>
+          </div>
+        </section>
 
         <figure className="cp-block cp-shot">
           <img src={`${A}/cc-app-screens-2.webp`} width={2616} height={1712} alt="Four Case Connector screens: home with a suggested case, an attorney profile, case details with the referral fee, and case management" loading="lazy" />
