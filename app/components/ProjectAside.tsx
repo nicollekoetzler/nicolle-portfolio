@@ -21,12 +21,21 @@ function Arrow({ href, dir }: { href: string; dir: "prev" | "next" }) {
     : <Link href={to.href} className="pa-aside__btn" aria-label={label} title={to.label}>{icon}</Link>;
 }
 
+type TagIcon = "design" | "team" | "code";
+
+/* 16px line icons for the skill tags: pen nib, people, code brackets */
+const tagIcons: Record<TagIcon, React.ReactNode> = {
+  design: <><path d="M12 19l7-7 3 3-7 7-3-3Z" /><path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5Z" /><path d="M2 2l7.59 7.59" /><circle cx="11" cy="11" r="2" /></>,
+  team: <><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" /><circle cx="9" cy="7" r="4" /><path d="M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75" /></>,
+  code: <><path d="m16 18 6-6-6-6M8 6l-6 6 6 6" /></>,
+};
+
 export type ProjectInfo = {
   kicker?: string;
   /** this project's own link in the Work list; adds previous / next project arrows to the panel */
   href?: string;
-  /** skill tags at the bottom of the panel, each with a glowing dot; their labels type themselves out */
-  tags?: { label: string; color: string }[];
+  /** skill tags at the bottom of the panel, each with a small icon; their labels type themselves out */
+  tags?: { label: string; icon: TagIcon }[];
   logo: React.ReactNode;
   title: string;
   tagline: string;
@@ -85,7 +94,8 @@ export default function ProjectLayout({ info, flush = false, children }: { info:
           {info.tags && (
             <ul className="pa-aside__tags">
               {info.tags.map((t, i) => (
-                <li key={t.label} style={{ "--dot": t.color } as React.CSSProperties}>
+                <li key={t.label}>
+                  <svg viewBox="0 0 24 24" aria-hidden="true">{tagIcons[t.icon]}</svg>
                   <TypedText text={t.label} delay={900 + i * 700} speed={45} />
                 </li>
               ))}
