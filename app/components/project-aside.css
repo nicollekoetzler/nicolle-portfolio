@@ -35,6 +35,7 @@
 .pa-aside__close svg { width: 14px; height: 14px; fill: none; stroke: currentColor; stroke-width: 1.6; stroke-linecap: round; }
 
 .pa-aside__body { flex: 1; display: flex; flex-direction: column; gap: 16px; padding: 24px; overflow-y: auto; scrollbar-width: thin; }
+.pa-aside__brand { display: flex; flex-direction: column; gap: 16px; }
 .pa-aside__logo { display: flex; align-items: center; min-height: 48px; }
 .pa-aside__logo img { display: block; }
 .pa-mark { display: grid; place-items: center; width: 48px; height: 48px; overflow: hidden; border-radius: 12px; background: #2b2b2b; font-size: 22px; font-weight: 600; color: #fff; }
@@ -129,6 +130,9 @@ html:has(.pa--flush), html:has(.pa--flush) body { background: #1c1c1c !important
   .pa-aside__body { gap: 12px; padding: 20px; }
   .pa-aside__head { padding-left: 20px; }
   .pa-aside__text { display: none; }
+  /* logo and project name side by side */
+  .pa-aside__brand { flex-direction: row; align-items: center; gap: 12px; }
+  .pa-aside__brand .pa-aside__title, .pa--flush .pa-aside__brand .pa-aside__title { margin: 0; font-size: 28px; }
   /* the email pill, sized like the site's own on phones */
   .pa .v2-status { gap: 8px; padding: 4px 4px 4px 10px; font-size: 12.5px; }
   .pa .v2-status__dot { margin-right: 3px; }

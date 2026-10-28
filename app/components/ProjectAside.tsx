@@ -73,8 +73,10 @@ export default function ProjectLayout({ info, flush = false, children }: { info:
           </Link>
         </div>
         <div className="pa-aside__body">
-          <div className="pa-aside__logo">{info.logo}</div>
-          <h2 className="pa-aside__title">{info.title}</h2>
+          <div className="pa-aside__brand">
+            <div className="pa-aside__logo">{info.logo}</div>
+            <h2 className="pa-aside__title">{info.title}</h2>
+          </div>
           <p className="pa-aside__tagline">{info.tagline}</p>
           {info.paragraphs.map((p) => <p key={p} className="pa-aside__text">{p}</p>)}
           <dl className="pa-aside__details">
