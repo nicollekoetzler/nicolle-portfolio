@@ -1,5 +1,6 @@
 /* eslint-disable @next/next/no-img-element -- small logo marks */
 import Link from "next/link";
+import StatusPill from "./StatusPill";
 import TypedText from "./TypedText";
 import "./project-aside.css";
 
@@ -41,6 +42,8 @@ export type ProjectInfo = {
   tagline: string;
   paragraphs: string[];
   details: { term: string; value: string | string[] }[];
+  /** show the site's email pill (radar dot, typed email, Get in touch) under the details */
+  contact?: boolean;
   /** optional link at the end of the panel, e.g. to the full case study */
   link?: { href: string; label: string; icon?: React.ReactNode };
 };
@@ -82,6 +85,7 @@ export default function ProjectLayout({ info, flush = false, children }: { info:
               </div>
             ))}
           </dl>
+          {info.contact && <StatusPill className="pa-status" />}
           {info.link && (info.link.href.startsWith("http") ? (
             <a href={info.link.href} target="_blank" rel="noopener" className="pa-aside__link">
               {info.link.icon}{info.link.label} <span aria-hidden="true">↗</span>
