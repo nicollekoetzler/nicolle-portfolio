@@ -177,6 +177,14 @@ export default function CaseConnectorPresentation() {
             </div>
           </div>
         ))}
+          <img
+            className="cp-lockscreen"
+            src={`${A}/cc-lockscreen.webp`}
+            width={3120}
+            height={1776}
+            loading="lazy"
+            alt="Lock screen showing Case Connector notifications. Stay connected to your cases, wherever you are: receive real-time updates on referrals, approvals, and case activity."
+          />
         </section>
 
         <section className="cp-block cp-cta" aria-label="Case Connector on the App Store">

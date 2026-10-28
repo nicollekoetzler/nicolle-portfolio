@@ -97,8 +97,9 @@
 
 .cp-decision { display: flex; flex-direction: column; gap: 24px; }
 /* text-only decisions: closer together than the block's usual gap */
-.cp-decisions { gap: 36px; }
-.cp-decision img { display: block; width: 100%; height: auto; border-radius: 16px; }
+.cp-decisions { gap: 36px; padding-bottom: 20px; }
+/* "Stay connected" closes the block, its card the same distance from the bottom as from the sides */
+.cp-lockscreen { display: block; width: 100%; height: auto; margin-top: 8px; }
 
 /* goals, personas, market, architecture, delivery: compact cards */
 .cp-goals { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; margin: 8px 0 0; padding: 0; list-style: none; counter-reset: g; }
@@ -143,6 +144,7 @@
   .cp-hero, .cp-block { border-radius: 16px; }
   .cp-block { gap: 40px; padding: 40px 16px; }
   .cp-shot { padding: 0; }
+  .cp-decisions { padding-bottom: 16px; }
   .cp-logos { padding: 20px 0; }
   .cp-logos .logos { zoom: 0.6; }
   .cp-cta { flex-direction: column; align-items: stretch; min-height: 0; padding: 40px 24px 0; }
@@ -151,9 +153,6 @@
   .cp .cp-cta__kicker { font-size: 17px; }
   .cp-cta h2 { margin: 12px 0 28px; font-size: 32px; }
   .cp-cta__phone { position: static; align-self: center; width: 82%; max-width: 320px; height: auto; margin-top: 8px; }
-  /* text-only decisions: closer together than the block's usual gap */
-.cp-decisions { gap: 36px; }
-.cp-decision img { border-radius: 10px; }
   .cp-text p { font-size: 16px; }
   .cp-psr > div { grid-template-columns: 1fr; gap: 4px; }
   .cp-facts, .cp-goals, .cp-personas { grid-template-columns: 1fr; }
