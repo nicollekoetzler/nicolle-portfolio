@@ -16,6 +16,7 @@ export const metadata: Metadata = {
 };
 
 const A = "/assets/case-connector";
+const APP_STORE = "https://apps.apple.com/us/app/tlu-case-connector/id6759930495";
 
 const project: ProjectInfo = {
   href: "/case-connector",
@@ -29,7 +30,7 @@ const project: ProjectInfo = {
     { term: "Timeline", value: "4 months" },
   ],
   link: {
-    href: "https://apps.apple.com/us/app/tlu-case-connector/id6759930495",
+    href: APP_STORE,
     label: "View on the App Store",
     icon: <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16.37 12.6c-.02-2.3 1.88-3.4 1.96-3.46-1.07-1.56-2.73-1.78-3.32-1.8-1.41-.14-2.76.83-3.48.83-.72 0-1.82-.81-3-.79-1.54.02-2.96.9-3.76 2.28-1.6 2.78-.41 6.9 1.15 9.16.76 1.1 1.67 2.34 2.86 2.3 1.15-.05 1.58-.74 2.97-.74 1.38 0 1.77.74 2.98.72 1.23-.02 2.01-1.12 2.76-2.23.87-1.28 1.23-2.52 1.25-2.58-.03-.01-2.4-.92-2.37-3.69ZM14.1 5.85c.63-.77 1.06-1.83.94-2.89-.91.04-2.01.61-2.66 1.37-.58.67-1.09 1.76-.96 2.8 1.02.08 2.05-.51 2.68-1.28Z" /></svg>,
   },
@@ -172,6 +173,20 @@ export default function CaseConnectorPresentation() {
             <img src={`${A}/${d.img.src}`} width={d.img.w} height={d.img.h} alt={d.img.alt} loading="lazy" />
           </div>
         ))}
+        </section>
+
+        <section className="cp-block cp-cta" aria-label="Case Connector on the App Store">
+          <div className="cp-cta__copy">
+            <img className="cp-cta__logo" src={`${A}/cc-emblem.png`} width={88} height={88} alt="" />
+            <p className="cp-cta__kicker">Trusted Connections.</p>
+            <h2>Your Professional Network, Upgraded.</h2>
+            <a className="cp-cta__btn" href={APP_STORE} target="_blank" rel="noopener">
+              <span className="cp-cta__icon" aria-hidden="true"><svg viewBox="0 0 16 16"><path d="M4.5 11.5 11.5 4.5M5.5 4.5h6v6" /></svg></span>
+              Get it on the App Store
+            </a>
+          </div>
+          <img className="cp-cta__phone" src={`${A}/cc-cta-phone.webp`} width={408} height={434} alt="Case Connector home screen" loading="lazy" />
+          <img className="cp-cta__phone2" src={`${A}/cc-cta-phone-2.webp`} width={257} height={486} alt="" loading="lazy" />
         </section>
 
         <section className="cp-block"><div className="cp-text">

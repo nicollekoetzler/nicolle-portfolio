@@ -32,6 +32,34 @@
 .cp-shot { display: block; margin: 0; padding: 0; overflow: hidden; }
 .cp-shot img { display: block; width: 100%; height: auto; }
 
+/* App Store call to action, in the app's own blue (from its marketing banner) */
+.cp-cta {
+  position: relative;
+  container-type: inline-size;
+  flex-direction: row;
+  align-items: center;
+  min-height: 460px;
+  padding: 56px 50px;
+  overflow: hidden;
+  background: linear-gradient(180deg, #054186 0%, #153a66 100%);
+}
+.cp-cta__copy { position: relative; z-index: 1; display: flex; flex-direction: column; align-items: flex-start; max-width: 46%; }
+.cp-cta__logo { width: 88px; height: 88px; margin-bottom: 40px; border-radius: 50%; }
+.cp .cp-cta__kicker { font-size: 20px; font-weight: 400; color: #fff; }
+.cp-cta h2 { margin: 16px 0 36px; font-size: clamp(32px, 4cqw, 52px); font-weight: 500; line-height: 1.12; letter-spacing: 0.01em; color: #fff; }
+.cp-cta__btn { display: inline-flex; align-items: center; gap: 14px; height: 56px; padding: 0 26px 0 8px; border-radius: 28px; background: #0059c0; font-size: 17px; font-weight: 400; color: #fff; text-decoration: none; transition: background .2s, transform .2s; }
+.cp-cta__btn:hover { background: #0a66d6; }
+.cp-cta__icon { display: grid; place-items: center; width: 40px; height: 40px; border-radius: 50%; background: #1570da; transition: transform .25s; }
+.cp-cta__btn:hover .cp-cta__icon { transform: rotate(45deg); }
+.cp-cta__icon svg { width: 16px; height: 16px; fill: none; stroke: #fff; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+/* the phones sit at the bottom right, cut by the block's edges like in the banner */
+.cp-cta__phone { position: absolute; right: 21%; bottom: 0; height: 86%; width: auto; }
+.cp-cta__phone2 { position: absolute; top: 0; right: 0; height: 100%; width: auto; }
+@container (max-width: 900px) {
+  .cp-cta__phone2 { display: none; }
+  .cp-cta__phone { right: 3%; }
+}
+
 .cp-text { display: flex; flex-direction: column; gap: 16px; max-width: 900px; margin: 0 auto; width: 100%; }
 .cp-text .cp-eyebrow { margin-bottom: 4px; line-height: 1; }
 .cp-eyebrow { font-size: 13px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: #9ca3af; }
@@ -99,6 +127,12 @@
   .cp-hero, .cp-block { border-radius: 16px; }
   .cp-block { gap: 40px; padding: 40px 16px; }
   .cp-shot { padding: 0; }
+  .cp-cta { flex-direction: column; align-items: stretch; min-height: 0; padding: 40px 24px 0; }
+  .cp-cta__copy { max-width: none; }
+  .cp-cta__logo { width: 64px; height: 64px; margin-bottom: 28px; }
+  .cp .cp-cta__kicker { font-size: 17px; }
+  .cp-cta h2 { margin: 12px 0 28px; font-size: 32px; }
+  .cp-cta__phone { position: static; align-self: center; width: 82%; max-width: 320px; height: auto; margin-top: 8px; }
   .cp-decision img { border-radius: 10px; }
   .cp-text p { font-size: 16px; }
   .cp-psr > div { grid-template-columns: 1fr; gap: 4px; }
