@@ -37,8 +37,7 @@ export default function LegalAbout() {
       <p>
         I started in design in 2012 and moved into software development in 2020. Today I work across product, design
         and front-end engineering with React, Next.js and Tailwind CSS, backed by a structured design system and
-        maintainable code. A more structured delivery process and closer communication with clients raised our client
-        approval rates from 30% to 80%.
+        maintainable code.
       </p>
       <p>
         AI-assisted development lets me prototype faster, test ideas earlier and turn decisions into working software

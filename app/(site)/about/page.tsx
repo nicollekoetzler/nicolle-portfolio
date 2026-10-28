@@ -29,10 +29,6 @@ export default function About() {
         appreciation for structured design systems, maintainable code, and scalable product development.
       </p>
       <p>
-        Through team leadership, stronger client communication, and a more structured product delivery process,
-        we increased client approval rates from 30% to 80%.
-      </p>
-      <p>
         Today, I work across product design and software development, using technologies such as React, Next.js,
         and Tailwind CSS to turn ideas into functional digital products.
       </p>
