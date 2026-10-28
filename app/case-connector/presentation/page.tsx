@@ -174,7 +174,7 @@ export default function CaseConnectorPresentation() {
 
         <section className="cp-block cp-cta" aria-label="Case Connector on the App Store">
           <div className="cp-cta__copy">
-            <img className="cp-cta__logo" src={`${A}/cc-emblem.png`} width={88} height={88} alt="" />
+            <img className="cp-cta__logo" src={`${A}/tlu-logo-white.svg`} width={90} height={90} alt="Trial Lawyers University" />
             <p className="cp-cta__kicker">Trusted Connections.</p>
             <h2>Your Professional Network, Upgraded.</h2>
             <div className="cp-cta__actions">
