@@ -26,7 +26,6 @@ const project: ProjectInfo = {
     { term: "My Role", value: ["Product Designer & Lead", "Design + Team Lead"] },
     { term: "Team", value: "Me + 6 developers" },
     { term: "Timeline", value: "3 months" },
-    { term: "Client", value: "The Casely Group" },
   ],
   contact: true,
   tags: [
