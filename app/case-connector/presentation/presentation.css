@@ -143,7 +143,7 @@
 /* text-only decisions: closer together than the block's usual gap */
 .cp-decisions { gap: 36px; }
 /* Outcome ends on the "Stay connected" image, its card the same distance from the bottom as from the sides */
-.cp-outcome { padding-bottom: 20px; }
+.cp-outcome { gap: 40px; padding-bottom: 20px; }
 .cp-lockscreen { display: block; width: 100%; height: auto; }
 
 /* goals, personas, market, architecture, delivery: compact cards */
@@ -182,7 +182,7 @@
   .cp-hero, .cp-block { border-radius: 16px; }
   .cp-block { gap: 40px; padding: 40px 16px; }
   .cp-shot { padding: 0; }
-  .cp-outcome { padding-bottom: 16px; }
+  .cp-outcome { gap: 28px; padding-bottom: 16px; }
   .cp-logos { padding: 20px 0; }
   .cp-logos .logos { zoom: 0.69; }
   .cp-cta { flex-direction: column; align-items: stretch; min-height: 0; padding: 40px 24px 0; }

@@ -242,9 +242,9 @@ export default function CaseConnectorPresentation() {
         </div>
           <img
             className="cp-lockscreen"
-            src={`${A}/cc-lockscreen.webp`}
+            src={`${A}/cc-lockscreen-trim.webp`}
             width={3120}
-            height={1776}
+            height={1561}
             loading="lazy"
             alt="Lock screen showing Case Connector notifications. Stay connected to your cases, wherever you are: receive real-time updates on referrals, approvals, and case activity."
           />
