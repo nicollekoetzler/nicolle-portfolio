@@ -72,7 +72,7 @@
   -webkit-mask-image: linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent);
           mask-image: linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent);
 }
-.cp-logos .logos { zoom: 0.8; }
+.cp-logos .logos { zoom: 0.92; }
 
 .cp-text { display: flex; flex-direction: column; gap: 16px; max-width: 900px; margin: 0 auto; width: 100%; }
 .cp-text .cp-eyebrow { margin-bottom: 4px; line-height: 1; }
@@ -146,7 +146,7 @@
   .cp-shot { padding: 0; }
   .cp-decisions { padding-bottom: 16px; }
   .cp-logos { padding: 20px 0; }
-  .cp-logos .logos { zoom: 0.6; }
+  .cp-logos .logos { zoom: 0.69; }
   .cp-cta { flex-direction: column; align-items: stretch; min-height: 0; padding: 40px 24px 0; }
   .cp-cta__copy { max-width: none; }
   .cp-cta__logo { width: 64px; height: 64px; margin-bottom: 28px; }
