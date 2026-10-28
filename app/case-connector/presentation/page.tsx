@@ -216,7 +216,7 @@ export default function CaseConnectorPresentation() {
           </ol>
         </div></section>
 
-        <section className="cp-block"><div className="cp-text">
+        <section className="cp-block cp-outcome"><div className="cp-text">
           <p className="cp-eyebrow">Outcome</p>
           <h2>Launched on the App Store</h2>
           <p>
@@ -224,7 +224,16 @@ export default function CaseConnectorPresentation() {
             the right partner, refer cases with clear and compliant fees, and follow every case to the end, sponsored
             and validated by Trial Lawyers University along the way.
           </p>
-        </div></section>
+        </div>
+          <img
+            className="cp-lockscreen"
+            src={`${A}/cc-lockscreen.webp`}
+            width={3120}
+            height={1776}
+            loading="lazy"
+            alt="Lock screen showing Case Connector notifications. Stay connected to your cases, wherever you are: receive real-time updates on referrals, approvals, and case activity."
+          />
+        </section>
         <Reveal />
       </main>
     </ProjectLayout>
