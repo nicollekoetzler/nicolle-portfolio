@@ -82,6 +82,8 @@
 .cp-facts span { font-size: 14px; font-weight: 300; color: #9ca3af; }
 
 .cp-decision { display: flex; flex-direction: column; gap: 24px; }
+/* text-only decisions: closer together than the block's usual gap */
+.cp-decisions { gap: 36px; }
 .cp-decision img { display: block; width: 100%; height: auto; border-radius: 16px; }
 
 /* goals, personas, market, architecture, delivery: compact cards */
@@ -133,7 +135,9 @@
   .cp .cp-cta__kicker { font-size: 17px; }
   .cp-cta h2 { margin: 12px 0 28px; font-size: 32px; }
   .cp-cta__phone { position: static; align-self: center; width: 82%; max-width: 320px; height: auto; margin-top: 8px; }
-  .cp-decision img { border-radius: 10px; }
+  /* text-only decisions: closer together than the block's usual gap */
+.cp-decisions { gap: 36px; }
+.cp-decision img { border-radius: 10px; }
   .cp-text p { font-size: 16px; }
   .cp-psr > div { grid-template-columns: 1fr; gap: 4px; }
   .cp-facts, .cp-goals, .cp-personas { grid-template-columns: 1fr; }

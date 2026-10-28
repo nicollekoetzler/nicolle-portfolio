@@ -54,17 +54,14 @@ const decisions = [
   {
     title: "Making each referral trackable",
     text: "Today, once a case is handed over, the referring attorney loses sight of it. Every referral in the app has a clear status, from proposal to signed case, and both sides see the same timeline, so nobody has to call to ask “where are we?”",
-    img: { src: "cc-pres-3.webp", w: 3200, h: 2400, alt: "Four app screens: home, attorney profile, case details and case management" },
   },
   {
     title: "Profiles that earn trust",
     text: "Referrals run on trust. Instead of a directory, each attorney gets a profile with practice areas, track record and reviews, so you can decide who to send a client to in seconds.",
-    img: { src: "cc-pres-2.webp", w: 3200, h: 3200, alt: "Attorney profile and the referral workflow" },
   },
   {
     title: "Updates where attorneys already are",
     text: "Attorneys live in their phones between hearings. Real-time notifications for new candidates, approvals and case activity mean nobody has to open the app to know something changed.",
-    img: { src: "cc-lockscreen.webp", w: 3120, h: 1776, alt: "Lock screen notifications for referrals and case activity" },
   },
 ];
 
@@ -159,7 +156,7 @@ export default function CaseConnectorPresentation() {
           <img src={`${A}/cc-app-screens-2.webp`} width={2616} height={1712} alt="Four Case Connector screens: home with a suggested case, an attorney profile, case details with the referral fee, and case management" loading="lazy" />
         </figure>
 
-        <section className="cp-block">
+        <section className="cp-block cp-decisions">
           <div className="cp-text">
             <p className="cp-eyebrow">Key decisions</p>
             <h2>How I thought about it</h2>
@@ -170,7 +167,6 @@ export default function CaseConnectorPresentation() {
               <h3><span>0{i + 1}</span>{d.title}</h3>
               <p>{d.text}</p>
             </div>
-            <img src={`${A}/${d.img.src}`} width={d.img.w} height={d.img.h} alt={d.img.alt} loading="lazy" />
           </div>
         ))}
         </section>
