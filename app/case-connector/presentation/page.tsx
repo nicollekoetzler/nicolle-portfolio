@@ -126,14 +126,24 @@ export default function CaseConnectorPresentation() {
             {personas.map((p) => (
               <article key={p.name} className="cp-persona">
                 <header>
-                  <img src={p.image} width={48} height={48} alt="" />
-                  <div><strong>{p.name}</strong><span>{p.role}</span></div>
+                  <img src={p.image} width={96} height={96} alt="" />
+                  <div>
+                    <span className="cp-persona__label">{p.label}</span>
+                    <strong>{p.name}</strong>
+                    <span>{p.role}</span>
+                  </div>
                 </header>
-                <p className="cp-persona__quote">{p.quote}</p>
-                <dl>
-                  <div><dt>Pain points</dt><dd>{p.pains.slice(0, 3).map((x) => <span key={x}>{x}</span>)}</dd></div>
-                  <div><dt>What we built</dt><dd>{p.insights.slice(0, 3).map((x) => <span key={x}>{x}</span>)}</dd></div>
-                </dl>
+                <blockquote className="cp-persona__quote">{p.quote}</blockquote>
+                <div className="cp-persona__lists">
+                  <section>
+                    <h4>Pain points</h4>
+                    <ul className="cp-persona__pains">{p.pains.slice(0, 3).map((x) => <li key={x}>{x}</li>)}</ul>
+                  </section>
+                  <section>
+                    <h4>What we built</h4>
+                    <ul className="cp-persona__built">{p.insights.slice(0, 3).map((x) => <li key={x}>{x}</li>)}</ul>
+                  </section>
+                </div>
               </article>
             ))}
           </div>
