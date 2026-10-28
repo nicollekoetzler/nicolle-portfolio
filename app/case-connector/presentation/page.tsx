@@ -82,7 +82,6 @@ export default function CaseConnectorPresentation() {
         </section>
 
         <section className="cp-block"><div className="cp-text">
-          <p className="cp-eyebrow">The case in 60 seconds</p>
           <h1>A home for attorney-to-attorney referrals</h1>
           <p className="cp-context">
             <strong>Some context:</strong> in the U.S., when an attorney can’t take a case (it’s outside their
