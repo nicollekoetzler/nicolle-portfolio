@@ -33,7 +33,7 @@ export type ProjectInfo = {
   paragraphs: string[];
   details: { term: string; value: string | string[] }[];
   /** optional link at the end of the panel, e.g. to the full case study */
-  link?: { href: string; label: string };
+  link?: { href: string; label: string; icon?: React.ReactNode };
 };
 
 /**
@@ -73,6 +73,15 @@ export default function ProjectLayout({ info, flush = false, children }: { info:
               </div>
             ))}
           </dl>
+          {info.link && (info.link.href.startsWith("http") ? (
+            <a href={info.link.href} target="_blank" rel="noopener" className="pa-aside__link">
+              {info.link.icon}{info.link.label} <span aria-hidden="true">↗</span>
+            </a>
+          ) : (
+            <Link href={info.link.href} className="pa-aside__link">
+              {info.link.icon}{info.link.label} <span aria-hidden="true">↗</span>
+            </Link>
+          ))}
           {info.tags && (
             <ul className="pa-aside__tags">
               {info.tags.map((t, i) => (
@@ -81,11 +90,6 @@ export default function ProjectLayout({ info, flush = false, children }: { info:
                 </li>
               ))}
             </ul>
-          )}
-          {info.link && (
-            <Link href={info.link.href} className="pa-aside__link">
-              {info.link.label} <span aria-hidden="true">↗</span>
-            </Link>
           )}
         </div>
       </aside>

@@ -50,6 +50,11 @@
 
 .pa-aside__link { align-self: flex-start; display: inline-flex; gap: 6px; margin-top: 4px; padding: 8px 14px; border-radius: 8px; background: rgba(255, 255, 255, 0.05); font-size: 14px; color: var(--pa-ink); transition: background .2s; }
 .pa-aside__link:hover { background: rgba(255, 255, 255, 0.1); }
+.pa-aside__link svg { width: 16px; height: 16px; fill: currentColor; }
+/* flush panel: the link is a solid white button right under the details (e.g. Download on the App Store) */
+.pa--flush .pa-aside__link { align-items: center; gap: 8px; margin-top: 8px; padding: 10px 16px; border-radius: 10px; background: #f3f3f3; font-weight: 500; color: #171718; }
+.pa--flush .pa-aside__link:hover { background: #fff; }
+.pa--flush .pa-aside__link span { color: #6b7280; }
 
 /* flush variant: full height, against the right edge of the window */
 .pa--flush .pa__content { margin-right: var(--pa-w); }
