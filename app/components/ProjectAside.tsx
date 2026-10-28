@@ -1,7 +1,6 @@
 /* eslint-disable @next/next/no-img-element -- small logo marks */
 import Link from "next/link";
 import StatusPill from "./StatusPill";
-import TypedText from "./TypedText";
 import "./project-aside.css";
 
 /* every project in the order of the home's Work list; the panel's arrows step through it (and wrap around) */
@@ -35,7 +34,7 @@ export type ProjectInfo = {
   kicker?: string;
   /** this project's own link in the Work list; adds previous / next project arrows to the panel */
   href?: string;
-  /** skill tags at the bottom of the panel, each with a small icon; their labels type themselves out */
+  /** skill tags at the bottom of the panel, each with a small icon */
   tags?: { label: string; icon: TagIcon }[];
   logo: React.ReactNode;
   title: string;
@@ -99,10 +98,10 @@ export default function ProjectLayout({ info, flush = false, children }: { info:
           ))}
           {info.tags && (
             <ul className="pa-aside__tags">
-              {info.tags.map((t, i) => (
+              {info.tags.map((t) => (
                 <li key={t.label}>
                   <svg viewBox="0 0 24 24" aria-hidden="true">{tagIcons[t.icon]}</svg>
-                  <TypedText text={t.label} delay={900 + i * 700} speed={45} />
+                  {t.label}
                 </li>
               ))}
             </ul>
