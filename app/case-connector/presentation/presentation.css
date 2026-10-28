@@ -171,10 +171,6 @@
 .cp-map li span:nth-child(2) { color: #6b7280; text-align: center; }
 .cp-map li span:last-child { color: #f9fafb; }
 
-.cp-areas { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; margin-top: 8px; }
-.cp-areas > div { display: flex; flex-direction: column; gap: 10px; padding: 18px; border-radius: 12px; background: var(--cp-card); }
-.cp-areas strong { font-size: 15px; font-weight: 500; color: #f9fafb; }
-.cp-areas ul { display: flex; flex-direction: column; gap: 6px; margin: 0; padding: 0; list-style: none; font-size: 14px; font-weight: 300; color: #9ca3af; }
 
 
 @media (max-width: 700px) {
@@ -194,7 +190,6 @@
   .cp-text p { font-size: 16px; }
   .cp-psr > div { grid-template-columns: 1fr; gap: 4px; }
   .cp-facts, .cp-goals, .cp-personas { grid-template-columns: 1fr; }
-  .cp-areas { grid-template-columns: 1fr 1fr; }
-  .cp-map li { grid-template-columns: 1fr; gap: 2px; }
+    .cp-map li { grid-template-columns: 1fr; gap: 2px; }
   .cp-map li span:nth-child(2) { display: none; }
   }

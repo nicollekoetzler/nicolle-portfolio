@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import Logos from "../../components/Logos";
 import ProjectLayout, { type ProjectInfo } from "../../components/ProjectAside";
-import { goals, marketProblems, marketSolutions, personas, phases, sitemap } from "../data";
+import { goals, marketProblems, marketSolutions, personas, phases } from "../data";
 import Reveal from "./Reveal";
 import "./presentation.css";
 
@@ -39,8 +39,6 @@ const project: ProjectInfo = {
   ],
 };
 
-/* the four main areas of the app, from the architecture sitemap */
-const areas = (sitemap.children?.[0]?.children ?? []).map((a) => ({ label: a.label === "Home" ? "Find & refer" : a.label, items: (a.children ?? []).map((c) => c.label) }));
 
 /* the build ran from December to March in half-month steps (phase 1 took all of December) */
 const months = ["Dec 2025", "Jan 2026", "Feb 2026", "Mar 2026"];
@@ -146,20 +144,6 @@ export default function CaseConnectorPresentation() {
               <li key={problem}><span>{problem}</span><span aria-hidden="true">→</span><span>{marketSolutions[i]}</span></li>
             ))}
           </ul>
-        </div></section>
-
-        <section className="cp-block"><div className="cp-text">
-          <p className="cp-eyebrow">Architecture</p>
-          <h2>Four areas, one connected app</h2>
-          <p>Networking, case discovery and case management, usually spread across tools, live in one place.</p>
-          <div className="cp-areas">
-            {areas.map((a) => (
-              <div key={a.label}>
-                <strong>{a.label}</strong>
-                <ul>{a.items.map((it) => <li key={it}>{it}</li>)}</ul>
-              </div>
-            ))}
-          </div>
         </div></section>
 
         <figure className="cp-block cp-shot">
