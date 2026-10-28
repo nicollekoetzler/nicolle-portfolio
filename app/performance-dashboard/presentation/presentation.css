@@ -5,9 +5,9 @@
 .pa-mark.pd-mark img { width: 26px; height: 25px; object-fit: contain; }
 
 /* hero: the home card's cover on its blue */
-/* the image is fitted inside an even inset, so the blue shows the same above and below it */
+/* placed like the home card: the cover has its own empty band and shadow at the bottom, so the top inset is larger */
 .pd-cover { position: relative; background: #356cff; }
-.pd-cover img { position: absolute; inset: 7%; display: block; width: 86%; height: 86%; object-fit: contain; }
+.pd-cover img { position: absolute; inset: 12% 6% 6%; display: block; width: 88%; height: 82%; object-fit: contain; object-position: center; }
 
 /* the eight modules */
 .pd-modules-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; margin: 8px 0 0; padding: 0; list-style: none; }
