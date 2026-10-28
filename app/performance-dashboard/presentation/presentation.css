@@ -1,8 +1,8 @@
 /* CG Performance Dashboard presentation: the Case Connector presentation's blocks (.cp), plus what's specific to this project */
 
 /* panel logo: the CG monogram on the brand blue */
-.pd-mark { background: #356cff; }
-.pd-mark img { width: 28px; height: 24px; object-fit: contain; }
+.pa-mark.pd-mark { place-items: center; background: #356cff; }
+.pa-mark.pd-mark img { width: 30px; height: 30px; object-fit: contain; }
 
 /* hero: the home card's cover on its blue */
 .pd-cover { display: grid; place-items: center; padding: 4% 6%; background: #356cff; }
