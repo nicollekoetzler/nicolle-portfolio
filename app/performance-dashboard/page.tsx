@@ -18,7 +18,7 @@ const A = "/assets/performance-dashboard";
 
 const project: ProjectInfo = {
   href: "/performance-dashboard",
-  logo: <span className="pa-mark pd-mark"><img src={`${A}/cg-mark-white.svg`} width={22} height={22} alt="" /></span>,
+  logo: <span className="pa-mark pd-mark"><img src={`${A}/cg-mark-white.svg`} width={22} height={21} alt="" /></span>,
   title: "CG Performance Dashboard",
   tagline: "One place for law firms to see how their website, SEO, calls and leads are performing, in plain language.",
   paragraphs: [],
