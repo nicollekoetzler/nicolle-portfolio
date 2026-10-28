@@ -216,20 +216,20 @@
 .cp-persona header { display: flex; align-items: center; gap: 20px; }
 .cp-persona header img { flex: none; width: 96px; height: 96px; border-radius: 50%; object-fit: cover; box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.06); }
 .cp-persona header div { display: flex; flex-direction: column; gap: 4px; }
-.cp-persona__label { font-size: 12px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: #6b7280; }
+.cp-persona__label { font-size: 13px; font-weight: 400; color: #6b7280; }
 .cp-persona header strong { font-size: 22px; font-weight: 500; letter-spacing: -0.01em; color: #f9fafb; }
 .cp-persona header span:last-child { font-size: 15px; color: #9ca3af; }
-.cp-persona__quote { margin: 0; padding: 16px 18px; border-left: 2px solid #1570da; border-radius: 0 10px 10px 0; background: rgba(255, 255, 255, 0.03); font-size: 16px; font-style: italic; font-weight: 300; line-height: 1.55; color: #e5e7eb; }
+.cp-persona__quote { margin: 0; padding: 16px 18px; border-left: 2px solid rgba(255, 255, 255, 0.18); border-radius: 0 10px 10px 0; background: rgba(255, 255, 255, 0.03); font-size: 16px; font-style: italic; font-weight: 300; line-height: 1.55; color: #e5e7eb; }
 .cp-persona__lists { display: flex; flex-direction: column; gap: 20px; padding-top: 4px; border-top: 1px solid #2f2f33; }
 .cp-persona__lists section { padding-top: 16px; }
 .cp-persona__lists section + section { padding-top: 0; }
-.cp-persona h4 { margin: 0 0 12px; font-size: 12px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: #6b7280; }
+.cp-persona h4 { margin: 0 0 12px; font-size: 14px; font-weight: 500; color: #9ca3af; }
 .cp-persona ul { display: flex; flex-direction: column; gap: 10px; margin: 0; padding: 0; list-style: none; }
 .cp-persona li { position: relative; padding-left: 28px; font-size: 15px; font-weight: 300; line-height: 1.45; color: #d1d5db; }
 .cp-persona li::before { content: ""; position: absolute; left: 0; top: 1px; width: 18px; height: 18px; border-radius: 50%; background-position: center; background-repeat: no-repeat; background-size: 10px; }
-/* pains: a soft red cross; answers: a blue check */
-.cp-persona__pains li::before { background-color: rgba(248, 113, 113, 0.12); background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 10' fill='none' stroke='%23f87171' stroke-width='1.6' stroke-linecap='round'%3E%3Cpath d='M2.5 2.5l5 5M7.5 2.5l-5 5'/%3E%3C/svg%3E"); }
-.cp-persona__built li::before { background-color: rgba(21, 112, 218, 0.18); background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 10' fill='none' stroke='%235b9dff' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M2 5.2l2 2L8 3'/%3E%3C/svg%3E"); }
+/* pains: a cross; answers: a check (neutral greys) */
+.cp-persona__pains li::before { background-color: rgba(255, 255, 255, 0.06); background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 10' fill='none' stroke='%239ca3af' stroke-width='1.6' stroke-linecap='round'%3E%3Cpath d='M2.5 2.5l5 5M7.5 2.5l-5 5'/%3E%3C/svg%3E"); }
+.cp-persona__built li::before { background-color: rgba(255, 255, 255, 0.06); background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 10' fill='none' stroke='%23d1d5db' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M2 5.2l2 2L8 3'/%3E%3C/svg%3E"); }
 
 .cp-map { display: flex; flex-direction: column; margin: 8px 0 0; padding: 0; list-style: none; }
 .cp-map li { display: grid; grid-template-columns: 1fr 24px 1fr; gap: 12px; align-items: baseline; padding: 12px 0; border-top: 1px solid #2f2f33; font-size: 15px; font-weight: 300; line-height: 1.45; }
