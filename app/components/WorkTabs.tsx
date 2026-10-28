@@ -89,8 +89,8 @@ export default function WorkTabs() {
             <a
               className={w.contain ? "v2-card v2-card--contain" : "v2-card"}
               href={w.href}
-              target="_blank"
-              rel="noopener"
+              // case studies open in place; client websites open in a new tab
+              {...(w.href.startsWith("http") ? { target: "_blank", rel: "noopener" } : {})}
               style={w.background ? { background: w.background } : undefined}
             >
               {w.video ? (
