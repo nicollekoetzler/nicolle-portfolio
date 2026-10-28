@@ -199,9 +199,6 @@
 .cp-facts strong { font-size: 28px; font-weight: 600; line-height: 1; letter-spacing: -0.02em; color: #f9fafb; }
 .cp-facts span { font-size: 14px; font-weight: 300; color: #9ca3af; }
 
-.cp-decision { display: flex; flex-direction: column; gap: 24px; }
-/* text-only decisions: closer together than the block's usual gap */
-.cp-decisions { gap: 36px; }
 /* Outcome ends on the "Stay connected" image, its card the same distance from the bottom as from the sides */
 .cp-outcome { gap: 40px; padding-bottom: 20px; }
 .cp-lockscreen { display: block; width: 100%; height: auto; }

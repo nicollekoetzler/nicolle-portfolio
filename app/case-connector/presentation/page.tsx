@@ -8,7 +8,7 @@ import Reveal from "./Reveal";
 import "./presentation.css";
 
 /* New presentation for Case Connector, reworked after portfolio feedback: one short, skimmable page that
-   still covers the whole project (context, role, research, market, architecture, key decisions, delivery),
+   still covers the whole project (context, role, research, market, architecture, delivery, outcome),
    each part condensed to what a reviewer needs. The project's context sits in a full-height panel fixed to the right edge.
    Kept apart from the live page while it's being refined. */
 export const metadata: Metadata = {
@@ -47,21 +47,6 @@ const facts = [
   { value: "4 months", label: "from idea to the App Store" },
   { value: "6", label: "developers led" },
   { value: "1", label: "designer: me, end to end" },
-];
-
-const decisions = [
-  {
-    title: "Making each referral trackable",
-    text: "Today, once a case is handed over, the referring attorney loses sight of it. Every referral in the app has a clear status, from proposal to signed case, and both sides see the same timeline, so nobody has to call to ask “where are we?”",
-  },
-  {
-    title: "Profiles that earn trust",
-    text: "Referrals run on trust. Instead of a directory, each attorney gets a profile with practice areas, track record and reviews, so you can decide who to send a client to in seconds.",
-  },
-  {
-    title: "Updates where attorneys already are",
-    text: "Attorneys live in their phones between hearings. Real-time notifications for new candidates, approvals and case activity mean nobody has to open the app to know something changed.",
-  },
 ];
 
 /* the app's sitemap as a tree; each level lines up in a column (indented list on narrow screens) */
@@ -180,21 +165,6 @@ export default function CaseConnectorPresentation() {
         <figure className="cp-block cp-shot">
           <img src={`${A}/cc-app-screens-2.webp`} width={2616} height={1712} alt="Four Case Connector screens: home with a suggested case, an attorney profile, case details with the referral fee, and case management" loading="lazy" />
         </figure>
-
-        <section className="cp-block cp-decisions">
-          <div className="cp-text">
-            <p className="cp-eyebrow">Key decisions</p>
-            <h2>How I thought about it</h2>
-          </div>
-        {decisions.map((d, i) => (
-          <div key={d.title} className="cp-decision">
-            <div className="cp-text">
-              <h3><span>0{i + 1}</span>{d.title}</h3>
-              <p>{d.text}</p>
-            </div>
-          </div>
-        ))}
-        </section>
 
         <section className="cp-block cp-cta" aria-label="Case Connector on the App Store">
           <div className="cp-cta__copy">
