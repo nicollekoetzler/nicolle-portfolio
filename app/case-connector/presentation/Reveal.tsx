@@ -2,24 +2,31 @@
 
 import { useEffect } from "react";
 
-/** Each topic block rises into place the first time it scrolls into view. Without JS (or with reduced motion) they just show. */
+/** The video and each topic block rise into place: the ones on screen right away when the page loads (one after
+ *  another), the rest the first time they scroll into view. Without JS (or with reduced motion) they just show. */
 export default function Reveal() {
   useEffect(() => {
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-    const blocks = Array.from(document.querySelectorAll<HTMLElement>(".cp-block"));
-    // blocks already on screen when the page opens stay put; only the ones below wait for the scroll
-    const below = blocks.filter((b) => b.getBoundingClientRect().top > window.innerHeight);
-    below.forEach((b) => b.classList.add("is-waiting"));
+    const blocks = Array.from(document.querySelectorAll<HTMLElement>(".cp-hero, .cp-block"));
+    // they start hidden in the CSS, so the ones already on screen animate in too instead of flashing first
+    let first = true;
+    let order = 0;
     const io = new IntersectionObserver(
-      (entries) => entries.forEach((e) => {
-        if (!e.isIntersecting) return;
-        e.target.classList.remove("is-waiting");
-        io.unobserve(e.target);
-      }),
+      (entries) => {
+        entries.forEach((e) => {
+          if (!e.isIntersecting) return;
+          const el = e.target as HTMLElement;
+          // on load, stagger the visible blocks; later ones come in as they're reached
+          el.style.transitionDelay = first ? `${order++ * 120}ms` : "";
+          el.classList.add("is-in");
+          io.unobserve(el);
+        });
+        first = false;
+      },
       { rootMargin: "0px 0px -8% 0px" },
     );
-    below.forEach((b) => io.observe(b));
+    blocks.forEach((b) => io.observe(b));
     return () => io.disconnect();
   }, []);
-  return null;
+  // without JS the blocks are shown straight away
+  return <noscript><style>{".cp-hero, .cp-block { opacity: 1 !important; transform: none !important; }"}</style></noscript>;
 }
