@@ -47,17 +47,17 @@
 .cp-cta__logo { width: 88px; height: 88px; margin-bottom: 40px; }
 .cp .cp-cta__kicker { font-size: 20px; font-weight: 400; color: #fff; }
 .cp-cta h2 { margin: 16px 0 36px; font-size: clamp(32px, 4cqw, 52px); font-weight: 500; line-height: 1.12; letter-spacing: 0.01em; color: #fff; }
-.cp-cta__btn { display: inline-flex; align-items: center; gap: 14px; height: 56px; padding: 0 26px 0 8px; border-radius: 28px; background: #0059c0; font-size: 17px; font-weight: 400; color: #fff; text-decoration: none; transition: background .2s, transform .2s; }
+.cp-cta__btn { display: inline-flex; align-items: center; gap: 12px; height: 48px; padding: 0 22px 0 7px; border-radius: 24px; background: #0059c0; font-size: 15px; font-weight: 400; color: #fff; text-decoration: none; transition: background .2s, transform .2s; }
 .cp-cta__btn:hover { background: #0a66d6; }
-.cp-cta__actions { display: flex; flex-wrap: wrap; gap: 12px; }
+.cp-cta__actions { display: flex; flex-wrap: wrap; gap: 10px; }
 /* secondary: outlined, with a white circle and a blue arrow */
 .cp-cta__btn--ghost { background: transparent; box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.35); }
 .cp-cta__btn--ghost:hover { background: rgba(255, 255, 255, 0.08); }
 .cp-cta__btn--ghost .cp-cta__icon { background: #fff; }
 .cp-cta__btn--ghost .cp-cta__icon svg { stroke: #044188; }
-.cp-cta__icon { display: grid; place-items: center; width: 40px; height: 40px; border-radius: 50%; background: #1570da; transition: transform .25s; }
+.cp-cta__icon { display: grid; place-items: center; width: 34px; height: 34px; border-radius: 50%; background: #1570da; transition: transform .25s; }
 .cp-cta__btn:hover .cp-cta__icon { transform: rotate(45deg); }
-.cp-cta__icon svg { width: 16px; height: 16px; fill: none; stroke: #fff; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+.cp-cta__icon svg { width: 14px; height: 14px; fill: none; stroke: #fff; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
 /* the phones sit at the bottom right, cut by the block's edges like in the banner */
 .cp-cta__phone { position: absolute; right: 21%; bottom: 0; height: 86%; width: auto; }
 .cp-cta__phone2 { position: absolute; top: 0; right: 0; height: 100%; width: auto; }
