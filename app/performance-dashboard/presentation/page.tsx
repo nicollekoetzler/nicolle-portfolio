@@ -24,22 +24,24 @@ const project: ProjectInfo = {
   tagline: "One place for law firms to see how their website, SEO, calls and leads are performing, in plain language.",
   paragraphs: [],
   details: [
-    { term: "My Role", value: "Product Designer" },
+    { term: "My Role", value: ["Product Designer & Lead", "Design + Team Lead"] },
+    { term: "Team", value: "Me + 6 developers" },
+    { term: "Timeline", value: "3 months" },
     { term: "Client", value: "The Casely Group" },
-    { term: "Platform", value: "Web app" },
   ],
   contact: true,
   tags: [
     { label: "Product Design", icon: "design" },
+    { label: "Team Leadership", icon: "team" },
     { label: "Data Visualization", icon: "chart" },
     { label: "Design System", icon: "layers" },
   ],
 };
 
 const facts = [
-  { value: "8", label: "modules in one sidebar" },
-  { value: "5", label: "data sources in one place" },
-  { value: "1", label: "component system for every module" },
+  { value: "3 months", label: "from kickoff to launch" },
+  { value: "6", label: "developers led" },
+  { value: "30+", label: "law firms using it today" },
 ];
 
 const goals = [
@@ -116,7 +118,7 @@ export default function PerformanceDashboardPresentation() {
           <dl className="cp-psr">
             <div><dt>Problem</dt><dd>Without a single view, a firm couldn’t tell what was working and what needed attention.</dd></div>
             <div><dt>Solution</dt><dd>A client-facing web dashboard that brings website, SEO, speed, call and lead data together, each number with a clear status and a short explanation.</dd></div>
-            <div><dt>My role</dt><dd>I designed the product: the information architecture, the data visualization, the UI and one reusable component system for every module.</dd></div>
+            <div><dt>My role</dt><dd>I led the product and designed it end to end (information architecture, data visualization, UI and one reusable component system), and led the 6 developers who built it.</dd></div>
           </dl>
           <ul className="cp-facts">
             {facts.map((f) => (
@@ -169,6 +171,16 @@ export default function PerformanceDashboardPresentation() {
             <img className="pd-shot" src={`${A}/${d.img.src}`} width={d.img.w} height={d.img.h} alt={d.img.alt} loading="lazy" />
           </section>
         ))}
+
+        <section className="cp-block"><div className="cp-text">
+          <p className="cp-eyebrow">Outcome</p>
+          <h2>In use by 30+ law firms</h2>
+          <p>
+            In 3 months, the dashboard went from idea to a live product. Today more than 30 law firms use it to see
+            how their website, SEO, calls and leads are performing, in one place and in plain language, while The
+            Casely Group’s team manages every client from the same tool.
+          </p>
+        </div></section>
         <Reveal />
       </main>
     </ProjectLayout>
