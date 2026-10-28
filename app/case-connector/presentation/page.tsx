@@ -2,6 +2,7 @@
 import type { Metadata } from "next";
 import ProjectLayout, { type ProjectInfo } from "../../components/ProjectAside";
 import { goals, marketProblems, marketSolutions, personas, phases, sitemap } from "../data";
+import Reveal from "./Reveal";
 import "./presentation.css";
 
 /* New presentation for Case Connector, reworked after portfolio feedback: one short, skimmable page that
@@ -74,7 +75,7 @@ export default function CaseConnectorPresentation() {
           <video src="/assets/case-connector.mp4" poster={`${A}/cc-hero.webp`} autoPlay muted loop playsInline preload="metadata" aria-label="Case Connector app on a phone in a blue control room" />
         </div>
 
-        <section className="cp-text">
+        <section className="cp-block"><div className="cp-text">
           <p className="cp-eyebrow">The case in 60 seconds</p>
           <h1>A home for attorney-to-attorney referrals</h1>
           <p className="cp-context">
@@ -93,9 +94,9 @@ export default function CaseConnectorPresentation() {
               <li key={f.label}><strong>{f.value}</strong><span>{f.label}</span></li>
             ))}
           </ul>
-        </section>
+        </div></section>
 
-        <section className="cp-text">
+        <section className="cp-block"><div className="cp-text">
           <p className="cp-eyebrow">Goals</p>
           <h2>What the app had to do</h2>
           <ol className="cp-goals">
@@ -103,9 +104,9 @@ export default function CaseConnectorPresentation() {
               <li key={g.text}><strong>{g.title.join(" ")}</strong><span>{g.text}</span></li>
             ))}
           </ol>
-        </section>
+        </div></section>
 
-        <section className="cp-text">
+        <section className="cp-block"><div className="cp-text">
           <p className="cp-eyebrow">Research</p>
           <h2>Two sides of every referral</h2>
           <p>
@@ -127,9 +128,9 @@ export default function CaseConnectorPresentation() {
               </article>
             ))}
           </div>
-        </section>
+        </div></section>
 
-        <section className="cp-text">
+        <section className="cp-block"><div className="cp-text">
           <p className="cp-eyebrow">Market</p>
           <h2>From problems to product</h2>
           <ul className="cp-map">
@@ -137,9 +138,9 @@ export default function CaseConnectorPresentation() {
               <li key={problem}><span>{problem}</span><span aria-hidden="true">→</span><span>{marketSolutions[i]}</span></li>
             ))}
           </ul>
-        </section>
+        </div></section>
 
-        <section className="cp-text">
+        <section className="cp-block"><div className="cp-text">
           <p className="cp-eyebrow">Architecture</p>
           <h2>Four areas, one connected app</h2>
           <p>Networking, case discovery and case management, usually spread across tools, live in one place.</p>
@@ -151,23 +152,25 @@ export default function CaseConnectorPresentation() {
               </div>
             ))}
           </div>
-        </section>
+        </div></section>
 
-        <section className="cp-text">
-          <p className="cp-eyebrow">Key decisions</p>
-          <h2>How I thought about it</h2>
-        </section>
+        <section className="cp-block">
+          <div className="cp-text">
+            <p className="cp-eyebrow">Key decisions</p>
+            <h2>How I thought about it</h2>
+          </div>
         {decisions.map((d, i) => (
-          <section key={d.title} className="cp-decision">
+          <div key={d.title} className="cp-decision">
             <div className="cp-text">
               <h3><span>0{i + 1}</span>{d.title}</h3>
               <p>{d.text}</p>
             </div>
             <img src={`${A}/${d.img.src}`} width={d.img.w} height={d.img.h} alt={d.img.alt} loading="lazy" />
-          </section>
+          </div>
         ))}
+        </section>
 
-        <section className="cp-text">
+        <section className="cp-block"><div className="cp-text">
           <p className="cp-eyebrow">Delivery</p>
           <h2>Built in 7 phases, in 4 months</h2>
           <p>I planned the build with the team in two-week phases, each ending in a working deliverable reviewed in our weekly meetings.</p>
@@ -183,9 +186,9 @@ export default function CaseConnectorPresentation() {
               </li>
             ))}
           </ol>
-        </section>
+        </div></section>
 
-        <section className="cp-text">
+        <section className="cp-block"><div className="cp-text">
           <p className="cp-eyebrow">Outcome</p>
           <h2>Launched on the App Store</h2>
           <p>
@@ -193,7 +196,8 @@ export default function CaseConnectorPresentation() {
             the right partner, refer cases with clear and compliant fees, and follow every case to the end, sponsored
             and validated by Trial Lawyers University along the way.
           </p>
-        </section>
+        </div></section>
+        <Reveal />
       </main>
     </ProjectLayout>
   );
