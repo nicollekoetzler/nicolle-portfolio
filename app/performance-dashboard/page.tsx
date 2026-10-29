@@ -72,7 +72,7 @@ const decisions = [
     img: { src: "pd-overview.webp", w: 2880, h: 1618, alt: "Overview screen with web development, leads and SEO metric cards" },
   },
   {
-    title: "Technical scores, explained",
+    title: "Technical scores",
     text: "The Real Experience Score sits front and center with a plain-language verdict (“Excellent: above 90”), a monthly trend, and the four Core Web Vitals, each with a progress bar and a one-line explanation.",
     img: { src: "pd-speed.webp", w: 2880, h: 1618, alt: "Speed Insights screen with a Real Experience Score of 91 and Core Web Vitals" },
   },
