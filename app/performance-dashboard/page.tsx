@@ -77,7 +77,7 @@ const decisions = [
     img: { src: "pd-speed.webp", w: 2880, h: 1618, alt: "Speed Insights screen with a Real Experience Score of 91 and Core Web Vitals" },
   },
   {
-    title: "Every lead, in one table",
+    title: "From first contact to follow-up",
     text: "A dense but scannable table: a status dot, contact details, source icons (Google Ads, Meta, organic), date and quick actions, with filters, search and pagination for firms with thousands of leads.",
     img: { src: "pd-leads-3.webp", w: 2880, h: 1618, alt: "Leads dashboard table with status, contact details, source and actions" },
   },
