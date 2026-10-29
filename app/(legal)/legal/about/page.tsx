@@ -36,7 +36,7 @@ export default function LegalAbout() {
       </p>
       <p>
         I started in design in 2012 and moved into software development in 2020. Today I work across product, design
-        and front-end engineering with React, Next.js and Tailwind CSS, backed by a structured design system and
+        and full-stack engineering with React, Next.js, Node.js and PostgreSQL, backed by a structured design system and
         maintainable code.
       </p>
       <p>

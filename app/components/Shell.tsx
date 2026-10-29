@@ -71,11 +71,11 @@ const pages: Record<string, Page> = { "/": "home", "/about": "about", "/contact"
 const intro = {
   main: {
     title: "I design products, and I build them too.",
-    lead: "I help companies think through product decisions, design for web and mobile, and build production front ends in React and Next.js.",
+    lead: "I help companies think through product decisions, design for web and mobile, and build full-stack products with React, Next.js and Node.js.",
   },
   legal: {
     title: "I design and build products for the legal industry.",
-    lead: "I help law firms and legal tech companies turn their workflows into clear, fast products, from the first flow to production code in React and Next.js.",
+    lead: "I help law firms and legal tech companies turn their workflows into clear, fast products, from the first flow to production code across the stack, in React, Next.js and Node.js.",
   },
 };
 

@@ -3,7 +3,7 @@ import Link from "next/link";
 
 const stats = [
   { value: "12+", label: "years in digital design" },
-  { value: "4+", label: "years building production front ends" },
+  { value: "4+", label: "years building production software" },
   { value: "40+", label: "U.S. law firms served" },
   { value: "20", label: "designers & developers led" },
 ];
