@@ -56,7 +56,8 @@ const groups: { label: string; items: Work[] }[] = [
   },
 ];
 
-export default function WorkTabs() {
+/** `productLabel` renames the first tab (the legal-tech site calls it "Product Engineering") */
+export default function WorkTabs({ productLabel = "Product Design" }: { productLabel?: string }) {
   const [active, setActive] = useState(0);
   const toggleRef = useRef<HTMLDivElement>(null);
   const pill = useLiquidPill(toggleRef, `[data-tab="${active}"]`);
@@ -77,13 +78,13 @@ export default function WorkTabs() {
               className={active === i ? "is-active" : undefined}
               onClick={() => setActive(i)}
             >
-              {g.label}
+              {i === 0 ? productLabel : g.label}
             </button>
           ))}
         </div>
       </div>
 
-      <ul className="v2-cards" role="tabpanel" aria-label={groups[active].label}>
+      <ul className="v2-cards" role="tabpanel" aria-label={active === 0 ? productLabel : groups[active].label}>
         {groups[active].items.map((w) => (
           <li key={w.title}>
             <a

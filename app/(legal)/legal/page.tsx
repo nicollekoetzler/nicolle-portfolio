@@ -1,2 +1,6 @@
-/* the legal site's Home is the main Home; only the sidebar text changes (see the layout) */
-export { default } from "../../(site)/page";
+import HomeContent from "../../components/HomeContent";
+
+/* the legal site's Home: the main Home, with the first work tab named for engineering (the sidebar text is in the layout) */
+export default function LegalHome() {
+  return <HomeContent productLabel="Product Engineering" />;
+}
