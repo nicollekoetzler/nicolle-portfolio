@@ -13,6 +13,8 @@ type Work = {
   background?: string;
   contain?: boolean;
   position?: string;
+  /** a headline drawn on the card, above its image (the card then has its own layout) */
+  statement?: string[];
 };
 
 const groups: { label: string; items: Work[] }[] = [
@@ -30,8 +32,8 @@ const groups: { label: string; items: Work[] }[] = [
         title: "Prumo",
         text: "An AI that helps run a furniture and metalwork factory, from the 3D project to delivery.",
         href: "/prumo",
-        image: "/assets/v2/prumo-3.webp",
-        position: "50% 50%",
+        image: "/assets/artoria/reports-v6.webp",
+        statement: ["AI proposes.", "People confirm."],
       },
       {
         title: "CG Performance Dashboard",
@@ -95,12 +97,15 @@ export default function WorkTabs({ productLabel = "Product Design" }: { productL
         {groups[active].items.map((w) => (
           <li key={w.title}>
             <a
-              className={w.contain ? "v2-card v2-card--contain" : "v2-card"}
+              className={w.statement ? "v2-card v2-card--statement" : w.contain ? "v2-card v2-card--contain" : "v2-card"}
               href={w.href}
               // case studies open in place; client websites open in a new tab
               {...(w.href.startsWith("http") ? { target: "_blank", rel: "noopener" } : {})}
               style={w.background ? { background: w.background } : undefined}
             >
+              {w.statement && (
+                <span className="v2-card__statement">{w.statement.map((line) => <span key={line}>{line}</span>)}</span>
+              )}
               {w.video ? (
                 <video src={w.video} poster={w.image} autoPlay muted loop playsInline preload="metadata" aria-hidden="true" />
               ) : (

@@ -247,6 +247,10 @@ html:has(.v2), html:has(.v2) body { background: #1c1c1c; }
 .v2-card video { object-position: center; }
 .v2-card--contain img { inset: 12% 6% 6%; width: 88%; height: 82%; object-fit: contain; object-position: center; }
 .v2-card:hover img, .v2-card:hover video { transform: scale(1.04); }
+/* a headline over a screen rising from the bottom, like the first block of the Prumo case */
+.v2-card--statement { container-type: inline-size; background: radial-gradient(90% 70% at 50% 0%, rgba(111, 85, 232, 0.28), transparent 70%), #212121; }
+.v2-card__statement { position: absolute; top: 6cqw; left: 0; right: 0; display: flex; flex-direction: column; font-size: 7.2cqw; font-weight: 500; line-height: 1.04; letter-spacing: -0.035em; text-align: center; color: #f9fafb; }
+.v2-card--statement img { inset: auto; top: 25cqw; left: 9cqw; width: 82cqw; height: auto; object-fit: fill; border-radius: 1.2cqw 1.2cqw 0 0; box-shadow: 0 -20px 60px rgba(0, 0, 0, 0.35); transform-origin: 50% 0; }
 .v2-card__shade {
   position: absolute;
   inset: 0;
@@ -566,6 +570,8 @@ html:has(.v2), html:has(.v2) body { background: #1c1c1c; }
   .v2-work__head { flex-direction: column; align-items: flex-start; gap: 14px; }
   /* taller project cards */
   .v2-card { aspect-ratio: 4 / 3.4; }
+  .v2-card__statement { top: 9cqw; font-size: 11.5cqw; }
+  .v2-card--statement img { top: 39cqw; left: 6cqw; width: 88cqw; }
   .v2-lead { font-size: 16px; }
   .v2-main { gap: 64px; }
   .v2-h2 { font-size: 24px; }
