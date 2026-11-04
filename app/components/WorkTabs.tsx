@@ -37,7 +37,7 @@ const groups: { label: string; items: Work[] }[] = [
         title: "CG Performance Dashboard",
         text: "A client dashboard that brings website, SEO, call and lead data for law firms into one place.",
         href: "/performance-dashboard",
-        image: "/assets/project-performance-dashboard-cover-v2.webp",
+        image: "/assets/project-performance-dashboard-cover-v3.webp",
         background: "#356CFF",
         contain: true,
       },

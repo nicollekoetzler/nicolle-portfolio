@@ -89,7 +89,7 @@ export default function PerformanceDashboardPresentation({ logos = false }: { lo
     <ProjectLayout info={project} flush>
       <main className="cp">
         <div className="cp-hero pd-cover">
-          <img src="/assets/project-performance-dashboard-cover-v2.webp" width={2400} height={1372} alt="CG Performance sign-in and leads dashboard screens" />
+          <img src="/assets/project-performance-dashboard-cover-v3.webp" width={2522} height={1372} alt="CG Performance sign-in and leads dashboard screens" />
         </div>
 
         {/* the home's client logo carousel, minus HostGator */}
