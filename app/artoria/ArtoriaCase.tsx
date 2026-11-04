@@ -110,7 +110,7 @@ export default function ArtoriaCase({ orpex = false }: { orpex?: boolean }) {
             How I designed the way a 100-person factory and its AI work together: the floor reports by voice note,
             Prumo drafts the update, and every important change waits for a person’s yes.
           </p>
-          <img src={`${A}/reports-v3.webp`} width={3456} height={1700} alt="Prumo voice reports: a WhatsApp voice note, what the AI understood and the change waiting for a person" />
+          <img src={`${A}/reports-v4.webp`} width={3456} height={1700} alt="Prumo voice reports: a WhatsApp voice note, what the AI understood and the change waiting for a person" />
         </section>
 
         <ul className="cp-block ar-facts">
@@ -154,7 +154,7 @@ export default function ArtoriaCase({ orpex = false }: { orpex?: boolean }) {
             <span>01</span>
             <div><h2>Where should I look first?</h2><p>The projects screen answers in seconds. It’s a to-do list for the owner’s attention.</p></div>
           </header>
-          <Annotated src={`${A}/jobs-v3.webp`} w={3458} h={1736} alt="Projects screen with status chips, risk sorting and summary numbers" notes={jobsNotes} />
+          <Annotated src={`${A}/jobs-v4.webp`} w={3458} h={1736} alt="Projects screen with status chips, risk sorting and summary numbers" notes={jobsNotes} />
         </section>
 
         <section className="cp-block ar-chapter">
@@ -162,7 +162,7 @@ export default function ArtoriaCase({ orpex = false }: { orpex?: boolean }) {
             <span>02</span>
             <div><h2>What am I building, and what will it cost?</h2><p>One project, one screen: the model, the drawing, the parts and the budget stay together.</p></div>
           </header>
-          <Annotated src={`${A}/detail-v3.webp`} w={3456} h={1700} alt="Project detail with the 3D model, 2D drawing, parts list and budget button" notes={detailNotes} />
+          <Annotated src={`${A}/detail-v4.webp`} w={3456} h={1700} alt="Project detail with the 3D model, 2D drawing, parts list and budget button" notes={detailNotes} />
         </section>
 
         <section className="cp-block ar-chapter">
@@ -170,7 +170,7 @@ export default function ArtoriaCase({ orpex = false }: { orpex?: boolean }) {
             <span>03</span>
             <div><h2>What happened on the floor today?</h2><p>Workers keep doing what they already do: they send a WhatsApp voice note. The AI does the rest, and a person has the last word.</p></div>
           </header>
-          <Annotated src={`${A}/reports-v3.webp`} w={3456} h={1700} alt="Voice reports with a transcript, the AI summary and the change to the timeline" notes={reportNotes} />
+          <Annotated src={`${A}/reports-v4.webp`} w={3456} h={1700} alt="Voice reports with a transcript, the AI summary and the change to the timeline" notes={reportNotes} />
         </section>
 
         {SHOW_DEMO && (
