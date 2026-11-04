@@ -9,6 +9,10 @@ import "./artoria-case.css";
 
 const A = "/assets/artoria";
 
+/* hidden for now, kept ready to bring back: the live review demo and the closing block for Orpex */
+const SHOW_DEMO = false;
+const SHOW_ORPEX_BLOCK = false;
+
 const project: ProjectInfo = {
   href: "/artoria",
   logo: <span className="pa-mark"><img src={`${A}/prumo-icon.svg`} width={48} height={48} alt="" /></span>,
@@ -169,6 +173,7 @@ export default function ArtoriaCase({ orpex = false }: { orpex?: boolean }) {
           <Annotated src={`${A}/reports-v2.webp`} w={3456} h={1700} alt="Voice reports with a transcript, the AI summary and the change to the timeline" notes={reportNotes} />
         </section>
 
+        {SHOW_DEMO && (
         <section className="cp-block ar-try">
           <div className="cp-text">
             <p className="cp-eyebrow">Try it</p>
@@ -177,6 +182,7 @@ export default function ArtoriaCase({ orpex = false }: { orpex?: boolean }) {
           </div>
           <LoopDemo />
         </section>
+        )}
 
         <section className="cp-block ar-rules">
           <div className="cp-text">
@@ -222,7 +228,7 @@ export default function ArtoriaCase({ orpex = false }: { orpex?: boolean }) {
           </div>
         </section>
 
-        {orpex && (
+        {orpex && SHOW_ORPEX_BLOCK && (
           <section className="cp-block ar-orpex">
             <div className="cp-text">
               <p className="ar-kicker">For the Orpex team</p>
