@@ -11,13 +11,13 @@ const A = "/assets/artoria";
 
 const project: ProjectInfo = {
   href: "/artoria",
-  logo: <span className="pa-mark ar-mark">A</span>,
-  title: "ArtorIA",
-  tagline: "An AI platform that runs a furniture and metalwork factory, from the 3D project to delivery.",
+  logo: <span className="pa-mark"><img src={`${A}/prumo-icon.svg`} width={48} height={48} alt="" /></span>,
+  title: "Prumo",
+  tagline: "The AI that helps run a furniture and metalwork factory, from the 3D project to delivery.",
   paragraphs: [],
   details: [
     { term: "My Role", value: "Product Designer" },
-    { term: "Worked with", value: "The founder" },
+    { term: "Technology", value: "ArtorIA" },
     { term: "Platform", value: "Web app" },
     { term: "Status", value: "In development" },
   ],
@@ -99,13 +99,14 @@ export default function ArtoriaCase({ orpex = false }: { orpex?: boolean }) {
     <ProjectLayout info={project} flush>
       <main className="cp ar">
         <section className="cp-block ar-hero">
-          <p className="ar-kicker">ArtorIA · AI for furniture and metalwork factories</p>
+          <img className="ar-hero__icon" src={`${A}/prumo-icon.svg`} width={72} height={72} alt="Prumo" />
+          <p className="ar-kicker">Prumo · AI for furniture and metalwork factories · Technology by ArtorIA</p>
           <h1>AI proposes.<br />People confirm.</h1>
           <p className="ar-hero__lead">
-            How I designed the way a 100-person factory and an AI work together: the floor reports by voice note, and
-            every important change waits for a person’s yes.
+            How I designed the way a 100-person factory and its AI work together: the floor reports by voice note,
+            Prumo drafts the update, and every important change waits for a person’s yes.
           </p>
-          <img src={`${A}/reports-v2.webp`} width={3456} height={1700} alt="ArtorIA voice reports: a WhatsApp voice note, what the AI understood and the change waiting for a person" />
+          <img src={`${A}/reports-v2.webp`} width={3456} height={1700} alt="Prumo voice reports: a WhatsApp voice note, what the AI understood and the change waiting for a person" />
         </section>
 
         <ul className="cp-block ar-facts">
@@ -172,7 +173,7 @@ export default function ArtoriaCase({ orpex = false }: { orpex?: boolean }) {
           <div className="cp-text">
             <p className="cp-eyebrow">Try it</p>
             <h2>You’re the manager now</h2>
-            <p>This isn’t a picture: I rebuilt the review flow in code. Three voice notes just came in. See what the AI understood, and decide.</p>
+            <p>This isn’t a picture: I rebuilt the review flow in code. Three voice notes just came in. See what Prumo understood, and decide.</p>
           </div>
           <LoopDemo />
         </section>
@@ -208,7 +209,7 @@ export default function ArtoriaCase({ orpex = false }: { orpex?: boolean }) {
           </div>
           <div className="ar-split__body">
             <p>
-              ArtorIA is still in development, so there are no usage numbers yet, and I didn’t have direct access to
+              Prumo is still in development, so there are no usage numbers yet, and I didn’t have direct access to
               users: I worked from the founder, the client’s profile and the existing prototypes, with feedback almost
               every day.
             </p>

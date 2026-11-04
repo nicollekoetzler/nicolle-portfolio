@@ -1,6 +1,6 @@
 /* ArtorIA case study: the presentation blocks (.cp) with their own structures: annotated screens, a live demo, split text */
 .ar { --ar: #8f7bff; --ar-soft: rgba(143, 123, 255, 0.14); --ar-line: #2f2f33; }
-.pa-mark.ar-mark { background: linear-gradient(160deg, #6f55e8, #4a33b8); }
+.ar-hero__icon { display: block; width: 72px; height: 72px; margin-bottom: 20px; }
 .ar-kicker { font-size: 14px; color: var(--ar); }
 .cp .ar-kicker { margin: 0; }
 

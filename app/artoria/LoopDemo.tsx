@@ -36,7 +36,7 @@ const notes: Note[] = [
     stage: "Metalwork",
     from: 35,
     to: 50,
-    why: "The AI is sure who, where and what. It still asks, because progress moves on the job's timeline.",
+    why: "Prumo is sure who, where and what. It still asks, because progress moves on the job's timeline.",
   },
   {
     id: "ana",
@@ -54,7 +54,7 @@ const notes: Note[] = [
     stage: "Finishing",
     from: 80,
     to: 100,
-    why: "She didn't say which job. The AI won't guess: a person picks it, and then the note can move on.",
+    why: "She didn't say which job. Prumo won't guess: a person picks it, and then the note can move on.",
   },
   {
     id: "unknown",
@@ -140,7 +140,7 @@ export default function LoopDemo() {
         </div>
 
         <div className={typed ? "ar-demo__ai is-ready" : "ar-demo__ai"}>
-          <p className="ar-demo__label">What the AI understood</p>
+          <p className="ar-demo__label">What Prumo understood</p>
           <ul className="ar-demo__checks">
             {note.checks.map((c) => {
               const key = `${note.id}:${c.label}`;
