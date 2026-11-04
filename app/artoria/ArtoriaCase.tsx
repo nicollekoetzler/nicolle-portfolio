@@ -42,29 +42,29 @@ const facts = [
 
 const people = [
   { who: "Leadership", need: "What's at risk, and does the real cost still fit the budget?" },
-  { who: "Purchasing", need: "What do I need to quote, and who's holding up the job?" },
+  { who: "Purchasing", need: "What do I need to quote, and who's holding up the project?" },
   { who: "Designers", need: "Does the 3D match the 2D, and where is this part?" },
   { who: "Factory floor", need: "How do I report my work without learning a new system?" },
 ];
 
 const jobsNotes: Note[] = [
   { x: 14, y: 24, title: "Status in plain words", text: "“At risk · glass” tells you what's wrong and where. No code to decode, no chart to read." },
-  { x: 64.2, y: 17.6, title: "Risk first, by default", text: "The list sorts itself by what needs attention, so the owner doesn't have to go looking." },
-  { x: 83.6, y: 3, title: "Four numbers, no more", text: "Jobs running, deliveries this month, jobs at risk and approved value. The rest is one click away." },
-  { x: 57, y: 73.6, title: "Starting a job is one drop", text: "Send the 3D or the drawing and the engine plans the stages for you to review." },
+  { x: 59.6, y: 17.6, title: "Risk first, by default", text: "The list sorts itself by what needs attention, so the owner doesn't have to go looking." },
+  { x: 83.6, y: 3, title: "Four numbers, no more", text: "Projects running, deliveries this month, projects at risk and approved value. The rest is one click away." },
+  { x: 57, y: 73.6, title: "Starting a project is one drop", text: "Send the 3D or the drawing and the engine plans the stages for you to review." },
 ];
 
 const detailNotes: Note[] = [
   { x: 76.8, y: 8.2, title: "3D, 2D or both", text: "The views used to fight for space. Now one switch compares them, and the 3D gets the largest area." },
   { x: 78.6, y: 25.5, title: "One selection, everywhere", text: "Click a part in the model and its row lights up, with size, material and price." },
   { x: 34, y: 78.2, title: "Numbers with context", text: "Each part shows its cost right where you're looking, so nobody has to open a spreadsheet." },
-  { x: 15.2, y: 88.5, title: "The job's vital signs", text: "Material yield, area, weight and production days, generated from the model." },
+  { x: 15.2, y: 88.5, title: "The project's vital signs", text: "Material yield, area, weight and production days, generated from the model." },
   { x: 98.2, y: 89.3, title: "The budget starts here", text: "The riskiest flow used to live outside the system. Now it's calculated from the 3D and the parts list." },
 ];
 
 const reportNotes: Note[] = [
   { x: 47.6, y: 46.8, title: "Strangers don't get through", text: "A number the system doesn't know is flagged, and it changes nothing until someone says who it is." },
-  { x: 50.3, y: 25.4, title: "Confidence, field by field", text: "Who, which job, which stage. You see what the AI is sure of, not one vague score." },
+  { x: 50.3, y: 25.4, title: "Confidence, field by field", text: "Who, which project, which stage. You see what the AI is sure of, not one vague score." },
   { x: 50.1, y: 46, title: "The proof stays attached", text: "The original audio and transcript sit right above the summary. You can always check the source." },
   { x: 71.2, y: 77.4, title: "Preview before it happens", text: "You see exactly what changes on the timeline: 35% to 50%, before anything moves." },
   { x: 67.8, y: 94.7, title: "One click to say yes", text: "Confirming takes a second, editing takes two. Reviewing should never feel like work." },
@@ -88,7 +88,7 @@ const orpexMap = [
   { yours: "Trust Inbox", mine: "Voice reports: a queue of AI proposals, each one settled in a click." },
   { yours: "A reason on every action", mine: "Each report keeps its audio, its transcript and what it will change." },
   { yours: "Verified done, never fake complete", mine: "Confidence per field, and nothing unsure reaches the timeline." },
-  { yours: "Cockpit", mine: "Jobs sorted by risk: what needs you, in seconds." },
+  { yours: "Cockpit", mine: "Projects sorted by risk: what needs you, in seconds." },
 ];
 
 const orpexIdeas = [
@@ -110,7 +110,7 @@ export default function ArtoriaCase({ orpex = false }: { orpex?: boolean }) {
             How I designed the way a 100-person factory and its AI work together: the floor reports by voice note,
             Prumo drafts the update, and every important change waits for a person’s yes.
           </p>
-          <img src={`${A}/reports-v2.webp`} width={3456} height={1700} alt="Prumo voice reports: a WhatsApp voice note, what the AI understood and the change waiting for a person" />
+          <img src={`${A}/reports-v3.webp`} width={3456} height={1700} alt="Prumo voice reports: a WhatsApp voice note, what the AI understood and the change waiting for a person" />
         </section>
 
         <ul className="cp-block ar-facts">
@@ -124,7 +124,7 @@ export default function ArtoriaCase({ orpex = false }: { orpex?: boolean }) {
           </div>
           <div className="ar-split__body">
             <p>
-              Every job moves through cutting, metalwork, painting, glass, varnish and assembly, each with different
+              Every project moves through cutting, metalwork, painting, glass, varnish and assembly, each with different
               people, documents and suppliers. The information lived in three places:
             </p>
             <ul className="ar-places">
@@ -152,17 +152,17 @@ export default function ArtoriaCase({ orpex = false }: { orpex?: boolean }) {
         <section className="cp-block ar-chapter">
           <header>
             <span>01</span>
-            <div><h2>Where should I look first?</h2><p>The jobs screen answers in seconds. It’s a to-do list for the owner’s attention.</p></div>
+            <div><h2>Where should I look first?</h2><p>The projects screen answers in seconds. It’s a to-do list for the owner’s attention.</p></div>
           </header>
-          <Annotated src={`${A}/jobs-v2.webp`} w={3458} h={1736} alt="Jobs screen with status chips, risk sorting and summary numbers" notes={jobsNotes} />
+          <Annotated src={`${A}/jobs-v3.webp`} w={3458} h={1736} alt="Projects screen with status chips, risk sorting and summary numbers" notes={jobsNotes} />
         </section>
 
         <section className="cp-block ar-chapter">
           <header>
             <span>02</span>
-            <div><h2>What am I building, and what will it cost?</h2><p>One job, one screen: the model, the drawing, the parts and the budget stay together.</p></div>
+            <div><h2>What am I building, and what will it cost?</h2><p>One project, one screen: the model, the drawing, the parts and the budget stay together.</p></div>
           </header>
-          <Annotated src={`${A}/detail-v2.webp`} w={3456} h={1700} alt="Job detail with the 3D model, 2D drawing, parts list and budget button" notes={detailNotes} />
+          <Annotated src={`${A}/detail-v3.webp`} w={3456} h={1700} alt="Project detail with the 3D model, 2D drawing, parts list and budget button" notes={detailNotes} />
         </section>
 
         <section className="cp-block ar-chapter">
@@ -170,7 +170,7 @@ export default function ArtoriaCase({ orpex = false }: { orpex?: boolean }) {
             <span>03</span>
             <div><h2>What happened on the floor today?</h2><p>Workers keep doing what they already do: they send a WhatsApp voice note. The AI does the rest, and a person has the last word.</p></div>
           </header>
-          <Annotated src={`${A}/reports-v2.webp`} w={3456} h={1700} alt="Voice reports with a transcript, the AI summary and the change to the timeline" notes={reportNotes} />
+          <Annotated src={`${A}/reports-v3.webp`} w={3456} h={1700} alt="Voice reports with a transcript, the AI summary and the change to the timeline" notes={reportNotes} />
         </section>
 
         {SHOW_DEMO && (
@@ -211,7 +211,7 @@ export default function ArtoriaCase({ orpex = false }: { orpex?: boolean }) {
         <section className="cp-block ar-split">
           <div>
             <p className="cp-eyebrow">Where it stands</p>
-            <h2>From loose features to a product that tells the story of every job.</h2>
+            <h2>From loose features to a product that tells the story of every project.</h2>
           </div>
           <div className="ar-split__body">
             <p>
@@ -220,7 +220,7 @@ export default function ArtoriaCase({ orpex = false }: { orpex?: boolean }) {
               every day.
             </p>
             <p>
-              What I delivered: a continuous flow from the 3D project to delivery, the budget brought inside the job, a
+              What I delivered: a continuous flow from the 3D project to delivery, the budget brought inside the project, a
               way to feed the system that doesn’t change the floor’s routine, and a design system the founder now uses
               to code the next screens.
             </p>
