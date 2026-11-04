@@ -9,9 +9,10 @@ import "./artoria-case.css";
 
 const A = "/assets/artoria";
 
-/* hidden for now, kept ready to bring back: the live review demo and the closing block for Orpex */
+/* hidden for now, kept ready to bring back: the live review demo, the closing block for Orpex and the autonomy table */
 const SHOW_DEMO = false;
 const SHOW_ORPEX_BLOCK = false;
+const SHOW_AUTONOMY = false;
 
 const project: ProjectInfo = {
   href: "/prumo",
@@ -55,19 +56,19 @@ const jobsNotes: Note[] = [
 ];
 
 const detailNotes: Note[] = [
-  { x: 76.8, y: 8.2, title: "3D, 2D or both", text: "The views used to fight for space. Now one switch compares them, and the 3D gets the largest area." },
-  { x: 78.6, y: 25.5, title: "One selection, everywhere", text: "Click a part in the model and its row lights up, with size, material and price." },
-  { x: 34, y: 78.2, title: "Numbers with context", text: "Each part shows its cost right where you're looking, so nobody has to open a spreadsheet." },
-  { x: 15.2, y: 88.5, title: "The project's vital signs", text: "Material yield, area, weight and production days, generated from the model." },
-  { x: 98.2, y: 89.3, title: "The budget starts here", text: "The riskiest flow used to live outside the system. Now it's calculated from the 3D and the parts list." },
+  { x: 76.8, y: 8.2, title: "3D, 2D or both", text: "One switch compares the views, and the 3D gets the most space." },
+  { x: 78.6, y: 25.5, title: "One selection, everywhere", text: "Click a part and its row lights up, with size and price." },
+  { x: 34, y: 78.2, title: "Numbers with context", text: "Each part shows its cost right where you’re looking." },
+  { x: 15.2, y: 88.5, title: "The project's vital signs", text: "Yield, area, weight and days, generated from the model." },
+  { x: 98.2, y: 89.3, title: "The budget starts here", text: "The riskiest flow now runs inside the project, from the 3D." },
 ];
 
 const reportNotes: Note[] = [
-  { x: 47.6, y: 46.8, title: "Strangers don't get through", text: "A number the system doesn't know is flagged, and it changes nothing until someone says who it is." },
-  { x: 50.3, y: 25.4, title: "Confidence, field by field", text: "Who, which project, which stage. You see what the AI is sure of, not one vague score." },
-  { x: 50.1, y: 46, title: "The proof stays attached", text: "The original audio and transcript sit right above the summary. You can always check the source." },
-  { x: 71.2, y: 77.4, title: "Preview before it happens", text: "You see exactly what changes on the timeline: 35% to 50%, before anything moves." },
-  { x: 67.8, y: 94.7, title: "One click to say yes", text: "Confirming takes a second, editing takes two. Reviewing should never feel like work." },
+  { x: 48.4, y: 46.8, title: "Strangers don't get through", text: "An unknown number changes nothing until someone identifies it." },
+  { x: 50.3, y: 25.4, title: "Confidence, field by field", text: "You see what the AI is sure of: who, which project, which stage." },
+  { x: 97.6, y: 46.8, title: "The proof stays attached", text: "The audio and transcript sit right above the summary." },
+  { x: 71.2, y: 77.4, title: "Preview before it happens", text: "You see what changes on the timeline before anything moves." },
+  { x: 65, y: 94.7, title: "One click to say yes", text: "Confirming takes a second. Reviewing should never feel like work." },
 ];
 
 const autonomy = [
@@ -110,7 +111,7 @@ export default function ArtoriaCase({ orpex = false }: { orpex?: boolean }) {
             How I designed the way a 100-person factory and its AI work together: the floor reports by voice note,
             Prumo drafts the update, and every important change waits for a person’s yes.
           </p>
-          <img src={`${A}/reports-v5.webp`} width={3456} height={1700} alt="Prumo voice reports: a WhatsApp voice note, what the AI understood and the change waiting for a person" />
+          <img src={`${A}/reports-v6.webp`} width={3456} height={1700} alt="Prumo voice reports: a WhatsApp voice note, what the AI understood and the change waiting for a person" />
         </section>
 
         <ul className="cp-block ar-facts">
@@ -170,7 +171,7 @@ export default function ArtoriaCase({ orpex = false }: { orpex?: boolean }) {
             <span>03</span>
             <div><h2>What happened on the floor today?</h2><p>Workers keep doing what they already do: they send a WhatsApp voice note. The AI does the rest, and a person has the last word.</p></div>
           </header>
-          <Annotated src={`${A}/reports-v5.webp`} w={3456} h={1700} alt="Voice reports with a transcript, the AI summary and the change to the timeline" notes={reportNotes} />
+          <Annotated src={`${A}/reports-v6.webp`} w={3456} h={1700} alt="Voice reports with a transcript, the AI summary and the change to the timeline" notes={reportNotes} />
         </section>
 
         {SHOW_DEMO && (
@@ -184,6 +185,7 @@ export default function ArtoriaCase({ orpex = false }: { orpex?: boolean }) {
         </section>
         )}
 
+        {SHOW_AUTONOMY && (
         <section className="cp-block ar-rules">
           <div className="cp-text">
             <p className="cp-eyebrow">The real design problem</p>
@@ -197,6 +199,7 @@ export default function ArtoriaCase({ orpex = false }: { orpex?: boolean }) {
             ))}
           </div>
         </section>
+        )}
 
         <section className="cp-block ar-principles">
           <div className="cp-text">

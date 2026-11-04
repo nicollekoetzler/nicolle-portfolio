@@ -6,16 +6,15 @@ import "./project-aside.css";
 /* every project in the order of the home's Work list; the panel's arrows step through it (and wrap around) */
 const projects = [
   { href: "/case-connector", label: "Case Connector" },
+  { href: "/prumo", label: "Prumo" },
   { href: "/performance-dashboard", label: "CG Performance Dashboard" },
   { href: "https://california-trial-law-group-c53x5nd6y.thecaselygroup.dev", label: "California Trial Law Group" },
   { href: "https://lawdigras.org", label: "Law-Di-Gras" },
 ];
 
 function Arrow({ href, dir }: { href: string; dir: "prev" | "next" }) {
-  // a hidden case that isn't in the list (ArtorIA) steps to the list's first or last project
   const i = projects.findIndex((p) => p.href === href);
-  const at = i < 0 && dir === "prev" ? 0 : i;
-  const to = projects[(at + (dir === "next" ? 1 : -1) + projects.length) % projects.length];
+  const to = projects[(i + (dir === "next" ? 1 : -1) + projects.length) % projects.length];
   const label = `${dir === "next" ? "Next" : "Previous"} project: ${to.label}`;
   const icon = <svg viewBox="0 0 16 16" aria-hidden="true"><path d={dir === "next" ? "M6 3.5 10.5 8 6 12.5" : "M10 3.5 5.5 8 10 12.5"} /></svg>;
   return to.href.startsWith("http")

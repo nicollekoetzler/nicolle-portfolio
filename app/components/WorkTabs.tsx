@@ -27,6 +27,13 @@ const groups: { label: string; items: Work[] }[] = [
         video: "/assets/case-connector.mp4",
       },
       {
+        title: "Prumo",
+        text: "An AI that helps run a furniture and metalwork factory, from the 3D project to delivery.",
+        href: "/prumo",
+        image: "/assets/v2/prumo.webp",
+        position: "50% 50%",
+      },
+      {
         title: "CG Performance Dashboard",
         text: "A client dashboard that brings website, SEO, call and lead data for law firms into one place.",
         href: "/performance-dashboard",
