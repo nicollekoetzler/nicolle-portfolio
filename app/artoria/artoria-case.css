@@ -1,6 +1,5 @@
 /* ArtorIA case study: the presentation blocks (.cp) with their own structures: annotated screens, a live demo, split text */
 .ar { --ar: #8f7bff; --ar-soft: rgba(143, 123, 255, 0.14); --ar-line: #2f2f33; }
-.ar-hero__icon { display: block; width: 72px; height: 72px; margin-bottom: 20px; }
 .ar-kicker { font-size: 14px; color: var(--ar); }
 .cp .ar-kicker { margin: 0; }
 
@@ -9,6 +8,7 @@
 .ar-hero h1 { margin: 18px 0 20px; font-size: clamp(44px, 6.4vw, 92px); font-weight: 500; line-height: 1.02; letter-spacing: -0.035em; color: #f9fafb; }
 .cp .ar-hero__lead { max-width: 640px; margin-bottom: 48px; font-size: clamp(16px, 1.4vw, 19px); font-weight: 300; line-height: 1.55; color: #d1d5db; }
 .ar-hero img { display: block; width: 100%; max-width: 1120px; height: auto; margin-bottom: -7%; border-radius: 16px 16px 0 0; box-shadow: 0 -20px 60px rgba(0, 0, 0, 0.35); }
+.ar-hero .ar-hero__icon { width: 72px; height: 72px; margin: 0 0 20px; border-radius: 0; box-shadow: none; }
 
 /* the facts read like the product's own stat strip */
 .ar-facts { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0; margin: 0; padding: 0; list-style: none; }
@@ -135,7 +135,7 @@
 @media (max-width: 700px) {
   .ar-hero { padding: 44px 16px 0; }
   .cp .ar-hero__lead { margin-bottom: 32px; }
-  .ar-hero img { border-radius: 10px 10px 0 0; }
+  .ar-hero img:not(.ar-hero__icon) { border-radius: 10px 10px 0 0; }
   .ar-facts { grid-template-columns: 1fr 1fr; }
   .ar-facts li { padding: 18px; }
   .ar-facts li:nth-child(odd) { border-left: 0; }
