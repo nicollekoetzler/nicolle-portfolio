@@ -10,6 +10,9 @@ const nextConfig: NextConfig = {
       // the new Case Connector presentation was previewed here before it replaced the case study
       { source: "/case-connector/presentation", destination: "/case-connector", permanent: false },
       { source: "/performance-dashboard/presentation", destination: "/performance-dashboard", permanent: false },
+      // the ArtorIA case became Prumo
+      { source: "/artoria", destination: "/prumo", permanent: false },
+      { source: "/artoria/:path*", destination: "/prumo/:path*", permanent: false },
     ];
   },
 };

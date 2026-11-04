@@ -14,7 +14,7 @@ const SHOW_DEMO = false;
 const SHOW_ORPEX_BLOCK = false;
 
 const project: ProjectInfo = {
-  href: "/artoria",
+  href: "/prumo",
   logo: <span className="pa-mark"><img src={`${A}/prumo-icon.svg`} width={48} height={48} alt="" /></span>,
   title: "Prumo",
   tagline: "The AI that helps run a furniture and metalwork factory, from the 3D project to delivery.",
@@ -97,7 +97,7 @@ const orpexIdeas = [
   { title: "The mistake is the product", text: "The moment an agent gets it wrong decides whether people keep trusting it. I'd design that moment first." },
 ];
 
-/** `orpex` adds the closing block written for Orpex (the /artoria/orpex link) */
+/** `orpex` adds the closing block written for Orpex (the /prumo/orpex link) */
 export default function ArtoriaCase({ orpex = false }: { orpex?: boolean }) {
   return (
     <ProjectLayout info={project} flush>
