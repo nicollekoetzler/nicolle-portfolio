@@ -110,7 +110,7 @@ export default function ArtoriaCase({ orpex = false }: { orpex?: boolean }) {
             How I designed the way a 100-person factory and its AI work together: the floor reports by voice note,
             Prumo drafts the update, and every important change waits for a person’s yes.
           </p>
-          <img src={`${A}/reports-v4.webp`} width={3456} height={1700} alt="Prumo voice reports: a WhatsApp voice note, what the AI understood and the change waiting for a person" />
+          <img src={`${A}/reports-v5.webp`} width={3456} height={1700} alt="Prumo voice reports: a WhatsApp voice note, what the AI understood and the change waiting for a person" />
         </section>
 
         <ul className="cp-block ar-facts">
@@ -170,7 +170,7 @@ export default function ArtoriaCase({ orpex = false }: { orpex?: boolean }) {
             <span>03</span>
             <div><h2>What happened on the floor today?</h2><p>Workers keep doing what they already do: they send a WhatsApp voice note. The AI does the rest, and a person has the last word.</p></div>
           </header>
-          <Annotated src={`${A}/reports-v4.webp`} w={3456} h={1700} alt="Voice reports with a transcript, the AI summary and the change to the timeline" notes={reportNotes} />
+          <Annotated src={`${A}/reports-v5.webp`} w={3456} h={1700} alt="Voice reports with a transcript, the AI summary and the change to the timeline" notes={reportNotes} />
         </section>
 
         {SHOW_DEMO && (
