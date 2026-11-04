@@ -36,7 +36,7 @@ const project: ProjectInfo = {
 const facts = [
   { value: "~10,000 m²", label: "first client's factory" },
   { value: "100+", label: "people on the operation" },
-  { value: "0", label: "new apps for the factory floor" },
+  { value: "WhatsApp", label: "the only tool the floor needs" },
   { value: "Near-daily", label: "feedback cycles with the client" },
 ];
 
