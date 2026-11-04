@@ -30,7 +30,7 @@ const groups: { label: string; items: Work[] }[] = [
         title: "Prumo",
         text: "An AI that helps run a furniture and metalwork factory, from the 3D project to delivery.",
         href: "/prumo",
-        image: "/assets/v2/prumo.webp",
+        image: "/assets/v2/prumo-2.webp",
         position: "50% 50%",
       },
       {
