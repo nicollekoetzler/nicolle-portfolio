@@ -7,7 +7,7 @@ import { liquidClass, useLiquidPill } from "./useLiquidPill";
 type Work = {
   title: string;
   text: string;
-  href: string;
+  href?: string;
   image: string;
   video?: string;
   background?: string;
@@ -49,6 +49,12 @@ const groups: { label: string; items: Work[] }[] = [
     label: "Websites",
     items: [
       {
+        title: "GoVibe",
+        text: "A social platform that connects people around ecological causes and positive initiatives for a healthier, more sustainable lifestyle.",
+        image: "/assets/v2/go-vibe.webp",
+        position: "50% 50%",
+      },
+      {
         title: "California Trial Law Group",
         text: "A website for a California personal injury law firm.",
         href: "https://california-trial-law-group-c53x5nd6y.thecaselygroup.dev",
@@ -64,6 +70,33 @@ const groups: { label: string; items: Work[] }[] = [
     ],
   },
 ];
+
+/** A project card: a link when the project has a public address, a plain card when it doesn't */
+function Card({ w }: { w: Work }) {
+  const className = w.statement ? "v2-card v2-card--statement" : w.contain ? "v2-card v2-card--contain" : "v2-card";
+  const style = w.background ? { background: w.background } : undefined;
+  const content = (
+    <>
+      {w.statement && (
+        <span className="v2-card__statement">{w.statement.map((line) => <span key={line}>{line}</span>)}</span>
+      )}
+      {w.video ? (
+        <video src={w.video} poster={w.image} autoPlay muted loop playsInline preload="metadata" aria-hidden="true" />
+      ) : (
+        <img src={w.image} alt="" style={w.position ? { objectPosition: w.position } : undefined} />
+      )}
+      <span className="v2-card__shade" aria-hidden="true" />
+      <span className="v2-card__text">
+        <span className="v2-card__title">{w.title}</span>
+        <span className="v2-card__desc">{w.text}</span>
+      </span>
+    </>
+  );
+  if (!w.href) return <div className={className} style={style}>{content}</div>;
+  // case studies open in place; client websites open in a new tab
+  const external = w.href.startsWith("http") ? { target: "_blank", rel: "noopener" } : {};
+  return <a className={className} href={w.href} style={style} {...external}>{content}</a>;
+}
 
 /** `productLabel` renames the first tab (the legal-tech site calls it "Product Engineering") */
 export default function WorkTabs({ productLabel = "Product Design" }: { productLabel?: string }) {
@@ -96,27 +129,7 @@ export default function WorkTabs({ productLabel = "Product Design" }: { productL
       <ul className="v2-cards" role="tabpanel" aria-label={active === 0 ? productLabel : groups[active].label}>
         {groups[active].items.map((w) => (
           <li key={w.title}>
-            <a
-              className={w.statement ? "v2-card v2-card--statement" : w.contain ? "v2-card v2-card--contain" : "v2-card"}
-              href={w.href}
-              // case studies open in place; client websites open in a new tab
-              {...(w.href.startsWith("http") ? { target: "_blank", rel: "noopener" } : {})}
-              style={w.background ? { background: w.background } : undefined}
-            >
-              {w.statement && (
-                <span className="v2-card__statement">{w.statement.map((line) => <span key={line}>{line}</span>)}</span>
-              )}
-              {w.video ? (
-                <video src={w.video} poster={w.image} autoPlay muted loop playsInline preload="metadata" aria-hidden="true" />
-              ) : (
-                <img src={w.image} alt="" style={w.position ? { objectPosition: w.position } : undefined} />
-              )}
-              <span className="v2-card__shade" aria-hidden="true" />
-              <span className="v2-card__text">
-                <span className="v2-card__title">{w.title}</span>
-                <span className="v2-card__desc">{w.text}</span>
-              </span>
-            </a>
+            <Card w={w} />
           </li>
         ))}
       </ul>
