@@ -21,6 +21,7 @@ const project: ProjectInfo = {
     { term: "Platform", value: "Web" },
   ],
   contact: true,
+  tags: [{ label: "UI/UX Design", icon: "design" }],
 };
 
 export default function GoVibe() {
