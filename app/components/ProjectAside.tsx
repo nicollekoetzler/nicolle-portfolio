@@ -8,6 +8,7 @@ const projects = [
   { href: "/case-connector", label: "Case Connector" },
   { href: "/prumo", label: "Prumo" },
   { href: "/performance-dashboard", label: "CG Performance Dashboard" },
+  { href: "/go-vibe", label: "GoVibe" },
   { href: "https://california-trial-law-group-c53x5nd6y.thecaselygroup.dev", label: "California Trial Law Group" },
   { href: "https://lawdigras.org", label: "Law-Di-Gras" },
 ];

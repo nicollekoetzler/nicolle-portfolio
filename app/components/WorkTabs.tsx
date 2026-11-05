@@ -51,6 +51,7 @@ const groups: { label: string; items: Work[] }[] = [
       {
         title: "GoVibe",
         text: "A social platform that connects people around ecological causes and positive initiatives for a healthier, more sustainable lifestyle.",
+        href: "/go-vibe",
         image: "/assets/v2/go-vibe.webp",
         position: "50% 50%",
       },
