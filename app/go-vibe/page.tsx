@@ -18,7 +18,6 @@ const project: ProjectInfo = {
   details: [
     { term: "Type", value: "Social platform" },
     { term: "Focus", value: "Sustainability" },
-    { term: "Platform", value: "Web" },
   ],
   contact: true,
   tags: [{ label: "UI/UX Design", icon: "design" }],
