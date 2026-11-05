@@ -11,7 +11,7 @@ export const metadata: Metadata = {
 
 const project: ProjectInfo = {
   href: "/go-vibe",
-  logo: <span className="pa-mark" style={{ background: "#4caf50" }}>G</span>,
+  logo: <img src="/assets/v2/go-vibe-logo.svg" width={103} height={40} alt="GoVibe" />,
   title: "GoVibe",
   tagline: "A social platform that connects people around ecological causes and positive initiatives for a healthier, more sustainable lifestyle.",
   paragraphs: [],
