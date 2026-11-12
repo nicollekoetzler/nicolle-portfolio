@@ -349,7 +349,10 @@ html:has(.v2), html:has(.v2) body { background: #1c1c1c; }
   .v2-quote { padding: 44px 24px 24px; }
   .v2-quote__mark { font-size: 180px; right: 16px; top: -24px; }
   .v2-quote p { font-size: 19px; }
-  .v2-quote figcaption { margin-top: 28px; }
+  .v2-quote figcaption { gap: 12px; margin-top: 28px; }
+  .v2-quote img { width: 44px; height: 44px; }
+  .v2-quote__who { flex: 1; min-width: 0; }
+  .v2-quote small { font-size: 13px; }
   .v2-quote__link { width: 100%; justify-content: center; }
 }
 
