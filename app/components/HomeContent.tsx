@@ -1,11 +1,14 @@
 import Logos from "./Logos";
 import WorkTabs from "./WorkTabs";
+import Testimonial from "./Testimonial";
 
 /** The Home page's content; the legal-tech site (legal.nicollekoetzler.com) names the first work tab differently */
-export default function HomeContent({ productLabel }: { productLabel?: string }) {
+export default function HomeContent({ productLabel, testimonial }: { productLabel?: string; testimonial?: boolean }) {
   return (
     <>
       <WorkTabs productLabel={productLabel} />
+
+      {testimonial && <Testimonial />}
 
       <section className="v2-section v2-trusted">
         <h2 className="v2-h2">Trusted by</h2>
