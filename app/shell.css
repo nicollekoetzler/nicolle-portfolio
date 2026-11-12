@@ -321,7 +321,7 @@ html:has(.v2), html:has(.v2) body { background: #1c1c1c; }
   background: linear-gradient(90deg, transparent, rgba(196, 181, 253, 0.55), transparent);
 }
 .v2-quote blockquote { margin: 0; }
-.v2-quote p { max-width: 700px; margin: 0; font-size: 20px; font-weight: 300; line-height: 1.6; letter-spacing: -0.005em; color: var(--v2-body); }
+.v2-quote p { margin: 0; font-size: 20px; font-weight: 300; line-height: 1.6; letter-spacing: -0.005em; color: var(--v2-body); }
 .v2-quote mark { background: none; color: var(--v2-strong); font-weight: 400; }
 .v2-quote figcaption { display: flex; align-items: center; gap: 14px; margin-top: 36px; padding-top: 24px; border-top: 1px solid rgba(255, 255, 255, 0.06); }
 .v2-quote img { width: 48px; height: 48px; border-radius: 50%; object-fit: cover; }
