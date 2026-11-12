@@ -56,12 +56,6 @@ const groups: { label: string; items: Work[] }[] = [
         position: "50% 50%",
       },
       {
-        title: "California Trial Law Group",
-        text: "A website for a California personal injury law firm.",
-        href: "https://california-trial-law-group-c53x5nd6y.thecaselygroup.dev",
-        image: "/assets/v2/california.webp",
-      },
-      {
         title: "Law-Di-Gras",
         text: "An event website for Law-Di-Gras.",
         href: "https://lawdigras.org",
