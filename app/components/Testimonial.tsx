@@ -6,7 +6,6 @@ export default function Testimonial() {
     <section className="v2-section v2-testimonial">
       <h2 className="v2-h2">What clients say</h2>
       <figure className="v2-quote">
-        <span className="v2-quote__mark" aria-hidden="true">“</span>
         <blockquote>
           <p>
             Nicolle built our website at Compass Law Group and made the whole process easy. She understood what a law

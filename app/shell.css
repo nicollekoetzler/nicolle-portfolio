@@ -300,59 +300,57 @@ html:has(.v2), html:has(.v2) body { background: #1c1c1c; }
 @keyframes v2-drift { to { transform: translateX(calc(-50% - 6px)); } }
 .v2-skills:hover ul { animation-play-state: paused; }
 
-/* Testimonial: one client quote, with a glow and an oversized quote mark like the statement cards */
+/* Testimonial: one client quote on a quiet card with a soft glow and a hairline light along the top edge */
 .v2-quote {
   position: relative;
   overflow: hidden;
   margin: 0;
-  padding: 56px 48px 32px;
+  padding: 44px 48px 28px;
   border: 1px solid var(--v2-line);
   border-radius: 16px;
-  background: radial-gradient(70% 90% at 0% 0%, rgba(111, 85, 232, 0.28), transparent 65%), radial-gradient(50% 60% at 100% 100%, rgba(111, 85, 232, 0.12), transparent 70%), var(--v2-panel);
+  background: radial-gradient(80% 120% at 0% 0%, rgba(111, 85, 232, 0.16), transparent 60%), linear-gradient(180deg, #242424, var(--v2-panel));
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06), 0 24px 48px -24px rgba(0, 0, 0, 0.6);
 }
-.v2-quote__mark {
+.v2-quote::before {
+  content: "";
   position: absolute;
-  top: -28px;
-  right: 32px;
-  font-family: Georgia, "Times New Roman", serif;
-  font-size: 240px;
-  line-height: 1;
-  color: rgba(167, 139, 250, 0.16);
-  pointer-events: none;
-  user-select: none;
+  top: 0;
+  left: 8%;
+  right: 40%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(196, 181, 253, 0.55), transparent);
 }
-.v2-quote blockquote { position: relative; margin: 0; }
-.v2-quote p { max-width: 760px; margin: 0; font-size: 26px; font-weight: 400; line-height: 1.42; letter-spacing: -0.015em; color: var(--v2-body); }
-.v2-quote mark { background: none; color: var(--v2-strong); font-weight: 500; }
-.v2-quote figcaption { position: relative; display: flex; flex-wrap: wrap; align-items: center; gap: 14px; margin-top: 40px; padding-top: 24px; border-top: 1px solid rgba(255, 255, 255, 0.07); }
-.v2-quote img { width: 56px; height: 56px; border-radius: 50%; object-fit: cover; box-shadow: 0 0 0 2px var(--v2-panel), 0 0 0 3px rgba(167, 139, 250, 0.55); }
+.v2-quote blockquote { margin: 0; }
+.v2-quote p { max-width: 700px; margin: 0; font-size: 20px; font-weight: 300; line-height: 1.6; letter-spacing: -0.005em; color: var(--v2-body); }
+.v2-quote mark { background: none; color: var(--v2-strong); font-weight: 400; }
+.v2-quote figcaption { display: flex; align-items: center; gap: 14px; margin-top: 36px; padding-top: 24px; border-top: 1px solid rgba(255, 255, 255, 0.06); }
+.v2-quote img { width: 48px; height: 48px; border-radius: 50%; object-fit: cover; }
 .v2-quote__who { display: flex; flex-direction: column; gap: 2px; margin-right: auto; }
-.v2-quote__who strong { font-size: 17px; font-weight: 500; color: var(--v2-ink); }
-.v2-quote small { font-size: 14px; color: var(--v2-muted); }
+.v2-quote__who strong { font-size: 16px; font-weight: 500; color: var(--v2-ink); }
+.v2-quote small { font-size: 13px; letter-spacing: 0.01em; color: var(--v2-muted); }
 .v2-quote__link {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  height: 38px;
-  padding: 0 16px;
-  border: 1px solid var(--v2-border);
-  border-radius: 999px;
-  background: rgba(255, 255, 255, 0.04);
+  height: 36px;
+  padding: 0 14px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.03);
   font-size: 14px;
   font-weight: 500;
-  color: var(--v2-strong);
+  color: var(--v2-body);
   text-decoration: none;
-  transition: background .2s, border-color .2s, transform .2s;
+  transition: color .2s, background .2s, border-color .2s;
 }
-.v2-quote__link:hover { background: #0a66c2; border-color: #0a66c2; transform: translateY(-1px); }
+.v2-quote__link:hover { color: var(--v2-strong); background: rgba(255, 255, 255, 0.07); border-color: rgba(255, 255, 255, 0.18); }
 @media (max-width: 640px) {
-  .v2-quote { padding: 44px 24px 24px; }
-  .v2-quote__mark { font-size: 180px; right: 16px; top: -24px; }
-  .v2-quote p { font-size: 19px; }
-  .v2-quote figcaption { gap: 12px; margin-top: 28px; }
+  .v2-quote { padding: 32px 24px 24px; }
+  .v2-quote::before { left: 12%; right: 20%; }
+  .v2-quote p { font-size: 17px; }
+  .v2-quote figcaption { flex-wrap: wrap; gap: 12px; margin-top: 28px; }
   .v2-quote img { width: 44px; height: 44px; }
   .v2-quote__who { flex: 1; min-width: 0; }
-  .v2-quote small { font-size: 13px; }
   .v2-quote__link { width: 100%; justify-content: center; }
 }
 
