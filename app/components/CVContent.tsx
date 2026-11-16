@@ -154,7 +154,7 @@ export default function CVContent({ role, summary }: { role: string; summary: st
         <ul className="v2-pills">
           <li><strong>Portuguese</strong> Native</li>
           <li><strong>English</strong> Fluent (C2)</li>
-          <li><strong>German</strong> Elementary (A2)</li>
+          <li><strong>German</strong> Beginner (A1)</li>
         </ul>
       </section>
     </>

@@ -52,7 +52,7 @@ export default function AboutContent({ title, children }: { title: string; child
             <strong>English</strong> Fluent (C2)
           </li>
           <li>
-            <strong>German</strong> Elementary (A2)
+            <strong>German</strong> Beginner (A1)
           </li>
         </ul>
       </section>
