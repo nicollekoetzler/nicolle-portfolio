@@ -628,6 +628,14 @@ html:has(.v2), html:has(.v2) body { background: #1c1c1c; }
   /* About headline: 28px on desktop, unchanged 32px on phones */
   .v2 .v2-intro--full .v2-page-title { font-size: 32px; }
   .v2-copy { width: 32px; height: 32px; }
+  /* Home intro card: everything centered */
+  .v2--home .v2-aside { align-items: center; text-align: center; }
+  .v2--home .v2-aside__top { display: flex; flex-direction: column; align-items: center; }
+  .v2--home .v2-title, .v2--home .v2-lead { margin-left: auto; margin-right: auto; }
+  .v2--home .v2-aside__bottom { align-items: center; }
+  .v2--home .v2-photo { transform-origin: 50% 100%; }
+  .v2--home .v2-social { justify-content: center; }
+  .v2--home .v2-id { align-items: center; }
 }
 /* phones narrower than 375px: less room, so a smaller gap before the button */
 @media (max-width: 374px) {
