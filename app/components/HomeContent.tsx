@@ -13,17 +13,19 @@ export default function HomeContent({ productLabel, testimonial }: { productLabe
         {testimonial ? (
           <Testimonial />
         ) : (
-          <p className="v2-section__lead">
-            From law firms across the U.S. to legal education leaders like Trial Lawyers University and tech
-            companies such as HostGator.
-          </p>
+          <>
+            <p className="v2-section__lead">
+              From law firms across the U.S. to legal education leaders like Trial Lawyers University and tech
+              companies such as HostGator.
+            </p>
+            <div className="marquee">
+              <div className="marquee__track">
+                <Logos />
+                <Logos hidden />
+              </div>
+            </div>
+          </>
         )}
-        <div className="marquee">
-          <div className="marquee__track">
-            <Logos />
-            <Logos hidden />
-          </div>
-        </div>
       </section>
     </>
   );
