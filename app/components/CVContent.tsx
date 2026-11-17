@@ -53,6 +53,16 @@ const experience: { role: string; company: string; dates: string; place: string;
       "Worked with physicians to understand study goals and shaped the study flows and content structure around them.",
     ],
   },
+  {
+    role: "Freelance Designer",
+    company: "Self-employed",
+    dates: "2014 – 2022",
+    place: "Brazil · Remote",
+    points: [
+      "Visual and UI/UX design for small and medium businesses, from brand materials and campaigns to websites and digital interfaces.",
+      "Worked directly with business owners to turn their goals into clear, effective design, owning each project from brief to final delivery.",
+    ],
+  },
 ];
 
 const skills = [
