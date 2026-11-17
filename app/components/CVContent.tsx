@@ -46,11 +46,11 @@ const experience: { role: string; company: string; dates: string; place: string;
     role: "UX/UI Engineer",
     company: "NefroAtual",
     dates: "Jan 2023 – Oct 2023",
-    place: "Toronto, Canada · Remote",
+    place: "Toronto, Canada · Remote · Study app for nephrologists and residents preparing for the nephrology board exam (500+ downloads)",
     points: [
-      "Designed and built the website and app for a learning platform that prepares doctors for nephrology residency (React + Tailwind on web, React Native on mobile).",
-      "Owned front-end features end to end: components, application logic, layout and bug fixes across web and mobile.",
-      "Worked with physicians to understand study goals and shaped the study flows and content structure around them.",
+      "Designed the web and mobile experience end to end, from study flows and information architecture to high-fidelity UI in Figma.",
+      "Worked directly with physicians to understand how they study and what slows them down, and shaped the content structure and study flows around their goals.",
+      "Built what I designed in React + Tailwind on web and React Native on mobile, owning features from component to release on the App Store and Google Play.",
     ],
   },
   {
@@ -59,8 +59,9 @@ const experience: { role: string; company: string; dates: string; place: string;
     dates: "2014 – 2022",
     place: "Brazil · Remote",
     points: [
-      "Visual and UI/UX design for small and medium businesses, from brand materials and campaigns to websites and digital interfaces.",
-      "Worked directly with business owners to turn their goals into clear, effective design, owning each project from brief to final delivery.",
+      "Designed and built landing pages for HostGator, one of the largest web hosting platforms in the world, from UI/UX design to front-end development.",
+      "Taught a design course on HostGator’s YouTube channel.",
+      "Visual and UI/UX design for small and medium businesses, from brand materials to websites and digital interfaces, working directly with owners from brief to final delivery.",
     ],
   },
 ];
