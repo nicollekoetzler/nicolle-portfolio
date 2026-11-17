@@ -1,10 +1,8 @@
 /* eslint-disable @next/next/no-img-element -- a small, already optimized avatar */
 
-/** A client quote on the Home page */
+/** A client quote; the Home page shows it under "Trusted by", above the logo carousel */
 export default function Testimonial() {
   return (
-    <section className="v2-section v2-testimonial">
-      <h2 className="v2-h2">What clients say</h2>
       <figure className="v2-quote">
         <blockquote>
           <p>
@@ -34,6 +32,5 @@ export default function Testimonial() {
           </a>
         </figcaption>
       </figure>
-    </section>
   );
 }
