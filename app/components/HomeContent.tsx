@@ -9,7 +9,8 @@ export default function HomeContent({ productLabel, testimonial }: { productLabe
       <WorkTabs productLabel={productLabel} />
 
       <section className="v2-section v2-trusted">
-        <h2 className="v2-h2">Trusted by</h2>
+        {/* the main Home shows the client quote on its own, with no heading */}
+        {!testimonial && <h2 className="v2-h2">Trusted by</h2>}
         {testimonial ? (
           <Testimonial />
         ) : (
