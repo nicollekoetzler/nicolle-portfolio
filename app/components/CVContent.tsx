@@ -48,7 +48,7 @@ const experience: { role: string; company: string; dates: string; place: string;
     dates: "Jan 2023 – Oct 2023",
     place: "Toronto, Canada · Remote · Study app for nephrologists and residents preparing for the nephrology board exam (500+ downloads)",
     points: [
-      "Designed the web and mobile experience end to end, from study flows and information architecture to high-fidelity UI in Figma.",
+      "Designed the web and mobile experience end to end, from study flows and information architecture to high-fidelity UI in Figma, including the flashcards and topic quizzes.",
       "Worked directly with physicians to understand how they study and what slows them down, and shaped the content structure and study flows around their goals.",
       "Built what I designed in React + Tailwind on web and React Native on mobile, owning features from component to release on the App Store and Google Play.",
     ],
