@@ -4,7 +4,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useLayoutEffect, useRef, useState } from "react";
-import LocalTime from "./LocalTime";
+// import LocalTime from "./LocalTime"; // hidden for now (location + local time, top right)
 import StatusPill from "./StatusPill";
 import { liquidClass, useLiquidPill } from "./useLiquidPill";
 import { BEHANCE, EMAIL, GITHUB, LINKEDIN } from "./site";
@@ -115,7 +115,7 @@ export default function Shell({ variant = "main", children }: { variant?: keyof 
         </aside>
       </div>
 
-      <LocalTime />
+      {/* <LocalTime /> hidden for now */}
 
       <main className="v2-main" id={home ? "work" : "top"}>
         {children}
