@@ -1,24 +1,32 @@
 import Logos from "./Logos";
 import WorkTabs from "./WorkTabs";
+import Testimonial from "./Testimonial";
 
 /** The Home page's content; the legal-tech site (legal.nicollekoetzler.com) names the first work tab differently */
-export default function HomeContent({ productLabel }: { productLabel?: string }) {
+export default function HomeContent({ productLabel, testimonial }: { productLabel?: string; testimonial?: boolean }) {
   return (
     <>
       <WorkTabs productLabel={productLabel} />
 
       <section className="v2-section v2-trusted">
-        <h2 className="v2-h2">Trusted by</h2>
-        <p className="v2-section__lead">
-          From law firms across the U.S. to legal education leaders like Trial Lawyers University and tech
-          companies such as HostGator.
-        </p>
-        <div className="marquee">
-          <div className="marquee__track">
-            <Logos />
-            <Logos hidden />
-          </div>
-        </div>
+        {/* the main Home shows the client quote on its own, with no heading */}
+        {!testimonial && <h2 className="v2-h2">Trusted by</h2>}
+        {testimonial ? (
+          <Testimonial />
+        ) : (
+          <>
+            <p className="v2-section__lead">
+              From law firms across the U.S. to legal education leaders like Trial Lawyers University and tech
+              companies such as HostGator.
+            </p>
+            <div className="marquee">
+              <div className="marquee__track">
+                <Logos />
+                <Logos hidden />
+              </div>
+            </div>
+          </>
+        )}
       </section>
     </>
   );

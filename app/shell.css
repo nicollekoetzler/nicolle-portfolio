@@ -300,6 +300,47 @@ html:has(.v2), html:has(.v2) body { background: #1c1c1c; }
 @keyframes v2-drift { to { transform: translateX(calc(-50% - 6px)); } }
 .v2-skills:hover ul { animation-play-state: paused; }
 
+/* Testimonial: one client quote on a quiet card with a soft glow and a hairline light along the top edge */
+.v2-quote {
+  position: relative;
+  margin: 0;
+  padding: 44px 48px 28px;
+  border-radius: 16px;
+  background: #212121;
+}
+.v2-quote blockquote { margin: 0; }
+.v2-quote p { margin: 0; font-size: 20px; font-weight: 300; line-height: 1.6; letter-spacing: -0.005em; color: var(--v2-body); }
+.v2-quote mark { background: none; color: var(--v2-strong); font-weight: 400; }
+.v2-quote figcaption { display: flex; align-items: center; gap: 14px; margin-top: 36px; padding-top: 24px; border-top: 1px solid rgba(255, 255, 255, 0.06); }
+.v2-quote img { width: 48px; height: 48px; border-radius: 50%; object-fit: cover; }
+.v2-quote__who { display: flex; flex-direction: column; gap: 2px; margin-right: auto; }
+.v2-quote__who strong { font-size: 16px; font-weight: 500; color: var(--v2-ink); }
+.v2-quote small { font-size: 13px; letter-spacing: 0.01em; color: var(--v2-muted); }
+.v2-quote__link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  height: 36px;
+  padding: 0 14px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.03);
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--v2-body);
+  text-decoration: none;
+  transition: color .2s, background .2s, border-color .2s;
+}
+.v2-quote__link:hover { color: var(--v2-strong); background: rgba(255, 255, 255, 0.07); border-color: rgba(255, 255, 255, 0.18); }
+@media (max-width: 640px) {
+  .v2-quote { padding: 32px 24px 24px; }
+  .v2-quote p { font-size: 17px; }
+  .v2-quote figcaption { flex-wrap: wrap; gap: 12px; margin-top: 28px; }
+  .v2-quote img { width: 44px; height: 44px; }
+  .v2-quote__who { flex: 1; min-width: 0; }
+  .v2-quote__link { width: 100%; justify-content: center; }
+}
+
 /* Trusted by: the shared logo carousel (light-on-dark logo versions) */
 .v2-trusted .marquee {
   -webkit-mask-image: linear-gradient(90deg, transparent, #000 10%, #000 90%, transparent);
