@@ -59,9 +59,9 @@ const experience: { role: string; company: string; dates: string; place: string;
     dates: "2014 – 2022",
     place: "Brazil · Remote",
     points: [
+      "Visual and UI/UX design for small and medium businesses, from brand materials to websites and digital interfaces, working directly with owners from brief to final delivery.",
       "Designed and built landing pages for HostGator, one of the largest web hosting platforms in the world, from UI/UX design to front-end development.",
       "Taught a design course on HostGator’s YouTube channel.",
-      "Visual and UI/UX design for small and medium businesses, from brand materials to websites and digital interfaces, working directly with owners from brief to final delivery.",
     ],
   },
 ];
