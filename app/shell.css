@@ -631,7 +631,8 @@ html:has(.v2), html:has(.v2) body { background: #1c1c1c; }
   /* Home intro card: everything centered */
   .v2--home .v2-aside { align-items: center; text-align: center; }
   .v2--home .v2-aside__top { display: flex; flex-direction: column; align-items: center; }
-  .v2--home .v2-title, .v2--home .v2-lead { margin-left: auto; margin-right: auto; }
+  /* the headline and intro text stay left-aligned */
+  .v2--home .v2-title, .v2--home .v2-lead { align-self: stretch; text-align: left; }
   .v2--home .v2-aside__bottom { align-items: center; }
   .v2--home .v2-photo { transform-origin: 50% 100%; }
   .v2--home .v2-social { justify-content: center; }
