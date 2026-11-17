@@ -6,8 +6,9 @@ export default function Testimonial() {
       <figure className="v2-quote">
         <blockquote>
           <p>
-            Nicolle delivered a high-quality web platform that <mark>brings in clients</mark>, and she nailed every
-            detail. We’re very happy with the result. It’s added real value to our practice.
+            Nicolle was <mark>fully committed to delivering a high-quality web platform</mark> for our firm. She took the
+            time to understand how our clients find us and reach out. We’re very happy with the result. It added real
+            value to our firm.
           </p>
         </blockquote>
         <figcaption>
