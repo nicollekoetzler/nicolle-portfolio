@@ -6,10 +6,8 @@ export default function Testimonial() {
       <figure className="v2-quote">
         <blockquote>
           <p>
-            Nicolle <mark>approached our website at Compass Law Group like a product</mark>, not just a design project.
-            She took the time to understand how our clients find us and reach out, turned that into a clear experience
-            and kept us involved at every step. The result looks professional, represents our firm well and works the
-            way our business needs. I’d recommend her to anyone building a digital product.
+            Nicolle delivered a high-quality web platform that <mark>brings in clients</mark>, and she nailed every
+            detail. We’re very happy with the result. It’s added real value to our practice.
           </p>
         </blockquote>
         <figcaption>
