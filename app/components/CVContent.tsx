@@ -54,7 +54,7 @@ const experience: { role: string; company: string; dates: string; place: string;
     ],
   },
   {
-    role: "Freelance Designer",
+    role: "Freelance UI/UX Designer",
     company: "Self-employed",
     dates: "2014 – 2022",
     place: "Brazil · Remote",
