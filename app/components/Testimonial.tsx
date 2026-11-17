@@ -7,8 +7,8 @@ export default function Testimonial() {
         <blockquote>
           <p>
             “Nicolle was fully committed to delivering a <mark>strategic and trustworthy web platform</mark> for our law
-            firm. She took the time to understand how our clients find us and get in touch, and that made all the
-            difference.
+            firm. She took the time to understand how our clients find us and get in touch, and that was key to
+            reaching our goals.
           </p>
           <p>
             We are grateful for her dedication, professionalism, and integrity throughout every stage of the process.{" "}
