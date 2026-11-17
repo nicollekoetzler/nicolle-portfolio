@@ -45,7 +45,7 @@ const experience: { role: string; company: string; dates: string; place: string;
   {
     role: "UX/UI Engineer",
     company: "NefroAtual",
-    dates: "Jan 2023 – Feb 2024",
+    dates: "Jan 2023 – Oct 2023",
     place: "Toronto, Canada · Remote",
     points: [
       "Designed and built the website and app for a learning platform that prepares doctors for nephrology residency (React + Tailwind on web, React Native on mobile).",
