@@ -1,10 +1,12 @@
 import type { Metadata } from "next";
 import CopyButton from "../../components/CopyButton";
+import ProjectEstimator from "../../components/estimator/ProjectEstimator";
 import { BEHANCE, EMAIL, GITHUB, LINKEDIN, LINKTREE } from "../../components/site";
 
 export const metadata: Metadata = {
   title: "Contact · Nicolle Koetzler",
-  description: "Get in touch with Nicolle Koetzler for product design and design engineering work.",
+  description:
+    "Scope your project with an AI-guided consultation: answer a few questions and get a tailored project brief and budget estimate from Nicolle Koetzler.",
 };
 
 const channels = [
@@ -14,24 +16,18 @@ const channels = [
   { label: "Linktree", handle: "nicollekoetzler", href: LINKTREE },
 ];
 
+/* Contact: the Project Discovery & Budget Estimator first, the direct channels below for people who'd rather just write */
 export default function Contact() {
   return (
     <>
-      <section className="v2-section v2-intro">
-        <h1 className="v2-page-title">Let’s build something together.</h1>
-        <div className="v2-prose">
-          <p>Tell me about your product and where you’d like to take it.</p>
-        </div>
+      <ProjectEstimator />
+
+      <section className="v2-section pe-direct" aria-labelledby="direct-contact">
+        <h2 id="direct-contact" className="v2-h2">Prefer to just write?</h2>
         <div className="v2-email-row">
           <a className="v2-email" href={`mailto:${EMAIL}`}>{EMAIL}</a>
           <CopyButton text={EMAIL} label="Copy email address" />
         </div>
-        <div className="v2-actions">
-          <a className="v2-btn v2-btn--primary" href={`mailto:${EMAIL}`}>Send me an email</a>
-        </div>
-      </section>
-
-      <section className="v2-section">
         <ul className="v2-channels" aria-label="Elsewhere">
           {channels.map((c) => (
             <li key={c.label}>
