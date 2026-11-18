@@ -19,7 +19,7 @@ export default function Testimonial() {
           <img src="/assets/v2/joseph-shirazi.webp" width={56} height={56} alt="" />
           <span className="v2-quote__who">
             <strong>Joseph Shirazi</strong>
-            <small>Attorney · Compass Law Group, LLP</small>
+            <small>Co-Founder &amp; Attorney · Compass Law Group, LLP</small>
           </span>
           <a
             className="v2-quote__link"
