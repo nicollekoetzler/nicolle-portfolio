@@ -1,6 +1,6 @@
 /* eslint-disable @next/next/no-img-element -- a small, already optimized avatar */
 
-/** A client quote; the Home page shows it under "Trusted by", above the logo carousel */
+/** A client quote; the main Home page shows it on its own, after Featured Work */
 export default function Testimonial() {
   return (
       <figure className="v2-quote">

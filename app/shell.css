@@ -300,7 +300,7 @@ html:has(.v2), html:has(.v2) body { background: #1c1c1c; }
 @keyframes v2-drift { to { transform: translateX(calc(-50% - 6px)); } }
 .v2-skills:hover ul { animation-play-state: paused; }
 
-/* Testimonial: one client quote on a quiet card with a soft glow and a hairline light along the top edge */
+/* Testimonial: one client quote on a solid card, no border or shadow */
 .v2-quote {
   position: relative;
   margin: 0;
