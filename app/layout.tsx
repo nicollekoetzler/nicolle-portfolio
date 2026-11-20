@@ -14,11 +14,11 @@ export const viewport: Viewport = {
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://nicollekoetzler.com"),
-  title: "Nicolle Koetzler · Product Designer & Software Developer",
-  description: "Portfolio of Nicolle Koetzler, Product Designer and Software Developer.",
+  title: "Nicolle Koetzler · Senior Product Designer and Software Developer",
+  description: "Portfolio of Nicolle Koetzler, Senior Product Designer and Software Developer.",
   openGraph: {
-    title: "Nicolle Koetzler · Product Designer & Software Developer",
-    description: "Portfolio of Nicolle Koetzler, Product Designer and Software Developer.",
+    title: "Nicolle Koetzler · Senior Product Designer and Software Developer",
+    description: "Portfolio of Nicolle Koetzler, Senior Product Designer and Software Developer.",
     url: "/",
     siteName: "Nicolle Koetzler",
     type: "website",

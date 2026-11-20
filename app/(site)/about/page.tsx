@@ -4,12 +4,12 @@ import AboutContent from "../../components/AboutContent";
 export const metadata: Metadata = {
   title: "About · Nicolle Koetzler",
   description:
-    "Nicolle Koetzler is a senior product designer and design engineer with 12+ years in digital design and 4+ years building full-stack products.",
+    "Nicolle Koetzler is a senior product designer and software developer with 12+ years in digital design and 4+ years building full-stack products.",
 };
 
 export default function About() {
   return (
-    <AboutContent title="I’m Nicolle, a Product Designer and Engineer.">
+    <AboutContent title="I’m Nicolle, a Senior Product Designer and Software Developer.">
       <p>
         My journey began in 2012, when I started creating digital products and online communities across
         entertainment, education, and service-based businesses. I also worked as a designer, creating visual

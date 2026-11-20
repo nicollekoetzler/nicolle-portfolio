@@ -108,7 +108,7 @@ export default function Shell({ variant = "main", children }: { variant?: keyof 
             </ul>
             <div className="v2-id">
               <p className="v2-id__name">Nicolle Koetzler</p>
-              <p>Product Designer and Software Developer</p>
+              <p>{variant === "legal" ? "Product Designer and Software Developer" : "Senior Product Designer and Software Developer"}</p>
               <p>+12 years experience</p>
             </div>
           </div>
