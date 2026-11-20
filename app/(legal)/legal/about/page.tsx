@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 
 export default function LegalAbout() {
   return (
-    <AboutContent title="I’m Nicolle, a Product Engineer for legal tech.">
+    <AboutContent title="I’m Nicolle, a Product Engineer for legal tech." legal>
       <p>
         I design and build software for the legal industry. For the past three years I’ve led a team of 20 designers
         and developers at The Casely Group, shipping websites, dashboards and web apps for 40+ U.S. law firms, and

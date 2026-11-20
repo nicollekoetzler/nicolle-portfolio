@@ -4,12 +4,22 @@ import Link from "next/link";
 const stats = [
   { value: "12+", label: "years in digital design" },
   { value: "4+", label: "years building production software" },
-  { value: "40+", label: "U.S. law firms served" },
+  { value: "40+", label: "U.S. law firms served", legalOnly: true },
   { value: "20", label: "designers & developers led" },
 ];
 
 /** The About page's layout; the main site and the legal-tech site (legal.nicollekoetzler.com) differ only in the title and text */
-export default function AboutContent({ title, children }: { title: string; children: React.ReactNode }) {
+export default function AboutContent({
+  title,
+  children,
+  legal = false,
+}: {
+  title: string;
+  children: React.ReactNode;
+  /** the legal-tech site also shows the law firm count */
+  legal?: boolean;
+}) {
+  const shown = stats.filter((s) => legal || !s.legalOnly);
   return (
     <>
       <img
@@ -33,8 +43,8 @@ export default function AboutContent({ title, children }: { title: string; child
         </div>
       </section>
 
-      <ul className="v2-stats" aria-label="In numbers">
-        {stats.map((s) => (
+      <ul className="v2-stats" aria-label="In numbers" style={{ "--cols": shown.length } as React.CSSProperties}>
+        {shown.map((s) => (
           <li key={s.label}>
             <strong>{s.value}</strong>
             <span>{s.label}</span>
